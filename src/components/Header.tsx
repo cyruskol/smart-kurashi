@@ -24,10 +24,10 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
         scrolled
-          ? 'bg-surface/95 backdrop-blur-md shadow-sm'
-          : 'bg-surface'
+          ? 'bg-surface/95 backdrop-blur-lg border-border shadow-sm'
+          : 'bg-surface border-transparent'
       }`}
       role="banner"
     >
@@ -50,7 +50,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`nav-link text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-colors relative py-1 ${
                     isActive
                       ? 'text-accent'
                       : 'text-text-secondary hover:text-primary'
@@ -58,12 +58,15 @@ export default function Header() {
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {link.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
               );
             })}
             <Link
               href="/contact"
-              className="ml-sm px-lg py-sm bg-accent text-white text-sm font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow"
+              className="ml-sm px-lg py-sm.5 bg-accent text-white text-sm font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow"
             >
               お問い合わせ
             </Link>
@@ -88,7 +91,7 @@ export default function Header() {
 
         {/* Mobile Nav */}
         {mobileOpen && (
-          <nav className="md:hidden pb-lg pt-sm border-t border-border-light" aria-label="モバイルナビゲーション">
+          <nav className="md:hidden pb-lg pt-sm border-t border-border-light animate-fade-in" aria-label="モバイルナビゲーション">
             <ul className="flex flex-col gap-xs">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -112,7 +115,7 @@ export default function Header() {
               <li className="pt-sm px-md">
                 <Link
                   href="/contact"
-                  className="block w-full text-center py-sm px-lg bg-accent text-white text-sm font-semibold rounded-md hover:bg-accent-hover transition-colors"
+                  className="block w-full text-center py-sm.5 px-lg bg-accent text-white text-sm font-semibold rounded-md hover:bg-accent-hover transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   お問い合わせ
