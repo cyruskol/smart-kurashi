@@ -9,26 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0A0A0A',
-        'primary-hover': '#1A1A1A',
-        secondary: '#6B7280',
-        tertiary: '#E8643A',
+        // Brand
+        primary: '#0F172A',
+        'primary-hover': '#1E293B',
         accent: '#E8643A',
         'accent-hover': '#D05530',
-        neutral: '#FAFAF8',
-        'neutral-warm': '#F5F3EF',
-        'neutral-dark': '#1C1917',
+        'accent-light': '#FFF4F0',
+        
+        // Category colors
+        'cat-ai': '#6366F1',
+        'cat-ai-light': '#EEF2FF',
+        'cat-smart': '#10B981',
+        'cat-smart-light': '#ECFDF5',
+        'cat-iot': '#F59E0B',
+        'cat-iot-light': '#FFFBEB',
+        'cat-security': '#EF4444',
+        'cat-security-light': '#FEF2F2',
+        'cat-energy': '#06B6D4',
+        'cat-energy-light': '#ECFEFF',
+        
+        // Neutrals
+        neutral: '#F8FAFC',
+        'neutral-warm': '#F1F5F9',
         surface: '#FFFFFF',
-        'surface-alt': '#F5F3EF',
-        'surface-dark': '#0A0A0A',
-        text: '#0A0A0A',
-        'text-secondary': '#6B7280',
-        'text-muted': '#9CA3AF',
+        'surface-alt': '#F8FAFC',
+        
+        // Text
+        text: '#0F172A',
+        'text-secondary': '#475569',
+        'text-muted': '#94A3B8',
         'text-inverse': '#FFFFFF',
-        'text-inverse-secondary': '#A8A29E',
-        border: '#E7E5E4',
-        'border-light': '#F5F3EF',
-        'border-dark': '#292524',
+        
+        // Borders
+        border: '#E2E8F0',
+        'border-light': '#F1F5F9',
+        'border-dark': '#CBD5E1',
+        
+        // Semantic
         success: '#10B981',
         error: '#EF4444',
         warning: '#F59E0B',
@@ -40,15 +57,12 @@ const config: Config = {
           "'Noto Sans JP'",
           'system-ui',
           '-apple-system',
-          "'Segoe UI'",
-          'Roboto',
           'sans-serif',
         ],
       },
       maxWidth: {
         content: '720px',
-        container: '1200px',
-        wide: '1400px',
+        container: '1280px',
       },
       spacing: {
         xs: '4px',
@@ -58,11 +72,10 @@ const config: Config = {
         xl: '32px',
         xxl: '48px',
         xxxl: '64px',
-        section: 'clamp(48px, 8vw, 96px)',
+        section: 'clamp(48px, 6vw, 80px)',
       },
       borderRadius: {
-        xs: '2px',
-        sm: '4px',
+        sm: '6px',
         md: '8px',
         lg: '12px',
         xl: '16px',
@@ -70,24 +83,17 @@ const config: Config = {
         full: '9999px',
       },
       boxShadow: {
-        sm: '0 1px 2px rgba(10,10,10,0.06), 0 1px 3px rgba(10,10,10,0.04)',
-        md: '0 4px 6px rgba(10,10,10,0.07), 0 2px 4px rgba(10,10,10,0.04)',
-        lg: '0 10px 15px rgba(10,10,10,0.08), 0 4px 6px rgba(10,10,10,0.04)',
-        xl: '0 20px 25px rgba(10,10,10,0.1), 0 8px 10px rgba(10,10,10,0.04)',
+        sm: '0 1px 2px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04)',
+        md: '0 4px 6px rgba(15,23,42,0.07), 0 2px 4px rgba(15,23,42,0.04)',
+        lg: '0 10px 15px rgba(15,23,42,0.08), 0 4px 6px rgba(15,23,42,0.04)',
+        xl: '0 20px 25px rgba(15,23,42,0.1), 0 8px 10px rgba(15,23,42,0.04)',
         glow: '0 0 0 1px rgba(232, 100, 58, 0.2), 0 4px 12px rgba(232, 100, 58, 0.15)',
-        card: '0 1px 3px rgba(10,10,10,0.04), 0 1px 2px rgba(10,10,10,0.06)',
-        'card-hover': '0 12px 32px rgba(10,10,10,0.10), 0 4px 12px rgba(10,10,10,0.06)',
-        'card-featured': '0 2px 8px rgba(10,10,10,0.04), 0 1px 3px rgba(10,10,10,0.06)',
-        'card-featured-hover': '0 24px 48px rgba(10,10,10,0.12), 0 8px 16px rgba(10,10,10,0.06)',
       },
       letterSpacing: {
         tighter: '-0.03em',
         tight: '-0.02em',
         snug: '-0.01em',
-      },
-      lineHeight: {
-        tight: '1.1',
-        snug: '1.25',
+        widest: '0.08em',
       },
     },
   },
