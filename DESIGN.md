@@ -171,16 +171,22 @@ components:
     rounded: "12px"
     padding: "24px"
     border: "1px solid #E7E5E4"
-    shadow: "0 1px 3px rgba(10,10,10,0.04)"
-    hoverShadow: "0 8px 25px rgba(10,10,10,0.08)"
-    hoverBorder: "#E8643A"
+    shadow: "0 1px 3px rgba(10,10,10,0.04), 0 1px 2px rgba(10,10,10,0.06)"
+    hoverShadow: "0 12px 32px rgba(10,10,10,0.10), 0 4px 12px rgba(10,10,10,0.06)"
+    hoverBorder: "rgba(232,100,58,0.3)"
+    hoverTranslate: "translateY(-4px)"
+    transition: "box-shadow 0.35s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.35s, transform 0.35s"
+    gradientOverlay: "linear-gradient(135deg, transparent 50%, rgba(232,100,58,0.12) 100%)"
   cardFeatured:
     backgroundColor: "#FFFFFF"
     rounded: "16px"
     padding: "32px"
     border: "1px solid #E7E5E4"
-    shadow: "0 4px 6px rgba(10,10,10,0.04), 0 1px 3px rgba(10,10,10,0.06)"
-    hoverShadow: "0 20px 40px rgba(10,10,10,0.1)"
+    shadow: "0 2px 8px rgba(10,10,10,0.04), 0 1px 3px rgba(10,10,10,0.06)"
+    hoverShadow: "0 24px 48px rgba(10,10,10,0.12), 0 8px 16px rgba(10,10,10,0.06)"
+    hoverBorder: "rgba(232,100,58,0.25)"
+    hoverTranslate: "translateY(-6px)"
+    transition: "box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.4s, transform 0.4s"
   tag:
     backgroundColor: "#F5F3EF"
     textColor: "#6B7280"
@@ -242,7 +248,7 @@ The visual identity is **editorial luxury meets tech precision** — generous wh
 
 ## Components
 
-- **Cards:** 12px radius, whisper border, multi-layer shadow. Hover: shadow intensifies + accent border.
+- **Cards:** 12px radius, whisper border, multi-layer shadow. Hover: shadow intensifies + subtle gradient overlay + accent border glow + lift (-4px). Featured cards: 16px radius, larger lift (-6px), longer transitions. Uses cubic-bezier(0.25, 0.46, 0.45, 0.94) for premium motion feel.
 - **Buttons:** 8px radius, terracotta fill for primary, white with border for secondary.
 - **Tags:** Full pill (9999px), warm gray or tinted terracotta.
 - **Inputs:** 8px radius, warm border, terracotta focus ring.

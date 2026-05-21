@@ -2,7 +2,7 @@
 
 export default function ContactForm() {
   return (
-    <section className="bg-surface rounded-xl border border-border p-lg md:p-xl">
+    <section className="card-base p-lg md:p-xl">
       <form action="/api/contact" method="POST" className="space-y-lg">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-sm">

@@ -53,7 +53,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="mb-xl bg-surface rounded-xl border border-border p-lg md:p-xl">
+        <section className="mb-xl">
+          <div className="card-base p-lg md:p-xl">
           <h2 className="text-2xl font-bold text-primary mb-lg tracking-tight">メディア情報</h2>
           <dl className="grid grid-cols-1 md:grid-cols-2 gap-md">
             {[
@@ -68,6 +69,7 @@ export default function AboutPage() {
               </div>
             ))}
           </dl>
+          </div>
         </section>
 
         <section>
@@ -79,8 +81,8 @@ export default function AboutPage() {
               { title: '省エネルギー & HEMS', desc: '家庭のエネルギー管理システム、太陽光発電、蓄電池、EV充電など、持続可能な住まいの技術。' },
               { title: '製品レビュー & 比較', desc: '最新デバイスの実機レビュー、製品比較ガイド、購入前のチェックリスト。' },
             ].map((item) => (
-              <div key={item.title} className="bg-surface rounded-lg border border-border p-lg">
-                <h3 className="text-lg font-semibold text-primary mb-sm tracking-snug">{item.title}</h3>
+              <div key={item.title} className="card-base card-glow-accent group p-lg">
+                <h3 className="text-lg font-semibold text-primary mb-sm tracking-snug group-hover:text-accent transition-colors duration-300">{item.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}

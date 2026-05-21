@@ -89,19 +89,22 @@ export default function HomePage() {
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="group bg-neutral rounded-xl border border-border p-lg md:p-xl transition-all duration-300 hover:shadow-lg hover:border-accent/30 hover:-translate-y-1"
+                className="card-base card-glow-accent group p-lg md:p-xl overflow-hidden"
               >
-                <span className="text-4xl mb-md block animate-fade-in" role="img" aria-label={cat.label}>
+                <span className="text-4xl mb-md block" role="img" aria-label={cat.label}>
                   {cat.icon}
                 </span>
-                <h3 className="text-xl font-bold text-primary mb-sm group-hover:text-accent transition-colors tracking-tight">
+                <h3 className="text-xl font-bold text-primary mb-sm group-hover:text-accent transition-colors duration-300 tracking-tight">
                   {cat.label}
                 </h3>
                 <p className="text-text-secondary leading-relaxed text-sm">
                   {cat.description}
                 </p>
-                <span className="inline-block mt-md text-sm font-semibold text-accent group-hover:text-accent-hover transition-colors">
-                  記事一覧を見る →
+                <span className="inline-flex items-center gap-1.5 mt-md text-sm font-semibold text-accent group-hover:gap-2.5 transition-all duration-300">
+                  記事一覧を見る
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </span>
               </a>
             ))}

@@ -75,6 +75,10 @@ const config: Config = {
         lg: '0 10px 15px rgba(10,10,10,0.08), 0 4px 6px rgba(10,10,10,0.04)',
         xl: '0 20px 25px rgba(10,10,10,0.1), 0 8px 10px rgba(10,10,10,0.04)',
         glow: '0 0 0 1px rgba(232, 100, 58, 0.2), 0 4px 12px rgba(232, 100, 58, 0.15)',
+        card: '0 1px 3px rgba(10,10,10,0.04), 0 1px 2px rgba(10,10,10,0.06)',
+        'card-hover': '0 12px 32px rgba(10,10,10,0.10), 0 4px 12px rgba(10,10,10,0.06)',
+        'card-featured': '0 2px 8px rgba(10,10,10,0.04), 0 1px 3px rgba(10,10,10,0.06)',
+        'card-featured-hover': '0 24px 48px rgba(10,10,10,0.12), 0 8px 16px rgba(10,10,10,0.06)',
       },
       letterSpacing: {
         tighter: '-0.03em',
