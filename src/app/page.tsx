@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'ホーム',
   description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
   openGraph: {
-    title: 'Smart Kurashi — スマートホーム・ア家電ニュース',
+    title: 'Smart Kurashi — スマートホーム・AI家電ニュース',
     description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。',
   },
 };
@@ -15,35 +15,32 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const latestPosts = getAllPosts();
   const featuredPost = latestPosts[0];
-  const remainingPosts = latestPosts.slice(1, 7);
-  const aiPosts = getPostsByCategory('ai-tech').slice(0, 3);
-  const smartHomePosts = getPostsByCategory('smart-home').slice(0, 3);
+  const remainingPosts = latestPosts.slice(1, 10);
+  const aiPosts = getPostsByCategory('ai-tech');
+  const smartHomePosts = getPostsByCategory('smart-home');
   const allPosts = getAllPosts();
 
-  // Collect all unique tags
   const tagCounts: Record<string, number> = {};
-  allPosts.forEach((post) => {
-    post.tags.forEach((tag) => {
-      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-    });
-  });
-  const popularTags = Object.entries(tagCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 15)
-    .map(([tag]) => tag);
+  allPosts.forEach((post) => post.tags.forEach((tag) => { tagCounts[tag] = (tagCounts[tag] || 0) + 1; }));
+  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([tag]) => tag);
 
   return (
     <main>
-      {/* Hero — Featured post */}
+      {/* Hero — Featured post with dark gradient */}
       {featuredPost && (
-        <section className="bg-gradient-to-br from-primary to-slate-800 text-white" aria-label="注目記事">
-          <div className="max-w-container mx-auto px-md py-section">
+        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden" aria-label="注目記事">
+          {/* Decorative elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cat-ai rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+          </div>
+          <div className="max-w-container mx-auto px-md py-section relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
               <div>
-                <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full mb-md">
-                  Featured
+                <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-bold rounded-full mb-md">
+                  注目記事
                 </span>
-                <h1 className="text-3xl md:text-4xl font-bold leading-tight tracking-tighter mb-md">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tighter mb-md">
                   <a href={`/posts/${featuredPost.slug}`} className="hover:text-accent transition-colors">
                     {featuredPost.title}
                   </a>
@@ -53,18 +50,46 @@ export default function HomePage() {
                 </p>
                 <div className="flex items-center gap-md text-sm text-slate-400">
                   <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                  {featuredPost.source && <span>出典: {featuredPost.source}</span>}
+                  {featuredPost.source && <span>• {featuredPost.source}</span>}
                 </div>
+                <a href={`/posts/${featuredPost.slug}`} className="inline-flex items-center gap-sm mt-lg px-xl py-md bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-all shadow-lg hover:shadow-xl text-sm">
+                  続きを読む →
+                </a>
               </div>
               <div className="hidden lg:block">
-                <div className="w-full aspect-video bg-slate-700 rounded-xl flex items-center justify-center">
-                  <span className="text-6xl">🏠</span>
+                <div className="w-full aspect-[4/3] bg-gradient-to-br from-slate-700 to-slate-800 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <span className="text-8xl opacity-80">🏠</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
       )}
+
+      {/* Quick category links */}
+      <div className="bg-surface border-b border-border">
+        <div className="max-w-container mx-auto px-md py-md">
+          <div className="flex items-center gap-sm overflow-x-auto">
+            <span className="text-xs font-semibold text-text-muted uppercase tracking-wider flex-shrink-0">カテゴリ:</span>
+            <a href="/category/ai-tech" className="flex items-center gap-sm px-4 py-2 bg-cat-ai-light text-cat-ai rounded-full text-sm font-medium hover:bg-cat-ai hover:text-white transition-colors flex-shrink-0">
+              <span className="w-2 h-2 bg-cat-ai rounded-full"></span>
+              AI & Tech
+              <span className="bg-white/50 text-cat-ai text-xs px-1.5 py-0.5 rounded-full">{aiPosts.length}</span>
+            </a>
+            <a href="/category/smart-home" className="flex items-center gap-sm px-4 py-2 bg-cat-smart-light text-cat-smart rounded-full text-sm font-medium hover:bg-cat-smart hover:text-white transition-colors flex-shrink-0">
+              <span className="w-2 h-2 bg-cat-smart rounded-full"></span>
+              Smart Home
+              <span className="bg-white/50 text-cat-smart text-xs px-1.5 py-0.5 rounded-full">{smartHomePosts.length}</span>
+            </a>
+            <a href="/search" className="flex items-center gap-sm px-4 py-2 bg-neutral-warm text-text-secondary rounded-full text-sm font-medium hover:bg-accent hover:text-white transition-colors flex-shrink-0 ml-auto">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+              記事を検索
+            </a>
+          </div>
+        </div>
+      </div>
 
       {/* Main content area with sidebar */}
       <div className="max-w-container mx-auto px-md py-section">
@@ -75,53 +100,13 @@ export default function HomePage() {
             {remainingPosts.length > 0 && (
               <section className="mb-section" aria-label="最新記事">
                 <div className="flex items-center justify-between mb-lg">
-                  <h2 className="text-2xl font-bold text-primary tracking-tight">最新記事</h2>
-                  <a href="/category/ai-tech" className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors">
-                    すべて見る →
-                  </a>
+                  <h2 className="text-2xl font-bold text-primary tracking-tight flex items-center gap-sm">
+                    <span className="w-2 h-2 bg-accent rounded-full"></span>
+                    最新記事
+                  </h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                   {remainingPosts.map((post) => (
-                    <ArticleCard key={post.slug} post={post} />
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* AI & Tech */}
-            {aiPosts.length > 0 && (
-              <section className="mb-section" aria-label="AI & Tech">
-                <div className="flex items-center justify-between mb-lg">
-                  <h2 className="text-2xl font-bold text-primary tracking-tight flex items-center gap-sm">
-                    <span className="w-2 h-2 bg-cat-ai rounded-full"></span>
-                    AI & Tech
-                  </h2>
-                  <a href="/category/ai-tech" className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors">
-                    すべて見る →
-                  </a>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                  {aiPosts.map((post) => (
-                    <ArticleCard key={post.slug} post={post} />
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Smart Home */}
-            {smartHomePosts.length > 0 && (
-              <section aria-label="Smart Home">
-                <div className="flex items-center justify-between mb-lg">
-                  <h2 className="text-2xl font-bold text-primary tracking-tight flex items-center gap-sm">
-                    <span className="w-2 h-2 bg-cat-smart rounded-full"></span>
-                    Smart Home
-                  </h2>
-                  <a href="/category/smart-home" className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors">
-                    すべて見る →
-                  </a>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                  {smartHomePosts.map((post) => (
                     <ArticleCard key={post.slug} post={post} />
                   ))}
                 </div>
