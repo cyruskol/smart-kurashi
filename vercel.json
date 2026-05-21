@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vercel.com/docs/project-configuration/v3",
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "regions": ["hnd1"],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
