@@ -9,16 +9,12 @@ interface ArticleCardProps {
 const categoryLabels: Record<string, string> = {
   'ai-tech': 'AI & Tech',
   'smart-home': 'Smart Home',
-};
-
-const categorySlugMap: Record<string, string> = {
-  'ai-tech': 'ai-tech',
-  'smart-home': 'smart-home',
+  'article': '記事',
 };
 
 export default function ArticleCard({ post, variant = 'default' }: ArticleCardProps) {
-  const categorySlug = categorySlugMap[post.category] || post.category;
   const categoryLabel = categoryLabels[post.category] || post.category;
+  const categorySlug = post.category === 'ai-tech' ? 'ai-tech' : post.category === 'smart-home' ? 'smart-home' : post.category;
   const formattedDate = new Date(post.date).toLocaleDateString('ja-JP', {
     year: 'numeric',
     month: 'long',
@@ -28,32 +24,34 @@ export default function ArticleCard({ post, variant = 'default' }: ArticleCardPr
   if (variant === 'featured') {
     return (
       <Link href={`/posts/${post.slug}`} className="group block">
-        <article className="bg-surface rounded-lg border border-border overflow-hidden transition-all hover:border-accent hover:shadow-lg">
+        <article className="bg-surface rounded-xl border border-border overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-accent/30 hover:-translate-y-1">
           {post.image && (
-            <div className="aspect-video bg-surface-alt overflow-hidden">
+            <div className="aspect-[16/9] bg-neutral-warm overflow-hidden">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
           )}
-          <div className="p-lg">
-            <div className="flex items-center gap-sm mb-sm">
+          <div className="p-lg md:p-xl">
+            <div className="flex items-center gap-sm mb-md">
               <Link
                 href={`/category/${categorySlug}`}
-                className="inline-block text-xs font-medium text-accent bg-surface-alt px-3 py-1 rounded-sm hover:bg-accent hover:text-white transition-colors"
+                className="tag-accent inline-block text-xs font-semibold px-3 py-1 rounded-full hover:bg-accent hover:text-white transition-colors"
               >
                 {categoryLabel}
               </Link>
-              <time className="text-xs text-text-muted">{formattedDate}</time>
+              <time className="text-xs text-text-muted tracking-wide">{formattedDate}</time>
             </div>
-            <h2 className="text-xl font-bold text-primary leading-tight mb-sm group-hover:text-accent transition-colors">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary leading-snug mb-sm group-hover:text-accent transition-colors tracking-tight">
               {post.title}
             </h2>
-            <p className="text-sm text-text-secondary line-clamp-2">{post.excerpt}</p>
+            <p className="text-base text-text-secondary leading-relaxed line-clamp-2">
+              {post.excerpt}
+            </p>
             {post.source && (
-              <p className="text-xs text-text-muted mt-sm">出典: {post.source}</p>
+              <p className="text-xs text-text-muted mt-md">出典: {post.source}</p>
             )}
           </div>
         </article>
@@ -63,26 +61,28 @@ export default function ArticleCard({ post, variant = 'default' }: ArticleCardPr
 
   return (
     <Link href={`/posts/${post.slug}`} className="group block">
-      <article className="bg-surface rounded-lg border border-border p-md transition-all hover:border-accent hover:shadow-md">
+      <article className="bg-surface rounded-lg border border-border p-md transition-all duration-300 hover:shadow-lg hover:border-accent/30 hover:-translate-y-0.5 h-full flex flex-col">
         <div className="flex items-center gap-sm mb-sm">
           <Link
             href={`/category/${categorySlug}`}
-            className="inline-block text-xs font-medium text-accent bg-surface-alt px-3 py-1 rounded-sm hover:bg-accent hover:text-white transition-colors"
+            className="tag-accent inline-block text-xs font-semibold px-3 py-1 rounded-full hover:bg-accent hover:text-white transition-colors"
           >
             {categoryLabel}
           </Link>
-          <time className="text-xs text-text-muted">{formattedDate}</time>
+          <time className="text-xs text-text-muted tracking-wide">{formattedDate}</time>
         </div>
-        <h3 className="text-base font-semibold text-primary leading-snug mb-xs group-hover:text-accent transition-colors">
+        <h3 className="text-base font-semibold text-primary leading-snug mb-sm group-hover:text-accent transition-colors tracking-snug flex-grow">
           {post.title}
         </h3>
-        <p className="text-sm text-text-secondary line-clamp-2">{post.excerpt}</p>
+        <p className="text-sm text-text-secondary leading-relaxed line-clamp-2 mb-md">
+          {post.excerpt}
+        </p>
         {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-xs mt-sm">
+          <div className="flex flex-wrap gap-xs mt-auto">
             {post.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-xs text-text-muted bg-surface-alt px-2 py-0.5 rounded-sm"
+                className="tag inline-block text-xs font-medium px-2.5 py-0.5 rounded-full"
               >
                 {tag}
               </span>

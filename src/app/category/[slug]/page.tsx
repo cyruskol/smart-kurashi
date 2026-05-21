@@ -29,6 +29,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: info.label,
     description: info.description,
+    openGraph: {
+      title: `${info.label} | Smart Kurashi`,
+      description: info.description,
+    },
   };
 }
 
@@ -46,12 +50,19 @@ export default async function CategoryPage({ params }: PageProps) {
   );
 
   return (
-    <main className="py-xl">
+    <main className="py-section md:py-2xl">
       <div className="max-w-container mx-auto px-md">
         {/* Category Header */}
-        <header className="mb-xl">
-          <h1 className="text-3xl font-bold text-primary mb-sm">{info.label}</h1>
-          <p className="text-text-secondary">{info.description}</p>
+        <header className="mb-xl max-w-content">
+          <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-sm">
+            カテゴリ
+          </p>
+          <h1 className="text-3xl md:text-4xl font-bold text-primary mb-md tracking-tight">
+            {info.label}
+          </h1>
+          <p className="text-text-secondary text-lg leading-relaxed">
+            {info.description}
+          </p>
         </header>
 
         {/* Posts Grid */}
@@ -62,7 +73,7 @@ export default async function CategoryPage({ params }: PageProps) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-xl">
+          <div className="text-center py-xl bg-surface rounded-xl border border-border">
             <p className="text-text-secondary text-lg">
               このカテゴリの記事はまだありません。
             </p>

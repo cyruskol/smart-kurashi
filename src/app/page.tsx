@@ -20,18 +20,17 @@ export default function HomePage() {
   const aiPosts = getPostsByCategory('ai-tech').slice(0, 3);
   const smartHomePosts = getPostsByCategory('smart-home').slice(0, 3);
 
-  // Collect all unique categories for the features section
   const categories = [
     {
       slug: 'ai-tech',
       label: 'AI & Tech',
-      description: '生成AI、機械学習、チャットボットなど人工知能分野の最新トレンド',
+      description: '生成AI、機械学習、チャットボットなど人工知能分野の最新トレンドと実用的な活用方法。',
       icon: '🤖',
     },
     {
       slug: 'smart-home',
       label: 'Smart Home',
-      description: 'スマートスピーカー、照明、セキュリティなど家庭のIoT化',
+      description: 'スマートスピーカー、照明、セキュリティカメラ、HEMSなど家庭のIoT化に関する最新情報。',
       icon: '🏠',
     },
   ];
@@ -39,53 +38,67 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="bg-neutral py-xl md:py-xxl" aria-label="ヒーローセクション">
-        <div className="max-w-container mx-auto px-md text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-primary leading-tight mb-md">
+      <section className="bg-surface" aria-label="ヒーローセクション">
+        <div className="max-w-container mx-auto px-md py-section md:py-2xl text-center">
+          <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-md">
+            スマートなくらしの情報をお届け
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tighter mb-lg">
             Smart Kurashi
           </h1>
-          <p className="text-lg md:text-xl text-text-secondary max-w-content mx-auto leading-relaxed mb-lg">
+          <p className="text-lg md:text-xl text-text-secondary max-w-content mx-auto leading-relaxed mb-xl">
             スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を日本語でお届け。
             未来のくらしに役立つ情報を、専門家がわかりやすく解説します。
           </p>
           <div className="flex flex-wrap justify-center gap-md">
             <a
               href="/category/ai-tech"
-              className="px-xl py-sm bg-accent text-white font-medium rounded-md hover:bg-accent-hover transition-colors"
+              className="px-xl py-md bg-accent text-white font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow text-sm"
             >
-              AI & Tech
+              AI & Tech を見る
             </a>
             <a
               href="/category/smart-home"
-              className="px-xl py-sm bg-surface text-text-primary font-medium rounded-md border border-border hover:border-accent transition-colors"
+              className="px-xl py-md bg-surface text-primary font-semibold rounded-md border border-border hover:border-accent transition-all text-sm"
             >
-              Smart Home
+              Smart Home を見る
             </a>
           </div>
         </div>
       </section>
 
-      {/* Features / Categories Grid */}
-      <section className="py-section bg-surface" aria-label="カテゴリ">
-        <div className="max-w-container mx-auto px-md">
-          <h2 className="text-2xl font-bold text-primary mb-xl text-center">主要カテゴリ</h2>
+      {/* Featured Post */}
+      {featuredPost && (
+        <section className="bg-neutral" aria-label="注目記事">
+          <div className="max-w-container mx-auto px-md py-section">
+            <ArticleCard post={featuredPost} variant="featured" />
+          </div>
+        </section>
+      )}
+
+      {/* Categories Grid */}
+      <section className="bg-surface" aria-label="カテゴリ">
+        <div className="max-w-container mx-auto px-md py-section">
+          <h2 className="text-2xl font-bold text-primary mb-xl text-center tracking-tight">
+            主要カテゴリ
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
             {categories.map((cat) => (
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="group bg-neutral rounded-lg border border-border p-lg transition-all hover:border-accent hover:shadow-lg"
+                className="group bg-neutral rounded-xl border border-border p-lg md:p-xl transition-all duration-300 hover:shadow-lg hover:border-accent/30 hover:-translate-y-1"
               >
-                <span className="text-3xl mb-md block" role="img" aria-label={cat.label}>
+                <span className="text-4xl mb-md block" role="img" aria-label={cat.label}>
                   {cat.icon}
                 </span>
-                <h3 className="text-xl font-bold text-primary mb-sm group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-bold text-primary mb-sm group-hover:text-accent transition-colors tracking-tight">
                   {cat.label}
                 </h3>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-text-secondary leading-relaxed text-sm">
                   {cat.description}
                 </p>
-                <span className="inline-block mt-md text-sm font-medium text-accent">
+                <span className="inline-block mt-md text-sm font-semibold text-accent group-hover:text-accent-hover transition-colors">
                   記事一覧を見る →
                 </span>
               </a>
@@ -94,27 +107,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Post */}
-      {featuredPost && (
-        <section className="py-section" aria-label="注目記事">
-          <div className="max-w-container mx-auto px-md">
-            <p className="text-sm font-medium text-accent mb-sm tracking-wider uppercase">
-              Featured
-            </p>
-            <ArticleCard post={featuredPost} variant="featured" />
-          </div>
-        </section>
-      )}
-
-      {/* Latest Posts Grid */}
+      {/* Latest Posts */}
       {remainingPosts.length > 0 && (
-        <section className="py-section bg-surface" aria-label="最新記事">
-          <div className="max-w-container mx-auto px-md">
+        <section className="bg-neutral" aria-label="最新記事">
+          <div className="max-w-container mx-auto px-md py-section">
             <div className="flex items-center justify-between mb-xl">
-              <h2 className="text-2xl font-bold text-primary">最新記事</h2>
+              <h2 className="text-2xl font-bold text-primary tracking-tight">最新記事</h2>
               <a
                 href="/category/ai-tech"
-                className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+                className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
               >
                 すべて見る →
               </a>
@@ -130,13 +131,13 @@ export default function HomePage() {
 
       {/* AI & Tech Section */}
       {aiPosts.length > 0 && (
-        <section className="py-section" aria-label="AI & Tech 記事">
-          <div className="max-w-container mx-auto px-md">
+        <section className="bg-surface" aria-label="AI & Tech 記事">
+          <div className="max-w-container mx-auto px-md py-section">
             <div className="flex items-center justify-between mb-xl">
-              <h2 className="text-2xl font-bold text-primary">AI & Tech</h2>
+              <h2 className="text-2xl font-bold text-primary tracking-tight">AI & Tech</h2>
               <a
                 href="/category/ai-tech"
-                className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+                className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
               >
                 すべて見る →
               </a>
@@ -152,13 +153,13 @@ export default function HomePage() {
 
       {/* Smart Home Section */}
       {smartHomePosts.length > 0 && (
-        <section className="py-section bg-surface" aria-label="Smart Home 記事">
-          <div className="max-w-container mx-auto px-md">
+        <section className="bg-neutral" aria-label="Smart Home 記事">
+          <div className="max-w-container mx-auto px-md py-section">
             <div className="flex items-center justify-between mb-xl">
-              <h2 className="text-2xl font-bold text-primary">Smart Home</h2>
+              <h2 className="text-2xl font-bold text-primary tracking-tight">Smart Home</h2>
               <a
                 href="/category/smart-home"
-                className="text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+                className="text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
               >
                 すべて見る →
               </a>
@@ -172,49 +173,27 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* CTA / About Section */}
-      {!featuredPost && remainingPosts.length === 0 && aiPosts.length === 0 && smartHomePosts.length === 0 && (
-        <section className="py-section" aria-label="はじめに">
-          <div className="max-w-content mx-auto px-md text-center">
-            <h2 className="text-3xl font-bold text-primary mb-md">
-              Smart Kurashiへようこそ
-            </h2>
-            <p className="text-text-secondary text-lg mb-xl">
-              スマートホーム・AI家電の最新ニュースをお届けします。
-              <br />
-              コンテンツ準備中です。
-            </p>
-            <a
-              href="/about"
-              className="inline-block px-xl py-sm bg-accent text-white font-medium rounded-md hover:bg-accent-hover transition-colors"
-            >
-              私たちについて
-            </a>
-          </div>
-        </section>
-      )}
-
       {/* About CTA */}
-      <section className="py-section" aria-label="会社紹介">
-        <div className="max-w-container mx-auto px-md">
-          <div className="bg-surface rounded-lg border border-border p-xl md:p-xxl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-md">
+      <section className="bg-surface" aria-label="会社紹介">
+        <div className="max-w-container mx-auto px-md py-section">
+          <div className="max-w-content mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-md tracking-tight">
               Smart Kurashiについて
             </h2>
-            <p className="text-text-secondary text-lg max-w-content mx-auto leading-relaxed mb-lg">
+            <p className="text-text-secondary text-lg leading-relaxed mb-xl max-w-xl mx-auto">
               私たちは、スマートホーム・AI家電・IoT技術の最新情報を発信する日本のテクノロジーメディアです。
               初心者から専門家まで、すべての読者に価値ある情報をお届けします。
             </p>
             <div className="flex flex-wrap justify-center gap-md">
               <a
                 href="/about"
-                className="px-xl py-sm bg-accent text-white font-medium rounded-md hover:bg-accent-hover transition-colors"
+                className="px-xl py-md bg-accent text-white font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow text-sm"
               >
                 会社概要
               </a>
               <a
                 href="/contact"
-                className="px-xl py-sm bg-surface text-text-primary font-medium rounded-md border border-border hover:border-accent transition-colors"
+                className="px-xl py-md bg-surface text-primary font-semibold rounded-md border border-border hover:border-accent transition-all text-sm"
               >
                 お問い合わせ
               </a>

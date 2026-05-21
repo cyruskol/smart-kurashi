@@ -11,6 +11,7 @@ interface PageProps {
 const categoryLabels: Record<string, string> = {
   'ai-tech': 'AI & Tech',
   'smart-home': 'Smart Home',
+  'article': '記事',
 };
 
 export async function generateStaticParams() {
@@ -25,6 +26,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+    },
   };
 }
 
@@ -43,22 +49,30 @@ export default async function PostPage({ params }: PageProps) {
   });
 
   const categoryLabel = categoryLabels[post.category] || post.category;
-  const categoryHref = `/category/${post.category}`;
+  const categoryHref = `/category/${post.category === 'ai-tech' ? 'ai-tech' : post.category === 'smart-home' ? 'smart-home' : post.category}`;
 
   return (
-    <main className="py-xl bg-neutral">
+    <main className="py-section md:py-2xl bg-neutral">
       <article className="max-w-content mx-auto px-md">
         {/* Breadcrumb */}
-        <nav className="mb-lg text-sm">
-          <a href="/" className="text-text-muted hover:text-accent transition-colors">
-            ホーム
-          </a>
-          <span className="text-text-muted mx-2">/</span>
-          <a href={categoryHref} className="text-text-muted hover:text-accent transition-colors">
-            {categoryLabel}
-          </a>
-          <span className="text-text-muted mx-2">/</span>
-          <span className="text-text-secondary">{post.title}</span>
+        <nav aria-label="パンくずリスト" className="mb-lg">
+          <ol className="flex items-center gap-sm text-sm">
+            <li>
+              <a href="/" className="text-text-muted hover:text-accent transition-colors">
+                ホーム
+              </a>
+            </li>
+            <li className="text-text-muted">/</li>
+            <li>
+              <a href={categoryHref} className="text-text-muted hover:text-accent transition-colors">
+                {categoryLabel}
+              </a>
+            </li>
+            <li className="text-text-muted">/</li>
+            <li className="text-text-secondary truncate max-w-[200px]" aria-current="page">
+              {post.title}
+            </li>
+          </ol>
         </nav>
 
         {/* Header */}
@@ -66,16 +80,16 @@ export default async function PostPage({ params }: PageProps) {
           <div className="flex items-center gap-sm mb-md">
             <a
               href={categoryHref}
-              className="inline-block text-xs font-medium text-accent bg-surface-alt px-3 py-1 rounded-sm hover:bg-accent hover:text-white transition-colors"
+              className="tag-accent inline-block text-xs font-semibold px-3 py-1 rounded-full hover:bg-accent hover:text-white transition-colors"
             >
               {categoryLabel}
             </a>
-            <time className="text-sm text-text-muted">{formattedDate}</time>
+            <time className="text-sm text-text-muted tracking-wide">{formattedDate}</time>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-primary leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1] tracking-tighter mb-md">
             {post.title}
           </h1>
-          <p className="text-lg text-text-secondary mt-md leading-relaxed">
+          <p className="text-lg text-text-secondary leading-relaxed">
             {post.excerpt}
           </p>
           {post.source && (
@@ -105,7 +119,7 @@ export default async function PostPage({ params }: PageProps) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-sm text-text-secondary bg-surface px-3 py-1 rounded-sm"
+                  className="tag inline-block text-sm font-medium px-3 py-1 rounded-full"
                 >
                   {tag}
                 </span>
