@@ -25,7 +25,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: [
-          "'Noto Sans JP'",
+          "var(--font-noto-sans-jp)",
           "'Hiragino Sans'",
           "'Yu Gothic'",
           "'Meiryo'",
@@ -37,7 +37,13 @@ const config: Config = {
         container: '1200px',
       },
       spacing: {
-        'section': '48px',
+        xs: '4px',
+        sm: '8px',
+        md: '16px',
+        lg: '24px',
+        xl: '32px',
+        xxl: '48px',
+        section: '48px',
       },
       borderRadius: {
         sm: '4px',

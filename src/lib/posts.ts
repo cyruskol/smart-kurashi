@@ -38,29 +38,50 @@ function parsePost(filePath: string, category: string): Post {
   };
 }
 
+function getPostsFromDir(dir: string, category: string): Post[] {
+  return getMarkdownFiles(dir).map((f) => parsePost(path.join(dir, f), category));
+}
+
 export function getAllPosts(): Post[] {
-  const postsDir = path.join(contentDir, 'posts');
-  const files = getMarkdownFiles(postsDir);
-  return files
-    .map((f) => parsePost(path.join(postsDir, f), 'article'))
-    .sort((a, b) => b.date.localeCompare(a.date));
+  // Scan both content/posts/ and content/news/[category]/
+  const mainPosts = getPostsFromDir(path.join(contentDir, 'posts'), 'article');
+  const aiNews = getPostsFromDir(path.join(contentDir, 'news', 'ai-tech'), 'ai-tech');
+  const smartHomeNews = getPostsFromDir(path.join(contentDir, 'news', 'smart-home'), 'smart-home');
+  return [...mainPosts, ...aiNews, ...smartHomeNews].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
 }
 
 export function getPostsByCategory(category: string): Post[] {
-  const postsDir = path.join(contentDir, 'posts');
-  const newsDir = path.join(contentDir, 'news', category);
-  const posts = getMarkdownFiles(postsDir)
-    .map((f) => parsePost(path.join(postsDir, f), category))
-    .filter((p) => p.category === category || p.tags.includes(category));
-  const news = getMarkdownFiles(newsDir).map((f) =>
-    parsePost(path.join(newsDir, f), category)
-  );
-  return [...posts, ...news].sort((a, b) => b.date.localeCompare(a.date));
+  return getAllPosts()
+    .filter((post) => post.category === category)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getPostsByTag(tag: string): Post[] {
+  return getAllPosts()
+    .filter((post) => post.tags.includes(tag))
+    .sort((a, b) => b.date.localeCompare(a.date));
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const postsDir = path.join(contentDir, 'posts');
-  const filePath = path.join(postsDir, `${slug}.md`);
-  if (!fs.existsSync(filePath)) return null;
-  return parsePost(filePath, 'article');
+  // Search in all content directories
+  const searchDirs = [
+    path.join(contentDir, 'posts'),
+    path.join(contentDir, 'news', 'ai-tech'),
+    path.join(contentDir, 'news', 'smart-home'),
+  ];
+  for (const dir of searchDirs) {
+    const filePathMd = path.join(dir, `${slug}.md`);
+    const filePathMdx = path.join(dir, `${slug}.mdx`);
+    if (fs.existsSync(filePathMd)) {
+      const category = dir.includes('ai-tech') ? 'ai-tech' : dir.includes('smart-home') ? 'smart-home' : 'article';
+      return parsePost(filePathMd, category);
+    }
+    if (fs.existsSync(filePathMdx)) {
+      const category = dir.includes('ai-tech') ? 'ai-tech' : dir.includes('smart-home') ? 'smart-home' : 'article';
+      return parsePost(filePathMdx, category);
+    }
+  }
+  return null;
 }
