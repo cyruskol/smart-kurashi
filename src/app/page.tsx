@@ -37,32 +37,34 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="bg-surface" aria-label="ヒーローセクション">
-        <div className="max-w-container mx-auto px-md py-section md:py-2xl text-center">
-          <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-md">
-            スマートなくらしの情報をお届け
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tighter mb-lg">
-            Smart Kurashi
-          </h1>
-          <p className="text-lg md:text-xl text-text-secondary max-w-content mx-auto leading-relaxed mb-xl">
-            スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を日本語でお届け。
-            未来のくらしに役立つ情報を、専門家がわかりやすく解説します。
-          </p>
-          <div className="flex flex-wrap justify-center gap-md">
-            <a
-              href="/category/ai-tech"
-              className="px-xl py-md bg-accent text-white font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow text-sm"
-            >
-              AI & Tech を見る
-            </a>
-            <a
-              href="/category/smart-home"
-              className="px-xl py-md bg-surface text-primary font-semibold rounded-md border border-border hover:border-accent transition-all text-sm"
-            >
-              Smart Home を見る
-            </a>
+      {/* Hero Section — Premium editorial style */}
+      <section className="bg-surface border-b border-border-light" aria-label="ヒーローセクション">
+        <div className="max-w-container mx-auto px-md py-section md:py-3xl">
+          <div className="max-w-content mx-auto text-center">
+            <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-md animate-fade-in">
+              スマートなくらしの情報をお届け
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.05] tracking-tighter mb-lg animate-fade-in-up">
+              Smart Kurashi
+            </h1>
+            <p className="text-lg md:text-xl text-text-secondary max-w-xl mx-auto leading-relaxed mb-xl animate-fade-in-up">
+              スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を日本語でお届け。
+              未来のくらしに役立つ情報を、専門家がわかりやすく解説します。
+            </p>
+            <div className="flex flex-wrap justify-center gap-md animate-fade-in-up">
+              <a
+                href="/category/ai-tech"
+                className="px-xl py-md bg-accent text-white font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm hover:shadow-glow text-sm"
+              >
+                AI & Tech を見る
+              </a>
+              <a
+                href="/category/smart-home"
+                className="px-xl py-md bg-neutral text-primary font-semibold rounded-md border border-border hover:border-accent hover:text-accent transition-all text-sm"
+              >
+                Smart Home を見る
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -82,14 +84,14 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-primary mb-xl text-center tracking-tight">
             主要カテゴリ
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg stagger-children">
             {categories.map((cat) => (
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
                 className="group bg-neutral rounded-xl border border-border p-lg md:p-xl transition-all duration-300 hover:shadow-lg hover:border-accent/30 hover:-translate-y-1"
               >
-                <span className="text-4xl mb-md block" role="img" aria-label={cat.label}>
+                <span className="text-4xl mb-md block animate-fade-in" role="img" aria-label={cat.label}>
                   {cat.icon}
                 </span>
                 <h3 className="text-xl font-bold text-primary mb-sm group-hover:text-accent transition-colors tracking-tight">
@@ -120,7 +122,7 @@ export default function HomePage() {
                 すべて見る →
               </a>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg stagger-children">
               {remainingPosts.map((post) => (
                 <ArticleCard key={post.slug} post={post} />
               ))}
@@ -142,7 +144,7 @@ export default function HomePage() {
                 すべて見る →
               </a>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-lg stagger-children">
               {aiPosts.map((post) => (
                 <ArticleCard key={post.slug} post={post} />
               ))}
@@ -164,7 +166,7 @@ export default function HomePage() {
                 すべて見る →
               </a>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-lg stagger-children">
               {smartHomePosts.map((post) => (
                 <ArticleCard key={post.slug} post={post} />
               ))}
@@ -174,9 +176,10 @@ export default function HomePage() {
       )}
 
       {/* About CTA */}
-      <section className="bg-surface" aria-label="会社紹介">
+      <section className="bg-surface border-t border-border-light" aria-label="会社紹介">
         <div className="max-w-container mx-auto px-md py-section">
           <div className="max-w-content mx-auto text-center">
+            <p className="text-xs font-semibold text-accent uppercase tracking-widest mb-sm">About Us</p>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-md tracking-tight">
               Smart Kurashiについて
             </h2>
@@ -193,7 +196,7 @@ export default function HomePage() {
               </a>
               <a
                 href="/contact"
-                className="px-xl py-md bg-surface text-primary font-semibold rounded-md border border-border hover:border-accent transition-all text-sm"
+                className="px-xl py-md bg-neutral text-primary font-semibold rounded-md border border-border hover:border-accent hover:text-accent transition-all text-sm"
               >
                 お問い合わせ
               </a>
