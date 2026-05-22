@@ -6,9 +6,9 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import PrDisclaimer from '@/components/PrDisclaimer';
-import Mokuji from '@/components/Mokuji';
-import AuthorBox from '@/components/AuthorBox';
+import PrBanner from '@/components/PRBanner';
+import TableOfContents from '@/components/TableOfContents';
+import AuthorProfile from '@/components/AuthorProfile';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,8 +36,8 @@ const categoryHrefs: Record<string, string> = {
 const defaultAuthor = {
   name: 'Smart Kurashi 編集部',
   avatarUrl: '',
-  bio: 'スマートホーム・AI家電・IoT技術の専門メディア。製品レビュー、比較ガイド、業界動向の分析を得意とする。2020年より日本のスマートリビング分野の情報発信を行ってきた。',
-  expertise: ['スマートホーム', 'AI家電', 'IoT', 'HEMS', '省エネ'],
+  bio: 'スマートホーム愛好家として 50 台以上の IoT 製品を自宅でテストしてきた実務経験を持つ。HEMS、音声アシスタント、スマットロック、カメラセンサーなど、住まいに関わるあらゆる IoT 機器の導入・運用・比較評価を専門とする。',
+  expertise: ['スマートホーム', 'IoT', 'HEMS', '音声アシスタント', 'AI 家電'],
 };
 
 export async function generateStaticParams() {
@@ -109,7 +109,7 @@ export default async function PostPage({ params }: PageProps) {
   // Breadcrumb items
   const breadcrumbItems = [
     { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
-    { label: categoryLabel, href: `https://smart-kurashi.jp${categoryHref}` },
+    { label: post.category === 'ai-tech' ? 'AI & Tech' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
     { label: post.title, href: `https://smart-kurashi.jp/posts/${slug}` },
   ];
 
@@ -181,15 +181,15 @@ export default async function PostPage({ params }: PageProps) {
               </p>
             </header>
 
-            {/* PR Disclaimer — right below H1 */}
-            <PrDisclaimer />
+            {/* PR Banner — right below H1 */}
+            <PrBanner />
 
             <hr
               style={{ border: 'none', borderTop: '1px solid #E2E8F0', margin: '0 0 24px 0' }}
             />
 
             {/* Table of Contents — after intro paragraph */}
-            <Mokuji content={post.content} />
+            <TableOfContents content={post.content} />
 
             {/* Article Body */}
             <div className="prose prose-lg max-w-none">
@@ -244,7 +244,7 @@ export default async function PostPage({ params }: PageProps) {
             )}
 
             {/* Author Trust Box (E-E-A-T) */}
-            <AuthorBox
+            <AuthorProfile
               name={defaultAuthor.name}
               avatarUrl={defaultAuthor.avatarUrl || undefined}
               bio={defaultAuthor.bio}

@@ -1,4 +1,4 @@
-export default function PrDisclaimer() {
+export default function PrBanner() {
   return (
     <div
       style={{
@@ -18,7 +18,7 @@ export default function PrDisclaimer() {
         【PR】
       </span>
       <span>
-        当サイトはアフィリエイト広告（Amazonアソシエイト含む）を掲載しています。
+        当サイトはアフィリエイト広告（Amazon アソシエイト含む）を掲載しています。
       </span>
     </div>
   );

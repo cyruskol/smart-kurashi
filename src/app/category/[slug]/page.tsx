@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import PrDisclaimer from '@/components/PrDisclaimer';
+import PrBanner from '@/components/PRBanner';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -117,8 +117,8 @@ export default async function CategoryPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* PR Disclaimer */}
-        <PrDisclaimer />
+        {/* PR Banner */}
+        <PrBanner />
 
         {/* Posts Grid */}
         {posts.length > 0 ? (

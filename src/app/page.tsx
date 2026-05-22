@@ -1,7 +1,7 @@
 import { getAllPosts, getPostsByCategory } from '@/lib/posts';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import PrDisclaimer from '@/components/PrDisclaimer';
+import PrBanner from '@/components/PRBanner';
 
 export const metadata: {
   title: string;
@@ -65,8 +65,8 @@ export default function HomePage() {
 
       {/* ===== MAIN CONTENT + SIDEBAR ===== */}
       <div className="max-w-container mx-auto px-md" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
-        {/* PR Disclaimer */}
-        <PrDisclaimer />
+        {/* PR Banner */}
+        <PrBanner />
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
           
