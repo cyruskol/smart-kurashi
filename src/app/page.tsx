@@ -87,7 +87,7 @@ export default function HomePage() {
                     <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1 hover:border-orange-200">
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                         <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '9999px' }}>
-                          {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'Smart Home' : '記事'}
+                          {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'スマート家電' : '記事'}
                         </span>
                         <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       </div>
@@ -131,12 +131,12 @@ export default function HomePage() {
               </section>
             )}
 
-            {/* Smart Home Section */}
+            {/* スマート家電 Section */}
             {smartHomePosts.length > 0 && (
               <section>
                 <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#10B981', borderRadius: '50%' }} />
-                  Smart Home
+                  スマート家電
                   <span style={{ fontSize: '12px', fontWeight: 400, color: '#94A3B8', marginLeft: '4px' }}>({smartHomePosts.length})</span>
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>

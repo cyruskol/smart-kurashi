@@ -21,7 +21,7 @@ const categoryConfig: Record<
     icon: '🤖',
   },
   'smart-home': {
-    label: 'Smart Home',
+    label: 'スマート家電',
     description: 'スマートホーム家電、IoT機器、HEMS、音声アシスタントなど住まいのテクノロジー',
     color: '#10B981',
     bg: '#ECFDF5',

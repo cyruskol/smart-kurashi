@@ -8,7 +8,7 @@ interface TocItem {
   level: 'h2' | 'h3';
 }
 
-export default function Mokuji({ content }: { content: string }) {
+export default function TableOfContents({ content }: { content: string }) {
   const [items, setItems] = useState<TocItem[]>([]);
 
   useEffect(() => {

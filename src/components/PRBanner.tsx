@@ -18,7 +18,7 @@ export default function PrBanner() {
         【PR】
       </span>
       <span>
-        当サイトはアフィリエイト広告（Amazon アソシエイト含む）を掲載しています。
+        当サイトはアフィリエイト広告（Amazonアソシエイト含む）を掲載しています。
       </span>
     </div>
   );

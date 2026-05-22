@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 const navItems = [
   { href: '/', label: 'ホーム', icon: '🏠' },
   { href: '/category/ai-tech', label: 'AI & Tech', color: '#6366F1' },
-  { href: '/category/smart-home', label: 'Smart Home', color: '#10B981' },
+  { href: '/category/smart-home', label: 'スマート家電', color: '#10B981' },
   { href: '/search', label: '検索', icon: '🔍' },
 ];
 
@@ -145,7 +145,7 @@ export default function Header() {
               🤖 AI & Tech
             </Link>
             <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#ECFDF5', color: '#10B981' }}>
-              🏠 Smart Home
+              🏠 スマート家電
             </Link>
             <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#FFFBEB', color: '#F59E0B' }}>
               📡 IoT
