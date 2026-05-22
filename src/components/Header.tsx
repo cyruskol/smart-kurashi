@@ -4,16 +4,17 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-const categories = [
-  { href: '/category/ai-tech', label: 'AI & Tech', color: 'cat-ai' },
-  { href: '/category/smart-home', label: 'Smart Home', color: 'cat-smart' },
+const navItems = [
+  { href: '/', label: 'ホーム', icon: '🏠' },
+  { href: '/category/ai-tech', label: 'AI & Tech', color: '#6366F1' },
+  { href: '/category/smart-home', label: 'Smart Home', color: '#10B981' },
+  { href: '/search', label: '検索', icon: '🔍' },
 ];
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -23,157 +24,141 @@ export default function Header() {
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-primary text-white text-xs">
-        <div className="max-w-container mx-auto px-md flex items-center justify-between h-8">
+      {/* Top utility bar */}
+      <div style={{ background: '#0F172A', color: '#94A3B8', fontSize: '12px' }}>
+        <div className="max-w-container mx-auto px-md flex items-center justify-between" style={{ height: '32px' }}>
+          <span>🏠 スマートホーム・AI家電の最新ニュース</span>
           <div className="flex items-center gap-md">
-            <span className="text-text-muted">スマートホーム・AI家電の最新ニュース</span>
-          </div>
-          <div className="flex items-center gap-md">
-            <Link href="/about" className="text-text-muted hover:text-white transition-colors">会社概要</Link>
-            <Link href="/contact" className="text-text-muted hover:text-white transition-colors">お問い合わせ</Link>
+            <Link href="/about" style={{ color: '#94A3B8' }} className="hover:text-white transition-colors">会社概要</Link>
+            <Link href="/contact" style={{ color: '#94A3B8' }} className="hover:text-white transition-colors">お問い合わせ</Link>
           </div>
         </div>
       </div>
 
       {/* Main header */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 border-b ${
-          scrolled
-            ? 'bg-surface/95 backdrop-blur-lg border-border shadow-sm'
-            : 'bg-surface border-border-light'
-        }`}
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          background: scrolled ? 'rgba(255,255,255,0.95)' : '#fff',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          borderBottom: '1px solid #E2E8F0',
+          boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+          transition: 'all 0.3s ease',
+        }}
         role="banner"
       >
         <div className="max-w-container mx-auto px-md">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between" style={{ height: '60px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm" aria-label="Smart Kurashi ホーム">
-              <div className="w-8 h-8 bg-accent rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SK</span>
+              <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ color: '#fff', fontWeight: 700, fontSize: '14px' }}>SK</span>
               </div>
-              <span className="text-xl font-bold text-primary tracking-tight hidden sm:block">
+              <span style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
                 Smart Kurashi
               </span>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-xs" aria-label="メインナビゲーション">
-              <Link
-                href="/"
-                className={`px-md py-sm rounded-md text-sm font-medium transition-colors ${
-                  pathname === '/' ? 'bg-accent-light text-accent' : 'text-text-secondary hover:text-primary hover:bg-neutral-warm'
-                }`}
-              >
-                ホーム
-              </Link>
-              {categories.map((cat) => {
-                const isActive = pathname === cat.href;
+            <nav className="hidden md:flex items-center gap-xs" aria-label="メインナビゲーション">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                const hasColor = !!item.color;
                 return (
                   <Link
-                    key={cat.href}
-                    href={cat.href}
-                    className={`px-md py-sm rounded-md text-sm font-medium transition-colors ${
-                      isActive ? `bg-${cat.color}-light text-${cat.color}` : 'text-text-secondary hover:text-primary hover:bg-neutral-warm'
-                    }`}
-                    style={isActive ? { backgroundColor: `var(--color-${cat.color}-light)`, color: `var(--color-${cat.color})` } : {}}
+                    key={item.href}
+                    href={item.href}
+                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    style={{
+                      background: isActive
+                        ? (hasColor ? `${item.color}15` : '#FFF4F0')
+                        : 'transparent',
+                      color: isActive
+                        ? (hasColor ? item.color : '#E8643A')
+                        : '#475569',
+                    }}
+                    aria-current={isActive ? 'page' : undefined}
                   >
-                    {cat.label}
+                    {item.icon && <span className="mr-1">{item.icon}</span>}
+                    {item.label}
                   </Link>
                 );
               })}
-              <Link
-                href="/about"
-                className={`px-md py-sm rounded-md text-sm font-medium transition-colors ${
-                  pathname === '/about' ? 'bg-accent-light text-accent' : 'text-text-secondary hover:text-primary hover:bg-neutral-warm'
-                }`}
-              >
-                会社概要
-              </Link>
             </nav>
 
-            {/* Right side */}
-            <div className="flex items-center gap-sm">
-              {/* Search button */}
-              <button
-                onClick={() => setSearchOpen(!searchOpen)}
-                className="p-2 text-text-secondary hover:text-primary transition-colors rounded-md hover:bg-neutral-warm"
-                aria-label="検索"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
-              </button>
-
-              {/* CTA */}
-              <Link
-                href="/contact"
-                className="hidden sm:inline-flex px-lg py-sm bg-accent text-white text-sm font-semibold rounded-md hover:bg-accent-hover transition-all shadow-sm"
-              >
-                お問い合わせ
-              </Link>
-
-              {/* Mobile menu */}
-              <button
-                className="lg:hidden p-2 -mr-sm text-text-secondary hover:text-primary transition-colors"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                aria-expanded={mobileOpen}
-                aria-label="メニュー"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  {mobileOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                  )}
-                </svg>
-              </button>
-            </div>
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-expanded={mobileOpen}
+              aria-label="メニュー"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                {mobileOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                )}
+              </svg>
+            </button>
           </div>
 
-          {/* Search bar */}
-          {searchOpen && (
-            <div className="pb-md animate-fade-in">
-              <form action="/search" method="GET" className="relative">
-                <input
-                  type="search"
-                  name="q"
-                  placeholder="記事を検索..."
-                  className="w-full px-md py-sm.5 pr-12 border border-border rounded-lg bg-neutral text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
-                  autoFocus
-                />
-                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-text-muted hover:text-accent transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                </button>
-              </form>
-            </div>
+          {/* Mobile Nav */}
+          {mobileOpen && (
+            <nav className="md:hidden pb-4 pt-2 border-t border-slate-200" aria-label="モバイルナビゲーション">
+              <ul className="flex flex-col gap-1">
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="block py-2 px-4 rounded-lg text-sm font-medium"
+                        style={{
+                          background: isActive ? '#FFF4F0' : 'transparent',
+                          color: isActive ? '#E8643A' : '#475569',
+                        }}
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.icon && <span className="mr-2">{item.icon}</span>}
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
           )}
         </div>
-
-        {/* Mobile Nav */}
-        {mobileOpen && (
-          <nav className="lg:hidden pb-lg pt-sm border-t border-border-light animate-fade-in" aria-label="モバイルナビゲーション">
-            <ul className="flex flex-col gap-xs px-md">
-              <li>
-                <Link href="/" className={`block py-sm px-md rounded-md text-sm font-medium ${pathname === '/' ? 'bg-accent-light text-accent' : 'text-text-secondary'}`} onClick={() => setMobileOpen(false)}>
-                  ホーム
-                </Link>
-              </li>
-              {categories.map((cat) => (
-                <li key={cat.href}>
-                  <Link href={cat.href} className={`block py-sm px-md rounded-md text-sm font-medium ${pathname === cat.href ? 'text-accent' : 'text-text-secondary'}`} onClick={() => setMobileOpen(false)} style={pathname === cat.href ? { color: `var(--color-${cat.color})` } : {}}>
-                    {cat.label}
-                  </Link>
-                </li>
-              ))}
-              <li><Link href="/about" className="block py-sm px-md rounded-md text-sm font-medium text-text-secondary" onClick={() => setMobileOpen(false)}>会社概要</Link></li>
-              <li className="pt-sm"><Link href="/contact" className="block w-full text-center py-sm.5 px-lg bg-accent text-white text-sm font-semibold rounded-md" onClick={() => setMobileOpen(false)}>お問い合わせ</Link></li>
-            </ul>
-          </nav>
-        )}
       </header>
+
+      {/* Category sub-nav bar */}
+      <div style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+        <div className="max-w-container mx-auto px-md">
+          <div className="flex items-center gap-sm overflow-x-auto py-2" style={{ scrollbarWidth: 'none' }}>
+            <Link href="/search" className="flex items-center gap-1 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors flex-shrink-0">
+              🔍 検索
+            </Link>
+            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#EEF2FF', color: '#6366F1' }}>
+              🤖 AI & Tech
+            </Link>
+            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#ECFDF5', color: '#10B981' }}>
+              🏠 Smart Home
+            </Link>
+            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#FFFBEB', color: '#F59E0B' }}>
+              📡 IoT
+            </Link>
+            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#FEF2F2', color: '#EF4444' }}>
+              🔒 セキュリティ
+            </Link>
+            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#ECFEFF', color: '#06B6D4' }}>
+              ⚡ 省エネ
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

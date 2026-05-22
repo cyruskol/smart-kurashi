@@ -1,136 +1,205 @@
 import { getAllPosts, getPostsByCategory } from '@/lib/posts';
-import ArticleCard from '@/components/ArticleCard';
-import Sidebar from '@/components/Sidebar';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata: {
+  title: string;
+  description: string;
+} = {
   title: 'ホーム',
-  description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
-  openGraph: {
-    title: 'Smart Kurashi — スマートホーム・AI家電ニュース',
-    description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。',
-  },
+  description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。',
+};
+
+const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
+  'ai-tech': { bg: '#EEF2FF', text: '#6366F1', dot: '#6366F1' },
+  'smart-home': { bg: '#ECFDF5', text: '#10B981', dot: '#10B981' },
+  'article': { bg: '#FFF4F0', text: '#E8643A', dot: '#E8643A' },
 };
 
 export default function HomePage() {
-  const latestPosts = getAllPosts();
-  const featuredPost = latestPosts[0];
-  const remainingPosts = latestPosts.slice(1, 10);
+  const allPosts = getAllPosts();
+  const featuredPost = allPosts[0];
+  const latestPosts = allPosts.slice(1, 7);
   const aiPosts = getPostsByCategory('ai-tech');
   const smartHomePosts = getPostsByCategory('smart-home');
-  const allPosts = getAllPosts();
 
+  // Tag counts
   const tagCounts: Record<string, number> = {};
-  allPosts.forEach((post) => post.tags.forEach((tag) => { tagCounts[tag] = (tagCounts[tag] || 0) + 1; }));
-  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([tag]) => tag);
+  allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
 
   return (
     <main>
-      {/* Hero — Featured post with dark gradient */}
+      {/* ===== HERO SECTION ===== */}
       {featuredPost && (
-        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden" aria-label="注目記事">
-          {/* Decorative elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cat-ai rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
-          </div>
-          {/* Subtle grid pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-
-          <div className="max-w-container mx-auto px-md py-section relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-              <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent/20 text-accent text-xs font-bold rounded-full mb-md border border-accent/30">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                  </svg>
-                  注目記事
-                </span>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05] tracking-tighter mb-md">
-                  <a href={`/posts/${featuredPost.slug}`} className="hover:text-accent transition-colors duration-300">
-                    {featuredPost.title}
-                  </a>
-                </h1>
-                <p className="text-lg text-slate-300 leading-relaxed mb-lg">
-                  {featuredPost.excerpt}
-                </p>
-                <div className="flex items-center gap-md text-sm text-slate-400">
-                  <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                  {featuredPost.source && <span>• {featuredPost.source}</span>}
-                </div>
-                <a href={`/posts/${featuredPost.slug}`} className="inline-flex items-center gap-sm mt-lg px-xl py-md bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm">
-                  続きを読む
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </a>
+        <section style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+          {/* Decorative blobs */}
+          <div style={{ position: 'absolute', top: '-100px', right: '-100px', width: '400px', height: '400px', background: '#E8643A', borderRadius: '50%', filter: 'blur(120px)', opacity: 0.15 }} />
+          <div style={{ position: 'absolute', bottom: '-50px', left: '-50px', width: '300px', height: '300px', background: '#6366F1', borderRadius: '50%', filter: 'blur(100px)', opacity: 0.1 }} />
+          
+          <div className="max-w-container mx-auto px-md" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
+            <div style={{ maxWidth: '720px' }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8643A', color: '#fff', fontSize: '11px', fontWeight: 700, borderRadius: '9999px', marginBottom: '16px', letterSpacing: '0.05em' }}>
+                ⭐ 注目記事
+              </span>
+              <h1 style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '16px' }}>
+                <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#fff', textDecoration: 'none' }} className="hover:text-orange-300 transition-colors">
+                  {featuredPost.title}
+                </Link>
+              </h1>
+              <p style={{ fontSize: '18px', color: '#94A3B8', lineHeight: 1.7, marginBottom: '24px' }}>
+                {featuredPost.excerpt}
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#64748B' }}>
+                <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                {featuredPost.source && <span>• {featuredPost.source}</span>}
               </div>
-              <div className="hidden lg:block">
-                <div className="w-full aspect-[4/3] bg-gradient-to-br from-slate-700/80 to-slate-800/80 rounded-2xl flex items-center justify-center shadow-2xl border border-slate-600/30 backdrop-blur-sm">
-                  <div className="text-center">
-                    <span className="text-7xl opacity-80 block mb-sm">🏠</span>
-                    <span className="text-sm text-slate-400 font-medium">Smart Kurashi</span>
-                  </div>
-                </div>
-              </div>
+              <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#E8643A', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }} className="hover:bg-orange-600 transition-colors">
+                続きを読む →
+              </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* Quick category links */}
-      <div className="bg-surface border-b border-border">
-        <div className="max-w-container mx-auto px-md py-md">
-          <div className="flex items-center gap-sm overflow-x-auto">
-            <span className="text-xs font-semibold text-text-muted uppercase tracking-wider flex-shrink-0">カテゴリ:</span>
-            <a href="/category/ai-tech" className="flex items-center gap-sm px-4 py-2 bg-cat-ai-light text-cat-ai rounded-full text-sm font-medium hover:bg-cat-ai hover:text-white transition-all duration-200 flex-shrink-0">
-              <span className="w-2 h-2 bg-cat-ai rounded-full"></span>
-              AI & Tech
-              <span className="bg-white/50 text-cat-ai text-xs px-1.5 py-0.5 rounded-full">{aiPosts.length}</span>
-            </a>
-            <a href="/category/smart-home" className="flex items-center gap-sm px-4 py-2 bg-cat-smart-light text-cat-smart rounded-full text-sm font-medium hover:bg-cat-smart hover:text-white transition-all duration-200 flex-shrink-0">
-              <span className="w-2 h-2 bg-cat-smart rounded-full"></span>
-              Smart Home
-              <span className="bg-white/50 text-cat-smart text-xs px-1.5 py-0.5 rounded-full">{smartHomePosts.length}</span>
-            </a>
-            <a href="/search" className="flex items-center gap-sm px-4 py-2 bg-neutral-warm text-text-secondary rounded-full text-sm font-medium hover:bg-accent hover:text-white transition-all duration-200 flex-shrink-0 ml-auto">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-              </svg>
-              記事を検索
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main content area with sidebar */}
-      <div className="max-w-container mx-auto px-md py-section">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
-          {/* Main content */}
-          <div className="lg:col-span-2">
+      {/* ===== MAIN CONTENT + SIDEBAR ===== */}
+      <div className="max-w-container mx-auto px-md" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
+          
+          {/* ===== MAIN CONTENT ===== */}
+          <div>
             {/* Latest Posts */}
-            {remainingPosts.length > 0 && (
-              <section className="mb-section" aria-label="最新記事">
-                <div className="flex items-center justify-between mb-lg">
-                  <h2 className="text-2xl font-bold text-primary tracking-tight flex items-center gap-sm">
-                    <span className="w-2 h-2 bg-accent rounded-full"></span>
-                    最新記事
-                  </h2>
+            <section style={{ marginBottom: '48px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+                <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '8px', height: '8px', background: '#E8643A', borderRadius: '50%' }} />
+                  最新記事
+                </h2>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                {latestPosts.map((post) => {
+                  const cat = categoryColors[post.category] || categoryColors['article'];
+                  return (
+                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1 hover:border-orange-200">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                        <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '9999px' }}>
+                          {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'Smart Home' : '記事'}
+                        </span>
+                        <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      </div>
+                      <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0F172A', lineHeight: 1.4, marginBottom: '8px' }}>
+                        {post.title}
+                      </h3>
+                      <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {post.excerpt}
+                      </p>
+                      {post.tags.length > 0 && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '12px' }}>
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} style={{ padding: '2px 8px', background: '#F1F5F9', color: '#64748B', fontSize: '10px', fontWeight: 500, borderRadius: '9999px' }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* AI & Tech Section */}
+            {aiPosts.length > 0 && (
+              <section style={{ marginBottom: '48px' }}>
+                <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+                  <span style={{ width: '8px', height: '8px', background: '#6366F1', borderRadius: '50%' }} />
+                  AI & Tech
+                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#94A3B8', marginLeft: '4px' }}>({aiPosts.length})</span>
+                </h2>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  {aiPosts.map((post) => (
+                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '16px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1">
+                      <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
+                    </Link>
+                  ))}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                  {remainingPosts.map((post, index) => (
-                    <div key={post.slug} className={`opacity-0 animate-fade-in-up stagger-${Math.min(index + 1, 6)}`}>
-                      <ArticleCard post={post} />
-                    </div>
+              </section>
+            )}
+
+            {/* Smart Home Section */}
+            {smartHomePosts.length > 0 && (
+              <section>
+                <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+                  <span style={{ width: '8px', height: '8px', background: '#10B981', borderRadius: '50%' }} />
+                  Smart Home
+                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#94A3B8', marginLeft: '4px' }}>({smartHomePosts.length})</span>
+                </h2>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  {smartHomePosts.map((post) => (
+                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '16px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1">
+                      <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
+                    </Link>
                   ))}
                 </div>
               </section>
             )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="lg:col-span-1">
-            <Sidebar popularTags={popularTags} recentPosts={latestPosts.slice(0, 5)} />
+          {/* ===== SIDEBAR ===== */}
+          <aside>
+            {/* Search box */}
+            <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>🔍 記事を検索</h3>
+              <form action="/search" method="GET">
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '8px 12px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', background: '#F8FAFC' }} />
+                  <button type="submit" style={{ padding: '8px 16px', background: '#E8643A', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
+                </div>
+              </form>
+            </div>
+
+            {/* Popular Tags */}
+            <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>🏷️ 人気タグ</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {popularTags.map(([tag, count]) => (
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F1F5F9', color: '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className="hover:bg-orange-100 hover:text-orange-600 transition-colors">
+                    {tag} <span style={{ color: '#94A3A8', fontSize: '10px' }}>({count})</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Recent Posts Ranking */}
+            <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>📰 最新記事</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {allPosts.slice(0, 6).map((post, i) => (
+                  <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #F1F5F9' : 'none' }}>
+                    <Link href={`/posts/${post.slug}`} style={{ display: 'flex', gap: '10px', textDecoration: 'none', alignItems: 'flex-start' }}>
+                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#E8643A' : '#F1F5F9', color: i < 3 ? '#fff' : '#64748B', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, flexShrink: 0 }}>
+                        {i + 1}
+                      </span>
+                      <div style={{ minWidth: 0 }}>
+                        <h4 style={{ fontSize: '13px', fontWeight: 500, color: '#0F172A', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.title}</h4>
+                        <time style={{ fontSize: '11px', color: '#94A3A8', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* About CTA */}
+            <div style={{ background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '12px', padding: '24px', color: '#fff' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px' }}>Smart Kurashi</h3>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, marginBottom: '16px' }}>
+                スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
+              </p>
+              <Link href="/about" style={{ display: 'inline-block', padding: '8px 16px', background: '#fff', color: '#E8643A', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
+            </div>
           </aside>
         </div>
       </div>
