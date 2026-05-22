@@ -2,17 +2,17 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
-import Sidebar from '@/components/Sidebar';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const categoryConfig: Record<string, { label: string; color: string }> = {
-  'ai-tech': { label: 'AI & Tech', color: 'cat-ai' },
-  'smart-home': { label: 'Smart Home', color: 'cat-smart' },
-  'article': { label: '記事', color: 'accent' },
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  'ai-tech': { bg: '#EEF2FF', text: '#6366F1' },
+  'smart-home': { bg: '#ECFDF5', text: '#10B981' },
+  'article': { bg: '#FFF4F0', text: '#E8643A' },
 };
 
 export async function generateStaticParams() {
@@ -24,11 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
-  return {
-    title: post.title,
-    description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt, type: 'article' },
-  };
+  return { title: post.title, description: post.excerpt, openGraph: { title: post.title, description: post.excerpt, type: 'article' } };
 }
 
 export default async function PostPage({ params }: PageProps) {
@@ -37,63 +33,59 @@ export default async function PostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const formattedDate = new Date(post.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
-  const config = categoryConfig[post.category] || categoryConfig['article'];
+  const cat = categoryColors[post.category] || categoryColors['article'];
   const categoryHref = `/category/${post.category === 'ai-tech' ? 'ai-tech' : post.category === 'smart-home' ? 'smart-home' : post.category}`;
+  const categoryLabel = post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'Smart Home' : '記事';
 
   const allPosts = getAllPosts();
+  const relatedPosts = allPosts.filter(p => p.slug !== slug && p.category === post.category).slice(0, 4);
   const tagCounts: Record<string, number> = {};
   allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
-  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([t]) => t);
-  const recentPosts = allPosts.filter(p => p.slug !== slug).slice(0, 5);
+  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
 
   return (
-    <main className="py-section bg-neutral">
+    <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
       <div className="max-w-container mx-auto px-md">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
-          {/* Article content */}
-          <article className="lg:col-span-2">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
+          
+          {/* Article */}
+          <article style={{ background: '#fff', borderRadius: '16px', padding: '40px', border: '1px solid #E2E8F0' }}>
             {/* Breadcrumb */}
-            <nav aria-label="パンくずリスト" className="mb-lg">
-              <ol className="flex items-center gap-sm text-sm flex-wrap">
-                <li><a href="/" className="text-text-muted hover:text-accent transition-colors">ホーム</a></li>
-                <li className="text-text-muted">/</li>
-                <li><a href={categoryHref} className="text-text-muted hover:text-accent transition-colors">{config.label}</a></li>
-                <li className="text-text-muted">/</li>
-                <li className="text-text-secondary truncate max-w-[200px]" aria-current="page">{post.title}</li>
+            <nav style={{ marginBottom: '24px' }}>
+              <ol style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', listStyle: 'none', padding: 0, margin: 0, flexWrap: 'wrap' }}>
+                <li><Link href="/" style={{ color: '#94A3B8' }} className="hover:text-orange-500">ホーム</Link></li>
+                <li style={{ color: '#CBD5E1' }}>/</li>
+                <li><Link href={categoryHref} style={{ color: '#94A3B8' }} className="hover:text-orange-500">{categoryLabel}</Link></li>
+                <li style={{ color: '#CBD5E1' }}>/</li>
+                <li style={{ color: '#475569' }}>{post.title}</li>
               </ol>
             </nav>
 
             {/* Header */}
-            <header className="mb-xl">
-              <div className="flex items-center gap-sm mb-md">
-                <a href={categoryHref} className={`inline-block text-xs font-semibold px-3 py-1 rounded-full bg-${config.color}-light text-${config.color}`} style={{ backgroundColor: `var(--color-${config.color}-light)`, color: `var(--color-${config.color})` }}>
-                  {config.label}
-                </a>
-                <time className="text-sm text-text-muted tracking-wide">{formattedDate}</time>
+            <header style={{ marginBottom: '32px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                <span style={{ padding: '4px 14px', background: cat.bg, color: cat.text, fontSize: '12px', fontWeight: 700, borderRadius: '9999px' }}>{categoryLabel}</span>
+                <time style={{ fontSize: '13px', color: '#94A3B8' }}>{formattedDate}</time>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-primary leading-[1.1] tracking-tighter mb-md">
-                {post.title}
-              </h1>
-              <p className="text-lg text-text-secondary leading-relaxed">{post.excerpt}</p>
-              {post.source && <p className="text-sm text-text-muted mt-md">出典: {post.source}</p>}
+              <h1 style={{ fontSize: 'clamp(24px, 3vw, 36px)', fontWeight: 800, color: '#0F172A', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '16px' }}>{post.title}</h1>
+              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7 }}>{post.excerpt}</p>
+              {post.source && <p style={{ fontSize: '13px', color: '#94A3B8', marginTop: '12px' }}>📎 出典: {post.source}</p>}
             </header>
 
-            <hr className="border-border mb-xl" />
+            <hr style={{ border: 'none', borderTop: '1px solid #E2E8F0', margin: '32px 0' }} />
 
-            {/* MDX Content */}
+            {/* Content */}
             <div className="prose prose-lg max-w-none">
               <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
             </div>
 
             {/* Tags */}
             {post.tags.length > 0 && (
-              <footer className="mt-xl pt-lg border-t border-border">
-                <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-md">タグ</h3>
-                <div className="flex flex-wrap gap-sm">
+              <footer style={{ marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #E2E8F0' }}>
+                <h3 style={{ fontSize: '12px', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>タグ</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                   {post.tags.map((tag) => (
-                    <a key={tag} href={`/search?q=${encodeURIComponent(tag)}`} className="inline-block text-sm font-medium px-3 py-1 rounded-full bg-neutral-warm text-text-secondary hover:bg-accent hover:text-white transition-colors">
-                      {tag}
-                    </a>
+                    <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 14px', background: '#F1F5F9', color: '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className="hover:bg-orange-100 hover:text-orange-600">{tag}</Link>
                   ))}
                 </div>
               </footer>
@@ -101,8 +93,39 @@ export default async function PostPage({ params }: PageProps) {
           </article>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-1">
-            <Sidebar popularTags={popularTags} recentPosts={recentPosts} />
+          <aside>
+            {/* Related Posts */}
+            {relatedPosts.length > 0 && (
+              <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
+                <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>📖 関連記事</h3>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {relatedPosts.map((rp) => (
+                    <li key={rp.slug} style={{ padding: '12px 0', borderBottom: '1px solid #F1F5F9' }}>
+                      <Link href={`/posts/${rp.slug}`} style={{ textDecoration: 'none' }}>
+                        <h4 style={{ fontSize: '13px', fontWeight: 500, color: '#0F172A', lineHeight: 1.5, marginBottom: '4px' }} className="hover:text-orange-500">{rp.title}</h4>
+                        <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(rp.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Popular Tags */}
+            <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>🏷️ 人気タグ</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {popularTags.map(([tag, count]) => (
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F1F5F9', color: '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className="hover:bg-orange-100 hover:text-orange-600">{tag} <span style={{ color: '#94A3A8', fontSize: '10px' }}>({count})</span></Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Back to top */}
+            <div style={{ background: 'linear-gradient(135deg, #0F172A, #1E293B)', borderRadius: '12px', padding: '24px', color: '#fff', textAlign: 'center' }}>
+              <p style={{ fontSize: '14px', color: '#94A3B8', marginBottom: '12px' }}>もっと記事を読む</p>
+              <Link href="/" style={{ display: 'inline-block', padding: '10px 20px', background: '#E8643A', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>ホームに戻る →</Link>
+            </div>
           </aside>
         </div>
       </div>
