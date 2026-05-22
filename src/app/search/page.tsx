@@ -1,5 +1,4 @@
 import { getAllPosts } from '@/lib/posts';
-import ArticleCard from '@/components/ArticleCard';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -9,111 +8,85 @@ interface PageProps {
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { q } = await searchParams;
-  return {
-    title: q ? `「${q}」の検索結果` : '検索',
-    description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashiの記事を検索',
-  };
+  return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashiの記事を検索' };
 }
+
+const categoryColors: Record<string, { bg: string; text: string }> = {
+  'ai-tech': { bg: '#EEF2FF', text: '#6366F1' },
+  'smart-home': { bg: '#ECFDF5', text: '#10B981' },
+  'article': { bg: '#FFF4F0', text: '#E8643A' },
+};
 
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
   const allPosts = getAllPosts();
-  
-  const results = q
-    ? allPosts.filter((post) => {
-        const searchLower = q.toLowerCase();
-        return (
-          post.title.toLowerCase().includes(searchLower) ||
-          post.excerpt.toLowerCase().includes(searchLower) ||
-          post.tags.some((tag) => tag.toLowerCase().includes(searchLower)) ||
-          post.category.toLowerCase().includes(searchLower)
-        );
-      })
-    : [];
+  const results = q ? allPosts.filter((p) => {
+    const s = q.toLowerCase();
+    return p.title.toLowerCase().includes(s) || p.excerpt.toLowerCase().includes(s) || p.tags.some((t) => t.toLowerCase().includes(s));
+  }) : [];
 
-  // Collect all unique tags for tag cloud
   const tagCounts: Record<string, number> = {};
-  allPosts.forEach((post) => {
-    post.tags.forEach((tag) => {
-      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-    });
-  });
-  const allTags = Object.entries(tagCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 30);
+  allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
+  const allTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 30);
 
   return (
-    <main className="py-section bg-neutral">
+    <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
       <div className="max-w-container mx-auto px-md">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
-          {/* Main content */}
-          <div className="lg:col-span-2">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
+          <div>
             {/* Search form */}
-            <div className="bg-surface rounded-xl border border-border p-lg mb-lg">
-              <form action="/search" method="GET" className="relative">
-                <input
-                  type="search"
-                  name="q"
-                  defaultValue={q || ''}
-                  placeholder="記事を検索...（キーワード、タグ名など）"
-                  className="w-full px-md py-sm.5 pr-12 border border-border rounded-lg bg-neutral text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent text-sm"
-                />
-                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-text-muted hover:text-accent transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                  </svg>
-                </button>
+            <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', marginBottom: '24px', border: '1px solid #E2E8F0' }}>
+              <form action="/search" method="GET" style={{ display: 'flex', gap: '12px' }}>
+                <input type="search" name="q" defaultValue={q || ''} placeholder="キーワードを入力..." style={{ flex: 1, padding: '12px 16px', border: '2px solid #E2E8F0', borderRadius: '10px', fontSize: '15px', background: '#F8FAFC' }} className="focus:border-orange-400 focus:outline-none" />
+                <button type="submit" style={{ padding: '12px 24px', background: '#E8643A', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>🔍 検索</button>
               </form>
             </div>
 
             {/* Results */}
             {q && (
               <>
-                <p className="text-sm text-text-secondary mb-lg">
-                  {results.length > 0 ? (
-                    <>「{q}」の検索結果: {results.length}件</>
-                  ) : (
-                    <>「{q}」に一致する記事が見つかりませんでした。</>
-                  )}
+                <p style={{ fontSize: '14px', color: '#64748B', marginBottom: '20px' }}>
+                  {results.length > 0 ? `「${q}」の検索結果: ${results.length}件` : `「${q}」に一致する記事が見つかりませんでした。`}
                 </p>
                 {results.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-                    {results.map((post) => (
-                      <ArticleCard key={post.slug} post={post} />
-                    ))}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
+                    {results.map((post) => {
+                      const cat = categoryColors[post.category] || categoryColors['article'];
+                      return (
+                        <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1">
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                            <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '9999px' }}>
+                              {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'Smart Home' : '記事'}
+                            </span>
+                            <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                          </div>
+                          <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0F172A', lineHeight: 1.4, marginBottom: '8px' }}>{post.title}</h3>
+                          <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.excerpt}</p>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </>
             )}
 
             {!q && (
-              <div className="text-center py-xl">
-                <svg className="w-16 h-16 text-text-muted mx-auto mb-md" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
-                <h2 className="text-xl font-bold text-primary mb-sm">記事を検索</h2>
-                <p className="text-text-secondary">キーワードを入力して記事を検索できます。</p>
+              <div style={{ textAlign: 'center', padding: '80px 0', background: '#fff', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '48px', display: 'block', marginBottom: '16px' }}>🔍</span>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>記事を検索</h2>
+                <p style={{ color: '#64748B' }}>キーワードを入力して記事を検索できます。</p>
               </div>
             )}
           </div>
 
           {/* Sidebar — Tag cloud */}
-          <aside className="lg:col-span-1">
-            <div className="bg-surface rounded-xl border border-border p-lg sticky top-24">
-              <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-md">タグで検索</h3>
-              <div className="flex flex-wrap gap-sm">
+          <aside>
+            <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', position: 'sticky', top: '100px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>🏷️ タグで検索</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {allTags.map(([tag, count]) => (
-                  <Link
-                    key={tag}
-                    href={`/search?q=${encodeURIComponent(tag)}`}
-                    className={`inline-block px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                      q === tag
-                        ? 'bg-accent text-white'
-                        : 'bg-neutral-warm text-text-secondary hover:bg-accent hover:text-white'
-                    }`}
-                  >
-                    {tag}
-                    <span className="ml-1 opacity-60">({count})</span>
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#E8643A' : '#F1F5F9', color: q === tag ? '#fff' : '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className={q !== tag ? 'hover:bg-orange-100 hover:text-orange-600' : ''}>
+                    {tag} <span style={{ opacity: 0.7, fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}
               </div>

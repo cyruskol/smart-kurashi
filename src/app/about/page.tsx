@@ -2,93 +2,78 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '会社概要',
-  description:
-    'Smart Kurashiは、スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
-  openGraph: {
-    title: '会社概要 | Smart Kurashi',
-    description:
-      'Smart Kurashiは、スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
-  },
+  description: 'Smart Kurashiは、スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
 };
 
 export default function AboutPage() {
   return (
-    <main className="py-section md:py-2xl bg-neutral">
-      <article className="max-w-content mx-auto px-md">
-        {/* Breadcrumb */}
-        <nav aria-label="パンくずリスト" className="mb-lg">
-          <ol className="flex items-center gap-sm text-sm">
-            <li>
-              <a href="/" className="text-text-muted hover:text-accent transition-colors">ホーム</a>
-            </li>
-            <li className="text-text-muted">/</li>
-            <li className="text-text-secondary" aria-current="page">会社概要</li>
+    <main style={{ background: '#F8FAFC', padding: '48px 0' }}>
+      <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 16px' }}>
+        <nav style={{ marginBottom: '24px' }}>
+          <ol style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', listStyle: 'none', padding: 0, margin: 0 }}>
+            <li><a href="/" style={{ color: '#94A3B8' }} className="hover:text-orange-500">ホーム</a></li>
+            <li style={{ color: '#CBD5E1' }}>/</li>
+            <li style={{ color: '#475569' }}>会社概要</li>
           </ol>
         </nav>
 
-        <header className="mb-xl">
-          <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-sm">About Us</p>
-          <h1 className="text-3xl md:text-4xl font-bold text-primary leading-[1.1] tracking-tighter mb-md">
-            会社概要
-          </h1>
-          <p className="text-text-secondary text-lg leading-relaxed">
-            Smart Kurashiは、スマートホーム・AI家電・IoT技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。
-          </p>
-        </header>
+        <div style={{ background: '#fff', borderRadius: '16px', padding: '48px', border: '1px solid #E2E8F0' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+              <span style={{ color: '#fff', fontWeight: 700, fontSize: '24px' }}>SK</span>
+            </div>
+            <h1 style={{ fontSize: '32px', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', marginBottom: '8px' }}>Smart Kurashi</h1>
+            <p style={{ fontSize: '16px', color: '#64748B' }}>スマートなくらしの情報をお届け</p>
+          </div>
 
-        <section className="mb-xl">
-          <h2 className="text-2xl font-bold text-primary mb-lg tracking-tight">私たちについて</h2>
-          <div className="prose prose-lg max-w-none">
-            <p className="text-text-secondary leading-relaxed mb-md">
+          <div style={{ marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>私たちについて</h2>
+            <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8, marginBottom: '16px' }}>
               Smart Kurashiは、「スマートなくらし」の実現をミッションに、最新のテクノロジー情報を日本語で提供しています。
               スマートホームデバイス、AI家電、IoT技術、省エネルギーソリューションなど、私たちの生活を変える技術トレンドを、専門的かつわかりやすくお届けします。
             </p>
-            <p className="text-text-secondary leading-relaxed mb-md">
+            <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8 }}>
               AIが家の温度を自動調整し、音声アシスタントが日用品の発注を手伝い、太陽光発電と蓄電池が最適に連携する時代。
-              私たちは、そんな未来のくらしに役立つ情報を発信し、読者の皆さまが最適なスマートホーム製品を選択できるようサポートします。
-            </p>
-            <p className="text-text-secondary leading-relaxed">
-              初心者にも専門家にも価値ある情報を提供すること。それがSmart Kurashiの編集方針です。
+              私たちは、そんな未来のくらしに役立つ情報を発信します。
             </p>
           </div>
-        </section>
 
-        <section className="mb-xl">
-          <div className="card-base p-lg md:p-xl">
-          <h2 className="text-2xl font-bold text-primary mb-lg tracking-tight">メディア情報</h2>
-          <dl className="grid grid-cols-1 md:grid-cols-2 gap-md">
-            {[
-              ['メディア名', 'Smart Kurashi（スマートくらし）'],
-              ['設立', '2026年'],
-              ['運営', 'Smart Kurashi'],
-              ['URL', 'smart-kurashi.jp'],
-            ].map(([dt, dd]) => (
-              <div key={dt}>
-                <dt className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-xs">{dt}</dt>
-                <dd className="text-base text-text-primary font-medium">{dd}</dd>
-              </div>
-            ))}
-          </dl>
+          <div style={{ background: '#F8FAFC', borderRadius: '12px', padding: '24px', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>メディア情報</h2>
+            <dl style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              {[
+                ['メディア名', 'Smart Kurashi（スマートくらし）'],
+                ['設立', '2026年'],
+                ['運営', 'Smart Kurashi'],
+                ['URL', 'smart-kurashi.jp'],
+              ].map(([dt, dd]) => (
+                <div key={dt}>
+                  <dt style={{ fontSize: '12px', fontWeight: 600, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{dt}</dt>
+                  <dd style={{ fontSize: '15px', fontWeight: 500, color: '#0F172A' }}>{dd}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-        </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-primary mb-lg tracking-tight">取り扱い分野</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
-            {[
-              { title: 'スマートホーム', desc: 'スマートスピーカー、照明、セキュリティカメラ、ドアロックなど、家庭のIoT化に関する最新情報。' },
-              { title: 'AI & Tech', desc: '生成AI、機械学習、チャットボットなど、人工知能分野の最新トレンドと実用的な活用方法。' },
-              { title: '省エネルギー & HEMS', desc: '家庭のエネルギー管理システム、太陽光発電、蓄電池、EV充電など、持続可能な住まいの技術。' },
-              { title: '製品レビュー & 比較', desc: '最新デバイスの実機レビュー、製品比較ガイド、購入前のチェックリスト。' },
-            ].map((item) => (
-              <div key={item.title} className="card-base card-glow-accent group p-lg">
-                <h3 className="text-lg font-semibold text-primary mb-sm tracking-snug group-hover:text-accent transition-colors duration-300">{item.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>取り扱い分野</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              {[
+                { icon: '🤖', title: 'AI & Tech', desc: '生成AI、機械学習、チャットボットなど人工知能分野の最新トレンド', color: '#6366F1' },
+                { icon: '🏠', title: 'Smart Home', desc: 'スマートスピーカー、照明、セキュリティカメラなど家庭のIoT化', color: '#10B981' },
+                { icon: '⚡', title: '省エネルギー', desc: 'HEMS、太陽光発電、蓄電池など持続可能な住まいの技術', color: '#F59E0B' },
+                { icon: '🔒', title: 'セキュリティ', desc: 'スマートロック、監視カメラなど家庭の安全を守る技術', color: '#EF4444' },
+              ].map((item) => (
+                <div key={item.title} style={{ padding: '16px', background: '#F8FAFC', borderRadius: '10px', borderLeft: `3px solid ${item.color}` }}>
+                  <span style={{ fontSize: '20px', marginRight: '8px' }}>{item.icon}</span>
+                  <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '4px' }}>{item.title}</h3>
+                  <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </section>
-      </article>
+        </div>
+      </div>
     </main>
   );
 }
