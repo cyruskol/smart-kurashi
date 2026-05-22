@@ -21,7 +21,7 @@ function getMarkdownFiles(dir: string): string[] {
   return fs.readdirSync(dir).filter((f) => f.endsWith('.md') || f.endsWith('.mdx'));
 }
 
-function parsePost(filePath: string, category: string): Post {
+function parsePost(filePath: string, defaultCategory: string): Post {
   const raw = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(raw);
   const slug = path.basename(filePath, path.extname(filePath));
@@ -31,7 +31,7 @@ function parsePost(filePath: string, category: string): Post {
     excerpt: data.excerpt || content.slice(0, 160).replace(/\n/g, ' ') + '...',
     content,
     date: data.date || fs.statSync(filePath).birthtime.toISOString().slice(0, 10),
-    category,
+    category: data.category || defaultCategory,
     source: data.source || undefined,
     tags: data.tags || [],
     image: data.image || undefined,
