@@ -196,7 +196,7 @@ export default function HomePage() {
             {/* About CTA */}
             <div style={{ background: '#A9582D', borderRadius: '8px', padding: '24px', color: '#fff' }}>
               <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>Smart Kurashi</h3>
-              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, marginBottom: '16px' }}>
+              <p style={{ fontSize: '13px', color: '#FFFFFF', lineHeight: 1.6, marginBottom: '16px' }}>
                 スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
               </p>
               <Link href="/about" style={{ display: 'inline-block', padding: '8px 16px', background: '#fff', color: '#A9582D', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
