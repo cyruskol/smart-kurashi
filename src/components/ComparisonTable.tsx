@@ -113,14 +113,14 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
 
               {/* 5. Smartphone Connectivity */}
               <td style={tdStyle}>
-                <span style={{ color: '#57534E', fontSize: '13px', lineHeight: 1.5 }}>
+                <span style={{ color: '#4A433F', fontSize: '13px', lineHeight: 1.5 }}>
                   {product.smartphone || '-'}
                 </span>
               </td>
 
               {/* 6. Pros/Cons */}
               <td style={tdStyle}>
-                <ul style={{ margin: 0, paddingLeft: '24px', fontSize: '13px', color: '#57534E' }}>
+                <ul style={{ margin: 0, paddingLeft: '24px', fontSize: '13px', color: '#4A433F' }}>
                   {product.prosCons.map((text, j) => (
                     <li key={j} style={{ marginBottom: '4px', lineHeight: 1.4 }}>
                       {text}
@@ -161,7 +161,7 @@ const thStyle: React.CSSProperties = {
   padding: '12px 16px',
   fontSize: '12px',
   fontWeight: 600,
-  color: '#57534E',
+  color: '#4A433F',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   textAlign: 'left',

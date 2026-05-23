@@ -45,7 +45,7 @@ export default function HomePage() {
                   {featuredPost.title}
                 </Link>
               </h1>
-              <p style={{ fontSize: '18px', color: '#57534E', lineHeight: 1.7, marginBottom: '24px' }}>
+              <p style={{ fontSize: '18px', color: '#4A433F', lineHeight: 1.7, marginBottom: '24px' }}>
                 {featuredPost.excerpt}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#5A534E' }}>
@@ -166,7 +166,7 @@ export default function HomePage() {
               <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '12px' }}>人気タグ</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {popularTags.map(([tag, count]) => (
-                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F5F0EB', color: '#57534E', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F5F0EB', color: '#4A433F', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
                     {tag} <span style={{ color: '#5A534E', fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}

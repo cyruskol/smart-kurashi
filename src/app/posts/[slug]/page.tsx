@@ -173,7 +173,7 @@ export default async function PostPage({ params }: PageProps) {
               >
                 {post.title}
               </h1>
-              <p style={{ fontSize: '18px', color: '#57534E', lineHeight: 1.7 }}>
+              <p style={{ fontSize: '18px', color: '#4A433F', lineHeight: 1.7 }}>
                 {post.excerpt}
               </p>
             </header>

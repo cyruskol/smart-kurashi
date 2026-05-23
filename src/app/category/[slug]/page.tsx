@@ -83,7 +83,7 @@ export default async function CategoryPage({ params }: PageProps) {
               >
                 {info.label}
               </h1>
-              <p style={{ fontSize: '16px', color: '#57534E', marginTop: '4px' }}>
+              <p style={{ fontSize: '16px', color: '#4A433F', marginTop: '4px' }}>
                 {info.description}
               </p>
             </div>

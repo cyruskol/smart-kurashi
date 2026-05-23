@@ -53,7 +53,7 @@ export default function Header() {
                         : 'transparent',
                       color: isActive
                         ? (hasColor ? item.color : '#C2703E')
-                        : '#57534E',
+                        : '#4A433F',
                     }}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -93,7 +93,7 @@ export default function Header() {
                         className="block py-2 px-4 rounded-lg text-sm font-medium"
                         style={{
                           background: isActive ? '#F5F0EB' : 'transparent',
-                          color: isActive ? '#C2703E' : '#57534E',
+                          color: isActive ? '#C2703E' : '#4A433F',
                         }}
                         onClick={() => setMobileOpen(false)}
                       >

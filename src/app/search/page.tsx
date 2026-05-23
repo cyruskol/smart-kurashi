@@ -84,7 +84,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
               <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>タグで検索</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {allTags.map(([tag, count]) => (
-                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#C2703E' : '#F5F0EB', color: q === tag ? '#fff' : '#57534E', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#C2703E' : '#F5F0EB', color: q === tag ? '#fff' : '#4A433F', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
                     {tag} <span style={{ opacity: 0.7, fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}

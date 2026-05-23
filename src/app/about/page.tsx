@@ -13,7 +13,7 @@ export default function AboutPage() {
           <ol style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', listStyle: 'none', padding: 0, margin: 0 }}>
             <li><a href="/" style={{ color: '#5A534E' }} className="hover:text-orange-500">ホーム</a></li>
             <li style={{ color: '#F1F5F9' }}>/</li>
-            <li style={{ color: '#57534E' }}>会社概要</li>
+            <li style={{ color: '#4A433F' }}>会社概要</li>
           </ol>
         </nav>
 
@@ -28,11 +28,11 @@ export default function AboutPage() {
 
           <div style={{ marginBottom: '40px' }}>
             <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>私たちについて</h2>
-            <p style={{ fontSize: '16px', color: '#57534E', lineHeight: 1.8, marginBottom: '16px' }}>
+            <p style={{ fontSize: '16px', color: '#4A433F', lineHeight: 1.8, marginBottom: '16px' }}>
               Smart Kurashi は、「スマートなくらい」の実現をミッションに、最新のテクノロジー情報を日本語で提供しています。
               スマートホームデバイス、AI 家電、IoT 技術、省エネルギーソリューションなど、私たちの生活を変える技術トレンドを、専門的かつわかりやすくお届けします。
             </p>
-            <p style={{ fontSize: '16px', color: '#57534E', lineHeight: 1.8 }}>
+            <p style={{ fontSize: '16px', color: '#4A433F', lineHeight: 1.8 }}>
               AI が家の温度を自動調整し、音声アシスタントが日用品の発注を手伝い、太陽光発電と蓄電池が最適に連携する時代。
               私たちは、そんな未来のくらしに役立つ情報を発信します。
             </p>

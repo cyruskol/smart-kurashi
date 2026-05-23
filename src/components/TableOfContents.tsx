@@ -91,7 +91,7 @@ export default function TableOfContents({ content }: { content: string }) {
                   padding: 0,
                   fontSize: item.level === 'h2' ? '14px' : '13px',
                   fontWeight: item.level === 'h2' ? 600 : 400,
-                  color: item.level === 'h2' ? '#292524' : '#57534E',
+                  color: item.level === 'h2' ? '#292524' : '#4A433F',
                   cursor: 'pointer',
                   textAlign: 'left',
                   lineHeight: 1.5,
