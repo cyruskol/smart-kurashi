@@ -4,7 +4,6 @@ excerpt: "SpotifyがAIカバー・リミックスの合法化、オーディオ�
 date: "2026-05-22"
 category: "ai-tech"
 tags: ["Spotify", "AI音楽", "検索エンジン", "Trump", "AI規制", "OpenAI", "Microsoft", "Gemini"]
-source: ""
 ---
 
 # Spotifyが仕掛けるAI音楽革命、Google凋落の始まり、そしてTrumpのAI規制先送り
