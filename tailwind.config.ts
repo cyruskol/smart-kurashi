@@ -9,47 +9,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand
-        primary: '#0F172A',
-        'primary-hover': '#1E293B',
-        accent: '#E8643A',
-        'accent-hover': '#D05530',
-        'accent-light': '#FFF4F0',
+        // Brand - Japandi warm tones
+        primary: '#FAFAF9',
+        'primary-hover': '#EBE8E6',
+        accent: '#C2703E',
+        'accent-hover': '#A86236',
+        'accent-light': '#F5F0EB',
         
-        // Category colors
-        'cat-ai': '#6366F1',
-        'cat-ai-light': '#EEF2FF',
-        'cat-smart': '#10B981',
-        'cat-smart-light': '#ECFDF5',
-        'cat-iot': '#F59E0B',
-        'cat-iot-light': '#FFFBEB',
-        'cat-security': '#EF4444',
-        'cat-security-light': '#FEF2F2',
-        'cat-energy': '#06B6D4',
-        'cat-energy-light': '#ECFEFF',
+        // Category colors - muted, editorial
+        'cat-ai': '#8B7355',
+        'cat-ai-light': '#F5F0EB',
+        'cat-smart': '#4D7C5E',
+        'cat-smart-light': '#EDF2EE',
         
-        // Neutrals
-        neutral: '#F8FAFC',
-        'neutral-warm': '#F1F5F9',
+        // Neutrals - warm off-white base
+        neutral: '#FAFAF9',
+        'neutral-warm': '#EAE7E3',
         surface: '#FFFFFF',
-        'surface-alt': '#F8FAFC',
+        'surface-alt': '#FAFAF9',
         
-        // Text
-        text: '#0F172A',
-        'text-secondary': '#475569',
-        'text-muted': '#94A3B8',
+        // Text - soft charcoal
+        text: '#292524',
+        'text-secondary': '#57534E',
+        'text-muted': '#78716C',
         'text-inverse': '#FFFFFF',
         
-        // Borders
-        border: '#E2E8F0',
-        'border-light': '#F1F5F9',
-        'border-dark': '#CBD5E1',
+        // Borders - soft stone-200
+        border: '#E7E5E4',
+        'border-light': '#F1F0EC',
+        'border-dark': '#CCC3BC',
         
-        // Semantic
-        success: '#10B981',
-        error: '#EF4444',
-        warning: '#F59E0B',
-        info: '#3B82F6',
+        // Semantic - muted tones
+        success: '#4D7C5E',
+        error: '#8B6F62',
+        warning: '#C29A5A',
+        info: '#7C7DFF',
       },
       fontFamily: {
         sans: [
@@ -79,15 +73,12 @@ const config: Config = {
         md: '8px',
         lg: '12px',
         xl: '16px',
-        xxl: '24px',
+        xxl: '12px',
         full: '9999px',
       },
       boxShadow: {
-        sm: '0 1px 2px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04)',
-        md: '0 4px 6px rgba(15,23,42,0.07), 0 2px 4px rgba(15,23,42,0.04)',
-        lg: '0 10px 15px rgba(15,23,42,0.08), 0 4px 6px rgba(15,23,42,0.04)',
-        xl: '0 20px 25px rgba(15,23,42,0.1), 0 8px 10px rgba(15,23,42,0.04)',
-        glow: '0 0 0 1px rgba(232, 100, 58, 0.2), 0 4px 12px rgba(232, 100, 58, 0.15)',
+        sm: '0 1px 2px rgba(0,0,0,0.03)',
+        md: '0 1px 3px rgba(0,0,0,0.04)',
       },
       letterSpacing: {
         tighter: '-0.03em',

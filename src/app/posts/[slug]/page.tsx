@@ -36,7 +36,7 @@ const categoryHrefs: Record<string, string> = {
 const defaultAuthor = {
   name: 'Smart Kurashi 編集部',
   avatarUrl: '',
-  bio: 'スマートホーム愛好家として 50 台以上の IoT 製品を自宅でテストしてきた実務経験を持つ。HEMS、音声アシスタント、スマットロック、カメラセンサーなど、住まいに関わるあらゆる IoT 機器の導入・運用・比較評価を専門とする。',
+  bio: 'スマートホーム愛好家として 50 台以上の IoT 製品を自宅でテストしてきた実務経験を持つ。HEMS、音声アシスタント、スマートロック、カメラセンサーなど、住まいに関わるあらゆる IoT 機器の導入・運用・比較評価を専門とする。',
   expertise: ['スマートホーム', 'IoT', 'HEMS', '音声アシスタント', 'AI 家電'],
 };
 
@@ -129,9 +129,9 @@ export default async function PostPage({ params }: PageProps) {
           <article
             style={{
               background: '#fff',
-              borderRadius: '16px',
+              borderRadius: '8px',
               padding: '40px',
-              border: '1px solid #E2E8F0',
+              border: '1px solid #E7E5E4',
             }}
           >
             {/* Breadcrumbs */}
@@ -153,30 +153,30 @@ export default async function PostPage({ params }: PageProps) {
                     background: cat.bg,
                     color: cat.text,
                     fontSize: '12px',
-                    fontWeight: 700,
-                    borderRadius: '9999px',
+                    fontWeight: 600,
+                    borderRadius: '8px',
                   }}
                 >
                   {categoryLabel}
                 </span>
-                <time style={{ fontSize: '13px', color: '#94A3B8' }}>{formattedDate}</time>
+                <time style={{ fontSize: '13px', color: '#78716C' }}>{formattedDate}</time>
                 {post.source && (
-                  <span style={{ fontSize: '13px', color: '#94A3B8' }}>• {post.source}</span>
+                  <span style={{ fontSize: '13px', color: '#78716C' }}>• {post.source}</span>
                 )}
               </div>
               <h1
                 style={{
                   fontSize: 'clamp(24px, 3vw, 36px)',
-                  fontWeight: 800,
-                  color: '#0F172A',
+                  fontWeight: 600,
+                  color: '#292524',
                   lineHeight: 1.2,
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '',
                   marginBottom: '16px',
                 }}
               >
                 {post.title}
               </h1>
-              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7 }}>
+              <p style={{ fontSize: '18px', color: '#57534E', lineHeight: 1.7 }}>
                 {post.excerpt}
               </p>
             </header>
@@ -185,7 +185,7 @@ export default async function PostPage({ params }: PageProps) {
             <PrBanner />
 
             <hr
-              style={{ border: 'none', borderTop: '1px solid #E2E8F0', margin: '0 0 24px 0' }}
+              style={{ border: 'none', borderTop: '1px solid #E7E5E4', margin: '0 0 24px 0' }}
             />
 
             {/* Table of Contents — after intro paragraph */}
@@ -205,14 +205,14 @@ export default async function PostPage({ params }: PageProps) {
                 style={{
                   marginTop: '40px',
                   paddingTop: '24px',
-                  borderTop: '1px solid #E2E8F0',
+                  borderTop: '1px solid #E7E5E4',
                 }}
               >
                 <h3
                   style={{
                     fontSize: '12px',
-                    fontWeight: 700,
-                    color: '#64748B',
+                    fontWeight: 600,
+                    color: '#78716C',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     marginBottom: '12px',
@@ -228,10 +228,10 @@ export default async function PostPage({ params }: PageProps) {
                       style={{
                         padding: '4px 14px',
                         background: '#F1F5F9',
-                        color: '#475569',
+                        color: '#78716C',
                         fontSize: '12px',
                         fontWeight: 500,
-                        borderRadius: '9999px',
+                        borderRadius: '8px',
                         textDecoration: 'none',
                       }}
                       className="hover:bg-orange-100 hover:text-orange-600"
@@ -259,8 +259,8 @@ export default async function PostPage({ params }: PageProps) {
               <div
                 style={{
                   background: '#fff',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: '12px',
+                  border: '1px solid #E7E5E4',
+                  borderRadius: '8px',
                   padding: '20px',
                   marginBottom: '24px',
                 }}
@@ -268,8 +268,8 @@ export default async function PostPage({ params }: PageProps) {
                 <h3
                   style={{
                     fontSize: '14px',
-                    fontWeight: 700,
-                    color: '#0F172A',
+                    fontWeight: 600,
+                    color: '#292524',
                     marginBottom: '16px',
                   }}
                 >
@@ -286,7 +286,7 @@ export default async function PostPage({ params }: PageProps) {
                           style={{
                             fontSize: '13px',
                             fontWeight: 500,
-                            color: '#0F172A',
+                            color: '#292524',
                             lineHeight: 1.5,
                             marginBottom: '4px',
                           }}
@@ -294,7 +294,7 @@ export default async function PostPage({ params }: PageProps) {
                         >
                           {rp.title}
                         </h4>
-                        <time style={{ fontSize: '11px', color: '#94A3B8' }}>
+                        <time style={{ fontSize: '11px', color: '#78716C' }}>
                           {new Date(rp.date).toLocaleDateString('ja-JP', {
                             month: 'short',
                             day: 'numeric',
@@ -311,8 +311,8 @@ export default async function PostPage({ params }: PageProps) {
             <div
               style={{
                 background: '#fff',
-                border: '1px solid #E2E8F0',
-                borderRadius: '12px',
+                border: '1px solid #E7E5E4',
+                borderRadius: '8px',
                 padding: '20px',
                 marginBottom: '24px',
               }}
@@ -320,8 +320,8 @@ export default async function PostPage({ params }: PageProps) {
               <h3
                 style={{
                   fontSize: '14px',
-                  fontWeight: 700,
-                  color: '#0F172A',
+                  fontWeight: 600,
+                  color: '#292524',
                   marginBottom: '12px',
                 }}
               >
@@ -335,16 +335,16 @@ export default async function PostPage({ params }: PageProps) {
                     style={{
                       padding: '4px 12px',
                       background: '#F1F5F9',
-                      color: '#475569',
+                      color: '#78716C',
                       fontSize: '12px',
                       fontWeight: 500,
-                      borderRadius: '9999px',
+                      borderRadius: '8px',
                       textDecoration: 'none',
                     }}
                     className="hover:bg-orange-100 hover:text-orange-600"
                   >
                     {tag}{' '}
-                    <span style={{ color: '#94A3A8', fontSize: '10px' }}>({count})</span>
+                    <span style={{ color: '#78716C', fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}
               </div>
@@ -353,14 +353,14 @@ export default async function PostPage({ params }: PageProps) {
             {/* Back to top */}
             <div
               style={{
-                background: 'linear-gradient(135deg, #0F172A, #1E293B)',
-                borderRadius: '12px',
+                background: '#C2703E',
+                borderRadius: '8px',
                 padding: '24px',
                 color: '#fff',
                 textAlign: 'center',
               }}
             >
-              <p style={{ fontSize: '14px', color: '#94A3B8', marginBottom: '12px' }}>
+              <p style={{ fontSize: '14px', color: '#fff', marginBottom: '12px' }}>
                 もっと記事を読む
               </p>
               <Link

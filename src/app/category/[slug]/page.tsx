@@ -15,13 +15,13 @@ const categoryConfig: Record<
 > = {
   'ai-tech': {
     label: 'AI&テック',
-    description: 'AI技術、機械学習、生成AI、チャットボットなど最新テクノロジーニュース',
+    description: 'AI 技術、機械学習、生成 AI、チャットボットなど最新テクノロジーニュース',
     color: '#6366F1',
     bg: '#EEF2FF',
   },
   'smart-home': {
     label: 'スマートホーム',
-    description: 'スマートホーム家電、IoT機器、HEMS、音声アシスタントなど住まいのテクノロジー',
+    description: 'スマートホーム家電、IoT 機器、HEMS、音声アシスタントなど住まいのテクノロジー',
     color: '#10B981',
     bg: '#ECFDF5',
   },
@@ -67,11 +67,9 @@ export default async function CategoryPage({ params }: PageProps) {
         {/* Category Header */}
         <div
           style={{
-            background: `linear-gradient(135deg, ${info.color}15, ${info.color}05)`,
-            borderRadius: '16px',
-            padding: '40px',
-            marginBottom: '32px',
-            border: `1px solid ${info.color}20`,
+            background: '#FAFAF9',
+            padding: '32px 0',
+            borderBottom: '1px solid #E7E5E4',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
@@ -79,14 +77,13 @@ export default async function CategoryPage({ params }: PageProps) {
               <h1
                 style={{
                   fontSize: '32px',
-                  fontWeight: 800,
-                  color: '#0F172A',
-                  letterSpacing: '-0.02em',
+                  fontWeight: 600,
+                  color: '#292524',
                 }}
               >
                 {info.label}
               </h1>
-              <p style={{ fontSize: '16px', color: '#475569', marginTop: '4px' }}>
+              <p style={{ fontSize: '16px', color: '#57534E', marginTop: '4px' }}>
                 {info.description}
               </p>
             </div>
@@ -99,14 +96,14 @@ export default async function CategoryPage({ params }: PageProps) {
                 color: info.color,
                 fontSize: '13px',
                 fontWeight: 600,
-                borderRadius: '9999px',
+                borderRadius: '8px',
               }}
             >
               {posts.length} 記事
             </span>
             <Link
               href="/"
-              style={{ fontSize: '13px', color: '#64748B' }}
+              style={{ fontSize: '13px', color: '#78716C' }}
               className="hover:text-orange-500"
             >
               ← ホームに戻る
@@ -133,13 +130,12 @@ export default async function CategoryPage({ params }: PageProps) {
                 style={{
                   display: 'block',
                   background: '#fff',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: '12px',
+                  border: '1px solid #E7E5E4',
+                  borderRadius: '8px',
                   padding: '24px',
                   textDecoration: 'none',
                   transition: 'all 0.2s',
                 }}
-                className="hover:shadow-lg hover:-translate-y-1"
               >
                 <div
                   style={{
@@ -156,12 +152,12 @@ export default async function CategoryPage({ params }: PageProps) {
                       color: info.color,
                       fontSize: '11px',
                       fontWeight: 600,
-                      borderRadius: '9999px',
+                      borderRadius: '8px',
                     }}
                   >
                     {info.label}
                   </span>
-                  <time style={{ fontSize: '11px', color: '#94A3B8' }}>
+                  <time style={{ fontSize: '11px', color: '#78716C' }}>
                     {new Date(post.date).toLocaleDateString('ja-JP', {
                       month: 'short',
                       day: 'numeric',
@@ -172,7 +168,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   style={{
                     fontSize: '16px',
                     fontWeight: 600,
-                    color: '#0F172A',
+                    color: '#292524',
                     lineHeight: 1.4,
                     marginBottom: '8px',
                   }}
@@ -182,7 +178,7 @@ export default async function CategoryPage({ params }: PageProps) {
                 <p
                   style={{
                     fontSize: '13px',
-                    color: '#64748B',
+                    color: '#78716C',
                     lineHeight: 1.6,
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
@@ -201,10 +197,10 @@ export default async function CategoryPage({ params }: PageProps) {
                         style={{
                           padding: '2px 8px',
                           background: '#F1F5F9',
-                          color: '#64748B',
+                          color: '#78716C',
                           fontSize: '10px',
                           fontWeight: 500,
-                          borderRadius: '9999px',
+                          borderRadius: '8px',
                         }}
                       >
                         {tag}
@@ -221,11 +217,11 @@ export default async function CategoryPage({ params }: PageProps) {
               textAlign: 'center',
               padding: '80px 0',
               background: '#fff',
-              borderRadius: '16px',
-              border: '1px solid #E2E8F0',
+              borderRadius: '8px',
+              border: '1px solid #E7E5E4',
             }}
           >
-            <p style={{ fontSize: '18px', color: '#64748B' }}>
+            <p style={{ fontSize: '18px', color: '#78716C' }}>
               このカテゴリの記事はまだありません。
             </p>
           </div>

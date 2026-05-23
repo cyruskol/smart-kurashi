@@ -2,52 +2,43 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white hidden sm:block" role="contentinfo">
-      {/* Main Footer — 2 columns on desktop */}
+    <footer style={{ background: '#292524', color: '#E7E5E4' }} className="hidden sm:block" role="contentinfo">
       <div className="max-w-container mx-auto px-md py-section">
         <div className="grid grid-cols-2 gap-xl">
-          {/* Content Links */}
+          {/* Brand */}
           <div>
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-md">
-              コンテンツ
-            </h3>
-            <nav aria-label="コンテンツナビゲーション">
-              <ul className="space-y-sm">
-                <li><Link href="/" className="text-sm text-slate-300 hover:text-accent transition-colors">ホーム</Link></li>
-                <li><Link href="/category/ai-tech" className="text-sm text-slate-300 hover:text-accent transition-colors">AI&テック</Link></li>
-                <li><Link href="/category/smart-home" className="text-sm text-slate-300 hover:text-accent transition-colors">スマートホーム</Link></li>
-              </ul>
-            </nav>
+            <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#FAFAF9', marginBottom: '8px' }}>Smart Kurashi</h3>
+            <p style={{ fontSize: '13px', color: '#78716C', lineHeight: 1.7 }}>
+              スマートホーム・AI 家電・IoT 技術の最新ニュースをお届け。
+            </p>
           </div>
-
           {/* Company Links */}
           <div>
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-md">
+            <h3 style={{ fontSize: '12px', fontWeight: 400, color: '#78716C', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
               会社情報
             </h3>
             <nav aria-label="会社情報ナビゲーション">
-              <ul className="space-y-sm">
-                <li><Link href="/about" className="text-sm text-slate-300 hover:text-accent transition-colors">会社概要</Link></li>
-                <li><Link href="/contact" className="text-sm text-slate-300 hover:text-accent transition-colors">お問い合わせ</Link></li>
-                <li><Link href="/privacy" className="text-sm text-slate-300 hover:text-accent transition-colors">プライバシーポリシー</Link></li>
-                <li><Link href="/terms" className="text-sm text-slate-300 hover:text-accent transition-colors">利用規約</Link></li>
+              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <li><Link href="/about" style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>会社概要</Link></li>
+                <li><Link href="/contact" style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>お問い合わせ</Link></li>
+                <li><Link href="/privacy" style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>プライバシーポリシー</Link></li>
+                <li><Link href="/terms" style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>利用規約</Link></li>
               </ul>
             </nav>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-slate-700">
-        <div className="max-w-container mx-auto px-md py-lg flex justify-between items-center gap-sm">
-          <p className="text-xs text-slate-500">
+      <div style={{ borderTop: '1px solid #44403C' }}>
+        <div className="max-w-container mx-auto px-md" style={{ padding: '16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
+          <p style={{ fontSize: '12px', color: '#78716C' }}>
             &copy; {new Date().getFullYear()} Smart Kurashi. All rights reserved.
           </p>
           <nav aria-label="法的リンク">
-            <ul className="flex items-center gap-md">
-              <li><Link href="/privacy" className="text-xs text-slate-500 hover:text-accent transition-colors">プライバシーポリシー</Link></li>
-              <li><Link href="/terms" className="text-xs text-slate-500 hover:text-accent transition-colors">利用規約</Link></li>
-              <li><a href="/sitemap.xml" className="text-xs text-slate-500 hover:text-accent transition-colors">サイトマップ</a></li>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', gap: '16px' }}>
+              <li><Link href="/privacy" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>プライバシーポリシー</Link></li>
+              <li><Link href="/terms" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>利用規約</Link></li>
+              <li><a href="/sitemap.xml" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>サイトマップ</a></li>
             </ul>
           </nav>
         </div>

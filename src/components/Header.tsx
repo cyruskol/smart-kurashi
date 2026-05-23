@@ -1,39 +1,27 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'ホーム' },
-  { href: '/category/ai-tech', label: 'AI&テック', color: '#6366F1' },
-  { href: '/category/smart-home', label: 'スマートホーム', color: '#10B981' },
+  { href: '/category/ai-tech', label: 'AI&テック', color: '#8B7355' },
+  { href: '/category/smart-home', label: 'スマートホーム', color: '#4D7C5E' },
 ];
 
 export default function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   return (
     <>
       {/* Main header */}
       <header
         style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 50,
-          background: scrolled ? 'rgba(255,255,255,0.95)' : '#fff',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: '1px solid #E2E8F0',
-          boxShadow: scrolled ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
-          transition: 'all 0.3s ease',
+          position: 'static',
+          background: '#fff',
+          borderBottom: '1px solid #E7E5E4',
         }}
         role="banner"
       >
@@ -41,10 +29,10 @@ export default function Header() {
           <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm" aria-label="Smart Kurashi ホーム">
-              <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ color: '#fff', fontWeight: 700, fontSize: '13px' }}>SK</span>
+              <div style={{ width: '28px', height: '28px', background: '#C2703E', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ color: '#fff', fontWeight: 600, fontSize: '12px' }}>SK</span>
               </div>
-              <span style={{ fontSize: '18px', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
                 Smart Kurashi
               </span>
             </Link>
@@ -58,14 +46,14 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    className="px-4 py-2 rounded-lg text-sm font-medium"
                     style={{
                       background: isActive
-                        ? (hasColor ? `${item.color}15` : '#FFF4F0')
+                        ? (hasColor ? '#F5F0EB' : '#EDF2EE')
                         : 'transparent',
                       color: isActive
-                        ? (hasColor ? item.color : '#E8643A')
-                        : '#475569',
+                        ? (hasColor ? item.color : '#C2703E')
+                        : '#57534E',
                     }}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -94,7 +82,7 @@ export default function Header() {
 
           {/* Mobile Nav */}
           {mobileOpen && (
-            <nav className="md:hidden pb-4 pt-2 border-t border-slate-200" aria-label="モバイルナビゲーション">
+            <nav className="md:hidden pb-4 pt-2 border-t border-[#E7E5E4]" aria-label="モバイルナビゲーション">
               <ul className="flex flex-col gap-1">
                 {navItems.map((item) => {
                   const isActive = pathname === item.href;
@@ -104,8 +92,8 @@ export default function Header() {
                         href={item.href}
                         className="block py-2 px-4 rounded-lg text-sm font-medium"
                         style={{
-                          background: isActive ? '#FFF4F0' : 'transparent',
-                          color: isActive ? '#E8643A' : '#475569',
+                          background: isActive ? '#F5F0EB' : 'transparent',
+                          color: isActive ? '#C2703E' : '#57534E',
                         }}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -121,13 +109,13 @@ export default function Header() {
       </header>
 
       {/* Category sub-nav bar — desktop only */}
-      <div className="hidden md:block" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+      <div className="hidden md:block" style={{ background: '#FAFAF9', borderBottom: '1px solid #E7E5E4' }}>
         <div className="max-w-container mx-auto px-md">
           <div className="flex items-center gap-sm py-2">
-            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold transition-colors" style={{ background: '#EEF2FF', color: '#6366F1' }}>
+            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#F5F0EB', color: '#8B7355' }}>
               AI&テック
             </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold transition-colors" style={{ background: '#ECFDF5', color: '#10B981' }}>
+            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EDF2EE', color: '#4D7C5E' }}>
               スマートホーム
             </Link>
           </div>
