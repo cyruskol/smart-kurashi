@@ -5,10 +5,9 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { href: '/', label: 'ホーム', icon: '🏠' },
-  { href: '/category/ai-tech', label: 'AI & Tech', color: '#6366F1' },
-  { href: '/category/smart-home', label: 'スマート家電', color: '#10B981' },
-  { href: '/search', label: '検索', icon: '🔍' },
+  { href: '/', label: 'ホーム' },
+  { href: '/category/ai-tech', label: 'AI&テック', color: '#6366F1' },
+  { href: '/category/smart-home', label: 'スマートホーム', color: '#10B981' },
 ];
 
 export default function Header() {
@@ -24,17 +23,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Top utility bar */}
-      <div style={{ background: '#0F172A', color: '#94A3B8', fontSize: '12px' }}>
-        <div className="max-w-container mx-auto px-md flex items-center justify-between" style={{ height: '32px' }}>
-          <span>🏠 スマートホーム・AI家電の最新ニュース</span>
-          <div className="flex items-center gap-md">
-            <Link href="/about" style={{ color: '#94A3B8' }} className="hover:text-white transition-colors">会社概要</Link>
-            <Link href="/contact" style={{ color: '#94A3B8' }} className="hover:text-white transition-colors">お問い合わせ</Link>
-          </div>
-        </div>
-      </div>
-
       {/* Main header */}
       <header
         style={{
@@ -50,13 +38,13 @@ export default function Header() {
         role="banner"
       >
         <div className="max-w-container mx-auto px-md">
-          <div className="flex items-center justify-between" style={{ height: '60px' }}>
+          <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm" aria-label="Smart Kurashi ホーム">
-              <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ color: '#fff', fontWeight: 700, fontSize: '14px' }}>SK</span>
+              <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #E8643A, #D05530)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ color: '#fff', fontWeight: 700, fontSize: '13px' }}>SK</span>
               </div>
-              <span style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
+              <span style={{ fontSize: '18px', fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
                 Smart Kurashi
               </span>
             </Link>
@@ -81,7 +69,6 @@ export default function Header() {
                     }}
                     aria-current={isActive ? 'page' : undefined}
                   >
-                    {item.icon && <span className="mr-1">{item.icon}</span>}
                     {item.label}
                   </Link>
                 );
@@ -122,7 +109,6 @@ export default function Header() {
                         }}
                         onClick={() => setMobileOpen(false)}
                       >
-                        {item.icon && <span className="mr-2">{item.icon}</span>}
                         {item.label}
                       </Link>
                     </li>
@@ -134,27 +120,15 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Category sub-nav bar */}
-      <div style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+      {/* Category sub-nav bar — desktop only */}
+      <div className="hidden md:block" style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
         <div className="max-w-container mx-auto px-md">
-          <div className="flex items-center gap-sm overflow-x-auto py-2" style={{ scrollbarWidth: 'none' }}>
-            <Link href="/search" className="flex items-center gap-1 px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors flex-shrink-0">
-              🔍 検索
+          <div className="flex items-center gap-sm py-2">
+            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold transition-colors" style={{ background: '#EEF2FF', color: '#6366F1' }}>
+              AI&テック
             </Link>
-            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#EEF2FF', color: '#6366F1' }}>
-              🤖 AI & Tech
-            </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#ECFDF5', color: '#10B981' }}>
-              🏠 スマート家電
-            </Link>
-            <Link href="/category/ai-tech" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#FFFBEB', color: '#F59E0B' }}>
-              📡 IoT
-            </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#FEF2F2', color: '#EF4444' }}>
-              🔒 セキュリティ
-            </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold flex-shrink-0 transition-colors" style={{ background: '#ECFEFF', color: '#06B6D4' }}>
-              ⚡ 省エネ
+            <Link href="/category/smart-home" className="px-3 py-1.5 rounded-full text-xs font-semibold transition-colors" style={{ background: '#ECFDF5', color: '#10B981' }}>
+              スマートホーム
             </Link>
           </div>
         </div>
