@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'ホーム' },
-  { href: '/category/ai-tech', label: 'AI&テック', color: '#8B7355' },
-  { href: '/category/smart-home', label: 'スマートホーム', color: '#4D7C5E' },
+  { href: '/category/ai-tech', label: 'AI&テック', color: '#5C4A32' },
+  { href: '/category/smart-home', label: 'スマートホーム', color: '#2C4D38' },
 ];
 
 export default function Header() {
@@ -28,8 +28,8 @@ export default function Header() {
         <div className="max-w-container mx-auto px-md">
           <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-sm" aria-label="Smart Kurashi ホーム">
-              <div style={{ width: '28px', height: '28px', background: '#C2703E', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Link href="/" className="flex items-center gap-sm">
+              <div style={{ width: '28px', height: '28px', background: '#C2703E', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
                 <span style={{ color: '#fff', fontWeight: 600, fontSize: '12px' }}>SK</span>
               </div>
               <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
@@ -112,10 +112,10 @@ export default function Header() {
       <div className="hidden md:block" style={{ background: '#FAFAF9', borderBottom: '1px solid #E7E5E4' }}>
         <div className="max-w-container mx-auto px-md">
           <div className="flex items-center gap-sm py-2">
-            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#F5F0EB', color: '#8B7355' }}>
+            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#F5F0EB', color: '#7A6548' }}>
               AI&テック
             </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EDF2EE', color: '#4D7C5E' }}>
+            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EDF2EE', color: '#2C4D38' }}>
               スマートホーム
             </Link>
           </div>

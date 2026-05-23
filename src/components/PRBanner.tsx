@@ -10,11 +10,11 @@ export default function PrBanner() {
         border: '1px solid #E2E8F0',
         borderRadius: '8px',
         fontSize: '13px',
-        color: '#6B7280',
+        color: '#5B6270',
         marginBottom: '24px',
       }}
     >
-      <span style={{ fontWeight: 600, color: '#9CA3AF', fontSize: '11px', letterSpacing: '0.05em' }}>
+      <span style={{ fontWeight: 600, color: '#5B6270', fontSize: '11px', letterSpacing: '0.05em' }}>
         【PR】
       </span>
       <span>

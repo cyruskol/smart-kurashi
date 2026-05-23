@@ -8,13 +8,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#FAFAF9', marginBottom: '8px' }}>Smart Kurashi</h3>
-            <p style={{ fontSize: '13px', color: '#78716C', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '13px', color: '#A8A29E', lineHeight: 1.7 }}>
               スマートホーム・AI 家電・IoT 技術の最新ニュースをお届け。
             </p>
           </div>
           {/* Company Links */}
           <div>
-            <h3 style={{ fontSize: '12px', fontWeight: 400, color: '#78716C', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
+            <h3 style={{ fontSize: '12px', fontWeight: 400, color: '#A8A29E', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
               会社情報
             </h3>
             <nav aria-label="会社情報ナビゲーション">
@@ -31,14 +31,14 @@ export default function Footer() {
 
       <div style={{ borderTop: '1px solid #44403C' }}>
         <div className="max-w-container mx-auto px-md" style={{ padding: '16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
-          <p style={{ fontSize: '12px', color: '#78716C' }}>
+          <p style={{ fontSize: '12px', color: '#A8A29E' }}>
             &copy; {new Date().getFullYear()} Smart Kurashi. All rights reserved.
           </p>
           <nav aria-label="法的リンク">
             <ul style={{ listStyle: 'none', padding: 0, display: 'flex', gap: '16px' }}>
-              <li><Link href="/privacy" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>プライバシーポリシー</Link></li>
-              <li><Link href="/terms" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>利用規約</Link></li>
-              <li><a href="/sitemap.xml" style={{ fontSize: '12px', color: '#78716C', textDecoration: 'none' }}>サイトマップ</a></li>
+              <li><Link href="/privacy" style={{ fontSize: '12px', color: '#A8A29E', textDecoration: 'none' }}>プライバシーポリシー</Link></li>
+              <li><Link href="/terms" style={{ fontSize: '12px', color: '#A8A29E', textDecoration: 'none' }}>利用規約</Link></li>
+              <li><a href="/sitemap.xml" style={{ fontSize: '12px', color: '#A8A29E', textDecoration: 'none' }}>サイトマップ</a></li>
             </ul>
           </nav>
         </div>

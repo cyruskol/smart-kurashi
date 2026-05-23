@@ -12,9 +12,9 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 }
 
   const categoryColors: Record<string, { bg: string; text: string }> = {
-  'ai-tech': { bg: '#F5F0EB', text: '#8B7355' },
-  'smart-home': { bg: '#EDF2EE', text: '#4D7C5E' },
-  'article': { bg: '#F5F0EB', text: '#8B7355' },
+  'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
+  'smart-home': { bg: '#EDF2EE', text: '#2C4D38' },
+  'article': { bg: '#F5F0EB', text: '#5C4A32' },
 };
 
 export default async function SearchPage({ searchParams }: PageProps) {
@@ -45,7 +45,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             {/* Results */}
             {q && (
               <>
-                <p style={{ fontSize: '14px', color: '#78716C', marginBottom: '20px' }}>
+                <p style={{ fontSize: '14px', color: '#5A534E', marginBottom: '20px' }}>
                   {results.length > 0 ? `「${q}」の検索結果: ${results.length}件` : `「${q}」に一致する記事が見つかりませんでした。`}
                 </p>
                 {results.length > 0 && (
@@ -58,10 +58,10 @@ export default async function SearchPage({ searchParams }: PageProps) {
                             <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '8px' }}>
                               {post.category === 'ai-tech' ? 'AI&テック' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
                             </span>
-                            <time style={{ fontSize: '11px', color: '#78716C' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                            <time style={{ fontSize: '11px', color: '#5A534E' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                           </div>
                           <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginBottom: '8px' }}>{post.title}</h3>
-                          <p style={{ fontSize: '13px', color: '#78716C', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.excerpt}</p>
+                          <p style={{ fontSize: '13px', color: '#5A534E', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.excerpt}</p>
                         </Link>
                       );
                     })}
@@ -73,7 +73,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             {!q && (
               <div style={{ textAlign: 'center', padding: '80px 0', background: '#fff', borderRadius: '8px', border: '1px solid #E7E5E4' }}>
                 <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#292524', marginBottom: '8px' }}>記事を検索</h2>
-                <p style={{ color: '#78716C' }}>キーワードを入力して記事を検索できます。</p>
+                <p style={{ color: '#5A534E' }}>キーワードを入力して記事を検索できます。</p>
               </div>
             )}
           </div>

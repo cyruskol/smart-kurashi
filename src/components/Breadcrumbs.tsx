@@ -46,12 +46,12 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           {items.map((item, index) => (
             <li key={item.href} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {index > 0 && (
-                <span style={{ color: '#CBD5E1', fontSize: '12px' }}>/</span>
+                <span style={{ color: '#64748B', fontSize: '12px' }}>/</span>
               )}
               {index < items.length - 1 ? (
                 <Link
                   href={item.href}
-                  style={{ color: '#94A3B8', textDecoration: 'none' }}
+                  style={{ color: '#64748B', textDecoration: 'none' }}
                   className="hover:text-orange-500 transition-colors"
                 >
                   {item.label}

@@ -11,7 +11,7 @@ export default function AboutPage() {
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 16px' }}>
         <nav style={{ marginBottom: '24px' }}>
           <ol style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', listStyle: 'none', padding: 0, margin: 0 }}>
-            <li><a href="/" style={{ color: '#78716C' }} className="hover:text-orange-500">ホーム</a></li>
+            <li><a href="/" style={{ color: '#5A534E' }} className="hover:text-orange-500">ホーム</a></li>
             <li style={{ color: '#F1F5F9' }}>/</li>
             <li style={{ color: '#57534E' }}>会社概要</li>
           </ol>
@@ -23,7 +23,7 @@ export default function AboutPage() {
               <span style={{ color: '#fff', fontWeight: 600, fontSize: '24px' }}>SK</span>
             </div>
             <h1 style={{ fontSize: '32px', fontWeight: 600, color: '#292524', letterSpacing: '', marginBottom: '8px' }}>Smart Kurashi</h1>
-            <p style={{ fontSize: '16px', color: '#78716C' }}>スマートなくらいの情報をお届け</p>
+            <p style={{ fontSize: '16px', color: '#5A534E' }}>スマートなくらいの情報をお届け</p>
           </div>
 
           <div style={{ marginBottom: '40px' }}>
@@ -48,7 +48,7 @@ export default function AboutPage() {
                 ['URL', 'smart-kurashi.jp'],
               ].map(([dt, dd]) => (
                 <div key={dt}>
-                  <dt style={{ fontSize: '12px', fontWeight: 600, color: '#78716C', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{dt}</dt>
+                  <dt style={{ fontSize: '12px', fontWeight: 600, color: '#5A534E', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{dt}</dt>
                   <dd style={{ fontSize: '15px', fontWeight: 500, color: '#292524' }}>{dd}</dd>
                 </div>
               ))}
@@ -59,14 +59,14 @@ export default function AboutPage() {
             <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>取り扱い分野</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               {[
-                { title: 'AI&テック', desc: '生成 AI、機械学習、チャットボットなど人工知能分野の最新トレンド', color: '#6366F1' },
-                { title: 'スマートホーム', desc: 'スマートスピーカー、照明、セキュリティカメラなど家庭の IoT 化', color: '#10B981' },
-                { title: '省エネルギー', desc: 'HEMS、太陽光発電、蓄電池など持続可能な住まいの技術', color: '#F59E0B' },
-                { title: 'セキュリティ', desc: 'スマートロック、監視カメラなど家庭の安全を守る技術', color: '#EF4444' },
+                { title: 'AI&テック', desc: '生成 AI、機械学習、チャットボットなど人工知能分野の最新トレンド', color: '#4338CA' },
+                { title: 'スマートホーム', desc: 'スマートスピーカー、照明、セキュリティカメラなど家庭の IoT 化', color: '#047857' },
+                { title: '省エネルギー', desc: 'HEMS、太陽光発電、蓄電池など持続可能な住まいの技術', color: '#B45309' },
+                { title: 'セキュリティ', desc: 'スマートロック、監視カメラなど家庭の安全を守る技術', color: '#DC2626' },
               ].map((item) => (
                 <div key={item.title} style={{ padding: '16px', background: '#F8FAFC', borderRadius: '8px', borderTop: '2px solid ${item.color}', borderLeft: 'none' }}>
                   <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '4px' }}>{item.title}</h3>
-                  <p style={{ fontSize: '12px', color: '#78716C', lineHeight: 1.5 }}>{item.desc}</p>
+                  <p style={{ fontSize: '12px', color: '#5A534E', lineHeight: 1.5 }}>{item.desc}</p>
                 </div>
               ))}
             </div>

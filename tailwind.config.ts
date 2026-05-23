@@ -16,10 +16,10 @@ const config: Config = {
         'accent-hover': '#A86236',
         'accent-light': '#F5F0EB',
         
-        // Category colors - muted, editorial
-        'cat-ai': '#8B7355',
+        // Category colors - WCAG AA compliant (4.5:1+ on light bg)
+        'cat-ai': '#5C4A32',
         'cat-ai-light': '#F5F0EB',
-        'cat-smart': '#4D7C5E',
+        'cat-smart': '#2C4D38',
         'cat-smart-light': '#EDF2EE',
         
         // Neutrals - warm off-white base
@@ -28,10 +28,10 @@ const config: Config = {
         surface: '#FFFFFF',
         'surface-alt': '#FAFAF9',
         
-        // Text - soft charcoal
+        // Text - soft charcoal, WCAG AA compliant
         text: '#292524',
-        'text-secondary': '#57534E',
-        'text-muted': '#78716C',
+        'text-secondary': '#4A433F',
+        'text-muted': '#5A534E',
         'text-inverse': '#FFFFFF',
         
         // Borders - soft stone-200

@@ -16,13 +16,13 @@ const categoryConfig: Record<
   'ai-tech': {
     label: 'AI&テック',
     description: 'AI 技術、機械学習、生成 AI、チャットボットなど最新テクノロジーニュース',
-    color: '#6366F1',
+    color: '#4338CA',
     bg: '#EEF2FF',
   },
   'smart-home': {
     label: 'スマートホーム',
     description: 'スマートホーム家電、IoT 機器、HEMS、音声アシスタントなど住まいのテクノロジー',
-    color: '#10B981',
+    color: '#047857',
     bg: '#ECFDF5',
   },
 };
@@ -103,7 +103,7 @@ export default async function CategoryPage({ params }: PageProps) {
             </span>
             <Link
               href="/"
-              style={{ fontSize: '13px', color: '#78716C' }}
+              style={{ fontSize: '13px', color: '#5A534E' }}
               className="hover:text-orange-500"
             >
               ← ホームに戻る
@@ -157,7 +157,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   >
                     {info.label}
                   </span>
-                  <time style={{ fontSize: '11px', color: '#78716C' }}>
+                  <time style={{ fontSize: '11px', color: '#5A534E' }}>
                     {new Date(post.date).toLocaleDateString('ja-JP', {
                       month: 'short',
                       day: 'numeric',
@@ -178,7 +178,7 @@ export default async function CategoryPage({ params }: PageProps) {
                 <p
                   style={{
                     fontSize: '13px',
-                    color: '#78716C',
+                    color: '#5A534E',
                     lineHeight: 1.6,
                     display: '-webkit-box',
                     WebkitLineClamp: 2,
@@ -197,7 +197,7 @@ export default async function CategoryPage({ params }: PageProps) {
                         style={{
                           padding: '2px 8px',
                           background: '#F1F5F9',
-                          color: '#78716C',
+                          color: '#5A534E',
                           fontSize: '10px',
                           fontWeight: 500,
                           borderRadius: '8px',
@@ -221,7 +221,7 @@ export default async function CategoryPage({ params }: PageProps) {
               border: '1px solid #E7E5E4',
             }}
           >
-            <p style={{ fontSize: '18px', color: '#78716C' }}>
+            <p style={{ fontSize: '18px', color: '#5A534E' }}>
               このカテゴリの記事はまだありません。
             </p>
           </div>

@@ -15,9 +15,9 @@ interface PageProps {
 }
 
 const categoryColors: Record<string, { bg: string; text: string }> = {
-  'ai-tech': { bg: '#EEF2FF', text: '#6366F1' },
-  'smart-home': { bg: '#ECFDF5', text: '#10B981' },
-  'article': { bg: '#FFF4F0', text: '#E8643A' },
+  'ai-tech': { bg: '#EEF2FF', text: '#4338CA' },
+  'smart-home': { bg: '#ECFDF5', text: '#047857' },
+  'article': { bg: '#FFF4F0', text: '#C2703E' },
 };
 
 const categoryLabels: Record<string, string> = {
@@ -159,7 +159,7 @@ export default async function PostPage({ params }: PageProps) {
                 >
                   {categoryLabel}
                 </span>
-                <time style={{ fontSize: '13px', color: '#78716C' }}>{formattedDate}</time>
+                <time style={{ fontSize: '13px', color: '#5A534E' }}>{formattedDate}</time>
               </div>
               <h1
                 style={{
@@ -209,7 +209,7 @@ export default async function PostPage({ params }: PageProps) {
                   style={{
                     fontSize: '12px',
                     fontWeight: 600,
-                    color: '#78716C',
+                    color: '#5A534E',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     marginBottom: '12px',
@@ -225,7 +225,7 @@ export default async function PostPage({ params }: PageProps) {
                       style={{
                         padding: '4px 14px',
                         background: '#F1F5F9',
-                        color: '#78716C',
+                        color: '#6B6560',
                         fontSize: '12px',
                         fontWeight: 500,
                         borderRadius: '8px',
@@ -291,7 +291,7 @@ export default async function PostPage({ params }: PageProps) {
                         >
                           {rp.title}
                         </h4>
-                        <time style={{ fontSize: '11px', color: '#78716C' }}>
+                        <time style={{ fontSize: '11px', color: '#5A534E' }}>
                           {new Date(rp.date).toLocaleDateString('ja-JP', {
                             month: 'short',
                             day: 'numeric',
@@ -332,7 +332,7 @@ export default async function PostPage({ params }: PageProps) {
                     style={{
                       padding: '4px 12px',
                       background: '#F1F5F9',
-                      color: '#78716C',
+                      color: '#6B6560',
                       fontSize: '12px',
                       fontWeight: 500,
                       borderRadius: '8px',
@@ -341,7 +341,7 @@ export default async function PostPage({ params }: PageProps) {
                     className="hover:bg-orange-100 hover:text-orange-600"
                   >
                     {tag}{' '}
-                    <span style={{ color: '#78716C', fontSize: '10px' }}>({count})</span>
+                    <span style={{ color: '#6B6560', fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}
               </div>
@@ -365,8 +365,8 @@ export default async function PostPage({ params }: PageProps) {
                 style={{
                   display: 'inline-block',
                   padding: '10px 20px',
-                  background: '#E8643A',
-                  color: '#fff',
+                  background: '#FFFFFF',
+                  color: '#C2703E',
                   fontWeight: 600,
                   borderRadius: '8px',
                   fontSize: '13px',

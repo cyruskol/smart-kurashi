@@ -12,9 +12,9 @@ export const metadata: {
 };
 
 const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
-  'ai-tech': { bg: '#F5F0EB', text: '#8B7355', dot: '#8B7355' },
-  'smart-home': { bg: '#EDF2EE', text: '#4D7C5E', dot: '#4D7C5E' },
-  'article': { bg: '#F5F0EB', text: '#8B7355', dot: '#8B7355' },
+  'ai-tech': { bg: '#F5F0EB', text: '#5C4A32', dot: '#5C4A32' },
+  'smart-home': { bg: '#EDF2EE', text: '#2C4D38', dot: '#2C4D38' },
+  'article': { bg: '#F5F0EB', text: '#5C4A32', dot: '#5C4A32' },
 };
 
 export default function HomePage() {
@@ -48,7 +48,7 @@ export default function HomePage() {
               <p style={{ fontSize: '18px', color: '#57534E', lineHeight: 1.7, marginBottom: '24px' }}>
                 {featuredPost.excerpt}
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#78716C' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#5A534E' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
               <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#C2703E', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
@@ -85,18 +85,18 @@ export default function HomePage() {
                         <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '8px' }}>
                           {post.category === 'ai-tech' ? 'AI&テック' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
                         </span>
-                        <time style={{ fontSize: '11px', color: '#78716C' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                        <time style={{ fontSize: '11px', color: '#5A534E' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       </div>
                       <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginBottom: '8px' }}>
                         {post.title}
                       </h3>
-                      <p style={{ fontSize: '13px', color: '#78716C', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      <p style={{ fontSize: '13px', color: '#5A534E', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                         {post.excerpt}
                       </p>
                       {post.tags.length > 0 && (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '12px' }}>
                           {post.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} style={{ padding: '2px 8px', background: '#F5F0EB', color: '#78716C', fontSize: '10px', fontWeight: 400, borderRadius: '8px' }}>
+                            <span key={tag} style={{ padding: '2px 8px', background: '#F5F0EB', color: '#5A534E', fontSize: '10px', fontWeight: 400, borderRadius: '8px' }}>
                               {tag}
                             </span>
                           ))}
@@ -112,14 +112,14 @@ export default function HomePage() {
             {aiPosts.length > 0 && (
               <section style={{ marginBottom: '48px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#292524', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#8B7355', borderRadius: '50%' }} />
+                  <span style={{ width: '8px', height: '8px', background: '#5C4A32', borderRadius: '50%' }} />
                   AI&テック
-                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#78716C', marginLeft: '4px' }}>{aiPosts.length})</span>
+                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#5A534E', marginLeft: '4px' }}>{aiPosts.length})</span>
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   {aiPosts.map((post) => (
                     <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E7E5E4', borderRadius: '8px', padding: '16px', textDecoration: 'none' }} className="">
-                      <time style={{ fontSize: '11px', color: '#78716C' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      <time style={{ fontSize: '11px', color: '#5A534E' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
                     </Link>
                   ))}
@@ -131,14 +131,14 @@ export default function HomePage() {
             {smartHomePosts.length > 0 && (
               <section>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#292524', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#4D7C5E', borderRadius: '50%' }} />
+                  <span style={{ width: '8px', height: '8px', background: '#2C4D38', borderRadius: '50%' }} />
                   スマートホーム
-                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#78716C', marginLeft: '4px' }}>{smartHomePosts.length})</span>
+                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#5A534E', marginLeft: '4px' }}>{smartHomePosts.length})</span>
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   {smartHomePosts.map((post) => (
                     <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E7E5E4', borderRadius: '8px', padding: '16px', textDecoration: 'none' }} className="">
-                      <time style={{ fontSize: '11px', color: '#78716C' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                      <time style={{ fontSize: '11px', color: '#5A534E' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
                     </Link>
                   ))}
@@ -167,7 +167,7 @@ export default function HomePage() {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {popularTags.map(([tag, count]) => (
                   <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F5F0EB', color: '#57534E', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
-                    {tag} <span style={{ color: '#78716C', fontSize: '10px' }}>({count})</span>
+                    {tag} <span style={{ color: '#5A534E', fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}
               </div>
@@ -180,12 +180,12 @@ export default function HomePage() {
                 {allPosts.slice(0, 6).map((post, i) => (
                   <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #E7E5E4' : 'none' }}>
                     <Link href={`/posts/${post.slug}`} style={{ display: 'flex', gap: '10px', textDecoration: 'none', alignItems: 'flex-start' }}>
-                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#C2703E' : '#F5F0EB', color: i < 3 ? '#fff' : '#78716C', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 600, flexShrink: 0 }}>
+                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#C2703E' : '#F5F0EB', color: i < 3 ? '#fff' : '#5A534E', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 600, flexShrink: 0 }}>
                         {i + 1}
                       </span>
                       <div style={{ minWidth: 0 }}>
                         <h4 style={{ fontSize: '13px', fontWeight: 500, color: '#292524', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.title}</h4>
-                        <time style={{ fontSize: '11px', color: '#78716C', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                        <time style={{ fontSize: '11px', color: '#5A534E', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       </div>
                     </Link>
                   </li>

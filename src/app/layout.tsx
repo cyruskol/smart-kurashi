@@ -167,10 +167,12 @@ export default function RootLayout({
   return (
     <html lang="ja" className={notoSansJP.variable}>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <Script
           id="jsonld-website"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLdWebSite),
           }}
@@ -178,7 +180,7 @@ export default function RootLayout({
         <Script
           id="jsonld-organization"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLdOrganization),
           }}
@@ -186,7 +188,7 @@ export default function RootLayout({
         <Script
           id="jsonld-itemlist"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLdItemList),
           }}

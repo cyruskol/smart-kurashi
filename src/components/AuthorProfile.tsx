@@ -86,7 +86,7 @@ export default function AuthorProfile({ name, avatarUrl, bio, expertise }: Autho
                   style={{
                     padding: '3px 12px',
                     background: '#EEF2FF',
-                    color: '#6366F1',
+                    color: '#4338CA',
                     fontSize: '11px',
                     fontWeight: 600,
                     borderRadius: '9999px',

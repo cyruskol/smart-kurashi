@@ -8,11 +8,11 @@ export default function ContactForm() {
 
       <form action="/api/contact" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div>
-          <label htmlFor="name" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>お名前 <span style={{ color: '#E8643A' }}>*</span></label>
+          <label htmlFor="name" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>お名前 <span style={{ color: '#A86236' }}>*</span></label>
           <input type="text" id="name" name="name" required placeholder="山田 太郎" style={{ width: '100%', padding: '10px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '14px', background: '#F8FAFC' }} className="focus:border-orange-400 focus:outline-none" />
         </div>
         <div>
-          <label htmlFor="email" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>メールアドレス <span style={{ color: '#E8643A' }}>*</span></label>
+          <label htmlFor="email" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>メールアドレス <span style={{ color: '#A86236' }}>*</span></label>
           <input type="email" id="email" name="email" required placeholder="example@email.com" style={{ width: '100%', padding: '10px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '14px', background: '#F8FAFC' }} className="focus:border-orange-400 focus:outline-none" />
         </div>
         <div>
@@ -26,7 +26,7 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="message" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>お問い合わせ内容 <span style={{ color: '#E8643A' }}>*</span></label>
+          <label htmlFor="message" style={{ display: 'block', fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '6px' }}>お問い合わせ内容 <span style={{ color: '#A86236' }}>*</span></label>
           <textarea id="message" name="message" required rows={6} placeholder="お問い合わせ内容をご記入ください。" style={{ width: '100%', padding: '10px 14px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '14px', background: '#F8FAFC', resize: 'vertical' }} className="focus:border-orange-400 focus:outline-none" />
         </div>
         <button type="submit" style={{ padding: '12px 32px', background: '#E8643A', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer', alignSelf: 'flex-start' }} className="hover:bg-orange-600 transition-colors">
