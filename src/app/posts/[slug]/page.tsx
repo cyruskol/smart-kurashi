@@ -325,7 +325,7 @@ export default async function PostPage({ params }: PageProps) {
                   marginBottom: '12px',
                 }}
               >
-                🏷️ 人気タグ
+                人気タグ
               </h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {popularTags.map(([tag, count]) => (

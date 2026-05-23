@@ -38,7 +38,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             <div style={{ background: '#fff', borderRadius: '12px', padding: '24px', marginBottom: '24px', border: '1px solid #E2E8F0' }}>
               <form action="/search" method="GET" style={{ display: 'flex', gap: '12px' }}>
                 <input type="search" name="q" defaultValue={q || ''} placeholder="キーワードを入力..." style={{ flex: 1, padding: '12px 16px', border: '2px solid #E2E8F0', borderRadius: '10px', fontSize: '15px', background: '#F8FAFC' }} className="focus:border-orange-400 focus:outline-none" />
-                <button type="submit" style={{ padding: '12px 24px', background: '#E8643A', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>🔍 検索</button>
+                <button type="submit" style={{ padding: '12px 24px', background: '#E8643A', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
               </form>
             </div>
 
@@ -56,7 +56,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
                         <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1">
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                             <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '9999px' }}>
-                              {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'Smart Home' : '記事'}
+                              {post.category === 'ai-tech' ? 'AI&テック' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
                             </span>
                             <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                           </div>
@@ -72,7 +72,6 @@ export default async function SearchPage({ searchParams }: PageProps) {
 
             {!q && (
               <div style={{ textAlign: 'center', padding: '80px 0', background: '#fff', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
-                <span style={{ fontSize: '48px', display: 'block', marginBottom: '16px' }}>🔍</span>
                 <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>記事を検索</h2>
                 <p style={{ color: '#64748B' }}>キーワードを入力して記事を検索できます。</p>
               </div>
@@ -82,7 +81,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           {/* Sidebar — Tag cloud */}
           <aside>
             <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', position: 'sticky', top: '100px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>🏷️ タグで検索</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>タグで検索</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {allTags.map(([tag, count]) => (
                   <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#E8643A' : '#F1F5F9', color: q === tag ? '#fff' : '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className={q !== tag ? 'hover:bg-orange-100 hover:text-orange-600' : ''}>

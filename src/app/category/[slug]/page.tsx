@@ -11,21 +11,19 @@ interface PageProps {
 
 const categoryConfig: Record<
   string,
-  { label: string; description: string; color: string; bg: string; icon: string }
+  { label: string; description: string; color: string; bg: string }
 > = {
   'ai-tech': {
-    label: 'AI & Tech',
+    label: 'AI&テック',
     description: 'AI技術、機械学習、生成AI、チャットボットなど最新テクノロジーニュース',
     color: '#6366F1',
     bg: '#EEF2FF',
-    icon: '🤖',
   },
   'smart-home': {
-    label: 'スマート家電',
+    label: 'スマートホーム',
     description: 'スマートホーム家電、IoT機器、HEMS、音声アシスタントなど住まいのテクノロジー',
     color: '#10B981',
     bg: '#ECFDF5',
-    icon: '🏠',
   },
 };
 
@@ -77,7 +75,6 @@ export default async function CategoryPage({ params }: PageProps) {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
-            <span style={{ fontSize: '40px' }}>{info.icon}</span>
             <div>
               <h1
                 style={{

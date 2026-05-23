@@ -87,7 +87,7 @@ export default function HomePage() {
                     <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', textDecoration: 'none', transition: 'all 0.2s' }} className="hover:shadow-lg hover:-translate-y-1 hover:border-orange-200">
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
                         <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '9999px' }}>
-                          {post.category === 'ai-tech' ? 'AI & Tech' : post.category === 'smart-home' ? 'スマート家電' : '記事'}
+                          {post.category === 'ai-tech' ? 'AI&テック' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
                         </span>
                         <time style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       </div>
@@ -117,7 +117,7 @@ export default function HomePage() {
               <section style={{ marginBottom: '48px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#6366F1', borderRadius: '50%' }} />
-                  AI & Tech
+                  AI&テック
                   <span style={{ fontSize: '12px', fontWeight: 400, color: '#94A3B8', marginLeft: '4px' }}>({aiPosts.length})</span>
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -131,12 +131,12 @@ export default function HomePage() {
               </section>
             )}
 
-            {/* スマート家電 Section */}
+            {/* スマートホーム Section */}
             {smartHomePosts.length > 0 && (
               <section>
                 <h2 style={{ fontSize: '22px', fontWeight: 700, color: '#0F172A', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#10B981', borderRadius: '50%' }} />
-                  スマート家電
+                  スマートホーム
                   <span style={{ fontSize: '12px', fontWeight: 400, color: '#94A3B8', marginLeft: '4px' }}>({smartHomePosts.length})</span>
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -155,7 +155,7 @@ export default function HomePage() {
           <aside>
             {/* Search box */}
             <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>🔍 記事を検索</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>記事を検索</h3>
               <form action="/search" method="GET">
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '8px 12px', border: '1px solid #E2E8F0', borderRadius: '8px', fontSize: '13px', background: '#F8FAFC' }} />
@@ -166,7 +166,7 @@ export default function HomePage() {
 
             {/* Popular Tags */}
             <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>🏷️ 人気タグ</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>人気タグ</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {popularTags.map(([tag, count]) => (
                   <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#F1F5F9', color: '#475569', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', textDecoration: 'none' }} className="hover:bg-orange-100 hover:text-orange-600 transition-colors">
@@ -178,7 +178,7 @@ export default function HomePage() {
 
             {/* Recent Posts Ranking */}
             <div style={{ background: '#fff', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>📰 最新記事</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '12px' }}>最新記事</h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {allPosts.slice(0, 6).map((post, i) => (
                   <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #F1F5F9' : 'none' }}>

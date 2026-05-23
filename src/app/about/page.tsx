@@ -59,13 +59,12 @@ export default function AboutPage() {
             <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#0F172A', marginBottom: '16px' }}>取り扱い分野</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               {[
-                { icon: '🤖', title: 'AI & Tech', desc: '生成AI、機械学習、チャットボットなど人工知能分野の最新トレンド', color: '#6366F1' },
-                { icon: '🏠', title: 'Smart Home', desc: 'スマートスピーカー、照明、セキュリティカメラなど家庭のIoT化', color: '#10B981' },
-                { icon: '⚡', title: '省エネルギー', desc: 'HEMS、太陽光発電、蓄電池など持続可能な住まいの技術', color: '#F59E0B' },
-                { icon: '🔒', title: 'セキュリティ', desc: 'スマートロック、監視カメラなど家庭の安全を守る技術', color: '#EF4444' },
+                { title: 'AI&テック', desc: '生成AI、機械学習、チャットボットなど人工知能分野の最新トレンド', color: '#6366F1' },
+                { title: 'スマートホーム', desc: 'スマートスピーカー、照明、セキュリティカメラなど家庭のIoT化', color: '#10B981' },
+                { title: '省エネルギー', desc: 'HEMS、太陽光発電、蓄電池など持続可能な住まいの技術', color: '#F59E0B' },
+                { title: 'セキュリティ', desc: 'スマートロック、監視カメラなど家庭の安全を守る技術', color: '#EF4444' },
               ].map((item) => (
                 <div key={item.title} style={{ padding: '16px', background: '#F8FAFC', borderRadius: '10px', borderLeft: `3px solid ${item.color}` }}>
-                  <span style={{ fontSize: '20px', marginRight: '8px' }}>{item.icon}</span>
                   <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#0F172A', marginBottom: '4px' }}>{item.title}</h3>
                   <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>{item.desc}</p>
                 </div>
