@@ -47,8 +47,8 @@ export default function TableOfContents({ content }: { content: string }) {
     <div
       style={{
         background: '#F8FAFC',
-        border: '1px solid #E2E8F0',
-        borderRadius: '12px',
+        border: '1px solid #E7E5E4',
+        borderRadius: '8px',
         padding: '20px 24px',
         marginBottom: '32px',
       }}
@@ -59,17 +59,15 @@ export default function TableOfContents({ content }: { content: string }) {
           alignItems: 'center',
           gap: '8px',
           marginBottom: '14px',
-          paddingBottom: '12px',
-          borderBottom: '1px solid #E2E8F0',
-        }}
-      >
+        paddingBottom: '12px',
+        borderBottom: '1px solid #E7E5E4',
+      }}><span style={{ fontSize: '16px' }}>📋</span>
         <span style={{ fontSize: '16px' }}>📋</span>
         <span
           style={{
             fontSize: '15px',
-            fontWeight: 700,
-            color: '#0F172A',
-            letterSpacing: '-0.01em',
+            fontWeight: 600,
+            color: '#292524',
           }}
         >
           目次
@@ -93,7 +91,7 @@ export default function TableOfContents({ content }: { content: string }) {
                   padding: 0,
                   fontSize: item.level === 'h2' ? '14px' : '13px',
                   fontWeight: item.level === 'h2' ? 600 : 400,
-                  color: item.level === 'h2' ? '#0F172A' : '#475569',
+                  color: item.level === 'h2' ? '#292524' : '#57534E',
                   cursor: 'pointer',
                   textAlign: 'left',
                   lineHeight: 1.5,
@@ -107,7 +105,7 @@ export default function TableOfContents({ content }: { content: string }) {
                     width: '6px',
                     height: '6px',
                     borderRadius: '50%',
-                    background: item.level === 'h2' ? '#E8643A' : '#CBD5E1',
+                    background: item.level === 'h2' ? '#E8643A' : '#A8A29E',
                     marginRight: '10px',
                     flexShrink: 0,
                   }}

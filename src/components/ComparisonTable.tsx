@@ -3,7 +3,7 @@ interface ComparisonProduct {
   name: string;
   price: string;
   size: string;           // New field: サイズ (dimensions)
-  smartphone: string;     // New field: スマホ連携 (e.g., "iOS/Android対応")
+  smartphone: string;     // New field: スマホ連携 (e.g., "iOS/Android 対応")
   prosCons: string[];     // New field: メリット・デメリット (pros/cons list)
   affiliateUrl: string;
 }
@@ -22,8 +22,8 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
         <h3
           style={{
             fontSize: '18px',
-            fontWeight: 700,
-            color: '#0F172A',
+            fontWeight: 600,
+            color: '#292524',
             marginBottom: '16px',
           }}
         >
@@ -54,7 +54,7 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
             <tr
               key={i}
               style={{
-                borderTop: '1px solid #E2E8F0',
+                borderTop: '1px solid #E7E5E4',
                 background: i === 0 ? '#FFFDF5' : '#fff',
               }}
             >
@@ -92,7 +92,7 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
 
               {/* 2. Product Name */}
               <td style={tdStyle}>
-                <span style={{ fontWeight: 600, color: '#0F172A', fontSize: '14px' }}>
+                <span style={{ fontWeight: 600, color: '#292524', fontSize: '14px' }}>
                   {product.name}
                 </span>
               </td>
@@ -106,21 +106,21 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
 
               {/* 4. Size */}
               <td style={tdStyle}>
-                <span style={{ color: '#0F172A', fontSize: '13px', lineHeight: 1.5 }}>
+                <span style={{ color: '#292524', fontSize: '13px', lineHeight: 1.5 }}>
                   {product.size || '-'}
                 </span>
               </td>
 
               {/* 5. Smartphone Connectivity */}
               <td style={tdStyle}>
-                <span style={{ color: '#64748B', fontSize: '13px', lineHeight: 1.5 }}>
+                <span style={{ color: '#57534E', fontSize: '13px', lineHeight: 1.5 }}>
                   {product.smartphone || '-'}
                 </span>
               </td>
 
               {/* 6. Pros/Cons */}
               <td style={tdStyle}>
-                <ul style={{ margin: 0, paddingLeft: '24px', fontSize: '13px', color: '#475569' }}>
+                <ul style={{ margin: 0, paddingLeft: '24px', fontSize: '13px', color: '#57534E' }}>
                   {product.prosCons.map((text, j) => (
                     <li key={j} style={{ marginBottom: '4px', lineHeight: 1.4 }}>
                       {text}
@@ -145,7 +145,6 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
                     borderRadius: '8px',
                     textDecoration: 'none',
                   }}
-                  className="hover:bg-orange-600 transition-colors"
                 >
                   詳細を見る →
                 </a>
@@ -161,8 +160,8 @@ export default function ComparisonTable({ products, title }: ComparisonTableProp
 const thStyle: React.CSSProperties = {
   padding: '12px 16px',
   fontSize: '12px',
-  fontWeight: 700,
-  color: '#475569',
+  fontWeight: 600,
+  color: '#57534E',
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
   textAlign: 'left',
@@ -172,5 +171,5 @@ const tdStyle: React.CSSProperties = {
   padding: '16px',
   verticalAlign: 'top',
   fontSize: '14px',
-  color: '#0F172A',
+  color: '#292524',
 };

@@ -2,8 +2,8 @@
 
 export default function ContactForm() {
   return (
-    <div style={{ background: '#fff', borderRadius: '16px', padding: '40px', border: '1px solid #E2E8F0' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#0F172A', marginBottom: '8px' }}>お問い合わせ</h1>
+    <div style={{ background: '#fff', borderRadius: '8px', padding: '40px', border: '1px solid #E7E5E4' }}>
+      <h1 style={{ fontSize: '28px', fontWeight: 600, color: '#292524', marginBottom: '8px' }}>お問い合わせ</h1>
       <p style={{ fontSize: '15px', color: '#64748B', marginBottom: '32px' }}>取材依頼、広告掲載、コンテンツに関するご質問など、お気軽にご連絡ください。</p>
 
       <form action="/api/contact" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
