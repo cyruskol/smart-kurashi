@@ -50,7 +50,6 @@ export default function HomePage() {
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#78716C' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                {featuredPost.source && <span>• {featuredPost.source}</span>}
               </div>
               <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#C2703E', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
                 続きを読む →

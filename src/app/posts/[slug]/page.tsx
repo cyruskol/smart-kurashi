@@ -160,9 +160,6 @@ export default async function PostPage({ params }: PageProps) {
                   {categoryLabel}
                 </span>
                 <time style={{ fontSize: '13px', color: '#78716C' }}>{formattedDate}</time>
-                {post.source && (
-                  <span style={{ fontSize: '13px', color: '#78716C' }}>• {post.source}</span>
-                )}
               </div>
               <h1
                 style={{
