@@ -12,8 +12,8 @@ const config: Config = {
         // Brand - Japandi warm tones
         primary: '#FAFAF9',
         'primary-hover': '#EBE8E6',
-        accent: '#C2703E',
-        'accent-hover': '#A86236',
+        accent: '#A9582D',
+        'accent-hover': '#8F4A24',
         'accent-light': '#F5F0EB',
         
         // Category colors - WCAG AA compliant (4.5:1+ on light bg)

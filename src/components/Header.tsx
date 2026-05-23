@@ -29,7 +29,7 @@ export default function Header() {
           <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm">
-              <div style={{ width: '28px', height: '28px', background: '#C2703E', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
+              <div style={{ width: '28px', height: '28px', background: '#A9582D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
                 <span style={{ color: '#fff', fontWeight: 600, fontSize: '12px' }}>SK</span>
               </div>
               <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
@@ -52,7 +52,7 @@ export default function Header() {
                         ? (hasColor ? '#F5F0EB' : '#EDF2EE')
                         : 'transparent',
                       color: isActive
-                        ? (hasColor ? item.color : '#C2703E')
+                        ? (hasColor ? item.color : '#A9582D')
                         : '#4A433F',
                     }}
                     aria-current={isActive ? 'page' : undefined}
@@ -93,7 +93,7 @@ export default function Header() {
                         className="block py-2 px-4 rounded-lg text-sm font-medium"
                         style={{
                           background: isActive ? '#F5F0EB' : 'transparent',
-                          color: isActive ? '#C2703E' : '#4A433F',
+                          color: isActive ? '#A9582D' : '#4A433F',
                         }}
                         onClick={() => setMobileOpen(false)}
                       >

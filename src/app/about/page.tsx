@@ -19,7 +19,7 @@ export default function AboutPage() {
 
         <div style={{ background: '#fff', borderRadius: '8px', padding: '48px', border: '1px solid #E7E5E4' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <div style={{ width: '64px', height: '64px', background: '#C2703E', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+            <div style={{ width: '64px', height: '64px', background: '#A9582D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
               <span style={{ color: '#fff', fontWeight: 600, fontSize: '24px' }}>SK</span>
             </div>
             <h1 style={{ fontSize: '32px', fontWeight: 600, color: '#292524', letterSpacing: '', marginBottom: '8px' }}>Smart Kurashi</h1>

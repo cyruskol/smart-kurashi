@@ -38,7 +38,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
             <div style={{ background: '#fff', borderRadius: '8px', padding: '24px', marginBottom: '24px', border: '1px solid #E7E5E4' }}>
               <form action="/search" method="GET" style={{ display: 'flex', gap: '12px' }}>
                 <input type="search" name="q" defaultValue={q || ''} placeholder="キーワードを入力..." style={{ flex: 1, padding: '12px 16px', border: '1px solid #E7E5E4', borderRadius: '8px', fontSize: '15px', background: '#FAFAF9' }} className="focus:outline-none" />
-                <button type="submit" style={{ padding: '12px 24px', background: '#C2703E', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
+                <button type="submit" style={{ padding: '12px 24px', background: '#A9582D', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
               </form>
             </div>
 
@@ -84,7 +84,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
               <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>タグで検索</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {allTags.map(([tag, count]) => (
-                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#C2703E' : '#F5F0EB', color: q === tag ? '#fff' : '#4A433F', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
+                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: q === tag ? '#A9582D' : '#F5F0EB', color: q === tag ? '#fff' : '#4A433F', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
                     {tag} <span style={{ opacity: 0.7, fontSize: '10px' }}>({count})</span>
                   </Link>
                 ))}

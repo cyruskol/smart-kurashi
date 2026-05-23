@@ -37,7 +37,7 @@ export default function HomePage() {
           
           <div className="max-w-container mx-auto px-md" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '720px' }}>
-              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#C2703E', color: '#fff', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16' }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#A9582D', color: '#fff', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16' }}>
                 注目記事
               </span>
               <h1 style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '16px' }}>
@@ -51,7 +51,7 @@ export default function HomePage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#5A534E' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
-              <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#C2703E', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
+              <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#A9582D', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
                 続きを読む →
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
             <section style={{ marginBottom: '48px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#292524', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#C2703E', borderRadius: '50%' }} />
+                  <span style={{ width: '8px', height: '8px', background: '#A9582D', borderRadius: '50%' }} />
                   最新記事
                 </h2>
               </div>
@@ -156,7 +156,7 @@ export default function HomePage() {
               <form action="/search" method="GET">
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '8px 12px', border: '1px solid #E7E5E4', borderRadius: '8px', fontSize: '13px', background: '#FAFAF9' }} />
-                  <button type="submit" style={{ padding: '8px 16px', background: '#C2703E', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
+                  <button type="submit" style={{ padding: '8px 16px', background: '#A9582D', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
                 </div>
               </form>
             </div>
@@ -180,7 +180,7 @@ export default function HomePage() {
                 {allPosts.slice(0, 6).map((post, i) => (
                   <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #E7E5E4' : 'none' }}>
                     <Link href={`/posts/${post.slug}`} style={{ display: 'flex', gap: '10px', textDecoration: 'none', alignItems: 'flex-start' }}>
-                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#C2703E' : '#F5F0EB', color: i < 3 ? '#fff' : '#5A534E', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 600, flexShrink: 0 }}>
+                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#A9582D' : '#F5F0EB', color: i < 3 ? '#fff' : '#5A534E', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 600, flexShrink: 0 }}>
                         {i + 1}
                       </span>
                       <div style={{ minWidth: 0 }}>
@@ -194,12 +194,12 @@ export default function HomePage() {
             </div>
 
             {/* About CTA */}
-            <div style={{ background: '#C2703E', borderRadius: '8px', padding: '24px', color: '#fff' }}>
+            <div style={{ background: '#A9582D', borderRadius: '8px', padding: '24px', color: '#fff' }}>
               <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>Smart Kurashi</h3>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, marginBottom: '16px' }}>
                 スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
               </p>
-              <Link href="/about" style={{ display: 'inline-block', padding: '8px 16px', background: '#fff', color: '#C2703E', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
+              <Link href="/about" style={{ display: 'inline-block', padding: '8px 16px', background: '#fff', color: '#A9582D', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
             </div>
           </aside>
         </div>

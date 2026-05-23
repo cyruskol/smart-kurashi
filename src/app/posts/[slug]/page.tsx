@@ -17,7 +17,7 @@ interface PageProps {
 const categoryColors: Record<string, { bg: string; text: string }> = {
   'ai-tech': { bg: '#EEF2FF', text: '#4338CA' },
   'smart-home': { bg: '#ECFDF5', text: '#047857' },
-  'article': { bg: '#FFF4F0', text: '#C2703E' },
+  'article': { bg: '#FFF4F0', text: '#A9582D' },
 };
 
 const categoryLabels: Record<string, string> = {
@@ -350,7 +350,7 @@ export default async function PostPage({ params }: PageProps) {
             {/* Back to top */}
             <div
               style={{
-                background: '#C2703E',
+                background: '#A9582D',
                 borderRadius: '8px',
                 padding: '24px',
                 color: '#fff',
@@ -366,7 +366,7 @@ export default async function PostPage({ params }: PageProps) {
                   display: 'inline-block',
                   padding: '10px 20px',
                   background: '#FFFFFF',
-                  color: '#C2703E',
+                  color: '#A9582D',
                   fontWeight: 600,
                   borderRadius: '8px',
                   fontSize: '13px',
