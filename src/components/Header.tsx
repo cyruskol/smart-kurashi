@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 const navItems = [
   { href: '/', label: 'ALL' },
   { href: '/category/ai-tech', label: 'AI&Tech' },
-  { href: '/category/smart-home', label: '家電' },
+  { href: '/category/smart-home', label: 'Appliances & Gadgets' },
 ];
 
 export default function Header() {
