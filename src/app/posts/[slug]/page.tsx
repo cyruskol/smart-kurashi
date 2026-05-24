@@ -6,7 +6,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import PrBanner from '@/components/PRBanner';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
 
@@ -177,9 +176,6 @@ export default async function PostPage({ params }: PageProps) {
                 {post.excerpt}
               </p>
             </header>
-
-            {/* PR Banner — right below H1 */}
-            <PrBanner />
 
             <hr
               style={{ border: 'none', borderTop: '1px solid #E7E5E4', margin: '0 0 24px 0' }}
