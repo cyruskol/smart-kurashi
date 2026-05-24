@@ -41,24 +41,36 @@ export default function HomePage() {
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
           <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
 
-            <div style={{ maxWidth: '860px' }}>
-              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
-                注目記事
-              </span>
-              <h1 style={{ fontSize: 'clamp(24px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
-                <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
-                  {featuredPost.title}
+            <div
+              style={{
+                maxWidth: '980px',
+                borderRadius: '12px',
+                border: '1px solid #DDD8D1',
+                overflow: 'hidden',
+                backgroundImage: "linear-gradient(to right, rgba(247,245,242,0.94) 0%, rgba(247,245,242,0.88) 48%, rgba(247,245,242,0.72) 100%), url('/hero-workspace.jpg')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <div style={{ padding: '24px 24px 26px 24px', maxWidth: '760px' }}>
+                <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
+                  注目記事
+                </span>
+                <h1 style={{ fontSize: 'clamp(24px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
+                  <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
+                    {featuredPost.title}
+                  </Link>
+                </h1>
+                <p style={{ fontSize: '18px', color: '#57514C', lineHeight: 1.65, marginBottom: '20px' }}>
+                  {featuredPost.excerpt}
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
+                  <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                </div>
+                <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '16px', padding: '10px 18px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>
+                  続きを読む →
                 </Link>
-              </h1>
-              <p style={{ fontSize: '18px', color: '#57514C', lineHeight: 1.65, marginBottom: '20px' }}>
-                {featuredPost.excerpt}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
-                <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
-              <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '16px', padding: '10px 18px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>
-                続きを読む →
-              </Link>
             </div>
 
             <nav aria-label="トップカテゴリ" style={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex', gap: '11px', flexWrap: 'wrap' }}>
