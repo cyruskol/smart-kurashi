@@ -1,7 +1,7 @@
 import { getAllPosts, getPostsByCategory } from '@/lib/posts';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
-import PrBanner from '@/components/PRBanner';
 
 export const metadata: {
   title: string;
@@ -16,6 +16,12 @@ const categoryColors: Record<string, { bg: string; text: string; dot: string }> 
   'smart-home': { bg: '#E7EFEA', text: '#4F6F5D', dot: '#4F6F5D' },
   'article': { bg: '#EFE8DD', text: '#6D6254', dot: '#6D6254' },
 };
+
+const heroButtons = [
+  { href: '/', label: 'すべて' },
+  { href: '/category/ai-tech', label: 'AI・テック' },
+  { href: '/category/smart-home', label: '家電・ガジェット' },
+];
 
 export default function HomePage() {
   const allPosts = getAllPosts();
@@ -34,35 +40,43 @@ export default function HomePage() {
       {/* ===== HERO SECTION ===== */}
       {featuredPost && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
-          
-          <div className="max-w-container mx-auto px-md" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
-            <div style={{ maxWidth: '720px' }}>
-              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16' }}>
+          <div className="max-w-container mx-auto px-md" style={{ minHeight: '72vh', padding: '56px 0 42px 0', position: 'relative', zIndex: 1 }}>
+            <div style={{ marginBottom: '26px' }}>
+              <Link href="/" aria-label="Smart Kurashi ホーム">
+                <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
+              </Link>
+            </div>
+
+            <div style={{ maxWidth: '860px' }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
                 注目記事
               </span>
-              <h1 style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '16px' }}>
+              <h1 style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '16px' }}>
                 <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
                   {featuredPost.title}
                 </Link>
               </h1>
-              <p style={{ fontSize: '18px', color: '#57514C', lineHeight: 1.7, marginBottom: '24px' }}>
+              <p style={{ fontSize: '20px', color: '#57514C', lineHeight: 1.7, marginBottom: '24px' }}>
                 {featuredPost.excerpt}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
-              <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
-                続きを読む →
-              </Link>
             </div>
+
+            <nav aria-label="トップカテゴリ" style={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex', gap: '11px', flexWrap: 'wrap' }}>
+              {heroButtons.map((btn) => (
+                <Link key={btn.href} href={btn.href} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', padding: '7px 14px', borderRadius: '8px', fontSize: '13px', color: '#57514C', textDecoration: 'none', fontWeight: 500 }}>
+                  {btn.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </section>
       )}
 
       {/* ===== MAIN CONTENT + SIDEBAR ===== */}
       <div className="max-w-container mx-auto px-md" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
-        {/* PR Banner */}
-        <PrBanner />
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
           

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_JP, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import './globals.css';
 
@@ -208,7 +207,6 @@ export default function RootLayout({
         >
           コンテンツへスキップ
         </a>
-        <Header />
         <div id="main-content">{children}</div>
         <Footer />
       </body>
