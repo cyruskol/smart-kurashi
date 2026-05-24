@@ -40,7 +40,7 @@ export default function HomePage() {
       {/* ===== HERO SECTION ===== */}
       {featuredPost && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
-          <div className="max-w-container mx-auto px-md" style={{ minHeight: '72vh', padding: '56px 0 42px 0', position: 'relative', zIndex: 1 }}>
+          <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '40px 0 110px 0', position: 'relative', zIndex: 1 }}>
             <div style={{ marginBottom: '26px' }}>
               <Link href="/" aria-label="Smart Kurashi ホーム">
                 <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
@@ -51,12 +51,12 @@ export default function HomePage() {
               <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
                 注目記事
               </span>
-              <h1 style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '16px' }}>
+              <h1 style={{ fontSize: 'clamp(24px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
                 <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
                   {featuredPost.title}
                 </Link>
               </h1>
-              <p style={{ fontSize: '20px', color: '#57514C', lineHeight: 1.7, marginBottom: '24px' }}>
+              <p style={{ fontSize: '18px', color: '#57514C', lineHeight: 1.65, marginBottom: '20px' }}>
                 {featuredPost.excerpt}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
