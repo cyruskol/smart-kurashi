@@ -40,8 +40,8 @@ export default function HomePage() {
       {/* ===== HERO SECTION ===== */}
       {featuredPost && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
-          <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '40px 0 110px 0', position: 'relative', zIndex: 1 }}>
-            <div style={{ marginBottom: '26px' }}>
+          <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
+            <div style={{ marginBottom: '20px' }}>
               <Link href="/" aria-label="Smart Kurashi ホーム">
                 <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
               </Link>
