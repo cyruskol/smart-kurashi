@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'ALL' },
-  { href: '/category/ai-tech', label: 'AI&Tech', color: '#5B5246' },
-  { href: '/category/smart-home', label: 'Appliances & Gadgets', color: '#4F6F5D' },
+  { href: '/category/ai-tech', label: 'AI&Tech' },
+  { href: '/category/smart-home', label: '家電' },
 ];
 
 export default function Header() {
@@ -47,19 +47,15 @@ export default function Header() {
             <nav className="hidden md:flex items-center gap-xs" aria-label="メインナビゲーション">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
-                const hasColor = !!item.color;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="px-4 py-2 rounded-lg text-sm font-medium"
+                    className="px-4 py-2 rounded-lg text-sm font-medium border"
                     style={{
-                      background: isActive
-                        ? (hasColor ? '#EFE8DD' : '#E7EFEA')
-                        : 'transparent',
-                      color: isActive
-                        ? (hasColor ? item.color : '#4F6F5D')
-                        : '#57514C',
+                      background: 'transparent',
+                      borderColor: isActive ? '#A9A39B' : '#DDD8D1',
+                      color: isActive ? '#57514C' : '#726B65',
                     }}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -96,10 +92,11 @@ export default function Header() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block py-2 px-4 rounded-lg text-sm font-medium"
+                        className="block py-2 px-4 rounded-lg text-sm font-medium border"
                         style={{
-                          background: isActive ? '#EFE8DD' : 'transparent',
-                          color: isActive ? '#4F6F5D' : '#57514C',
+                          background: 'transparent',
+                          borderColor: isActive ? '#A9A39B' : '#DDD8D1',
+                          color: isActive ? '#57514C' : '#726B65',
                         }}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -114,19 +111,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Category sub-nav bar — desktop only */}
-      <div className="hidden md:block" style={{ background: '#FAFAF9', borderBottom: '1px solid #E7E5E4' }}>
-        <div className="max-w-container mx-auto px-md">
-          <div className="flex items-center gap-sm py-2">
-            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EFE8DD', color: '#6D6254' }}>
-              AI&Tech
-            </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#E7EFEA', color: '#4F6F5D' }}>
-              Appliances &amp; Gadgets
-            </Link>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
