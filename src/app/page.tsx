@@ -1,6 +1,5 @@
 import { getAllPosts, getPostsByCategory } from '@/lib/posts';
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: {
@@ -41,11 +40,6 @@ export default function HomePage() {
       {featuredPost && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
           <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
-            <div style={{ marginTop: '-18px', marginBottom: '14px' }}>
-              <Link href="/" aria-label="Smart Kurashi ホーム">
-                <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
-              </Link>
-            </div>
 
             <div style={{ maxWidth: '860px' }}>
               <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
@@ -62,6 +56,9 @@ export default function HomePage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
+              <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '16px', padding: '10px 18px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>
+                続きを読む →
+              </Link>
             </div>
 
             <nav aria-label="トップカテゴリ" style={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex', gap: '11px', flexWrap: 'wrap' }}>

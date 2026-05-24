@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Noto_Sans_JP, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import Footer from '@/components/Footer';
@@ -207,6 +209,9 @@ export default function RootLayout({
         >
           コンテンツへスキップ
         </a>
+        <Link href="/" aria-label="Smart Kurashi ホーム" style={{ position: 'fixed', top: '0', left: '16px', zIndex: 120 }}>
+          <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
+        </Link>
         <div id="main-content">{children}</div>
         <Footer />
       </body>
