@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { href: '/', label: 'ホーム' },
-  { href: '/category/ai-tech', label: 'AI&テック', color: '#5C4A32' },
-  { href: '/category/smart-home', label: 'スマートホーム', color: '#2C4D38' },
+  { href: '/', label: 'ALL' },
+  { href: '/category/ai-tech', label: 'AI&Tech', color: '#5C4A32' },
+  { href: '/category/smart-home', label: 'Appliances & Gadgets', color: '#2C4D38' },
 ];
 
 export default function Header() {
@@ -29,9 +30,14 @@ export default function Header() {
           <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm">
-              <div style={{ width: '28px', height: '28px', background: '#A9582D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-hidden="true">
-                <span style={{ color: '#fff', fontWeight: 600, fontSize: '12px' }}>SK</span>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Smart Kurashi"
+                width={32}
+                height={32}
+                style={{ borderRadius: '8px' }}
+                priority
+              />
               <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
                 Smart Kurashi
               </span>
@@ -113,10 +119,10 @@ export default function Header() {
         <div className="max-w-container mx-auto px-md">
           <div className="flex items-center gap-sm py-2">
             <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#F5F0EB', color: '#7A6548' }}>
-              AI&テック
+              AI&Tech
             </Link>
             <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EDF2EE', color: '#2C4D38' }}>
-              スマートホーム
+              Appliances &amp; Gadgets
             </Link>
           </div>
         </div>

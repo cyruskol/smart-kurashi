@@ -113,8 +113,7 @@ export default function HomePage() {
               <section style={{ marginBottom: '48px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#292524', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#5C4A32', borderRadius: '50%' }} />
-                  AI&テック
-                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#5A534E', marginLeft: '4px' }}>{aiPosts.length})</span>
+                  AI&Tech
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   {aiPosts.map((post) => (
@@ -132,8 +131,7 @@ export default function HomePage() {
               <section>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#292524', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#2C4D38', borderRadius: '50%' }} />
-                  スマートホーム
-                  <span style={{ fontSize: '12px', fontWeight: 400, color: '#5A534E', marginLeft: '4px' }}>{smartHomePosts.length})</span>
+                  Appliances &amp; Gadgets
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   {smartHomePosts.map((post) => (
@@ -173,16 +171,13 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Recent Posts Ranking */}
+            {/* Recent Posts */}
             <div style={{ background: '#fff', border: '1px solid #E7E5E4', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '12px' }}>最新記事</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#292524', marginBottom: '12px' }}>最新記事</h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {allPosts.slice(0, 6).map((post, i) => (
                   <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #E7E5E4' : 'none' }}>
-                    <Link href={`/posts/${post.slug}`} style={{ display: 'flex', gap: '10px', textDecoration: 'none', alignItems: 'flex-start' }}>
-                      <span style={{ width: '24px', height: '24px', background: i < 3 ? '#A9582D' : '#F5F0EB', color: i < 3 ? '#fff' : '#5A534E', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 600, flexShrink: 0 }}>
-                        {i + 1}
-                      </span>
+                    <Link href={`/posts/${post.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
                       <div style={{ minWidth: 0 }}>
                         <h4 style={{ fontSize: '13px', fontWeight: 500, color: '#292524', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.title}</h4>
                         <time style={{ fontSize: '11px', color: '#5A534E', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
