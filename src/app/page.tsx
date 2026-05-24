@@ -41,7 +41,7 @@ export default function HomePage() {
       {featuredPost && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
           <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
-            <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginTop: '-18px', marginBottom: '14px' }}>
               <Link href="/" aria-label="Smart Kurashi ホーム">
                 <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
               </Link>
