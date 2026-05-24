@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'ALL' },
-  { href: '/category/ai-tech', label: 'AI&Tech', color: '#5C4A32' },
-  { href: '/category/smart-home', label: 'Appliances & Gadgets', color: '#2C4D38' },
+  { href: '/category/ai-tech', label: 'AI&Tech', color: '#5B5246' },
+  { href: '/category/smart-home', label: 'Appliances & Gadgets', color: '#4F6F5D' },
 ];
 
 export default function Header() {
@@ -55,11 +55,11 @@ export default function Header() {
                     className="px-4 py-2 rounded-lg text-sm font-medium"
                     style={{
                       background: isActive
-                        ? (hasColor ? '#F5F0EB' : '#EDF2EE')
+                        ? (hasColor ? '#EFE8DD' : '#E7EFEA')
                         : 'transparent',
                       color: isActive
-                        ? (hasColor ? item.color : '#A9582D')
-                        : '#4A433F',
+                        ? (hasColor ? item.color : '#4F6F5D')
+                        : '#57514C',
                     }}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -98,8 +98,8 @@ export default function Header() {
                         href={item.href}
                         className="block py-2 px-4 rounded-lg text-sm font-medium"
                         style={{
-                          background: isActive ? '#F5F0EB' : 'transparent',
-                          color: isActive ? '#A9582D' : '#4A433F',
+                          background: isActive ? '#EFE8DD' : 'transparent',
+                          color: isActive ? '#4F6F5D' : '#57514C',
                         }}
                         onClick={() => setMobileOpen(false)}
                       >
@@ -118,10 +118,10 @@ export default function Header() {
       <div className="hidden md:block" style={{ background: '#FAFAF9', borderBottom: '1px solid #E7E5E4' }}>
         <div className="max-w-container mx-auto px-md">
           <div className="flex items-center gap-sm py-2">
-            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#F5F0EB', color: '#7A6548' }}>
+            <Link href="/category/ai-tech" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EFE8DD', color: '#6D6254' }}>
               AI&Tech
             </Link>
-            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#EDF2EE', color: '#2C4D38' }}>
+            <Link href="/category/smart-home" className="px-3 py-1.5 text-xs font-semibold transition-colors" style={{ borderRadius: '8px', background: '#E7EFEA', color: '#4F6F5D' }}>
               Appliances &amp; Gadgets
             </Link>
           </div>

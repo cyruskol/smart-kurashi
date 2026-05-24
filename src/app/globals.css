@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #FAFAF9;
-  --color-accent: #A9582D;
-  --color-accent-hover: #8F4A24;
-  --color-neutral: #FAFAF9;
-  --color-surface: #FFFFFF;
-  --color-text: #292524;
-  --color-text-secondary: #4A433F;
-  --color-text-muted: #5A534E;
-  --color-border: #E7E5E4;
+  --color-primary: #F7F5F2;
+  --color-accent: #4F6F5D;
+  --color-accent-hover: #425D4F;
+  --color-neutral: #F7F5F2;
+  --color-surface: #FCFBF9;
+  --color-text: #3F3A36;
+  --color-text-secondary: #57514C;
+  --color-text-muted: #726B65;
+  --color-border: #DDD8D1;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,10 +24,15 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-noto-sans-jp), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
   color: var(--color-text);
   background-color: var(--color-neutral);
   line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-playfair), 'Noto Sans JP', serif;
+  letter-spacing: -0.01em;
 }
 
 a { color: inherit; text-decoration: none; }
