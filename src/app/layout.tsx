@@ -212,7 +212,7 @@ export default function RootLayout({
         <Link href="/" aria-label="Smart Kurashi ホーム" style={{ position: 'fixed', top: '0', left: '16px', zIndex: 120 }}>
           <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
         </Link>
-        <div id="main-content">{children}</div>
+        <div id="main-content" style={{ paddingTop: '120px' }}>{children}</div>
         <Footer />
       </body>
     </html>
