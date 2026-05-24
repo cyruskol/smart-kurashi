@@ -37,7 +37,7 @@ export default function HomePage() {
           
           <div className="max-w-container mx-auto px-md" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
             <div style={{ maxWidth: '720px' }}>
-              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#4F6F5D', color: '#fff', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16' }}>
+              <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16' }}>
                 注目記事
               </span>
               <h1 style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', fontWeight: 600, lineHeight: 1.1, marginBottom: '16px' }}>
@@ -51,7 +51,7 @@ export default function HomePage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
                 <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
               </div>
-              <Link href={`/posts/${featuredPost.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', background: '#4F6F5D', color: '#fff', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
+              <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '24px', padding: '12px 24px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '14px', textDecoration: 'none' }}>
                 続きを読む →
               </Link>
             </div>
@@ -72,7 +72,7 @@ export default function HomePage() {
             <section style={{ marginBottom: '48px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#4F6F5D', borderRadius: '50%' }} />
+                  <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
                   最新記事
                 </h2>
               </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
             {smartHomePosts.length > 0 && (
               <section>
                 <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#4F6F5D', borderRadius: '50%' }} />
+                  <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
                   Appliances &amp; Gadgets
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
@@ -154,7 +154,7 @@ export default function HomePage() {
               <form action="/search" method="GET">
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '8px 12px', border: '1px solid #DDD8D1', borderRadius: '8px', fontSize: '13px', background: '#F7F5F2' }} />
-                  <button type="submit" style={{ padding: '8px 16px', background: '#4F6F5D', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
+                  <button type="submit" className="japandi-btn" style={{ padding: '8px 16px', color: '#57514C', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
                 </div>
               </form>
             </div>
@@ -189,12 +189,12 @@ export default function HomePage() {
             </div>
 
             {/* About CTA */}
-            <div style={{ background: '#4F6F5D', borderRadius: '8px', padding: '24px', color: '#fff' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>Smart Kurashi</h3>
-              <p style={{ fontSize: '13px', color: '#FFFFFF', lineHeight: 1.6, marginBottom: '16px' }}>
+            <div style={{ background: '#EEEAE4', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '24px', color: '#57514C' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: '#57514C' }}>Smart Kurashi</h3>
+              <p style={{ fontSize: '13px', color: '#726B65', lineHeight: 1.6, marginBottom: '16px' }}>
                 スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
               </p>
-              <Link href="/about" style={{ display: 'inline-block', padding: '8px 16px', background: '#fff', color: '#4F6F5D', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
+              <Link href="/about" className="japandi-btn" style={{ display: 'inline-block', padding: '8px 16px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
             </div>
           </aside>
         </div>
