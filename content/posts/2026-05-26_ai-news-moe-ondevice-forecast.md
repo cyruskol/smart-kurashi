@@ -73,13 +73,10 @@ APPI改正やEUのAI法の影響で、個人情報を含むデータの外部送
 
 最新AIニュースは単なるモデルサイズ競争ではなく、MoE・推論モデル・スパースアテンション・オンデバイスAIによる効率革命へと進化している。日本市場では電力コストの高騰、狭小住宅・オフィスへの適合性、プライバシー保護の要請から、クラウド依存型AIからローカル/エッジ型AIへ移行する流れが加速している。方法論としてMoEによる計算リソースの最適化、推論モデルによるステップバイステップ処理精度向上、スパースアテンションによるコンテキストウィンドウ拡大、オンデバイスAIによるデータローカライゼーションを実現すれば、ランニングコスト削減と業務生産性向上を同時に達成できる。企業は短期でファインチューニングパイプラインを整備し、中期でハイブリッドアーキテクチャへ移行、長期で端末内推論標準化を進めることで競争優位を確保できる。AIは単なるツールではなく、電力・スペース・プライバシーの制約下で最適化されるインフラへと変貌しつつある。
 
-## 8. 参考文献
+## 8. 出典（短縮表記）
 
-1. https://www.anthropic.com/news/claude-3-5-sonnet
-2. https://www.anthropic.com/news/claude-3-7-sonnet
-3. https://blog.google/innovation-and-ai/products/google-gemini-next-generation-model-february-2024/
-4. https://ai.meta.com/blog/meta-llama-3/
-5. https://arxiv.org/abs/2403.05530
-6. https://arxiv.org/abs/2407.21783
-7. https://arxiv.org/abs/2401.04088
-8. https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/
+- [Anthropic]
+- [Google]
+- [Meta]
+- [Apple]
+- [arXiv, 2024]
