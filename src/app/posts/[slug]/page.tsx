@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
@@ -114,10 +113,8 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
-      <Script
-        id="jsonld-article"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
       />
 

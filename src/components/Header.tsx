@@ -1,8 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'すべて' },
@@ -11,11 +7,8 @@ const navItems = [
 ];
 
 export default function Header() {
-  const pathname = usePathname();
-
   return (
     <>
-      {/* Main header */}
       <header
         style={{
           position: 'static',
@@ -28,44 +21,37 @@ export default function Header() {
           <div className="flex items-center justify-between" style={{ height: '56px' }}>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-sm">
-              <Image
+              <img
                 src="/logo.png"
                 alt="Smart Kurashi"
                 width={32}
                 height={32}
-                style={{ borderRadius: '8px' }}
-                priority
+                style={{ borderRadius: '8px', height: 'auto' }}
               />
               <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
                 Smart Kurashi
               </span>
             </Link>
 
-            {/* Category Buttons (always visible) */}
+            {/* Category Buttons — rendered server-side, active state via CSS */}
             <nav className="flex items-center flex-wrap justify-end" style={{ gap: '11px' }} aria-label="メインナビゲーション">
-              {navItems.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="japandi-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border"
-                    style={{
-                      borderColor: isActive ? '#A9A39B' : '#DDD8D1',
-                      color: isActive ? '#57514C' : '#726B65',
-                    }}
-                    aria-current={isActive ? 'page' : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="japandi-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border"
+                  style={{
+                    borderColor: '#DDD8D1',
+                    color: '#726B65',
+                  }}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </div>
-
         </div>
       </header>
-
     </>
   );
 }

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Noto_Sans_JP, Playfair_Display } from 'next/font/google';
-import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import Footer from '@/components/Footer';
 import './globals.css';
 
@@ -29,16 +28,8 @@ export const metadata: Metadata = {
   description:
     'スマートホーム、IoT機器、AI家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
   keywords: [
-    'スマートホーム',
-    'AI家電',
-    'IoT',
-    '人工知能',
-    '家電レビュー',
-    'テクノロジーニュース',
-    'HEMS',
-    '音声アシスタント',
-    '省エネ',
-    'IoT機器',
+    'スマートホーム', 'AI家電', 'IoT', '人工知能', '家電レビュー',
+    'テクノロジーニュース', 'HEMS', '音声アシスタント', '省エネ', 'IoT機器',
   ],
   authors: [{ name: 'Smart Kurashi' }],
   creator: 'Smart Kurashi',
@@ -122,48 +113,13 @@ const jsonLdItemList = {
   '@type': 'ItemList',
   name: 'Smart Kurashi メニュー',
   itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'ホーム',
-      url: 'https://smart-kurashi.jp/',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'AI & Tech',
-      url: 'https://smart-kurashi.jp/category/ai-tech',
-    },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'Smart Home',
-      url: 'https://smart-kurashi.jp/category/smart-home',
-    },
-    {
-      '@type': 'ListItem',
-      position: 4,
-      name: '会社概要',
-      url: 'https://smart-kurashi.jp/about',
-    },
-    {
-      '@type': 'ListItem',
-      position: 5,
-      name: 'お問い合わせ',
-      url: 'https://smart-kurashi.jp/contact',
-    },
-    {
-      '@type': 'ListItem',
-      position: 6,
-      name: 'プライバシーポリシー',
-      url: 'https://smart-kurashi.jp/privacy',
-    },
-    {
-      '@type': 'ListItem',
-      position: 7,
-      name: '利用規約',
-      url: 'https://smart-kurashi.jp/terms',
-    },
+    { '@type': 'ListItem', position: 1, name: 'ホーム', url: 'https://smart-kurashi.jp/' },
+    { '@type': 'ListItem', position: 2, name: 'AI & Tech', url: 'https://smart-kurashi.jp/category/ai-tech' },
+    { '@type': 'ListItem', position: 3, name: 'Smart Home', url: 'https://smart-kurashi.jp/category/smart-home' },
+    { '@type': 'ListItem', position: 4, name: '会社概要', url: 'https://smart-kurashi.jp/about' },
+    { '@type': 'ListItem', position: 5, name: 'お問い合わせ', url: 'https://smart-kurashi.jp/contact' },
+    { '@type': 'ListItem', position: 6, name: 'プライバシーポリシー', url: 'https://smart-kurashi.jp/privacy' },
+    { '@type': 'ListItem', position: 7, name: '利用規約', url: 'https://smart-kurashi.jp/terms' },
   ],
 };
 
@@ -177,29 +133,17 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <Script
-          id="jsonld-website"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdWebSite),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
-        <Script
-          id="jsonld-organization"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdOrganization),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
         />
-        <Script
-          id="jsonld-itemlist"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdItemList),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdItemList) }}
         />
       </head>
       <body>
@@ -211,10 +155,11 @@ export default function RootLayout({
         </a>
         <div style={{ padding: '0 16px' }}>
           <Link href="/" aria-label="Smart Kurashi ホーム" style={{ display: 'inline-block' }}>
-            <Image src="/logo.png" alt="Smart Kurashi" width={128} height={128} priority />
+            <img src="/logo.png" alt="Smart Kurashi" width={128} height={128} style={{ height: 'auto' }} />
           </Link>
         </div>
         <div id="main-content">{children}</div>
+        <Analytics />
         <Footer />
       </body>
     </html>

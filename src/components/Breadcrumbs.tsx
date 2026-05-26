@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Script from 'next/script';
 
 interface BreadcrumbItem {
   label: string;
@@ -24,10 +23,8 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
 
   return (
     <>
-      <Script
-        id="jsonld-breadcrumb"
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav aria-label="パンくずリスト" style={{ marginBottom: '24px', paddingTop: '8px' }}>

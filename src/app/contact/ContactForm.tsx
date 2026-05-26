@@ -1,5 +1,3 @@
-'use client';
-
 export default function ContactForm() {
   return (
     <div style={{ background: '#fff', borderRadius: '8px', padding: '40px', border: '1px solid #E7E5E4' }}>
