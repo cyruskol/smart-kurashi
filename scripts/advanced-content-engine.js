@@ -476,6 +476,7 @@ const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）�
 1.「日本にとっての意味は？」：すべての記事で、日本語読者にとっての具体的な影響を説明してください。製品の日本での入手可能性、日本の住宅事情にどう適合するか、電気代への影響、日本企業や規制への影響など。
 2.「統合」：複数のソースから情報を引き出し、比較・対照してください。単一ソースの翻訳にならないように。
 3. 出力はYAMLフロントマター付きのMDX形式で。
+4. カテゴリーは ai-tech または smart-home のみ。それ以外のカテゴリー（science, article, news 等）は禁止。ai-tech = AI/テクノロジー系の話題、smart-home = 家電・スマートホーム系の話題。
 
 ## 出力形式
 最初にYAMLフロントマター（title, date, categories, tags）、次に本文、最後に「編集部の視点」セクション。すべて日本語。`;
@@ -574,13 +575,22 @@ function sleep(ms) {
  * Returns true if valid (Japanese-only), false if English detected.
  */
 function validateJapaneseOnly(content) {
-  // Check categories - must not contain English words
+  // Check categories - must be only ai-tech or smart-home
   const catMatch = content.match(/categories:\s*\[([^\]]+)\]/);
   if (catMatch) {
     const cats = catMatch[1];
     if (/[a-zA-Z]{2,}/.test(cats)) {
       console.warn('[VALIDATE] REJECTED: categories contain English:', cats.slice(0, 80));
       return false;
+    }
+    // Also check for forbidden category values (science, article, news)
+    const catValues = cats.match(/["']([^"']+)["']/g) || [];
+    for (const cv of catValues) {
+      const val = cv.replace(/["']/g, '').trim().toLowerCase();
+      if (val !== 'ai-tech' && val !== 'smart-home') {
+        console.warn('[VALIDATE] REJECTED: invalid category "' + val + '". Only ai-tech or smart-home allowed.');
+        return false;
+      }
     }
   }
 
