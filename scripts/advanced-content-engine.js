@@ -466,13 +466,19 @@ const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）�
 - 各段落は短く、読みやすくしてください。
 - 専門用語の羅列、受動態、英語の直訳は避けてください。
 
+## 絶対禁止事項（違反すると記事は破棄されます）
+- 英語の単語・フレーズは本文・タイトル・タグ・カテゴリーのすべてで禁止。製品名（iPhone、Google等）は日本語カタカナ表記（アイフォーン、グーグル等）にしてください。
+- YAMLフロントマターのcategoriesとtagsは日本語のみ。['AI', 'Smart Home']ではなく['人工知能', 'スマートホーム']と書いてください。
+- スラッグ（URL用のファイル名）は日本語のみ使用。英単語の混入禁止。
+- 著者名は「Smart Kurashi 編集部」固定。それ以外の表記は禁止。
+
 ## 編集ルール
-1.「日本にとっての意味は？」（So What For Japan?）：すべての記事で、日本語読者にとっての具体的な影響を説明してください。製品の日本での入手可能性、日本の住宅事情にどう適合するか、電気代への影響、日本企業や規制への影響など。
-2.「統合」（Synthesis）：複数のソースから情報を引き出し、比較・対照してください。単一ソースの翻訳にならないように。
+1.「日本にとっての意味は？」：すべての記事で、日本語読者にとっての具体的な影響を説明してください。製品の日本での入手可能性、日本の住宅事情にどう適合するか、電気代への影響、日本企業や規制への影響など。
+2.「統合」：複数のソースから情報を引き出し、比較・対照してください。単一ソースの翻訳にならないように。
 3. 出力はYAMLフロントマター付きのMDX形式で。
 
 ## 出力形式
-最初にYAMLフロントマター、次に本文、最後に「編集部の視点」セクションで"So What For Japan?"分析を入れてください。`;
+最初にYAMLフロントマター（title, date, categories, tags）、次に本文、最後に「編集部の視点」セクション。すべて日本語。`;
 
 const USER_PROMPT_TEMPLATE = `以下は、複数の異なるニュースソースから集めた関連記事のグループです。これらを統合して、1本の日本語MDX記事にしてください。
 
@@ -561,7 +567,47 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-// ─── Main Pipeline ─────────────────────────────────────────────────────────
+// ─── Japanese-Only Validation ─────────────────────────────────────────────
+
+/**
+ * Reject content that contains English words in frontmatter fields.
+ * Returns true if valid (Japanese-only), false if English detected.
+ */
+function validateJapaneseOnly(content) {
+  // Check categories - must not contain English words
+  const catMatch = content.match(/categories:\s*\[([^\]]+)\]/);
+  if (catMatch) {
+    const cats = catMatch[1];
+    if (/[a-zA-Z]{2,}/.test(cats)) {
+      console.warn('[VALIDATE] REJECTED: categories contain English:', cats.slice(0, 80));
+      return false;
+    }
+  }
+
+  // Check tags - must not contain English words
+  const tagMatch = content.match(/tags:\s*\[([^\]]+)\]/);
+  if (tagMatch) {
+    const tags = tagMatch[1];
+    if (/[a-zA-Z]{2,}/.test(tags)) {
+      console.warn('[VALIDATE] REJECTED: tags contain English:', tags.slice(0, 80));
+      return false;
+    }
+  }
+
+  // Check title - must not contain English words (allow common tech names in katakana)
+  const titleMatch = content.match(/title:\s*["']?([^"'\n]+)/);
+  if (titleMatch) {
+    const title = titleMatch[1];
+    // Allow only if title is almost entirely Japanese chars
+    const enChars = (title.match(/[a-zA-Z]/g) || []).length;
+    if (enChars > 10) {
+      console.warn('[VALIDATE] REJECTED: title contains too much English:', title.slice(0, 60));
+      return false;
+    }
+  }
+
+  return true;
+}
 
 async function runPipeline() {
   const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
@@ -614,6 +660,13 @@ async function runPipeline() {
       const summary = buildGroupSummary(group);
       const prompt = USER_PROMPT_TEMPLATE.replace('{{GROUP_SUMMARY}}', summary);
       const content = await lmGenerate(SYSTEM_PROMPT, prompt);
+
+      // Reject if English detected in frontmatter — skip this article
+      if (!validateJapaneseOnly(content)) {
+        console.warn('[PIPELINE] Skipping article with English content.');
+        continue;
+      }
+
       const filepath = saveMdx(content);
       savedFiles.push(filepath);
 
