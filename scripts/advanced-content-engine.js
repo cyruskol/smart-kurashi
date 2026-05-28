@@ -397,8 +397,28 @@ async function fetchAllFeeds() {
 
 // ─── Hot-Topic Filtering ──────────────────────────────────────────────────
 
-function filterHotTopics(items) {
-  const keywordsLower = HOT_TOPIC_KEYWORDS.map(k => k.toLowerCase());
+function filterHotTopics(items, topic) {
+  const aiTechKws = [
+    'ai', 'artificial intelligence', 'machine learning', 'deep learning',
+    'llm', 'large language model', 'gpt', 'claude', 'gemini', 'copilot',
+    'openai', 'anthropic', 'google ai', 'meta ai', 'neural network',
+    'chatgpt', 'llm', 'model', 'training', 'inference',
+  ];
+  const smartHomeKws = [
+    'smart home', 'smart speaker', 'smart display', 'home automation',
+    'matter', 'thread', 'zigbee', 'homekit', 'alexa', 'google home',
+    'iot', 'smart appliance', 'smart lock', 'robot vacuum',
+    'smartphone', 'iphone', 'android', 'foldable', 'chip', 'processor',
+    'cpu', 'gpu', 'npu', 'qualcomm', 'apple silicon', 'm-series',
+    'laptop', 'tablet', 'wearable', 'headphones', 'display', 'oled',
+    'robot', 'humanoid', 'drone', 'camera', 'sensor', 'semiconductor',
+    'pc', 'motherboard', 'memory', 'ssd', 'monitor', 'keyboard',
+  ];
+  // Only apply topic filter when topic is specified; otherwise use all keywords
+  const topicKws = topic
+    ? (topic === 'ai-tech' ? aiTechKws : smartHomeKws)
+    : [...aiTechKws, ...smartHomeKws];
+  const keywordsLower = topicKws.map(k => k.toLowerCase());
 
   return items.filter(item => {
     const text = `${item.title} ${item.content}`.toLowerCase();
@@ -509,7 +529,7 @@ function slugify(title) {
     .slice(0, 80);
 }
 
-function saveMdx(content) {
+function saveMdx(content, topic) {
   if (!fs.existsSync(BLOG_DIR)) {
     fs.mkdirSync(BLOG_DIR, { recursive: true });
   }
@@ -519,24 +539,32 @@ function saveMdx(content) {
   const filename = `${date}_${slug}.mdx`;
   const filepath = path.join(BLOG_DIR, filename);
 
-  // Ensure YAML frontmatter exists
+  // Set category based on topic
+  const category = topic === 'smart-home' ? 'smart-home' : 'ai-tech';
+
+  // Ensure YAML frontmatter exists with correct category
   let finalContent = content;
   if (!content.trim().startsWith('---')) {
     finalContent = `---
 title: "Untitled"
 date: "${date}"
-categories:
-  - AI
-tags:
-  - news
-  - automated
+category: "${category}"
+tags: []
+source: "Smart Kurashi × @kolnews_bot"
 ---
 
 ${content}`;
+  } else {
+    // Fix category in existing frontmatter
+    finalContent = finalContent.replace(/category:\s*[^\n]*/g, `category: "${category}"`);
+    // Ensure source field exists
+    if (!finalContent.includes('source:')) {
+      finalContent = finalContent.replace(/---\n/, `---\nsource: "Smart Kurashi × @kolnews_bot"\n`);
+    }
   }
 
   fs.writeFileSync(filepath, finalContent, 'utf-8');
-  console.log(`[MDX] Saved → ${filepath}`);
+  console.log(`[MDX] Saved → ${filepath} (category: ${category})`);
   return filepath;
 }
 
@@ -619,11 +647,12 @@ function validateJapaneseOnly(content) {
   return true;
 }
 
-async function runPipeline() {
+async function runPipeline(topic) {
   const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
   console.log('╔══════════════════════════════════════════════════╗');
   console.log('║        Tri-Track Newsroom — Content Engine      ║');
   console.log(`║  ${now}              ║`);
+  console.log(`║  Topic: ${topic}                                  ║`);
   console.log('╚══════════════════════════════════════════════════╝');
 
   if (!acquireLock()) return;
@@ -635,8 +664,8 @@ async function runPipeline() {
 
     // ── Step 2: Filter hot topics ──
     console.log('\n🔥 Step 2: Filtering hot topics...');
-    const hotItems = filterHotTopics(allItems);
-    console.log(`  ${hotItems.length} hot-topic items found.`);
+    const hotItems = filterHotTopics(allItems, topic);
+    console.log(`  Topic: ${topic} | ${hotItems.length} hot-topic items found.`);
 
     if (hotItems.length === 0) {
       console.log('  No hot topics this cycle. Exiting.');
@@ -677,7 +706,7 @@ async function runPipeline() {
         continue;
       }
 
-      const filepath = saveMdx(content);
+      const filepath = saveMdx(content, topic);
       savedFiles.push(filepath);
 
       await sleep(2000);
@@ -712,7 +741,7 @@ async function runPipeline() {
  * Every-10-minute node-cron wrapper.
  * On each tick, reads .engine_state.json and checks whether enough
  * randomized time has elapsed. If not, exits quietly. If yes, runs
- * the full pipeline and stores a new randomized interval.
+ * the full pipeline with ABAB topic alternation and stores a new randomized interval.
  */
 function startCron() {
   // Wake every 10 minutes — jitter state determines whether to actually run
@@ -729,8 +758,21 @@ function startCron() {
       process.exit(0);
     }
 
-    // Time to run — execute the full pipeline
-    runPipeline().catch(err => {
+    // Time to run — determine ABAB topic and execute the full pipeline
+    const state = readState();
+    const lastTopic = state.last_topic || null;
+    // ABAB: alternate between ai-tech and smart-home
+    const thisTopic = (lastTopic === 'ai-tech') ? 'smart-home' : 'ai-tech';
+    console.log(`[TOPIC] last=${lastTopic || 'none'} → this=${thisTopic}`);
+
+    // Save the topic immediately so it persists even if pipeline crashes
+    writeState(new Date().toISOString(), calculateJitterInterval());
+    // Update with topic (writeState only saves time+interval, so we patch the file)
+    const newState = readState();
+    newState.last_topic = thisTopic;
+    fs.writeFileSync(STATE_FILE, JSON.stringify(newState, null, 2) + '\n', 'utf-8');
+
+    runPipeline(thisTopic).catch(err => {
       console.error('[CRON] Pipeline error:', err.message);
       process.exit(1);
     });
