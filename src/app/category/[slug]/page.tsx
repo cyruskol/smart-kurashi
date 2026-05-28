@@ -6,6 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
 
 const categoryConfig: Record<
@@ -26,6 +27,8 @@ const categoryConfig: Record<
   },
 };
 
+const POSTS_PER_PAGE = 10;
+
 export async function generateStaticParams() {
   return Object.keys(categoryConfig).map((slug) => ({ slug }));
 }
@@ -44,17 +47,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const { page: pageParam } = await searchParams;
   const info = categoryConfig[slug];
   if (!info) notFound();
 
   const allPosts = getAllPosts();
   const posts = allPosts.filter((post) => post.category === slug);
 
+  // Pagination
+  const currentPage = Math.max(1, parseInt(pageParam || '1', 10));
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const startIdx = (safePage - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = posts.slice(startIdx, startIdx + POSTS_PER_PAGE);
+
   const breadcrumbItems = [
-    { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
-    { label: info.label, href: `https://smart-kurashi.jp/category/${slug}` },
+    { label: 'ホーム', href: '/' },
+    { label: info.label, href: `/category/${slug}` },
   ];
 
   return (
@@ -75,14 +86,14 @@ export default async function CategoryPage({ params }: PageProps) {
             <div>
               <h1
                 style={{
-                  fontSize: '32px',
+                  fontSize: 'clamp(20px, 3vw, 32px)',
                   fontWeight: 600,
                   color: '#292524',
                 }}
               >
                 {info.label}
               </h1>
-              <p style={{ fontSize: '16px', color: '#4A433F', marginTop: '4px' }}>
+              <p style={{ fontSize: 'clamp(12px, 1.5vw, 16px)', color: '#4A433F', marginTop: '4px' }}>
                 {info.description}
               </p>
             </div>
@@ -110,16 +121,18 @@ export default async function CategoryPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Posts Grid */}
-        {posts.length > 0 ? (
+        {/* Posts Grid - Single column on mobile */}
+        {paginatedPosts.length > 0 ? (
           <div
+            className="category-grid"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
               gap: '24px',
+              marginTop: '32px',
             }}
           >
-            {posts.map((post) => (
+            {paginatedPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/posts/${post.slug}`}
@@ -161,8 +174,9 @@ export default async function CategoryPage({ params }: PageProps) {
                   </time>
                 </div>
                 <h3
+                  className="post-title"
                   style={{
-                    fontSize: '16px',
+                    fontSize: 'clamp(13px, 1.5vw, 16px)',
                     fontWeight: 600,
                     color: '#292524',
                     lineHeight: 1.4,
@@ -172,8 +186,9 @@ export default async function CategoryPage({ params }: PageProps) {
                   {post.title}
                 </h3>
                 <p
+                  className="post-excerpt"
                   style={{
-                    fontSize: '13px',
+                    fontSize: 'clamp(11px, 1.3vw, 13px)',
                     color: '#5A534E',
                     lineHeight: 1.6,
                     display: '-webkit-box',
@@ -215,11 +230,37 @@ export default async function CategoryPage({ params }: PageProps) {
               background: '#fff',
               borderRadius: '8px',
               border: '1px solid #E7E5E4',
+              marginTop: '32px',
             }}
           >
             <p style={{ fontSize: '18px', color: '#5A534E' }}>
               このカテゴリの記事はまだありません。
             </p>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="pagination" style={{ marginTop: '40px' }}>
+            {safePage > 1 ? (
+              <Link href={`/category/${slug}?page=${safePage - 1}`}>← 前へ</Link>
+            ) : (
+              <span className="disabled">← 前へ</span>
+            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <Link
+                key={page}
+                href={`/category/${slug}?page=${page}`}
+                className={page === safePage ? 'current' : ''}
+              >
+                {page}
+              </Link>
+            ))}
+            {safePage < totalPages ? (
+              <Link href={`/category/${slug}?page=${safePage + 1}`}>次へ →</Link>
+            ) : (
+              <span className="disabled">次へ →</span>
+            )}
           </div>
         )}
       </div>

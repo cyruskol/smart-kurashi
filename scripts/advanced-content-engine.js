@@ -738,16 +738,16 @@ async function runPipeline(topic) {
 // ─── Cron Scheduler — Jitter Wrapper ───────────────────────────────────────
 
 /**
- * Every-10-minute node-cron wrapper.
+ * Every-87-minute node-cron wrapper.
  * On each tick, reads .engine_state.json and checks whether enough
  * randomized time has elapsed. If not, exits quietly. If yes, runs
  * the full pipeline with ABAB topic alternation and stores a new randomized interval.
  */
 function startCron() {
-  // Wake every 10 minutes — jitter state determines whether to actually run
-  const WRAPPER_INTERVAL = '*/10 * * * *';
+  // Wake every 87 minutes — jitter state determines whether to actually run
+  const WRAPPER_INTERVAL = '*/87 * * * *';
 
-  console.log('⏰ Starting jitter scheduler (10-min wrapper)...');
+  console.log('⏰ Starting jitter scheduler (87-min wrapper)...');
   console.log(`  Poll: ${WRAPPER_INTERVAL}`);
 
   cron.schedule(WRAPPER_INTERVAL, () => {

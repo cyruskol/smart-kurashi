@@ -22,12 +22,15 @@ const heroButtons = [
   { href: '/category/smart-home', label: '家電・ガジェット' },
 ];
 
-export default function HomePage() {
+const POSTS_PER_PAGE = 10;
+
+export default function HomePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const allPosts = getAllPosts();
   const featuredPost = allPosts[0];
-  const latestPosts = allPosts.slice(1, 7);
-  const aiPosts = getPostsByCategory('ai-tech');
-  const smartHomePosts = getPostsByCategory('smart-home');
+
+  // Pagination
+  const currentPage = 1; // Will be set from searchParams below
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
   // Tag counts
   const tagCounts: Record<string, number> = {};
@@ -56,12 +59,12 @@ export default function HomePage() {
                 <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
                   注目記事
                 </span>
-                <h1 style={{ fontSize: 'clamp(24px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
+                <h1 className="hero-title" style={{ fontSize: 'clamp(20px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
                   <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
                     {featuredPost.title}
                   </Link>
                 </h1>
-                <p style={{ fontSize: '18px', color: '#57514C', lineHeight: 1.65, marginBottom: '20px' }}>
+                <p className="post-excerpt" style={{ fontSize: 'clamp(13px, 1.5vw, 16px)', color: '#57514C', lineHeight: 1.6, marginBottom: '20px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                   {featuredPost.excerpt}
                 </p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
@@ -87,33 +90,33 @@ export default function HomePage() {
       {/* ===== MAIN CONTENT + SIDEBAR ===== */}
       <div className="max-w-container mx-auto px-md" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
-          
+        <div className="main-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
+
           {/* ===== MAIN CONTENT ===== */}
           <div>
-            {/* Latest Posts */}
+            {/* Latest Posts - Single Column */}
             <section style={{ marginBottom: '48px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
-                <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h2 className="section-title" style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
                   最新記事
                 </h2>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                {latestPosts.map((post) => {
+              <div className="post-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                {allPosts.slice(0, POSTS_PER_PAGE).map((post) => {
                   const cat = categoryColors[post.category] || categoryColors['article'];
                   return (
-                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', textDecoration: 'none' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                    <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card" style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', textDecoration: 'none' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
                         <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '8px' }}>
                           {post.category === 'ai-tech' ? 'AI&Tech' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
                         </span>
                         <time style={{ fontSize: '11px', color: '#726B65' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
                       </div>
-                      <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#3F3A36', lineHeight: 1.4, marginBottom: '8px' }}>
+                      <h3 className="post-title" style={{ fontSize: 'clamp(13px, 1.5vw, 15px)', fontWeight: 600, color: '#3F3A36', lineHeight: 1.4, marginBottom: '8px' }}>
                         {post.title}
                       </h3>
-                      <p style={{ fontSize: '13px', color: '#726B65', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                      <p className="post-excerpt" style={{ fontSize: 'clamp(11px, 1.3vw, 13px)', color: '#726B65', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                         {post.excerpt}
                       </p>
                       {post.tags.length > 0 && (
@@ -129,48 +132,26 @@ export default function HomePage() {
                   );
                 })}
               </div>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="pagination">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <Link
+                      key={page}
+                      href={`/?page=${page}`}
+                      className={page === 1 ? 'current' : ''}
+                    >
+                      {page}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </section>
-
-            {/* AI & Tech Section */}
-            {aiPosts.length > 0 && (
-              <section style={{ marginBottom: '48px' }}>
-                <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#6D6254', borderRadius: '50%' }} />
-                  AI&Tech
-                </h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  {aiPosts.map((post) => (
-                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '16px', textDecoration: 'none' }} className="">
-                      <time style={{ fontSize: '11px', color: '#726B65' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
-                      <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* スマートホーム Section */}
-            {smartHomePosts.length > 0 && (
-              <section>
-                <h2 style={{ fontSize: '22px', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
-                  Appliances &amp; Gadgets
-                </h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  {smartHomePosts.map((post) => (
-                    <Link key={post.slug} href={`/posts/${post.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '16px', textDecoration: 'none' }} className="">
-                      <time style={{ fontSize: '11px', color: '#726B65' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
-                      <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', lineHeight: 1.4, marginTop: '6px' }}>{post.title}</h3>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
 
-
           {/* ===== SIDEBAR ===== */}
-          <aside>
+          <aside className="sidebar-mobile-hide">
             {/* Search box */}
             <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
               <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>記事を検索</h3>
