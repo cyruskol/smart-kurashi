@@ -544,7 +544,9 @@ function saveMdx(content, topic) {
 
   // Ensure YAML frontmatter exists with correct category
   let finalContent = content;
-  if (!content.trim().startsWith('---')) {
+  // Strip any leading newlines before frontmatter
+  finalContent = finalContent.replace(/^\n+/, '');
+  if (!finalContent.trim().startsWith('---')) {
     finalContent = `---
 title: "Untitled"
 date: "${date}"
