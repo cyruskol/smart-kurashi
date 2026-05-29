@@ -3,8 +3,11 @@ title: "Spotifyが仕掛けるAI音楽革命、Google凋落の始まり、そし
 excerpt: "SpotifyがAIカバー・リミックスの合法化、オーディオブック制作ツール、ポッドキャスト要次生成と矢継ぎ早に発表。Googleに代わる6つの検索エンジンが台頭し、TrumpはAI安全保障の行政命令を先送りに。5月22日のAIニュースを深掘りする。"
 date: "2026-05-22"
 category: "ai-tech"
+image: "/images/blog/ai-industry-analysis.png"
 tags: ["Spotify", "AI音楽", "検索エンジン", "Trump", "AI規制", "OpenAI", "Microsoft", "Gemini"]
 ---
+![Spotifyが仕掛けるAI音楽革命、Google凋落の始まり、そしてTrumpのAI規制先送り——5月22日のAI業界を読む](/images/blog/ai-industry-analysis.png)
+
 
 # Spotifyが仕掛けるAI音楽革命、Google凋落の始まり、そしてTrumpのAI規制先送り
 
