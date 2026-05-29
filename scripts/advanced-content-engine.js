@@ -19,7 +19,11 @@ const RssParser = require('rss-parser');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
+const http = require('http');
 const { execSync } = require('child_process');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 // ─── Configuration ────────────────────────────────────────────────────────
 
@@ -29,10 +33,152 @@ const BLOG_DIR = path.join(PROJECT_ROOT, 'content', 'posts');
 const STATE_FILE = path.join(SCRIPTS_DIR, '.engine_state.json');
 const LOCK_FILE = '/tmp/newsroom.lock';
 const LOCK_STALE_MS = 2 * 60 * 60 * 1000; // 2 hours — assume crashed if older
+const IMAGE_DIR = path.join(PROJECT_ROOT, 'public', 'images', 'blog');
 
 const LM_STUDIO_BASE = 'http://127.0.0.1:1234';
 const LM_MODEL = 'qwen/qwen3.5-9b';   // exact LM Studio model identifier
 const LM_LOAD_CTX = 16384;             // safe for 24 GB unified memory
+
+// ─── OG Image Scraper ──────────────────────────────────────────────────────
+
+/**
+ * Fetch the original article HTML and extract the og:image URL.
+ * Returns the image URL string, or null if not found.
+ */
+async function scrapeOgImage(articleUrl) {
+  try {
+    const res = await axios.get(articleUrl, {
+      timeout: 15000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+      },
+      maxRedirects: 5,
+    });
+    const $ = cheerio.load(res.data);
+
+    // Try og:image first, then twitter:image, then first <img> in article
+    const ogImage =
+      $('meta[property="og:image"]').attr('content') ||
+      $('meta[name="twitter:image"]').attr('content') ||
+      $('meta[property="og:image:url"]').attr('content') ||
+      $('article img[src]').first().attr('src') ||
+      $('img[src]').first().attr('src') ||
+      null;
+
+    if (ogImage) {
+      // Resolve relative URLs
+      if (ogImage.startsWith('//')) return 'https:' + ogImage;
+      if (ogImage.startsWith('/')) {
+        const parsed = new URL(articleUrl);
+        return parsed.origin + ogImage;
+      }
+      return ogImage;
+    }
+  } catch (err) {
+    console.warn(`[OG] Failed to scrape ${articleUrl}: ${err.message.slice(0, 80)}`);
+  }
+  return null;
+}
+
+/**
+ * Download an image URL to ./public/images/blog/ using a sanitized slug.
+ * Returns the local public path (e.g., '/images/blog/my-article.jpg') or null.
+ */
+async function downloadImage(imageUrl, slug) {
+  if (!imageUrl) return null;
+
+  // Ensure image directory exists
+  if (!fs.existsSync(IMAGE_DIR)) {
+    fs.mkdirSync(IMAGE_DIR, { recursive: true });
+  }
+
+  // Determine extension from URL or content-type
+  const urlPath = new URL(imageUrl).pathname;
+  const ext = path.extname(urlPath).split('?')[0] || '.jpg';
+  const safeSlug = slug.replace(/[^a-z0-9-]/gi, '-').slice(0, 60);
+  const filename = `${safeSlug}${ext}`;
+  const filepath = path.join(IMAGE_DIR, filename);
+  const publicPath = `/images/blog/${filename}`;
+
+  // Skip if already downloaded
+  if (fs.existsSync(filepath)) {
+    console.log(`[IMG] Already exists: ${publicPath}`);
+    return publicPath;
+  }
+
+  return new Promise((resolve) => {
+    const protocol = imageUrl.startsWith('https') ? https : http;
+    const req = protocol.get(imageUrl, { timeout: 30000 }, (res) => {
+      // Follow redirects
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        downloadImage(res.headers.location, slug).then(resolve);
+        return;
+      }
+      if (res.statusCode !== 200) {
+        console.warn(`[IMG] HTTP ${res.statusCode} for ${imageUrl}`);
+        resolve(null);
+        return;
+      }
+      const fileStream = fs.createWriteStream(filepath);
+      res.pipe(fileStream);
+      fileStream.on('finish', () => {
+        console.log(`[IMG] Downloaded: ${publicPath}`);
+        resolve(publicPath);
+      });
+      fileStream.on('error', (err) => {
+        console.warn(`[IMG] Write error: ${err.message}`);
+        resolve(null);
+      });
+    });
+    req.on('error', (err) => {
+      console.warn(`[IMG] Download failed: ${err.message.slice(0, 80)}`);
+      resolve(null);
+    });
+    req.on('timeout', () => {
+      req.destroy();
+      resolve(null);
+    });
+  });
+}
+
+// ─── Internal Link Dictionary ──────────────────────────────────────────────
+
+/**
+ * Scan the blog directory and build a JSON array of existing articles.
+ * Each entry: { title: "...", path: "/posts/slug" }
+ * Only includes posts from the same topic (ai-tech or smart-home).
+ */
+function buildInternalLinkDictionary(currentTopic) {
+  if (!fs.existsSync(BLOG_DIR)) return [];
+
+  const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx') || f.endsWith('.md'));
+  const links = [];
+
+  for (const file of files) {
+    try {
+      const content = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
+      const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
+      const catMatch = content.match(/category:\s*["']?([^"'\n]+)["']?/);
+
+      if (!titleMatch) continue;
+      const title = titleMatch[1].trim();
+      const category = catMatch ? catMatch[1].trim() : 'ai-tech';
+
+      // Only link to same-topic posts (or all if topic is broad)
+      if (category === currentTopic || currentTopic === null) {
+        const slug = file.replace(/\.(mdx?)$/, '');
+        links.push({ title, path: `/posts/${slug}` });
+      }
+    } catch {
+      // skip unreadable files
+    }
+  }
+
+  console.log(`[LINKS] Built dictionary: ${links.length} articles for topic "${currentTopic}"`);
+  return links;
+}
 
 // ─── Jitter Schedule State ─────────────────────────────────────────────────
 
@@ -529,7 +675,7 @@ function slugify(title) {
     .slice(0, 80);
 }
 
-function saveMdx(content, topic) {
+function saveMdx(content, topic, ogImagePath) {
   if (!fs.existsSync(BLOG_DIR)) {
     fs.mkdirSync(BLOG_DIR, { recursive: true });
   }
@@ -556,6 +702,14 @@ source: "Smart Kurashi × @kolnews_bot"
 ---
 
 ${content}`;
+  }
+  // Add image field to frontmatter if we have one
+  if (ogImagePath) {
+    finalContent = finalContent.replace(/^---\nm:/, `---\nimage: "${ogImagePath}"\nm:`);
+    // If no image field exists, add it after the source line
+    if (!finalContent.includes('image:')) {
+      finalContent = finalContent.replace(/source:\s*"([^"]+)"/, `source: "$1"\nimage: "${ogImagePath}"`);
+    }
   } else {
     // Fix category in existing frontmatter
     finalContent = finalContent.replace(/category:\s*[^\n]*/g, `category: "${category}"`);
@@ -689,18 +843,51 @@ async function runPipeline(topic) {
     await lmUnloadAll();                    // unload whatever is loaded
     await lmLoadModel(LM_MODEL);              // load the reasoning model
 
+    // ── Step 4.5: Scrape OG images for each group ──
+    console.log(`\\n🖼️ Step 4.5: Scraping OG images for ${toProcess.length} groups...`);
+    const ogImages = [];
+    for (let i = 0; i < toProcess.length; i++) {
+      const group = toProcess[i];
+      // Pick the first article link from the group to scrape
+      const firstLink = group[0]?.link;
+      if (firstLink) {
+        const ogUrl = await scrapeOgImage(firstLink);
+        if (ogUrl) {
+          const slug = slugify(group[0]?.title || `article-${i}`);
+          const localPath = await downloadImage(ogUrl, slug);
+          ogImages[i] = localPath;
+          console.log(`  [OG] Scraped image for group ${i + 1}: ${localPath}`);
+        } else {
+          ogImages[i] = null;
+          console.log(`  [OG] No image found for group ${i + 1}`);
+        }
+      } else {
+        ogImages[i] = null;
+      }
+      await sleep(1000); // polite delay between scrapes
+    }
+
+    // ── Step 4.6: Build internal link dictionary ──
+    const linkDict = buildInternalLinkDictionary(topic);
+    const linkDictJSON = JSON.stringify(linkDict);
+
+    // Update system prompt with internal link injection
+    const systemPromptWithLinks = SYSTEM_PROMPT + `
+
+## 内部リンク（Internal Links）
+以下は、すでに公開されている関連記事の一覧です。記事を書く際に、自然な文脈で1〜2つの過去記事へのハイパーリンクを挿入してください。Markdown形式: [関連記事のタイトル](/posts/slug)。強制的に入れる必要はなく、文脈的に滑らかに遷移する場合のみ挿入してください。使用可能な記事一覧（JSON形式）: ${linkDictJSON}`;
+
     // ── Step 5: Generate articles (max 3 per run) ──
     const MAX_ARTICLES = 3;
-    const toProcess = groups.slice(0, MAX_ARTICLES);
     const savedFiles = [];
 
     for (let i = 0; i < toProcess.length; i++) {
       const group = toProcess[i];
-      console.log(`\n📝 Step 5.${i + 1}: Article from ${group.length} sources...`);
+      console.log(`\\n📝 Step 5.${i + 1}: Scraping sources from ${group.length} RSS feeds...`);
 
       const summary = buildGroupSummary(group);
       const prompt = USER_PROMPT_TEMPLATE.replace('{{GROUP_SUMMARY}}', summary);
-      const content = await lmGenerate(SYSTEM_PROMPT, prompt);
+      const content = await lmGenerate(systemPromptWithLinks, prompt);
 
       // Reject if English detected in frontmatter — skip this article
       if (!validateJapaneseOnly(content)) {
@@ -708,7 +895,19 @@ async function runPipeline(topic) {
         continue;
       }
 
-      const filepath = saveMdx(content, topic);
+      // Prepend the OG image to the content if we scraped one
+      let finalContent = content;
+      const ogImagePath = ogImages[i];
+      if (ogImagePath && !finalContent.includes(ogImagePath)) {
+        // Insert the image at the very top of the content (after frontmatter)
+        const frontmatterEnd = finalContent.indexOf('---', 3) + 3;
+        const before = finalContent.slice(0, frontmatterEnd);
+        const after = finalContent.slice(frontmatterEnd);
+        finalContent = `${before}\n![${group[0]?.title || ''}](${ogImagePath})\n${after}`;
+        console.log(`  [IMG] Injected OG image: ${ogImagePath}`);
+      }
+
+      const filepath = saveMdx(finalContent, topic, ogImagePath);
       savedFiles.push(filepath);
 
       await sleep(2000);
