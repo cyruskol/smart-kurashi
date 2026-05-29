@@ -22,15 +22,19 @@ const heroButtons = [
   { href: '/category/smart-home', label: '家電・ガジェット' },
 ];
 
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 6;
 
-export default function HomePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+export default async function HomePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const params = await searchParams;
   const allPosts = getAllPosts();
   const featuredPost = allPosts[0];
 
-  // Pagination
-  const currentPage = 1; // Will be set from searchParams below
+  // Pagination — read page from searchParams
+  const currentPage = Math.max(1, parseInt(params.page || '1', 10) || 1);
   const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const safePage = Math.min(currentPage, totalPages || 1);
+  const startIndex = (safePage - 1) * POSTS_PER_PAGE;
+  const pagePosts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
   // Tag counts
   const tagCounts: Record<string, number> = {};
@@ -40,7 +44,7 @@ export default function HomePage({ searchParams }: { searchParams: Promise<{ pag
   return (
     <main>
       {/* ===== HERO SECTION ===== */}
-      {featuredPost && (
+      {featuredPost && safePage === 1 && (
         <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
           <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
 
@@ -94,16 +98,21 @@ export default function HomePage({ searchParams }: { searchParams: Promise<{ pag
 
           {/* ===== MAIN CONTENT ===== */}
           <div>
-            {/* Latest Posts - Single Column */}
+            {/* Latest Posts */}
             <section style={{ marginBottom: '48px' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
                 <h2 className="section-title" style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
                   最新記事
+                  {safePage > 1 && (
+                    <span style={{ fontSize: '13px', fontWeight: 400, color: '#726B65' }}>
+                      （{safePage}/{totalPages}ページ）
+                    </span>
+                  )}
                 </h2>
               </div>
               <div className="post-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                {allPosts.slice(0, POSTS_PER_PAGE).map((post) => {
+                {pagePosts.map((post) => {
                   const cat = categoryColors[post.category] || categoryColors['article'];
                   return (
                     <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card" style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', textDecoration: 'none' }}>
@@ -135,22 +144,95 @@ export default function HomePage({ searchParams }: { searchParams: Promise<{ pag
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="pagination">
+                <nav className="pagination" aria-label="ページネーション" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '40px', flexWrap: 'wrap' }}>
+                  {safePage > 1 && (
+                    <Link href={`/?page=${safePage - 1}`} className="japandi-btn" style={{ padding: '10px 16px', borderRadius: '8px', fontSize: '13px', textDecoration: 'none', minWidth: '44px', textAlign: 'center' }}>
+                      ← 前へ
+                    </Link>
+                  )}
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <Link
                       key={page}
                       href={`/?page=${page}`}
-                      className={page === 1 ? 'current' : ''}
+                      className={page === safePage ? 'current' : ''}
+                      style={{
+                        padding: '10px 16px',
+                        borderRadius: '8px',
+                        fontSize: '13px',
+                        textDecoration: 'none',
+                        minWidth: '44px',
+                        textAlign: 'center',
+                        ...(page === safePage
+                          ? { background: '#3F3A36', color: '#fff', fontWeight: 600 }
+                          : { background: '#fff', border: '1px solid #DDD8D1', color: '#57514C' }),
+                      }}
                     >
                       {page}
                     </Link>
                   ))}
-                </div>
+                  {safePage < totalPages && (
+                    <Link href={`/?page=${safePage + 1}`} className="japandi-btn" style={{ padding: '10px 16px', borderRadius: '8px', fontSize: '13px', textDecoration: 'none', minWidth: '44px', textAlign: 'center' }}>
+                      次へ →
+                    </Link>
+                  )}
+                </nav>
               )}
             </section>
+
+            {/* ===== MOBILE-ONLY SIDEBAR CONTENT ===== */}
+            <div className="sidebar-mobile-show" style={{ display: 'none' }}>
+              {/* Search box */}
+              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
+                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>記事を検索</h3>
+                <form action="/search" method="GET">
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '12px', border: '1px solid #DDD8D1', borderRadius: '8px', fontSize: '16px', background: '#F7F5F2' }} />
+                    <button type="submit" className="japandi-btn" style={{ padding: '12px 16px', color: '#57514C', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Popular Tags */}
+              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
+                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>人気タグ</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {popularTags.map(([tag, count]) => (
+                    <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '8px 14px', background: '#EFE8DD', color: '#57514C', fontSize: '13px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
+                      {tag} <span style={{ color: '#726B65', fontSize: '11px' }}>({count})</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Recent Posts */}
+              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
+                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>最新記事</h3>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {allPosts.slice(0, 6).map((post, i) => (
+                    <li key={post.slug} style={{ padding: '12px 0', borderBottom: i < 5 ? '1px solid #DDD8D1' : 'none' }}>
+                      <Link href={`/posts/${post.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
+                        <div style={{ minWidth: 0 }}>
+                          <h4 style={{ fontSize: '14px', fontWeight: 500, color: '#3F3A36', lineHeight: 1.4 }}>{post.title}</h4>
+                          <time style={{ fontSize: '11px', color: '#726B65', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* About CTA */}
+              <div style={{ background: '#EEEAE4', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '24px', color: '#57514C' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: '#57514C' }}>Smart Kurashi</h3>
+                <p style={{ fontSize: '13px', color: '#726B65', lineHeight: 1.6, marginBottom: '16px' }}>
+                  スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
+                </p>
+                <Link href="/about" className="japandi-btn" style={{ display: 'inline-block', padding: '8px 16px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
+              </div>
+            </div>
           </div>
 
-          {/* ===== SIDEBAR ===== */}
+          {/* ===== DESKTOP SIDEBAR ===== */}
           <aside className="sidebar-mobile-hide">
             {/* Search box */}
             <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
