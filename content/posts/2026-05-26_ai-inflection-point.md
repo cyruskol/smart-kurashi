@@ -4,6 +4,7 @@ excerpt: "SpaceXのAI参入、GoogleのSynthID普及、教皇のAI宣言、ハ�
 date: "2026-05-26"
 category: "ai-tech"
 tags: ["AI", "SpaceX", "Grok", "Google", "SynthID", "教皇", "セキュリティ", "人間型ロボット"]
+image: "/images/blog/ai-inflection-point.png"
 source: "Smart Kurashi × @kolnews_bot"
 ---
 
