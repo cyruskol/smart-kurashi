@@ -49,11 +49,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
   
-  // Dynamic OG image generation based on category and article content
+  // Dynamic OG image placeholder - will be replaced with actual images later
   const ogImageStyle = {
-    background: categoryColors[post.category]?.bg || '#FFF4F0',
+    url: '/og-image.png',
     width: 1200,
     height: 630,
+    alt: post.title.slice(0, 70) + '...',
   };
 
   return {
