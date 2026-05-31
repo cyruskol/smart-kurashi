@@ -58,7 +58,7 @@ export const metadata: Metadata = {
       'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-home.png',
         width: 1200,
         height: 630,
         alt: 'Smart Kurashi — スマートホーム・AI 家電ニュース',

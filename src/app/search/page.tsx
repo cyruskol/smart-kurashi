@@ -1,25 +1,37 @@
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface PageProps {
   searchParams: Promise<{ q?: string }>;
 }
 
+const breadcrumbItems = [
+  { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
+];
+
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { q } = await searchParams;
-  return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashiの記事を検索' };
+  return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashi の記事を検索' };
 }
 
   const categoryColors: Record<string, { bg: string; text: string }> = {
-  'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
-  'smart-home': { bg: '#EDF2EE', text: '#2C4D38' },
-  'article': { bg: '#F5F0EB', text: '#5C4A32' },
-};
+    'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
+    'smart-home': { bg: '#EDF2EE', text: '#2C4D38' },
+    'article': { bg: '#F5F0EB', text: '#5C4A32' },
+  };
 
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
   const allPosts = getAllPosts();
+  
+  const categoryColors: Record<string, { bg: string; text: string }> = {
+    'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
+    'smart-home': { bg: '#EDF2EE', text: '#2C4D38' },
+    'article': { bg: '#F5F0EB', text: '#5C4A32' },
+  };
+
   const results = q ? allPosts.filter((p) => {
     const s = q.toLowerCase();
     return p.title.toLowerCase().includes(s) || p.excerpt.toLowerCase().includes(s) || p.tags.some((t) => t.toLowerCase().includes(s));
@@ -32,6 +44,9 @@ export default async function SearchPage({ searchParams }: PageProps) {
   return (
     <main style={{ background: '#FAFAF9', padding: '32px 0' }}>
       <div className="max-w-container mx-auto px-md">
+        {/* Breadcrumbs */}
+        <Breadcrumbs items={breadcrumbItems} />
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
           <div>
             {/* Search form */}

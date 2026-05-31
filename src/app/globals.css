@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced color system with extended palette */
 :root {
+  /* Primary brand colors */
   --color-primary: #F7F5F2;
   --color-accent: #4F6F5D;
   --color-accent-hover: #425D4F;
@@ -12,7 +14,7 @@
   --color-text-secondary: #57514C;
   --color-text-muted: #726B65;
   --color-border: #DDD8D1;
-
+  
   /* Category-specific colors */
   --cat-ai-tech-bg: #EEF2FF;
   --cat-ai-tech-text: #4338CA;
@@ -20,11 +22,26 @@
   --cat-smart-home-text: #047857;
   --cat-article-bg: #FFF4F0;
   --cat-article-text: #A9582D;
-
+  
+  /* Additional category colors (to be expanded) */
+  --cat-energy-bg: #FFFBF0;
+  --cat-energy-text: #B45309;
+  --cat-security-bg: #FEF2F2;
+  --cat-security-text: #DC2626;
+  
   /* Open Graph image colors */
   --og-primary: #1a365d;
   --og-secondary: #2b6cb0;
-}
+  
+  /* Header styles */
+  --header-bg: #FFFFFF;
+  --header-border: #E7E5E4;
+  --header-height: 56px;
+  
+  /* Footer styles */
+  --footer-bg: #1F2937;
+  --footer-text: #D1D5DB;
+  --footer-link: #9CA3AF;
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -317,7 +334,7 @@ img { max-width: 100%; height: auto; }
   }
 
   /* Hide desktop category buttons on mobile */
-  .desktop-category-nav {
+  header nav a.japandi-btn {
     display: none !important;
   }
 

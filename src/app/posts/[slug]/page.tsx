@@ -49,9 +49,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
   
-  // Dynamic OG image placeholder - will be replaced with actual images later
+  // Dynamic OG image for posts - will be replaced with actual images later
   const ogImageStyle = {
-    url: '/og-image.png',
+    url: '/og-post-placeholder.png',
     width: 1200,
     height: 630,
     alt: post.title.slice(0, 70) + '...',

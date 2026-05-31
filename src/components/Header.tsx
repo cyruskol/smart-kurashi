@@ -6,6 +6,12 @@ const navItems = [
   { href: '/category/smart-home', label: '家電・ガジェット' },
 ];
 
+// Category mapping for header buttons
+const categoryHeaderItems = [
+  { slug: 'ai-tech', displayLabel: 'AI & Tech' },
+  { slug: 'smart-home', displayLabel: 'Smart Home' },
+];
+
 export default function Header() {
   return (
     <>
@@ -35,17 +41,17 @@ export default function Header() {
 
             {/* Category Buttons — rendered server-side, active state via CSS */}
             <nav className="flex items-center flex-wrap justify-end" style={{ gap: '11px' }} aria-label="メインナビゲーション">
-              {navItems.map((item) => (
+              {categoryHeaderItems.map((item) => (
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  key={item.slug}
+                  href={`/category/${item.slug}`}
                   className="japandi-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border"
                   style={{
                     borderColor: '#DDD8D1',
                     color: '#726B65',
                   }}
                 >
-                  {item.label}
+                  {item.displayLabel}
                 </Link>
               ))}
             </nav>

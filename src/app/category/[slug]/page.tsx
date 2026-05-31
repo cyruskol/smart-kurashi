@@ -37,12 +37,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const info = categoryConfig[slug];
   if (!info) return { title: 'Not Found' };
+  
+  // Dynamic OG image for categories
+  const ogImageStyle = {
+    url: '/og-category-placeholder.png',
+    width: 1200,
+    height: 630,
+    alt: `${info.label} | Smart Kurashi`,
+  };
+
   return {
-    title: info.label,
+    title: `${info.label} | Smart Kurashi`,
     description: info.description,
     openGraph: {
       title: `${info.label} | Smart Kurashi`,
       description: info.description,
+      type: 'website',
+      images: [ogImageStyle],
     },
   };
 }

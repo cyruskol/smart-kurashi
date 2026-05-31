@@ -1,21 +1,24 @@
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: '会社概要',
   description: 'Smart Kurashi は、スマートホーム・AI 家電・IoT 技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
 };
 
-export default function AboutPage() {
+interface PageProps {}
+
+export default function AboutPage({}: PageProps) {
+  const breadcrumbItems = [
+    { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
+    { label: '会社概要', href: 'https://smart-kurashi.jp/about' },
+  ];
+
   return (
     <main style={{ background: '#F8FAFC', padding: '48px 0' }}>
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 16px' }}>
-        <nav style={{ marginBottom: '24px' }}>
-          <ol style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', listStyle: 'none', padding: 0, margin: 0 }}>
-            <li><a href="/" style={{ color: '#5A534E' }} className="hover:text-orange-500">ホーム</a></li>
-            <li style={{ color: '#F1F5F9' }}>/</li>
-            <li style={{ color: '#4A433F' }}>会社概要</li>
-          </ol>
-        </nav>
+        {/* Breadcrumbs with JSON-LD */}
+        <Breadcrumbs items={breadcrumbItems} />
 
         <div style={{ background: '#fff', borderRadius: '8px', padding: '48px', border: '1px solid #E7E5E4' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>

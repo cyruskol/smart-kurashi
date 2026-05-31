@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: '利用規約',
   description:
-    'Smart Kurashiの利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
+    'Smart Kurashi の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
   openGraph: {
     title: '利用規約 | Smart Kurashi',
     description:
-      'Smart Kurashiの利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
+      'Smart Kurashi の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
   },
   robots: {
     index: true,
@@ -15,23 +16,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TermsPage() {
+interface PageProps {}
+
+export default function TermsPage({}: PageProps) {
+  const breadcrumbItems = [
+    { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
+    { label: '利用規約', href: 'https://smart-kurashi.jp/terms' },
+  ];
+
   return (
     <main className="py-xl bg-neutral">
       <article className="max-w-content mx-auto px-md">
-        <nav aria-label="パンくずリスト" className="mb-lg text-sm">
-          <ol className="flex items-center gap-sm">
-            <li>
-              <a href="/" className="text-text-muted hover:text-accent transition-colors">
-                ホーム
-              </a>
-            </li>
-            <li className="text-text-muted">/</li>
-            <li className="text-text-secondary" aria-current="page">
-              利用規約
-            </li>
-          </ol>
-        </nav>
+        {/* Breadcrumbs with JSON-LD */}
+        <Breadcrumbs items={breadcrumbItems} />
 
         <header className="mb-xl">
           <h1 className="text-3xl md:text-4xl font-bold text-primary leading-tight mb-md">
