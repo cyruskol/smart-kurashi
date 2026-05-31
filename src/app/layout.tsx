@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Noto_Sans_JP, Playfair_Display } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import Footer from '@/components/Footer';
+import MobileNavDrawer from '@/components/MobileNavDrawer';
+import StructuredData from '@/components/StructuredData';
 import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
@@ -22,14 +24,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://smart-kurashi.jp'),
   title: {
-    default: 'Smart Kurashi — スマートホーム・AI家電ニュース',
+    default: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
     template: '%s | Smart Kurashi',
   },
   description:
-    'スマートホーム、IoT機器、AI家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
+    'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
   keywords: [
-    'スマートホーム', 'AI家電', 'IoT', '人工知能', '家電レビュー',
-    'テクノロジーニュース', 'HEMS', '音声アシスタント', '省エネ', 'IoT機器',
+    'スマートホーム', 'AI 家電', 'IoT', '人工知能', '家電レビュー',
+    'テクノロジーニュース', 'HEMS', '音声アシスタント', '省エネ', 'IoT 機器',
   ],
   authors: [{ name: 'Smart Kurashi' }],
   creator: 'Smart Kurashi',
@@ -51,23 +53,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     siteName: 'Smart Kurashi',
-    title: 'Smart Kurashi — スマートホーム・AI家電ニュース',
+    title: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
     description:
-      'スマートホーム、IoT機器、AI家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
+      'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Smart Kurashi — スマートホーム・AI家電ニュース',
+        alt: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Smart Kurashi — スマートホーム・AI家電ニュース',
+    title: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
     description:
-      'スマートホーム、IoT機器、AI家電、最新テクノロジーニュースを日本語でお届け。',
+      'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。',
     images: ['/og-image.png'],
   },
   alternates: {
@@ -85,7 +87,7 @@ const jsonLdWebSite = {
   name: 'Smart Kurashi',
   url: 'https://smart-kurashi.jp',
   description:
-    'スマートホーム、IoT機器、AI家電、最新テクノロジーニュースを日本語でお届け。',
+    'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。',
   inLanguage: 'ja',
   potentialAction: {
     '@type': 'SearchAction',
@@ -104,7 +106,7 @@ const jsonLdOrganization = {
   url: 'https://smart-kurashi.jp',
   logo: 'https://smart-kurashi.jp/logo.png',
   description:
-    '日本のスマートホーム・AI家電・テクノロジーニュースを専門とするメディアです。',
+    '日本のスマートホーム・AI 家電・テクノロジーニュースを専門とするメディアです。',
   sameAs: [],
 };
 
@@ -133,6 +135,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <StructuredData type="Website" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
@@ -153,6 +156,10 @@ export default function RootLayout({
         >
           コンテンツへスキップ
         </a>
+        
+        {/* Mobile navigation trigger */}
+        <MobileNavDrawer />
+
         <div style={{ padding: '0 16px' }}>
           <Link href="/" aria-label="Smart Kurashi ホーム" style={{ display: 'inline-block' }}>
             <img src="/logo.png" alt="Smart Kurashi" width={128} height={128} style={{ height: 'auto' }} />

@@ -12,6 +12,18 @@
   --color-text-secondary: #57514C;
   --color-text-muted: #726B65;
   --color-border: #DDD8D1;
+
+  /* Category-specific colors */
+  --cat-ai-tech-bg: #EEF2FF;
+  --cat-ai-tech-text: #4338CA;
+  --cat-smart-home-bg: #ECFDF5;
+  --cat-smart-home-text: #047857;
+  --cat-article-bg: #FFF4F0;
+  --cat-article-text: #A9582D;
+
+  /* Open Graph image colors */
+  --og-primary: #1a365d;
+  --og-secondary: #2b6cb0;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,58 +97,169 @@ img { max-width: 100%; height: auto; }
 /* Selection */
 ::selection { background-color: rgba(194, 112, 62, 0.12); }
 
-/* Animations removed - Japandi is calm */
+/* ===== OPEN GRAPH IMAGE STYLES ===== */
+.og-image-preview {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
 
-/* Staggered card entrance animations removed */
+.og-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(26,54,93,0.8));
+  padding: 40px 20px 20px;
+  color: white;
+}
 
-/* Tag hover effect removed - flat editorial design */
+.og-image-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
 
-/* Card shadow removed - flat editorial design */
+.og-image-site-name {
+  font-size: 14px;
+  opacity: 0.9;
+}
 
-/* Smooth card transitions removed */
-
-/* Gradient text utility removed */
-
-/* Subtle card background pattern removed */
-
-/* Scrollbar styling */
-::-webkit-scrollbar { width: 3px; height: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #D6D3CD; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #A8A29E; }
-
-/* ===== PAGINATION ===== */
-.pagination {
+/* ===== BREAKCRUMBS ENHANCED STYLES ===== */
+.breadcrumb-nav {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 40px;
   flex-wrap: wrap;
-}
-.pagination a, .pagination span {
-  padding: 8px 14px;
-  border-radius: 8px;
   font-size: 13px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb-link {
+  color: var(--color-text-muted);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
-.pagination a {
+
+.breadcrumb-link:hover {
+  color: #a9582d;
+}
+
+.breadcrumb-separator {
+  color: var(--color-border);
+  font-size: 12px;
+}
+
+.breadcrumb-current {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* ===== MOBILE NAV HAMBURGER STYLES ===== */
+.mobile-nav-trigger {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+  width: 32px;
+  height: 24px;
+  justify-content: center;
+}
+
+.mobile-nav-trigger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-trigger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-nav-trigger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-trigger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* ===== MOBILE DRAWER STYLES ===== */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,54,93,0.5);
+  z-index: 99;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  max-width: 90vw;
+  height: 100vh;
   background: #fff;
-  border: 1px solid #DDD8D1;
-  color: #57514C;
+  z-index: 100;
+  transition: right 0.3s ease-out;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
 }
-.pagination a:hover {
-  border-color: #A9A39B;
-  color: #3F3A36;
+
+.drawer.open {
+  right: 0;
 }
-.pagination .current {
-  background: #3F3A36;
-  color: #fff;
-  font-weight: 600;
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid var(--color-border);
 }
-.pagination .disabled {
-  color: #A8A29E;
-  pointer-events: none;
+
+.drawer-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.drawer-nav {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-nav a {
+  display: block;
+  padding: 14px;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.drawer-nav a:hover {
+  background: #F8FAFC;
 }
 
 /* ===== MOBILE RESPONSIVE (max-width: 768px) ===== */
@@ -187,4 +310,58 @@ img { max-width: 100%; height: auto; }
 
   /* Input fields: prevent iOS zoom */
   input[type="search"], input[type="text"] { font-size: 16px !important; }
+
+  /* Show mobile nav trigger on header */
+  .mobile-nav-trigger {
+    display: flex;
+  }
+
+  /* Hide desktop category buttons on mobile */
+  .desktop-category-nav {
+    display: none !important;
+  }
+
+  /* Breadcrumbs on mobile */
+  @media (max-width: 480px) {
+    .breadcrumb-nav {
+      font-size: 12px;
+    }
+    .breadcrumb-item {
+      font-size: 11px;
+    }
+  }
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.pagination a, .pagination span {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+.pagination a {
+  background: #fff;
+  border: 1px solid #DDD8D1;
+  color: #57514C;
+}
+.pagination a:hover {
+  border-color: #A9A39B;
+  color: #3F3A36;
+}
+.pagination .current {
+  background: #3F3A36;
+  color: #fff;
+  font-weight: 600;
+}
+.pagination .disabled {
+  color: #A8A29E;
+  pointer-events: none;
 }

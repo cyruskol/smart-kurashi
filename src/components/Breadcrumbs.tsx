@@ -27,7 +27,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav aria-label="パンくずリスト" style={{ marginBottom: '24px', paddingTop: '8px' }}>
+      <nav aria-label="パンくずリスト" className="breadcrumb-nav">
         <ol
           style={{
             display: 'flex',
@@ -37,24 +37,31 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
             listStyle: 'none',
             padding: 0,
             margin: 0,
-            flexWrap: 'wrap',
           }}
         >
           {items.map((item, index) => (
             <li key={item.href} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               {index > 0 && (
-                <span style={{ color: '#64748B', fontSize: '12px' }}>/</span>
+                <span 
+                  className="breadcrumb-separator"
+                  aria-hidden="true"
+                >/</span>
               )}
               {index < items.length - 1 ? (
                 <Link
                   href={item.href}
-                  style={{ color: '#64748B', textDecoration: 'none' }}
-                  className="hover:text-orange-500 transition-colors"
+                  style={{ color: '#726B65', textDecoration: 'none' }}
+                  className="breadcrumb-link hover:text-orange-500"
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span style={{ color: '#475569', fontWeight: 500 }}>{item.label}</span>
+                <span 
+                  className="breadcrumb-current"
+                  style={{ color: '#475569', fontWeight: 500 }}
+                >
+                  {item.label}
+                </span>
               )}
             </li>
           ))}

@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
+import MobileNavDrawer from '@/components/MobileNavDrawer';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -47,10 +48,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
+  
+  // Dynamic OG image generation based on category and article content
+  const ogImageStyle = {
+    background: categoryColors[post.category]?.bg || '#FFF4F0',
+    width: 1200,
+    height: 630,
+  };
+
   return {
     title: post.title,
     description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt, type: 'article' },
+    openGraph: { 
+      title: post.title, 
+      description: post.excerpt, 
+      type: 'article',
+      images: [ogImageStyle],
+    },
   };
 }
 
@@ -72,11 +86,20 @@ export default async function PostPage({ params }: PageProps) {
   const relatedPosts = allPosts
     .filter((p) => p.slug !== slug && p.category === post.category)
     .slice(0, 4);
+  
+  // Popular tags
   const tagCounts: Record<string, number> = {};
   allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
   const popularTags = Object.entries(tagCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
+
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
+    { label: post.category === 'ai-tech' ? 'AI & Tech' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
+    { label: post.title, href: `https://smart-kurashi.jp/posts/${slug}` },
+  ];
 
   // Article-level JSON-LD (Article + NewsArticle schema)
   const jsonLdArticle = {
@@ -100,24 +123,15 @@ export default async function PostPage({ params }: PageProps) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://smart-kurashi.jp/posts/' + slug,
+      '@id': `https://smart-kurashi.jp/posts/${slug}`,
     },
   };
 
-  // Breadcrumb items
-  const breadcrumbItems = [
-    { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
-    { label: post.category === 'ai-tech' ? 'AI & Tech' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
-    { label: post.title, href: `https://smart-kurashi.jp/posts/${slug}` },
-  ];
-
   return (
     <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
-      />
-
+      {/* Mobile nav drawer for this page context */}
+      <MobileNavDrawer />
+      
       <div className="max-w-container mx-auto px-md">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
 
@@ -130,7 +144,7 @@ export default async function PostPage({ params }: PageProps) {
               border: '1px solid #E7E5E4',
             }}
           >
-            {/* Breadcrumbs */}
+            {/* Breadcrumbs with JSON-LD */}
             <Breadcrumbs items={breadcrumbItems} />
 
             {/* Header */}
