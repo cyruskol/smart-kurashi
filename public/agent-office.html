@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Office - Pokemon Gen 2/3 Style</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#1a1a2e;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;font-family:'Courier New',monospace}
+canvas{image-rendering:pixelated;image-rendering:crisp-edges;display:block;border:3px solid #555}
+#h{color:#555;font-size:10px;margin-top:6px;text-align:center}
+</style>
+</head>
+<body>
+<canvas id="gc" width="640" height="576"></canvas>
+<div id="h">Arrow Keys: Move | E/Z: Interact | X: Close Dialog</div>
+<script>
+// ============================================================
+// CONFIG
+// ============================================================
+var S=4, W=160, H=144, T=8, MW=20, MH=18;
+var c=document.getElementById('gc'), ctx=c.getContext('2d');
+ctx.imageSmoothingEnabled=false;
+
+// ============================================================
+// TILE RENDERING
+// ============================================================
+function mkC(w,h){var o=document.createElement('canvas');o.width=w;o.height=h;return o;}
+function scC(src){var o=mkC(src.width*S,src.height*S);var x=o.getContext('2d');x.imageSmoothingEnabled=false;x.drawImage(src,0,0,o.width,o.height);return o;}
+function drawTile(fn){var bc=mkC(8,8);fn(bc.getContext('2d'));return scC(bc);}
+function blit(spr,dx,dy){ctx.drawImage(spr,dx*8*S,dy*8*S);}
+
+var tile={};
+tile.floor1=drawTile(function(c){c.fillStyle='#d4c8a0';c.fillRect(0,0,8,8);c.fillStyle='#c8bc94';c.fillRect(0,0,8,1);c.fillRect(0,0,1,8);c.fillRect(4,2,4,1);c.fillRect(2,6,6,1);});
+tile.floor2=drawTile(function(c){c.fillStyle='#8b7355';c.fillRect(0,0,8,8);c.fillStyle='#7a6348';c.fillRect(0,0,8,1);c.fillRect(0,0,1,8);c.fillRect(3,3,2,2);});
+tile.floor3=drawTile(function(c){c.fillStyle='#b8a88a';c.fillRect(0,0,8,8);c.fillStyle='#a8987a';for(var i=0;i<8;i+=2){c.fillRect(i,i,2,1);if(i+4<8)c.fillRect(i+4,(i+4)%8,2,1);}});
+tile.wall=drawTile(function(c){c.fillStyle='#c4b896';c.fillRect(0,0,8,8);c.fillStyle='#a09470';c.fillRect(0,3,8,1);c.fillRect(3,0,1,3);c.fillRect(0,6,8,1);c.fillRect(4,0,1,3);c.fillStyle='#d0c4a0';c.fillRect(4,4,4,2);c.fillRect(4,7,4,1);});
+tile.door=drawTile(function(c){c.fillStyle='#6b4c3a';c.fillRect(0,0,8,8);c.fillStyle='#8b6c4a';c.fillRect(1,0,6,8);c.fillStyle='#a0c8e8';c.fillRect(2,1,4,5);c.fillStyle='#fff';c.fillRect(3,2,1,1);c.fillStyle='#5a3c2a';c.fillRect(5,5,1,1);});
+tile.table=drawTile(function(c){c.fillStyle='#8b6c4a';c.fillRect(1,2,6,4);c.fillStyle='#9b7c5a';c.fillRect(2,3,4,2);c.fillStyle='#6b4c3a';c.fillRect(1,1,1,6);c.fillRect(6,1,1,6);});
+tile.chair=drawTile(function(c){c.fillStyle='#5a5a6a';c.fillRect(2,2,4,4);c.fillStyle='#6a6a7a';c.fillRect(3,3,2,2);c.fillStyle='#4a4a5a';c.fillRect(3,0,2,2);});
+
+// Gengar 16x13
+function makeGengar(eyeCol){
+  var bc=mkC(16,13);var c=bc.getContext('2d');
+  var p=function(x,y,col){c.fillStyle=col;c.fillRect(x,y,1,1);};
+  var m='#7b2d8b',d='#5a1d6b';
+  p(4,0,m);p(5,0,m);p(11,0,m);p(12,0,m);
+  p(3,1,m);p(6,1,m);p(10,1,m);p(13,1,m);
+  for(var x=2;x<=14;x++)p(x,2,m);
+  p(3,3,m);p(4,3,'#fff');p(5,3,eyeCol);p(6,3,'#fff');p(7,3,m);p(8,3,m);
+  p(9,3,'#fff');p(10,3,eyeCol);p(11,3,'#fff');p(12,3,m);p(13,3,m);
+  for(var x=1;x<=15;x++)p(x,4,m);
+  p(5,5,m);p(6,5,'#fff');p(7,5,'#fff');p(8,5,m);p(9,5,'#fff');p(10,5,'#fff');p(11,5,m);
+  for(var x=12;x<=15;x++)p(x,5,m);
+  for(var x=0;x<=15;x++)p(x,6,m);
+  p(0,7,m);p(1,7,d);for(var x=2;x<=14;x++)p(x,7,m);p(15,7,d);
+  for(var x=1;x<=15;x++)p(x,8,m);
+  p(1,9,m);p(2,9,d);for(var x=3;x<=13;x++)p(x,9,m);p(14,9,d);p(15,9,m);
+  p(2,10,d);p(3,10,d);for(var x=4;x<=12;x++)p(x,10,m);p(13,10,d);p(14,10,d);
+  p(3,11,d);p(4,11,m);for(var x=5;x<=11;x++)p(x,11,m);p(12,11,m);p(13,11,d);
+  p(5,12,d);p(6,12,m);for(var x=7;x<=9;x++)p(x,12,m);p(10,12,m);p(11,12,d);
+  p(7,0,d);p(8,0,m);p(9,0,d);
+  return scC(bc);
+}
+var gengarIdle=makeGengar('#cc2222');
+var gengarThink=makeGengar('#ffdd44');
+var gengarWork=makeGengar('#ff4444');
+
+// Player 8x11
+function makePlayer(frame){
+  var bc=mkC(8,11);var c=bc.getContext('2d');
+  c.fillStyle='#ffccaa';c.fillRect(2,0,4,3); // head
+  c.fillStyle='#000';c.fillRect(3,1,1,1);c.fillRect(5,1,1,1); // eyes
+  c.fillStyle='#2a4a8a';c.fillRect(1,3,6,5); // body
+  c.fillStyle='#1a3a7a';c.fillRect(1,3,1,5);c.fillRect(6,3,1,5);
+  c.fillStyle='#ffccaa';
+  if(frame===0){c.fillRect(0,4,1,2);c.fillRect(7,4,1,2);}
+  else{c.fillRect(0,5,1,2);c.fillRect(7,5,1,2);}
+  c.fillStyle='#2a2a3a';c.fillRect(2,8,2,3);c.fillRect(5,8,2,3);
+  c.fillStyle='#1a1a2a';c.fillRect(2,10,2,1);c.fillRect(5,10,2,1);
+  return scC(bc);
+}
+var playerSpr=[makePlayer(0),makePlayer(1)];
+
+// Status bubble 20x12
+function makeBubble(st){
+  var bc=mkC(20,12);var c=bc.getContext('2d');
+  c.fillStyle='#fff';
+  c.fillRect(4,2,12,7);c.fillRect(2,3,16,5);c.fillRect(4,6,10,3);
+  c.fillStyle='#ccc';c.fillRect(18,10,2,2);c.fillRect(17,11,1,1);
+  var ic=st==='thinking'?'#4488ff':st==='working'?'#44cc44':st==='delegating'?'#ff8800':'#999';
+  c.fillStyle=ic;c.fillRect(7,4,6,4);
+  c.fillStyle='#fff';
+  if(st==='thinking'){c.fillRect(8,5,1,1);c.fillRect(10,6,1,1);c.fillRect(9,7,1,1);}
+  else if(st==='working'){c.fillRect(9,5,1,3);c.fillRect(8,6,1,1);c.fillRect(10,6,1,1);}
+  else if(st==='delegating'){c.fillRect(7,5,1,1);c.fillRect(12,5,1,1);c.fillRect(8,6,4,1);c.fillRect(9,7,2,1);}
+  else{c.fillRect(8,6,4,1);}
+  return scC(bc);
+}
+var bubbleIdle=makeBubble('idle');
+var bubbleThink=makeBubble('thinking');
+var bubbleWork=makeBubble('working');
+var bubbleDeleg=makeBubble('delegating');
+
+// Thinking cloud 16x9
+var thinkCloud=(function(){
+  var bc=mkC(16,9);var c=bc.getContext('2d');
+  c.fillStyle='#fff';c.fillRect(5,2,7,4);c.fillRect(3,3,11,3);c.fillRect(5,5,6,2);
+  c.fillStyle='#ccc';c.fillRect(14,6,2,2);c.fillRect(13,7,2,1);
+  c.fillStyle='#555';c.fillRect(6,3,1,2);c.fillRect(9,3,1,2);
+  return scC(bc);
+})();
+
+// ============================================================
+// MAP — 20 cols x 18 rows
+// Chars: 0=void .=floor1 ~=floor2 :=floor3 #=wall d=door t=table c=chair g=gengar
+// ============================================================
+var TM=[];
+for(var y=0;y<MH;y++){TM[y]=[];for(var x=0;x<MW;x++)TM[y][x]='0';}
+var ST=function(x,y,t){if(x>=0&&x<MW&&y>=0&&y<MH)TM[y][x]=t;};
+var fillRoom=function(tx,ty,tw,th,fl){
+  for(var y=ty;y<ty+th;y++)for(var x=tx;x<tx+tw;x++){
+    if(x===tx||x===tx+tw-1||y===ty||y===ty+th-1)ST(x,y,'#');
+    else ST(x,y,fl);
+  }
+};
+
+// BOSS ROOM (1,1)-(17,7) = 17x7
+fillRoom(1,1,17,7,'~');
+ST(15,3,'g'); // Gengar
+ST(5,3,'t');ST(6,3,'t'); // table
+ST(5,4,'c'); // chair
+ST(9,7,'d');ST(10,7,'d'); // doors to hallway
+
+// HALLWAY (1,8)-(17,9) = 17x2
+for(var x=1;x<=17;x++){ST(x,8,'.');ST(x,9,'.');}
+// Hallway side walls
+ST(0,8,'#');ST(0,9,'#');ST(18,8,'#');ST(18,9,'#');
+// Hallway bottom wall with doors
+for(var x=1;x<=17;x++)ST(x,9,'#');
+// Doors from hallway to offices below (row 9)
+ST(2,9,'d');ST(7,9,'d');ST(12,9,'d');ST(17,9,'d');
+// Doors from boss to hallway (row 8)
+ST(9,8,'d');ST(10,8,'d');
+
+// 8 SMALL OFFICES (4 left, 4 right, 2 rows each)
+// Left column 1: Office4 (0,10)-(4,13) = 5x4
+fillRoom(0,10,5,4,':');ST(2,10,'d'); // top door from hallway
+ST(1,11,'t');ST(2,11,'t');ST(1,12,'c');
+ST(2,13,'d'); // bottom door to office5
+
+// Left column 1 bottom: Office5 (0,14)-(4,17) = 5x4
+fillRoom(0,14,5,4,':');ST(2,14,'d'); // top door from office4
+ST(1,15,'t');ST(2,15,'t');ST(1,16,'c');
+
+// Left column 2: Office6 (5,10)-(9,13) = 5x4
+fillRoom(5,10,5,4,':');ST(7,10,'d');
+ST(6,11,'t');ST(7,11,'t');ST(6,12,'c');
+ST(7,13,'d');
+
+// Left column 2 bottom: Office7 (5,14)-(9,17) = 5x4
+fillRoom(5,14,5,4,':');ST(7,14,'d');
+ST(6,15,'t');ST(7,15,'t');ST(6,16,'c');
+
+// Right column 1: Office1 (10,10)-(14,13) = 5x4
+fillRoom(10,10,5,4,':');ST(12,10,'d');
+ST(11,11,'t');ST(12,11,'t');ST(11,12,'c');
+ST(12,13,'d');
+
+// Right column 1 bottom: Office2 (10,14)-(14,17) = 5x4
+fillRoom(10,14,5,4,':');ST(12,14,'d');
+ST(11,15,'t');ST(12,15,'t');ST(11,16,'c');
+
+// Right column 2: Office3 (15,10)-(19,13) = 5x4
+fillRoom(15,10,5,4,':');ST(17,10,'d');
+ST(16,11,'t');ST(17,11,'t');ST(16,12,'c');
+ST(17,13,'d');
+
+// Right column 2 bottom: Office8 (15,14)-(19,17) = 5x4
+fillRoom(15,14,5,4,':');ST(17,14,'d');
+ST(16,15,'t');ST(17,15,'t');ST(16,16,'c');
+
+// ============================================================
+// ROOM DETECTION
+// ============================================================
+var ROOMS=[
+  {id:'boss',name:'Boss Office'},
+  {id:'office4',name:'Audit Desk'},
+  {id:'office5',name:'News Center'},
+  {id:'office6',name:'Video Studio'},
+  {id:'office7',name:'Assistant Bot'},
+  {id:'office1',name:'Research Lab'},
+  {id:'office2',name:'Code Studio'},
+  {id:'office3',name:'SEO Workshop'},
+  {id:'office8',name:'System Maint.'},
+  {id:'hallway',name:'Hallway'}
+];
+function getRoomAt(tx,ty){
+  if(ty>=8&&ty<=9&&tx>=1&&tx<=17)return 'hallway';
+  if(ty>=1&&ty<=7&&tx>=1&&tx<=17)return 'boss';
+  if(ty>=10&&ty<=13){
+    if(tx>=0&&tx<=4)return 'office4';
+    if(tx>=5&&tx<=9)return 'office6';
+    if(tx>=10&&tx<=14)return 'office1';
+    if(tx>=15&&tx<=19)return 'office3';
+  }
+  if(ty>=14&&ty<=17){
+    if(tx>=0&&tx<=4)return 'office5';
+    if(tx>=5&&tx<=9)return 'office7';
+    if(tx>=10&&tx<=14)return 'office2';
+    if(tx>=15&&tx<=19)return 'office8';
+  }
+  return null;
+}
+function roomName(id){for(var i=0;i<ROOMS.length;i++)if(ROOMS[i].id===id)return ROOMS[i].name;return '?';}
+
+// ============================================================
+// COLLISION
+// ============================================================
+function isSolid(x,y){
+  if(x<0||x>=MW||y<0||y>=MH)return true;
+  var t=TM[y][x];
+  return t==='0'||t==='#';
+}
+
+// ============================================================
+// GAME STATE
+// ============================================================
+var player={tx:9,ty:4,px:72,py:32,moving:false,tpx:0,tpy:0,frame:0,anim:0};
+var curRoom='boss';
+var keys={};
+var msgBox=null,msgTime=0;
+var gengar={status:'idle',bobT:0,statT:0,statI:0};
+var STATUS_C=[
+  {s:'idle',dur:240},{s:'thinking',dur:180},{s:'delegating',dur:200},
+  {s:'working',dur:300},{s:'thinking',dur:120},{s:'idle',dur:180}
+];
+var objectives=[
+  {t:'Visit Research Lab',done:false,id:'office1'},
+  {t:'Visit Code Studio',done:false,id:'office2'},
+  {t:'Visit SEO Workshop',done:false,id:'office3'},
+  {t:'Talk to Gengar',done:false,id:null},
+  {t:'Visit all offices',done:false,id:null},
+  {t:'Explore the building',done:false,id:null}
+];
+var visited={boss:true};
+var moveDelay=0;
+
+// ============================================================
+// INPUT
+// ============================================================
+document.addEventListener('keydown',function(e){
+  keys[e.key]=true;
+  if(e.key==='e'||e.key==='E'||e.key==='z'||e.key==='Z')interact();
+  if(e.key==='x'||e.key==='X'){if(msgBox){msgBox=null;msgTime=0;}}
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].indexOf(e.key)>=0)e.preventDefault();
+});
+document.addEventListener('keyup',function(e){keys[e.key]=false;});
+
+function interact(){
+  // Gengar check
+  if(Math.abs(player.tx-15)<=2&&Math.abs(player.ty-3)<=2){
+    objectives[3].done=true;
+    var m={idle:"Gengar yawns...\nMain agent is idle.",
+      thinking:"Gengar concentrates...\nMain agent is thinking.",
+      working:"Gengar focuses!\nMain agent is working.",
+      delegating:"Gengar sends out agents!\nMain agent is delegating!"};
+    showMsg(m[gengar.status]);return;
+  }
+  // Furniture check
+  var furns=[
+    [5,3],[6,3],[5,4], // boss table/chair
+    [1,11],[2,11],[1,12], // office4
+    [1,15],[2,15],[1,16], // office5
+    [6,11],[7,11],[6,12], // office6
+    [6,15],[7,15],[6,16], // office7
+    [11,11],[12,11],[11,12], // office1
+    [11,15],[12,15],[11,16], // office2
+    [16,11],[17,11],[16,12], // office3
+    [16,15],[17,15],[16,16] // office8
+  ];
+  for(var i=0;i<furns.length;i++){
+    if(Math.abs(player.tx-furns[i][0])<=1&&Math.abs(player.ty-furns[i][1])<=1){
+      showMsg("Office furniture.\nAgents work here daily.");return;
+    }
+  }
+  showMsg("Nothing to interact with.\nTry exploring the offices!");
+}
+function showMsg(t){msgBox=t;msgTime=0;}
+
+// ============================================================
+// UPDATE
+// ============================================================
+function update(){
+  moveDelay=Math.max(0,moveDelay-1);
+  var spd=2;
+
+  if(!player.moving&&moveDelay===0){
+    var dx=0,dy=0;
+    if(keys['ArrowUp']||keys['w']||keys['W'])dy=-1;
+    else if(keys['ArrowDown']||keys['s']||keys['S'])dy=1;
+    else if(keys['ArrowLeft']||keys['a']||keys['A'])dx=-1;
+    else if(keys['ArrowRight']||keys['d']||keys['D'])dx=1;
+
+    if(dx!==0||dy!==0){
+      var ntx=player.tx+dx;
+      var nty=player.ty+dy;
+      if(TM[nty]&&TM[nty][ntx]==='d'){
+        // Door: move through to the other side
+        var pairY=nty+dy;
+        if(TM[pairY]&&TM[pairY][ntx]==='d'){
+          player.tx=ntx;player.ty=pairY;
+          player.px=ntx*8;player.py=pairY*8;
+          var nr=getRoomAt(player.tx,player.ty);
+          if(nr&&nr!==curRoom){
+            curRoom=nr;
+            if(nr!=='hallway'){visited[nr]=true;}
+            checkObj();
+          }
+        }else if(!isSolid(ntx,pairY)){
+          player.tx=ntx;player.ty=pairY;
+          player.px=ntx*8;player.py=pairY*8;
+        }
+      }else if(!isSolid(ntx,nty)){
+        player.moving=true;
+        player.tpx=ntx*8;player.tpy=nty*8;
+        moveDelay=3;
+      }
+    }
+  }
+
+  if(player.moving){
+    if(player.px<player.tpx)player.px=Math.min(player.px+spd,player.tpx);
+    else if(player.px>player.tpx)player.px=Math.max(player.px-spd,player.tpx);
+    if(player.py<player.tpy)player.py=Math.min(player.py+spd,player.tpy);
+    else if(player.py>player.tpy)player.py=Math.max(player.py-spd,player.tpy);
+    if(player.px===player.tpx&&player.py===player.tpy){
+      player.moving=false;
+      player.tx=Math.round(player.px/8);
+      player.ty=Math.round(player.py/8);
+      var nr=getRoomAt(player.tx,player.ty);
+      if(nr&&nr!==curRoom){
+        curRoom=nr;
+        if(nr!=='hallway'){visited[nr]=true;}
+        checkObj();
+      }
+    }
+    player.anim++;
+    if(player.anim>5){player.anim=0;player.frame=1-player.frame;}
+  }
+
+  // Gengar status cycle
+  gengar.statT++;
+  if(gengar.statT>STATUS_C[gengar.statI].dur){
+    gengar.statT=0;gengar.statI=(gengar.statI+1)%STATUS_C.length;
+    gengar.status=STATUS_C[gengar.statI].s;
+  }
+  gengar.bobT+=0.06;
+
+  // Message timer
+  if(msgBox){msgTime++;if(msgTime>150){msgBox=null;msgTime=0;}}
+}
+
+function checkObj(){
+  objectives[0].done=!!visited['office1'];
+  objectives[1].done=!!visited['office2'];
+  objectives[2].done=!!visited['office3'];
+  var c=0;for(var k in visited)if(visited[k])c++;
+  objectives[4].done=c>=9;
+  objectives[5].done=c>=5;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render(){
+  ctx.fillStyle='#000';ctx.fillRect(0,0,c.width,c.height);
+
+  // Draw tiles
+  for(var y=0;y<MH;y++)for(var x=0;x<MW;x++){
+    var t=TM[y][x],s=null;
+    if(t==='.')s=tile.floor1;
+    else if(t==='~')s=tile.floor2;
+    else if(t===':')s=tile.floor3;
+    else if(t==='#')s=tile.wall;
+    else if(t==='d')s=tile.door;
+    else if(t==='t')s=tile.table;
+    else if(t==='c')s=tile.chair;
+    if(s)blit(s,x,y);
+  }
+
+  // Gengar
+  var gs=gengar.status==='thinking'?gengarThink:gengar.status==='working'||gengar.status==='delegating'?gengarWork:gengarIdle;
+  blit(gs,15,2);
+  // Status bubble
+  var bs=gengar.status==='thinking'?bubbleThink:gengar.status==='working'?bubbleWork:gengar.status==='delegating'?bubbleDeleg:bubbleIdle;
+  var bb=Math.sin(gengar.bobT*1.3)*1.5;
+  blit(bs,14,Math.round(0+bb));
+  if(gengar.status==='thinking'||gengar.status==='delegating'){
+    var tb=Math.sin(gengar.bobT*1.5)*2;
+    blit(thinkCloud,14,Math.round(-3+tb));
+  }
+
+  // Player
+  blit(player.moving?playerSpr[1]:playerSpr[0],player.px/8,player.py/8-1);
+
+  // Room name bar (Pokemon Gen 2/3 style)
+  ctx.fillStyle='rgba(0,0,0,0.75)';ctx.fillRect(0,(H-16)*S,W*S,16*S);
+  ctx.fillStyle='#fff';ctx.font=(8*S)+'px Courier New';
+  ctx.fillText(roomName(curRoom),4*S,(H-4)*S);
+
+  // Objectives panel
+  ctx.fillStyle='rgba(0,0,0,0.6)';ctx.fillRect((W-52)*S,2*S,50*S,32*S);
+  ctx.fillStyle='#fff';ctx.font=(5*S)+'px Courier New';
+  ctx.fillText('OBJECTIVES',(W-50)*S,7*S);
+  ctx.font=(4*S)+'px Courier New';
+  for(var i=0;i<Math.min(4,objectives.length);i++){
+    var m=objectives[i].done?'\u2713':'\u25CB';
+    ctx.fillText(m+' '+objectives[i].t.substring(0,13),(W-50)*S,(12+i*5)*S);
+  }
+
+  // Message box (Pokemon Gen 2/3 style)
+  if(msgBox){
+    var bx=4*S,by=(H/2+6)*S,bw=(W-8)*S,bh=(H/2-10)*S;
+    ctx.fillStyle='#fff';ctx.fillRect(bx-2,by-2,bw+4,bh+4);
+    ctx.fillStyle='#000';ctx.fillRect(bx,by,bw,bh);
+    ctx.fillStyle='#333';ctx.fillRect(bx+2,by+2,bw-4,bh-4);
+    ctx.fillStyle='#fff';ctx.font=(5*S)+'px Courier New';
+    var lines=msgBox.split('\n');
+    for(var i=0;i<lines.length;i++)ctx.fillText(lines[i],bx+4*S,by+(8+i*7)*S);
+  }
+
+  // Controls hint
+  ctx.fillStyle='rgba(0,0,0,0.45)';ctx.fillRect(2*S,2*S,32*S,16*S);
+  ctx.fillStyle='#aaa';ctx.font=(4*S)+'px Courier New';
+  ctx.fillText('Arrow:Move',4*S,6*S);
+  ctx.fillText('E:Interact',4*S,11*S);
+  ctx.fillText('X:Close',4*S,16*S);
+}
+
+// ============================================================
+// GAME LOOP
+// ============================================================
+function loop(){update();render();requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
