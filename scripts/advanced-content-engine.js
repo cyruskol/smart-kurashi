@@ -844,10 +844,10 @@ async function runPipeline(topic) {
     await lmLoadModel(LM_MODEL);              // load the reasoning model
 
     // ── Step 4.5: Scrape OG images for each group ──
-    console.log(`\\n🖼️ Step 4.5: Scraping OG images for ${toProcess.length} groups...`);
+    console.log(`\n🖼️ Step 4.5: Scraping OG images for ${groups.length} groups...`);
     const ogImages = [];
-    for (let i = 0; i < toProcess.length; i++) {
-      const group = toProcess[i];
+    for (let i = 0; i < groups.length; i++) {
+      const group = groups[i];
       // Pick the first article link from the group to scrape
       const firstLink = group[0]?.link;
       if (firstLink) {
@@ -881,8 +881,8 @@ async function runPipeline(topic) {
     const MAX_ARTICLES = 3;
     const savedFiles = [];
 
-    for (let i = 0; i < toProcess.length; i++) {
-      const group = toProcess[i];
+    for (let i = 0; i < groups.length; i++) {
+      const group = groups[i];
       console.log(`\\n📝 Step 5.${i + 1}: Scraping sources from ${group.length} RSS feeds...`);
 
       const summary = buildGroupSummary(group);
