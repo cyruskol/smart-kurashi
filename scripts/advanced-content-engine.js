@@ -688,34 +688,43 @@ function saveMdx(content, topic, ogImagePath) {
   // Set category based on topic
   const category = topic === 'smart-home' ? 'smart-home' : 'ai-tech';
 
-  // Ensure YAML frontmatter exists with correct category
-  let finalContent = content;
   // Strip any leading newlines before frontmatter
-  finalContent = finalContent.replace(/^\n+/, '');
-  if (!finalContent.trim().startsWith('---')) {
-    finalContent = `---
-title: "Untitled"
-date: "${date}"
-category: "${category}"
-tags: []
-source: "Smart Kurashi × @kolnews_bot"
----
+  let finalContent = content.replace(/^\n+/, '');
 
-${content}`;
+  // Validate: must have frontmatter
+  if (!finalContent.trim().startsWith('---')) {
+    console.warn(`[SKIP] Content has no frontmatter. Not saving ${filename}.`);
+    return null;
+  }
+
+  // Validate: must have a real title (not "Untitled") and meaningful body
+  const titleMatch = finalContent.match(/title:\s*["'](.+?)["']/);
+  const bodyMatch = finalContent.split('---').slice(2).join('---').trim();
+
+  if (!titleMatch || !titleMatch[1] || titleMatch[1].toLowerCase() === 'untitled' || titleMatch[1].trim() === '') {
+    console.warn(`[SKIP] No valid title found. Title was: "${titleMatch?.[1] || 'none'}"`);
+    return null;
+  }
+
+  if (!bodyMatch || bodyMatch.length < 100) {
+    console.warn(`[SKIP] Body too short (${bodyMatch?.length || 0} chars)`);
+    return null;
+  }
+
+  console.log(`[SAVE] Valid post: "${titleMatch[1].slice(0, 60)}..." (${bodyMatch.length} chars body)`);
+
+  // Ensure YAML frontmatter has correct category and source
+  // Fix category in existing frontmatter
+  finalContent = finalContent.replace(/category:\s*[^\n]*/g, `category: "${category}"`);
+  // Ensure source field exists
+  if (!finalContent.includes('source:')) {
+    finalContent = finalContent.replace(/---\n/, `---\nsource: "Smart Kurashi × @kolnews_bot"\n`);
   }
   // Add image field to frontmatter if we have one
   if (ogImagePath) {
     finalContent = finalContent.replace(/^---\nm:/, `---\nimage: "${ogImagePath}"\nm:`);
-    // If no image field exists, add it after the source line
     if (!finalContent.includes('image:')) {
       finalContent = finalContent.replace(/source:\s*"([^"]+)"/, `source: "$1"\nimage: "${ogImagePath}"`);
-    }
-  } else {
-    // Fix category in existing frontmatter
-    finalContent = finalContent.replace(/category:\s*[^\n]*/g, `category: "${category}"`);
-    // Ensure source field exists
-    if (!finalContent.includes('source:')) {
-      finalContent = finalContent.replace(/---\n/, `---\nsource: "Smart Kurashi × @kolnews_bot"\n`);
     }
   }
 
@@ -908,7 +917,11 @@ async function runPipeline(topic) {
       }
 
       const filepath = saveMdx(finalContent, topic, ogImagePath);
-      savedFiles.push(filepath);
+      if (filepath) {
+        savedFiles.push(filepath);
+      } else {
+        console.warn(`[PIPELINE] Skipped saving invalid content for group ${i + 1}`);
+      }
 
       await sleep(2000);
     }
