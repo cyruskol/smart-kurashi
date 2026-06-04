@@ -205,6 +205,10 @@ img { max-width: 100%; height: auto; }
   transition: all 0.3s ease;
 }
 
+.header-desktop-nav {
+  display: flex;
+}
+
 .mobile-nav-trigger.active span:nth-child(1) {
   transform: rotate(45deg) translate(8px, 8px);
 }
@@ -334,7 +338,7 @@ img { max-width: 100%; height: auto; }
   }
 
   /* Hide desktop category buttons on mobile */
-  header nav a.japandi-btn {
+  .header-desktop-nav {
     display: none !important;
   }
 

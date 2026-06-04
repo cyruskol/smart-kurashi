@@ -62,9 +62,11 @@ export default function Header() {
 
             {/* Mobile Hamburger */}
             <button
-              className="mobile-nav-trigger"
+              className={`mobile-nav-trigger ${mobileOpen ? 'active' : ''}`}
               onClick={() => setMobileOpen(true)}
               aria-label="メニューを開く"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-drawer"
             >
               <span />
               <span />
@@ -80,27 +82,35 @@ export default function Header() {
       )}
 
       {/* Mobile Drawer */}
-      <div className={`drawer ${mobileOpen ? 'open' : ''}`}>
-        <div className="drawer-header">
-          <span style={{ fontSize: '16px', fontWeight: 600, color: '#292524' }}>メニュー</span>
-          <button
-            className="drawer-close"
-            onClick={() => setMobileOpen(false)}
-            aria-label="メニューを閉じる"
-          >
-            ×
-          </button>
+      {mobileOpen && (
+        <div
+          id="mobile-nav-drawer"
+          className="drawer open"
+          role="dialog"
+          aria-modal="true"
+          aria-label="モバイルメニュー"
+        >
+          <div className="drawer-header">
+            <span style={{ fontSize: '16px', fontWeight: 600, color: '#292524' }}>メニュー</span>
+            <button
+              className="drawer-close"
+              onClick={() => setMobileOpen(false)}
+              aria-label="メニューを閉じる"
+            >
+              ×
+            </button>
+          </div>
+          <nav className="drawer-nav" aria-label="モバイルナビゲーション">
+            <Link href="/" onClick={() => setMobileOpen(false)}>ホーム</Link>
+            <Link href="/category/ai-tech" onClick={() => setMobileOpen(false)}>AI・テック</Link>
+            <Link href="/category/smart-home" onClick={() => setMobileOpen(false)}>家電・ガジェット</Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>会社概要</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)}>お問い合わせ</Link>
+            <Link href="/privacy" onClick={() => setMobileOpen(false)}>プライバシーポリシー</Link>
+            <Link href="/terms" onClick={() => setMobileOpen(false)}>利用規約</Link>
+          </nav>
         </div>
-        <nav className="drawer-nav" aria-label="モバイルナビゲーション">
-          <Link href="/" onClick={() => setMobileOpen(false)}>ホーム</Link>
-          <Link href="/category/ai-tech" onClick={() => setMobileOpen(false)}>AI・テック</Link>
-          <Link href="/category/smart-home" onClick={() => setMobileOpen(false)}>家電・ガジェット</Link>
-          <Link href="/about" onClick={() => setMobileOpen(false)}>会社概要</Link>
-          <Link href="/contact" onClick={() => setMobileOpen(false)}>お問い合わせ</Link>
-          <Link href="/privacy" onClick={() => setMobileOpen(false)}>プライバシーポリシー</Link>
-          <Link href="/terms" onClick={() => setMobileOpen(false)}>利用規約</Link>
-        </nav>
-      </div>
+      )}
     </>
   );
 }

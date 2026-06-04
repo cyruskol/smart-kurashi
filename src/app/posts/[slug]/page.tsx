@@ -7,7 +7,6 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
-import MobileNavDrawer from '@/components/MobileNavDrawer';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -130,9 +129,6 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
-      {/* Mobile nav drawer for this page context */}
-      <MobileNavDrawer />
-      
       <div className="max-w-container mx-auto px-md">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
 

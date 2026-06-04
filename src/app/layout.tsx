@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Noto_Sans_JP, Playfair_Display } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import Footer from '@/components/Footer';
-import MobileNavDrawer from '@/components/MobileNavDrawer';
+import Header from '@/components/Header';
 import StructuredData from '@/components/StructuredData';
 import './globals.css';
 
@@ -157,14 +156,7 @@ export default function RootLayout({
           コンテンツへスキップ
         </a>
         
-        {/* Mobile navigation trigger */}
-        <MobileNavDrawer />
-
-        <div style={{ padding: '0 16px' }}>
-          <Link href="/" aria-label="Smart Kurashi ホーム" style={{ display: 'inline-block' }}>
-            <img src="/logo.png" alt="Smart Kurashi" width={128} height={128} style={{ height: 'auto' }} />
-          </Link>
-        </div>
+        <Header />
         <div id="main-content">{children}</div>
         <Analytics />
         <Footer />
