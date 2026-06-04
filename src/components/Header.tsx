@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const categoryHeaderItems = [
+  { href: '/', displayLabel: '記事一覧' },
   { href: '/category/ai-tech', displayLabel: 'AI・テック' },
   { href: '/category/smart-home', displayLabel: '家電・ガジェット' },
   { href: '/privacy', displayLabel: 'プライバシー' },
@@ -67,8 +68,9 @@ export default function Header() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '10px',
+                  gap: '8px',
                   flexWrap: 'nowrap',
+                  flexShrink: 0,
                 }}
                 aria-label="メインナビゲーション"
               >
