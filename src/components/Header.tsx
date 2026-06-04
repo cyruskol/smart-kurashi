@@ -20,6 +20,8 @@ export default function Header() {
           position: 'static',
           background: '#fff',
           borderBottom: '1px solid #E7E5E4',
+          margin: 0,
+          padding: 0,
         }}
         role="banner"
       >
