@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const categoryHeaderItems = [
-  { href: '/category/ai-tech', displayLabel: 'AI & Tech' },
-  { href: '/category/smart-home', displayLabel: 'Smart Home' },
-  { href: '/privacy', displayLabel: 'Privacy' },
+  { href: '/category/ai-tech', displayLabel: 'AI・テック' },
+  { href: '/category/smart-home', displayLabel: '家電・ガジェット' },
+  { href: '/privacy', displayLabel: 'プライバシー' },
 ];
 
 export default function Header() {
@@ -37,7 +37,7 @@ export default function Header() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '18px',
+                gap: 'clamp(42px, 6.2vw, 74px)',
                 minWidth: 0,
                 flex: '1 1 auto',
               }}
@@ -48,7 +48,6 @@ export default function Header() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '10px',
                   textDecoration: 'none',
                   flex: '0 0 auto',
                 }}
@@ -56,13 +55,10 @@ export default function Header() {
                 <img
                   src="/logo.png"
                   alt="Smart Kurashi"
-                  width={32}
-                  height={32}
-                  style={{ borderRadius: '8px', height: '32px', width: '32px', display: 'block' }}
+                  width={48}
+                  height={48}
+                  style={{ borderRadius: '12px', height: '48px', width: '48px', display: 'block' }}
                 />
-                <span style={{ fontSize: '20px', fontWeight: 700, color: '#292524', whiteSpace: 'nowrap' }}>
-                  Smart Kurashi
-                </span>
               </Link>
 
               {/* Desktop Category Buttons */}

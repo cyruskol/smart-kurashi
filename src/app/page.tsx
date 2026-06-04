@@ -1,6 +1,5 @@
-import { getAllPosts, getPostsByCategory } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 
 export const metadata: {
   title: string;
@@ -15,12 +14,6 @@ const categoryColors: Record<string, { bg: string; text: string; dot: string }> 
   'smart-home': { bg: '#E7EFEA', text: '#4F6F5D', dot: '#4F6F5D' },
   'article': { bg: '#EFE8DD', text: '#6D6254', dot: '#6D6254' },
 };
-
-const heroButtons = [
-  { href: '/', label: 'すべて' },
-  { href: '/category/ai-tech', label: 'AI・テック' },
-  { href: '/category/smart-home', label: '家電・ガジェット' },
-];
 
 const POSTS_PER_PAGE = 6;
 
@@ -79,14 +72,6 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 </Link>
               </div>
             </div>
-
-            <nav aria-label="トップカテゴリ" style={{ position: 'absolute', left: '16px', bottom: '16px', display: 'flex', gap: '11px', flexWrap: 'wrap' }}>
-              {heroButtons.map((btn) => (
-                <Link key={btn.href} href={btn.href} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', padding: '7px 14px', borderRadius: '8px', fontSize: '13px', color: '#57514C', textDecoration: 'none', fontWeight: 500 }}>
-                  {btn.label}
-                </Link>
-              ))}
-            </nav>
           </div>
         </section>
       )}

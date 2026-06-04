@@ -115,8 +115,8 @@ const jsonLdItemList = {
   name: 'Smart Kurashi メニュー',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'ホーム', url: 'https://smart-kurashi.jp/' },
-    { '@type': 'ListItem', position: 2, name: 'AI & Tech', url: 'https://smart-kurashi.jp/category/ai-tech' },
-    { '@type': 'ListItem', position: 3, name: 'Smart Home', url: 'https://smart-kurashi.jp/category/smart-home' },
+    { '@type': 'ListItem', position: 2, name: 'AI・テック', url: 'https://smart-kurashi.jp/category/ai-tech' },
+    { '@type': 'ListItem', position: 3, name: '家電・ガジェット', url: 'https://smart-kurashi.jp/category/smart-home' },
     { '@type': 'ListItem', position: 4, name: '会社概要', url: 'https://smart-kurashi.jp/about' },
     { '@type': 'ListItem', position: 5, name: 'お問い合わせ', url: 'https://smart-kurashi.jp/contact' },
     { '@type': 'ListItem', position: 6, name: 'プライバシーポリシー', url: 'https://smart-kurashi.jp/privacy' },
