@@ -34,46 +34,38 @@ export default function Header() {
               flexWrap: 'nowrap',
             }}
           >
-            <div
+            {/* Logo */}
+            <Link
+              href="/"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                textDecoration: 'none',
+                flex: '0 0 auto',
+              }}
+            >
+              <img
+                src="/logo.png"
+                alt="Smart Kurashi"
+                width={48}
+                height={48}
+                style={{ borderRadius: '12px', height: '48px', width: '48px', display: 'block' }}
+              />
+            </Link>
+
+            {/* Desktop Category Buttons */}
+            <nav
+              className="header-desktop-nav"
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 'clamp(42px, 6.2vw, 74px)',
-                minWidth: 0,
-                flex: '1 1 auto',
+                gap: '8px',
+                flexWrap: 'nowrap',
+                flexShrink: 0,
+                marginLeft: 'auto',
               }}
+              aria-label="メインナビゲーション"
             >
-              {/* Logo */}
-              <Link
-                href="/"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  textDecoration: 'none',
-                  flex: '0 0 auto',
-                }}
-              >
-                <img
-                  src="/logo.png"
-                  alt="Smart Kurashi"
-                  width={48}
-                  height={48}
-                  style={{ borderRadius: '12px', height: '48px', width: '48px', display: 'block' }}
-                />
-              </Link>
-
-              {/* Desktop Category Buttons */}
-              <nav
-                className="header-desktop-nav"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  flexWrap: 'nowrap',
-                  flexShrink: 0,
-                }}
-                aria-label="メインナビゲーション"
-              >
                 {categoryHeaderItems.map((item) => (
                   <Link
                     key={item.href}
@@ -99,7 +91,6 @@ export default function Header() {
                   </Link>
                 ))}
               </nav>
-            </div>
 
             {/* Mobile Hamburger */}
             <button
