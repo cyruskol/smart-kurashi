@@ -3,15 +3,10 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const navItems = [
-  { href: '/', label: 'すべて' },
-  { href: '/category/ai-tech', label: 'AI・テック' },
-  { href: '/category/smart-home', label: '家電・ガジェット' },
-];
-
 const categoryHeaderItems = [
-  { slug: 'ai-tech', displayLabel: 'AI & Tech' },
-  { slug: 'smart-home', displayLabel: 'Smart Home' },
+  { href: '/category/ai-tech', displayLabel: 'AI & Tech' },
+  { href: '/category/smart-home', displayLabel: 'Smart Home' },
+  { href: '/privacy', displayLabel: 'Privacy' },
 ];
 
 export default function Header() {
@@ -27,38 +22,86 @@ export default function Header() {
         }}
         role="banner"
       >
-        <div className="max-w-container mx-auto px-md">
-          <div className="flex items-center justify-between" style={{ height: '56px' }}>
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-sm">
-              <img
-                src="/logo.png"
-                alt="Smart Kurashi"
-                width={32}
-                height={32}
-                style={{ borderRadius: '8px', height: 'auto' }}
-              />
-              <span style={{ fontSize: '18px', fontWeight: 600, color: '#292524' }}>
-                Smart Kurashi
-              </span>
-            </Link>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+          <div
+            style={{
+              minHeight: '64px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '16px',
+              flexWrap: 'nowrap',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '18px',
+                minWidth: 0,
+                flex: '1 1 auto',
+              }}
+            >
+              {/* Logo */}
+              <Link
+                href="/"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  textDecoration: 'none',
+                  flex: '0 0 auto',
+                }}
+              >
+                <img
+                  src="/logo.png"
+                  alt="Smart Kurashi"
+                  width={32}
+                  height={32}
+                  style={{ borderRadius: '8px', height: '32px', width: '32px', display: 'block' }}
+                />
+                <span style={{ fontSize: '20px', fontWeight: 700, color: '#292524', whiteSpace: 'nowrap' }}>
+                  Smart Kurashi
+                </span>
+              </Link>
 
-            {/* Desktop Category Buttons */}
-            <nav className="flex items-center flex-wrap justify-end header-desktop-nav" style={{ gap: '11px' }} aria-label="メインナビゲーション">
-              {categoryHeaderItems.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/category/${item.slug}`}
-                  className="japandi-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border"
-                  style={{
-                    borderColor: '#DDD8D1',
-                    color: '#726B65',
-                  }}
-                >
-                  {item.displayLabel}
-                </Link>
-              ))}
-            </nav>
+              {/* Desktop Category Buttons */}
+              <nav
+                className="header-desktop-nav"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  flexWrap: 'nowrap',
+                }}
+                aria-label="メインナビゲーション"
+              >
+                {categoryHeaderItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minHeight: '36px',
+                      padding: '0 14px',
+                      borderRadius: '999px',
+                      border: '1px solid #DDD8D1',
+                      color: '#57514C',
+                      background: '#fff',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      lineHeight: 1,
+                      textDecoration: 'none',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {item.displayLabel}
+                  </Link>
+                ))}
+              </nav>
+            </div>
 
             {/* Mobile Hamburger */}
             <button
