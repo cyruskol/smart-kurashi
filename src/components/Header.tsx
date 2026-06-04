@@ -68,7 +68,7 @@ export default function Header() {
                 gap: '8px',
                 flexWrap: 'nowrap',
                 flexShrink: 0,
-                marginLeft: '5%',
+                marginLeft: '20%',
               }}
               aria-label="メインナビゲーション"
             >
