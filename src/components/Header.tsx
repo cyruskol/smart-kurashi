@@ -32,7 +32,7 @@ export default function Header() {
               justifyContent: 'flex-start',
               gap: '16px',
               flexWrap: 'nowrap',
-              paddingLeft: '10%',
+              paddingLeft: '0',
             }}
           >
             {/* Logo */}
@@ -43,6 +43,7 @@ export default function Header() {
                 alignItems: 'center',
                 textDecoration: 'none',
                 flex: '0 0 auto',
+                marginLeft: '0',
               }}
             >
               <img
@@ -63,7 +64,7 @@ export default function Header() {
                 gap: '8px',
                 flexWrap: 'nowrap',
                 flexShrink: 0,
-                marginLeft: '0',
+                marginLeft: '5%',
               }}
               aria-label="メインナビゲーション"
             >
