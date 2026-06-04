@@ -23,7 +23,7 @@ export default function Header() {
         }}
         role="banner"
       >
-        <div style={{ width: '100%', margin: 0, padding: 0 }}>
+        <div style={{ width: '100%', margin: 0, padding: 0, position: 'relative' }}>
           <div
             style={{
               minHeight: '168px',
@@ -32,7 +32,6 @@ export default function Header() {
               justifyContent: 'flex-start',
               gap: '16px',
               flexWrap: 'nowrap',
-              paddingLeft: '0',
             }}
           >
             {/* Logo */}
@@ -43,7 +42,10 @@ export default function Header() {
                 alignItems: 'center',
                 textDecoration: 'none',
                 flex: '0 0 auto',
-                marginLeft: '0',
+                position: 'absolute',
+                left: '0',
+                top: '50%',
+                transform: 'translateY(-50%)',
               }}
             >
               <img
