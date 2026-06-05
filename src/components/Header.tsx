@@ -7,7 +7,8 @@ const categoryHeaderItems = [
   { href: '/', displayLabel: '記事一覧' },
   { href: '/category/ai-tech', displayLabel: 'AI・テック' },
   { href: '/category/smart-home', displayLabel: '家電・ガジェット' },
-  { href: '/privacy', displayLabel: 'プライバシー' },
+  { href: '/products', displayLabel: '製品レビュー' },
+  { href: '/compare', displayLabel: '比較表' },
 ];
 
 export default function Header() {
@@ -142,6 +143,9 @@ export default function Header() {
             <Link href="/" onClick={() => setMobileOpen(false)}>ホーム</Link>
             <Link href="/category/ai-tech" onClick={() => setMobileOpen(false)}>AI・テック</Link>
             <Link href="/category/smart-home" onClick={() => setMobileOpen(false)}>家電・ガジェット</Link>
+            <Link href="/products" onClick={() => setMobileOpen(false)}>製品レビュー</Link>
+            <Link href="/compare" onClick={() => setMobileOpen(false)}>比較表</Link>
+            <Link href="/reviews" onClick={() => setMobileOpen(false)}>レビュー一覧</Link>
             <Link href="/about" onClick={() => setMobileOpen(false)}>会社概要</Link>
             <Link href="/contact" onClick={() => setMobileOpen(false)}>お問い合わせ</Link>
             <Link href="/privacy" onClick={() => setMobileOpen(false)}>プライバシーポリシー</Link>

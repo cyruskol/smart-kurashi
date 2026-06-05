@@ -1,4 +1,5 @@
 import { getAllPosts } from '@/lib/posts';
+import { categoryMeta, getAllProducts } from '@/lib/products';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -25,6 +26,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
   const allPosts = getAllPosts();
+  const allProducts = getAllProducts();
   
   const categoryColors: Record<string, { bg: string; text: string }> = {
     'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
@@ -35,6 +37,12 @@ export default async function SearchPage({ searchParams }: PageProps) {
   const results = q ? allPosts.filter((p) => {
     const s = q.toLowerCase();
     return p.title.toLowerCase().includes(s) || p.excerpt.toLowerCase().includes(s) || p.tags.some((t) => t.toLowerCase().includes(s));
+  }) : [];
+
+  const productResults = q ? allProducts.filter((product) => {
+    const s = q.toLowerCase();
+    return [product.name, product.maker, product.summary, categoryMeta[product.category].label, ...product.bestFor, ...product.cautions]
+      .some((value) => value.toLowerCase().includes(s));
   }) : [];
 
   const tagCounts: Record<string, number> = {};
@@ -61,8 +69,22 @@ export default async function SearchPage({ searchParams }: PageProps) {
             {q && (
               <>
                 <p style={{ fontSize: '14px', color: '#5A534E', marginBottom: '20px' }}>
-                  {results.length > 0 ? `「${q}」の検索結果: ${results.length}件` : `「${q}」に一致する記事が見つかりませんでした。`}
+                  {results.length + productResults.length > 0 ? `「${q}」の検索結果: ${results.length + productResults.length}件` : `「${q}」に一致する記事・製品が見つかりませんでした。`}
                 </p>
+                {productResults.length > 0 && (
+                  <section style={{ marginBottom: '28px' }} aria-label="製品レビューの検索結果">
+                    <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#292524', marginBottom: '12px' }}>製品レビュー</h2>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
+                      {productResults.map((product) => (
+                        <Link key={product.slug} href={`/products/${product.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E7E5E4', borderRadius: '8px', padding: '18px', textDecoration: 'none' }}>
+                          <div style={{ fontSize: '11px', color: '#A9582D', fontWeight: 700, marginBottom: '8px' }}>{categoryMeta[product.category].label}</div>
+                          <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginBottom: '8px' }}>{product.name}</h3>
+                          <p style={{ fontSize: '13px', color: '#5A534E', lineHeight: 1.6 }}>{product.summary}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  </section>
+                )}
                 {results.length > 0 && (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
                     {results.map((post) => {
