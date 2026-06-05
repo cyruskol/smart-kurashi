@@ -53,10 +53,9 @@ export default function Header() {
               <img
                 src="/logo.png"
                 alt="Smart Kurashi"
-                width={144}
-                height={144}
+                width={128}
+                height={128}
                 style={{
-                  borderRadius: '24px',
                   height: 'min(var(--header-logo-size), 40vw)',
                   width: 'min(var(--header-logo-size), 40vw)',
                   maxWidth: '32vw',
