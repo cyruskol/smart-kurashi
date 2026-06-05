@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { categoryMeta, getAllProducts, getProductBySlug } from '@/lib/products';
 
 interface PageProps { params: Promise<{ slug: string }>; }
@@ -39,7 +38,6 @@ export default async function ProductPage({ params }: PageProps) {
           <p className="sk-eyebrow">{category.label}</p>
           <h1>{product.name} レビュー</h1>
           <p>{product.summary}</p>
-          <AffiliateDisclosure compact />
         </header>
         <section className="rating-panel" aria-label="評価サマリー">
           <div className="sk-score">{product.rating.toFixed(1)}<span>/5</span></div>

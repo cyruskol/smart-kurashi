@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { categoryMeta, getAllProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
@@ -16,7 +15,6 @@ export default function ProductsPage() {
         <p className="sk-eyebrow">PRODUCT GUIDE</p>
         <h1>スマートホーム製品レビュー・比較</h1>
         <p>導入しやすさ、家族での使いやすさ、追加費用、賃貸適性まで含めて、買う前に確認したいポイントを整理しているよ。</p>
-        <AffiliateDisclosure compact />
         <div className="product-actions">
           <Link href="/compare" className="product-button product-button-primary">比較表を見る</Link>
           <Link href="/reviews" className="product-button">レビュー一覧へ</Link>

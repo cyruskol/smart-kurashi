@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { categoryMeta, getAllProducts } from '@/lib/products';
 
 export const metadata: Metadata = {
@@ -16,7 +15,6 @@ export default function ComparePage() {
         <p className="sk-eyebrow">COMPARE</p>
         <h1>スマートホーム製品 比較表</h1>
         <p>価格だけでなく、設置しやすさ・日本の住まいへの合いやすさ・追加費用まで横並びで確認できるよ。</p>
-        <AffiliateDisclosure compact />
       </section>
       <div className="compare-table-wrap">
         <table className="compare-table">
