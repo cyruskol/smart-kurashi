@@ -28,12 +28,13 @@ export default function Header() {
         <div style={{ width: '100%', margin: 0, padding: 0, position: 'relative' }}>
           <div
             style={{
-              minHeight: '168px',
+              minHeight: '80px',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-end',
               justifyContent: 'flex-start',
               gap: '16px',
               flexWrap: 'nowrap',
+              paddingBottom: '8px',
             }}
           >
             {/* Logo */}
@@ -46,16 +47,15 @@ export default function Header() {
                 flex: '0 0 auto',
                 position: 'absolute',
                 left: '0',
-                top: '50%',
-                transform: 'translateY(-50%)',
+                bottom: '8px',
               }}
             >
               <img
                 src="/logo.png"
                 alt="Smart Kurashi"
-                width={144}
-                height={144}
-                style={{ borderRadius: '24px', height: '144px', width: '144px', display: 'block' }}
+                width={48}
+                height={48}
+                style={{ borderRadius: '12px', height: '48px', width: '48px', display: 'block' }}
               />
             </Link>
 
@@ -68,7 +68,7 @@ export default function Header() {
                 gap: '8px',
                 flexWrap: 'nowrap',
                 flexShrink: 0,
-                marginLeft: '12%',
+                marginLeft: '25%',
               }}
               aria-label="メインナビゲーション"
             >
