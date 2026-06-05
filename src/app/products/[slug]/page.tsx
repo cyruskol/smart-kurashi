@@ -31,32 +31,32 @@ export default async function ProductPage({ params }: PageProps) {
     review: { '@type': 'Review', author: { '@type': 'Organization', name: 'Smart Kurashi編集部' }, reviewRating: { '@type': 'Rating', ratingValue: product.rating, bestRating: 5 } },
   };
   return (
-    <main className="sk-commerce-page">
+    <main className="product-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="sk-breadcrumb"><Link href="/">ホーム</Link><span>/</span><Link href="/products">製品レビュー</Link><span>/</span>{product.name}</nav>
-      <article className="sk-review-layout">
-        <header className="sk-review-hero">
+      <nav className="product-breadcrumb"><Link href="/">ホーム</Link><span>/</span><Link href="/products">製品レビュー</Link><span>/</span>{product.name}</nav>
+      <article className="product-detail">
+        <header className="product-hero">
           <p className="sk-eyebrow">{category.label}</p>
           <h1>{product.name} レビュー</h1>
           <p>{product.summary}</p>
           <AffiliateDisclosure compact />
         </header>
-        <section className="sk-score-card" aria-label="評価サマリー">
+        <section className="rating-panel" aria-label="評価サマリー">
           <div className="sk-score">{product.rating.toFixed(1)}<span>/5</span></div>
-          <dl className="sk-product-facts">
+          <dl className="product-facts">
             <div><dt>メーカー</dt><dd>{product.maker}</dd></div>
             <div><dt>価格帯</dt><dd>{product.priceRange}</dd></div>
             {Object.entries(product.specs).map(([key, value]) => (<div key={key}><dt>{key}</dt><dd>{value}</dd></div>))}
           </dl>
         </section>
-        <section className="sk-two-column">
+        <section className="two-column-panel">
           <div><h2>向いている人</h2><ul>{product.bestFor.map((item) => <li key={item}>{item}</li>)}</ul></div>
           <div><h2>購入前の注意点</h2><ul>{product.cautions.map((item) => <li key={item}>{item}</li>)}</ul></div>
         </section>
-        <section className="prose sk-review-body">
+        <section className="prose review-body">
           {product.reviewBody.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </section>
-        <section className="sk-affiliate-box" aria-label="購入リンク">
+        <section className="buy-panel" aria-label="購入リンク">
           <h2>価格・在庫を確認する</h2>
           <p>価格は変動します。購入前に販売ページで最新条件、返品条件、対応オプションを確認してね。</p>
           <div className="sk-link-list">{product.affiliateLinks.map((link) => <a key={link.href} href={link.href} rel="sponsored nofollow noopener noreferrer" target="_blank">{link.label}</a>)}</div>
