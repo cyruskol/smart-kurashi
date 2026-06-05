@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -28,9 +29,9 @@ export default function PrivacyPage() {
         <nav aria-label="パンくずリスト" className="mb-lg text-sm">
           <ol className="flex items-center gap-sm">
             <li>
-              <a href="/" className="text-text-muted hover:text-accent transition-colors">
+              <Link href="/" className="text-text-muted hover:text-accent transition-colors">
                 ホーム
-              </a>
+              </Link>
             </li>
             <li className="text-text-muted">/</li>
             <li className="text-text-secondary" aria-current="page">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 interface TocItem {
   id: string;
@@ -8,29 +8,36 @@ interface TocItem {
   level: 'h2' | 'h3';
 }
 
+function slugify(text: string, index: number) {
+  const normalized = text
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^\u0000-\u007F\w\u3040-\u30ff\u4e00-\u9faf]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
+  return normalized ? `mokuji-${index}-${normalized}` : `mokuji-${index}`;
+}
+
+function extractTocItems(content: string): TocItem[] {
+  const items: TocItem[] = [];
+  let index = 0;
+
+  for (const line of content.split('\n')) {
+    const match = line.match(/^(##|###)\s+(.+?)\s*$/);
+    if (!match) continue;
+
+    const level = match[1] === '##' ? 'h2' : 'h3';
+    const text = match[2].replace(/\s+#.*$/, '').trim();
+    items.push({ id: slugify(text, index), text, level });
+    index += 1;
+  }
+
+  return items;
+}
+
 export default function TableOfContents({ content }: { content: string }) {
-  const [items, setItems] = useState<TocItem[]>([]);
-
-  useEffect(() => {
-    // Parse H2/H3 from the rendered content area
-    const container = document.querySelector('.prose');
-    if (!container) return;
-
-    const headings = container.querySelectorAll('h2, h3');
-    const tocItems: TocItem[] = [];
-
-    headings.forEach((heading, index) => {
-      const tag = heading.tagName.toLowerCase() as 'h2' | 'h3';
-      const text = heading.textContent || '';
-      // Generate or use existing id
-      const id = heading.id || `mokuji-${index}`;
-      if (!heading.id) heading.id = id;
-
-      tocItems.push({ id, text, level: tag });
-    });
-
-    setItems(tocItems);
-  }, [content]);
+  const items = useMemo(() => extractTocItems(content), [content]);
 
   if (items.length < 2) return null;
 
@@ -59,9 +66,10 @@ export default function TableOfContents({ content }: { content: string }) {
           alignItems: 'center',
           gap: '8px',
           marginBottom: '14px',
-        paddingBottom: '12px',
-        borderBottom: '1px solid #E7E5E4',
-      }}><span style={{ fontSize: '16px' }}>📋</span>
+          paddingBottom: '12px',
+          borderBottom: '1px solid #E7E5E4',
+        }}
+      >
         <span style={{ fontSize: '16px' }}>📋</span>
         <span
           style={{

@@ -16,7 +16,6 @@ export default function ProductsPage() {
         <h1>スマートホーム製品レビュー・比較</h1>
         <p>導入しやすさ、家族での使いやすさ、追加費用、賃貸適性まで含めて、買う前に確認したいポイントを整理しているよ。</p>
         <div className="product-actions">
-          <Link href="/compare" className="product-button product-button-primary">比較表を見る</Link>
           <Link href="/reviews" className="product-button">レビュー一覧へ</Link>
         </div>
       </section>
