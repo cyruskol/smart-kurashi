@@ -36,7 +36,9 @@
   /* Header styles */
   --header-bg: #FFFFFF;
   --header-border: #E7E5E4;
-  --header-height: 56px;
+  --header-height: 120px;
+  --header-logo-size: 192px;
+  --header-topbar-height: 400px;
   
   /* Footer styles */
   --footer-bg: #1F2937;
@@ -193,8 +195,11 @@ img { max-width: 100%; height: auto; }
   flex-direction: column;
   gap: 4px;
   width: 32px;
-  height: 24px;
+  height: 40px;
   justify-content: center;
+  position: absolute;
+  right: 16px;
+  bottom: 24px;
 }
 
 .mobile-nav-trigger span {
