@@ -1,175 +1,122 @@
-interface ComparisonProduct {
-  image: string;
-  name: string;
-  price: string;
-  size: string;           // New field: サイズ (dimensions)
-  smartphone: string;     // New field: スマホ連携 (e.g., "iOS/Android 対応")
-  prosCons: string[];     // New field: メリット・デメリット (pros/cons list)
-  affiliateUrl: string;
+import Link from 'next/link';
+import { type ProductReview } from '@/lib/products';
+
+interface ComparisonItem {
+  rank: number;
+  product: ProductReview;
+  note?: string;
+  href?: string;
 }
 
 interface ComparisonTableProps {
-  products: ComparisonProduct[];
   title?: string;
+  subtitle?: string;
+  items: ComparisonItem[];
 }
 
-export default function ComparisonTable({ products, title }: ComparisonTableProps) {
-  if (!products || products.length === 0) return null;
+export default function ComparisonTable({ title, subtitle, items }: ComparisonTableProps) {
+  if (!items.length) return null;
 
   return (
-    <div style={{ margin: '32px 0', overflowX: 'auto' }}>
-      {title && (
-        <h3
-          style={{
-            fontSize: '18px',
-            fontWeight: 600,
-            color: '#292524',
-            marginBottom: '16px',
-          }}
-        >
-          {title}
-        </h3>
+    <section className="compare-table-wrap">
+      {(title || subtitle) && (
+        <div style={{ marginBottom: '20px' }}>
+          {title ? <h3 style={{ fontSize: '1.35rem', marginBottom: '6px' }}>{title}</h3> : null}
+          {subtitle ? <p style={{ color: 'var(--color-text-secondary)' }}>{subtitle}</p> : null}
+        </div>
       )}
-      <table
-        style={{
-          width: '100%',
-          borderCollapse: 'collapse',
-          background: '#fff',
-          minWidth: '800px',
-        }}
-      >
-        <thead>
-          <tr style={{ background: '#F8FAFC' }}>
-            <th style={thStyle}>画像</th>
-            <th style={thStyle}>商品名</th>
-            <th style={thStyle}>価格</th>
-            <th style={thStyle}>サイズ</th>
-            <th style={thStyle}>スマホ連携</th>
-            <th style={thStyle}>メリット・デメリット</th>
-            <th style={thStyle}>詳細を見る</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product, i) => (
-            <tr
-              key={i}
+
+      <div style={{ display: 'grid', gap: '16px' }}>
+        {items.map(({ rank, product, note, href }) => {
+          const productHref = href ?? `/products/${product.slug}`;
+          return (
+            <article
+              key={product.slug}
               style={{
-                borderTop: '1px solid #E7E5E4',
-                background: i === 0 ? '#FFFDF5' : '#fff',
+                display: 'grid',
+                gap: '16px',
+                padding: '20px',
+                borderRadius: '20px',
+                border: '1px solid var(--color-border)',
+                background: rank === 1 ? '#FFFDF5' : '#fff',
               }}
             >
-              {/* 1. Image */}
-              <td style={{ ...tdStyle, textAlign: 'center', padding: '16px' }}>
-                {product.image ? (
-                  <img
-                    src={product.image}
-                    alt={product.name}
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <span
                     style={{
-                      width: '80px',
-                      height: '80px',
-                      objectFit: 'contain',
-                      borderRadius: '8px',
-                    }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      width: '80px',
-                      height: '80px',
-                      background: '#F1F5F9',
-                      borderRadius: '8px',
-                      display: 'flex',
+                      width: '2rem',
+                      height: '2rem',
+                      borderRadius: '999px',
+                      background: '#3F3A36',
+                      color: '#fff',
+                      display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '24px',
-                      margin: '0 auto',
+                      fontWeight: 800,
                     }}
                   >
-                    📦
+                    {rank}
+                  </span>
+                  <div>
+                    <h4 style={{ marginBottom: '4px', fontSize: '1.1rem' }}>{product.name}</h4>
+                    <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem' }}>{product.maker} / {product.priceRange}</p>
                   </div>
-                )}
-              </td>
-
-              {/* 2. Product Name */}
-              <td style={tdStyle}>
-                <span style={{ fontWeight: 600, color: '#292524', fontSize: '14px' }}>
-                  {product.name}
-                </span>
-              </td>
-
-              {/* 3. Price (orange highlighted) */}
-              <td style={tdStyle}>
-                <span style={{ fontWeight: 700, color: '#E8643A', fontSize: '16px' }}>
-                  {product.price}
-                </span>
-              </td>
-
-              {/* 4. Size */}
-              <td style={tdStyle}>
-                <span style={{ color: '#292524', fontSize: '13px', lineHeight: 1.5 }}>
-                  {product.size || '-'}
-                </span>
-              </td>
-
-              {/* 5. Smartphone Connectivity */}
-              <td style={tdStyle}>
-                <span style={{ color: '#4A433F', fontSize: '13px', lineHeight: 1.5 }}>
-                  {product.smartphone || '-'}
-                </span>
-              </td>
-
-              {/* 6. Pros/Cons */}
-              <td style={tdStyle}>
-                <ul style={{ margin: 0, paddingLeft: '24px', fontSize: '13px', color: '#4A433F' }}>
-                  {product.prosCons.map((text, j) => (
-                    <li key={j} style={{ marginBottom: '4px', lineHeight: 1.4 }}>
-                      {text}
-                    </li>
-                  ))}
-                </ul>
-              </td>
-
-              {/* 7. CTA Button */}
-              <td style={{ ...tdStyle, textAlign: 'center' }}>
-                <a
-                  href={product.affiliateUrl}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
+                </div>
+                <span
                   style={{
-                    display: 'inline-block',
-                    padding: '10px 20px',
-                    background: '#E8643A',
-                    color: '#fff',
-                    fontWeight: 600,
-                    fontSize: '13px',
-                    borderRadius: '8px',
-                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    borderRadius: '999px',
+                    padding: '5px 10px',
+                    background: '#F1F5F4',
+                    color: '#4F6F5D',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
                   }}
                 >
-                  詳細を見る →
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                  {product.bestFor[0]}
+                </span>
+              </div>
+
+              <div style={{ display: 'grid', gap: '12px' }}>
+                <p style={{ color: 'var(--color-text-secondary)' }}>{note || product.summary}</p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+                  <div style={{ padding: '14px', borderRadius: '16px', background: '#F9FAF9', border: '1px solid var(--color-border)' }}>
+                    <strong style={{ display: 'block', marginBottom: '8px' }}>向いている人</strong>
+                    <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-text-secondary)' }}>
+                      {product.bestFor.slice(0, 3).map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                  <div style={{ padding: '14px', borderRadius: '16px', background: '#F9FAF9', border: '1px solid var(--color-border)' }}>
+                    <strong style={{ display: 'block', marginBottom: '8px' }}>注意したい点</strong>
+                    <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-text-secondary)' }}>
+                      {product.cautions.slice(0, 2).map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="product-actions" style={{ marginTop: 0 }}>
+                <Link href={productHref} className="product-button product-button-primary">
+                  レビューを読む
+                </Link>
+                {product.affiliateLinks.slice(0, 2).map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    rel="sponsored nofollow noopener noreferrer"
+                    target="_blank"
+                    className="product-button"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
-
-const thStyle: React.CSSProperties = {
-  padding: '12px 16px',
-  fontSize: '12px',
-  fontWeight: 600,
-  color: '#4A433F',
-  textTransform: 'uppercase',
-  letterSpacing: '0.05em',
-  textAlign: 'left',
-};
-
-const tdStyle: React.CSSProperties = {
-  padding: '16px',
-  verticalAlign: 'top',
-  fontSize: '14px',
-  color: '#292524',
-};

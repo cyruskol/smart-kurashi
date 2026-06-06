@@ -14,14 +14,14 @@ const categoryConfig: Record<
   { label: string; description: string; color: string; bg: string }
 > = {
   'ai-tech': {
-    label: 'AI&テック',
-    description: 'AI 技術、機械学習、生成 AI、チャットボットなど最新テクノロジーニュース',
+    label: 'AI・テック',
+    description: 'AIツール、仕事効率化ソフト、生成AI、比較記事への入口',
     color: '#4338CA',
     bg: '#EEF2FF',
   },
   'smart-home': {
-    label: 'スマートホーム',
-    description: 'スマートホーム家電、IoT 機器、HEMS、音声アシスタントなど住まいのテクノロジー',
+    label: '家電・ガジェット',
+    description: 'スマートロック、掃除機、照明、暮らしを楽にするガジェット',
     color: '#047857',
     bg: '#ECFDF5',
   },

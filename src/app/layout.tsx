@@ -23,14 +23,21 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://smart-kurashi.jp'),
   title: {
-    default: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
+    default: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
     template: '%s | Smart Kurashi',
   },
   description:
-    'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
+    '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
   keywords: [
-    'スマートホーム', 'AI 家電', 'IoT', '人工知能', '家電レビュー',
-    'テクノロジーニュース', 'HEMS', '音声アシスタント', '省エネ', 'IoT 機器',
+    'スマートホーム',
+    'AIツール',
+    '家電レビュー',
+    'ガジェット比較',
+    '比較ランキング',
+    '購入ガイド',
+    'IoT',
+    'レビュー',
+    'アフィリエイト',
   ],
   authors: [{ name: 'Smart Kurashi' }],
   creator: 'Smart Kurashi',
@@ -52,23 +59,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     siteName: 'Smart Kurashi',
-    title: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
+    title: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
     description:
-      'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。専門家によるレビュー、比較ガイド、業界動向まで幅広くカバー。',
+      '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
     images: [
       {
         url: '/og-home.png',
         width: 1200,
         height: 630,
-        alt: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
+        alt: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Smart Kurashi — スマートホーム・AI 家電ニュース',
+    title: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
     description:
-      'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。',
+      '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
     images: ['/og-image.png'],
   },
   alternates: {
@@ -86,7 +93,7 @@ const jsonLdWebSite = {
   name: 'Smart Kurashi',
   url: 'https://smart-kurashi.jp',
   description:
-    'スマートホーム、IoT 機器、AI 家電、最新テクノロジーニュースを日本語でお届け。',
+    '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
   inLanguage: 'ja',
   potentialAction: {
     '@type': 'SearchAction',
@@ -105,22 +112,19 @@ const jsonLdOrganization = {
   url: 'https://smart-kurashi.jp',
   logo: 'https://smart-kurashi.jp/logo.png',
   description:
-    '日本のスマートホーム・AI 家電・テクノロジーニュースを専門とするメディアです。',
+    '日本のAIツール・家電・ガジェットをレビューと比較で案内する編集メディアです。',
   sameAs: [],
 };
 
 const jsonLdItemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Smart Kurashi メニュー',
+  name: 'Smart Kurashi メインメニュー',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'ホーム', url: 'https://smart-kurashi.jp/' },
-    { '@type': 'ListItem', position: 2, name: 'AI・テック', url: 'https://smart-kurashi.jp/category/ai-tech' },
-    { '@type': 'ListItem', position: 3, name: '家電・ガジェット', url: 'https://smart-kurashi.jp/category/smart-home' },
-    { '@type': 'ListItem', position: 4, name: '会社概要', url: 'https://smart-kurashi.jp/about' },
-    { '@type': 'ListItem', position: 5, name: 'お問い合わせ', url: 'https://smart-kurashi.jp/contact' },
-    { '@type': 'ListItem', position: 6, name: 'プライバシーポリシー', url: 'https://smart-kurashi.jp/privacy' },
-    { '@type': 'ListItem', position: 7, name: '利用規約', url: 'https://smart-kurashi.jp/terms' },
+    { '@type': 'ListItem', position: 1, name: 'AI・テック', url: 'https://smart-kurashi.jp/category/ai-tech' },
+    { '@type': 'ListItem', position: 2, name: '家電・ガジェット', url: 'https://smart-kurashi.jp/category/smart-home' },
+    { '@type': 'ListItem', position: 3, name: '商品を探す', url: 'https://smart-kurashi.jp/products' },
+    { '@type': 'ListItem', position: 4, name: '比較・ランキング', url: 'https://smart-kurashi.jp/compare' },
   ],
 };
 
@@ -135,18 +139,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <StructuredData type="Website" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdItemList) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdItemList) }} />
       </head>
       <body>
         <a
@@ -155,7 +150,7 @@ export default function RootLayout({
         >
           コンテンツへスキップ
         </a>
-        
+
         <Header />
         <div id="main-content">{children}</div>
         <Analytics />
