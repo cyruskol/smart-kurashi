@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const categoryHeaderItems = [
-  { href: '/', displayLabel: '記事一覧' },
-  { href: '/category/ai-tech', displayLabel: 'AI・テック' },
-  { href: '/category/smart-home', displayLabel: '家電・ガジェット' },
-  { href: '/products', displayLabel: '製品レビュー' },
+const headerItems = [
+  { href: '/category/ai-tech', label: 'AI・テック' },
+  { href: '/category/smart-home', label: '家電・ガジェット' },
+  { href: '/products', label: '商品を探す' },
+  { href: '/compare', label: '比較・ランキング' },
 ];
 
 export default function Header() {
@@ -17,114 +17,93 @@ export default function Header() {
     <>
       <header
         style={{
-          position: 'static',
-          background: '#fff',
+          position: 'sticky',
+          top: 0,
+          zIndex: 40,
+          background: 'rgba(255,255,255,0.96)',
+          backdropFilter: 'blur(8px)',
           borderBottom: '1px solid #E7E5E4',
-          margin: 0,
-          padding: 0,
         }}
         role="banner"
       >
-        <div style={{ width: '100%', margin: 0, padding: 0, position: 'relative' }}>
-          <div
+        <div
+          style={{
+            maxWidth: '1120px',
+            margin: '0 auto',
+            padding: '14px 16px 12px',
+            display: 'flex',
+            alignItems: 'flex-end',
+            gap: '16px',
+          }}
+        >
+          <Link
+            href="/"
+            style={{ display: 'inline-flex', alignItems: 'center', flex: '0 0 auto', textDecoration: 'none' }}
+            aria-label="Smart Kurashi ホーム"
+          >
+            <img
+              src="/logo.png"
+              alt="Smart Kurashi"
+              width={180}
+              height={180}
+              style={{ width: 'clamp(120px, 18vw, 180px)', height: 'auto', display: 'block' }}
+            />
+          </Link>
+
+          <nav
+            className="header-desktop-nav"
+            aria-label="メインナビゲーション"
             style={{
-              minHeight: 'var(--header-topbar-height)',
               display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'flex-start',
-              gap: '16px',
-              flexWrap: 'nowrap',
-              paddingBottom: '8px',
+              alignItems: 'center',
+              gap: '10px',
+              flexWrap: 'wrap',
+              marginLeft: 'auto',
+              justifyContent: 'flex-end',
             }}
           >
-            {/* Logo */}
-            <Link
-              href="/"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                textDecoration: 'none',
-                flex: '0 0 auto',
-                position: 'absolute',
-                left: '0',
-                bottom: '8px',
-              }}
-            >
-              <img
-                src="/logo.png"
-                alt="Smart Kurashi"
-                width={128}
-                height={128}
+            {headerItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
                 style={{
-                  height: 'min(var(--header-logo-size), 40vw)',
-                  width: 'min(var(--header-logo-size), 40vw)',
-                  maxWidth: '32vw',
-                  display: 'block',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '40px',
+                  padding: '0 14px',
+                  borderRadius: '999px',
+                  border: '1px solid #DDD8D1',
+                  color: '#4A433F',
+                  background: '#fff',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
                 }}
-              />
-            </Link>
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-            {/* Desktop Category Buttons */}
-            <nav
-              className="header-desktop-nav"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                flexWrap: 'nowrap',
-                flexShrink: 0,
-                marginLeft: 'clamp(220px, 30vw, 420px)',
-              }}
-              aria-label="メインナビゲーション"
-            >
-                {categoryHeaderItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      minHeight: '36px',
-                      padding: '0 14px',
-                      borderRadius: '999px',
-                      border: '1px solid #DDD8D1',
-                      color: '#57514C',
-                      background: '#fff',
-                      fontSize: '14px',
-                      fontWeight: 600,
-                      lineHeight: 1,
-                      textDecoration: 'none',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {item.displayLabel}
-                  </Link>
-                ))}
-              </nav>
-
-            {/* Mobile Hamburger */}
-            <button
-              className={`mobile-nav-trigger ${mobileOpen ? 'active' : ''}`}
-              onClick={() => setMobileOpen(true)}
-              aria-label="メニューを開く"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-nav-drawer"
-            >
-              <span />
-              <span />
-              <span />
-            </button>
-          </div>
+          <button
+            className={`mobile-nav-trigger ${mobileOpen ? 'active' : ''}`}
+            onClick={() => setMobileOpen(true)}
+            aria-label="メニューを開く"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-drawer"
+            style={{ marginLeft: 'auto' }}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </header>
 
-      {/* Mobile Drawer Overlay */}
-      {mobileOpen && (
-        <div className="drawer-overlay" onClick={() => setMobileOpen(false)} />
-      )}
+      {mobileOpen && <div className="drawer-overlay" onClick={() => setMobileOpen(false)} />}
 
-      {/* Mobile Drawer */}
       {mobileOpen && (
         <div
           id="mobile-nav-drawer"
@@ -134,25 +113,32 @@ export default function Header() {
           aria-label="モバイルメニュー"
         >
           <div className="drawer-header">
-            <span style={{ fontSize: '16px', fontWeight: 600, color: '#292524' }}>メニュー</span>
-            <button
-              className="drawer-close"
-              onClick={() => setMobileOpen(false)}
-              aria-label="メニューを閉じる"
-            >
+            <span style={{ fontSize: '16px', fontWeight: 700, color: '#292524' }}>メニュー</span>
+            <button className="drawer-close" onClick={() => setMobileOpen(false)} aria-label="メニューを閉じる">
               ×
             </button>
           </div>
           <nav className="drawer-nav" aria-label="モバイルナビゲーション">
-            <Link href="/" onClick={() => setMobileOpen(false)}>ホーム</Link>
-            <Link href="/category/ai-tech" onClick={() => setMobileOpen(false)}>AI・テック</Link>
-            <Link href="/category/smart-home" onClick={() => setMobileOpen(false)}>家電・ガジェット</Link>
-            <Link href="/products" onClick={() => setMobileOpen(false)}>製品レビュー</Link>
-            <Link href="/reviews" onClick={() => setMobileOpen(false)}>レビュー一覧</Link>
-            <Link href="/about" onClick={() => setMobileOpen(false)}>会社概要</Link>
-            <Link href="/contact" onClick={() => setMobileOpen(false)}>お問い合わせ</Link>
-            <Link href="/privacy" onClick={() => setMobileOpen(false)}>プライバシーポリシー</Link>
-            <Link href="/terms" onClick={() => setMobileOpen(false)}>利用規約</Link>
+            {headerItems.map((item) => (
+              <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
+                {item.label}
+              </Link>
+            ))}
+            <Link href="/reviews" onClick={() => setMobileOpen(false)}>
+              レビュー一覧
+            </Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>
+              運営情報
+            </Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)}>
+              お問い合わせ
+            </Link>
+            <Link href="/privacy" onClick={() => setMobileOpen(false)}>
+              プライバシーポリシー
+            </Link>
+            <Link href="/terms" onClick={() => setMobileOpen(false)}>
+              利用規約
+            </Link>
           </nav>
         </div>
       )}

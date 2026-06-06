@@ -1,275 +1,306 @@
-import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { getAllPosts } from '@/lib/posts';
+import { getFeaturedProducts, getAllProducts } from '@/lib/products';
+import ComparisonTable from '@/components/ComparisonTable';
+import ProductCard from '@/components/ProductCard';
 
-export const metadata: {
-  title: string;
-  description: string;
-} = {
+export const metadata: Metadata = {
   title: 'ホーム',
-  description: 'スマートホーム・AI家電・IoT技術の最新ニュースをお届け。',
+  description: 'AIツール、家電、ガジェットをレビュー・比較・買い方ガイドで探せる Smart Kurashi のホーム。',
 };
 
-const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
-  'ai-tech': { bg: '#EFE8DD', text: '#6D6254', dot: '#6D6254' },
-  'smart-home': { bg: '#E7EFEA', text: '#4F6F5D', dot: '#4F6F5D' },
-  'article': { bg: '#EFE8DD', text: '#6D6254', dot: '#6D6254' },
-};
+const categoryTiles = [
+  {
+    href: '/category/ai-tech',
+    label: 'AI・テック',
+    description: 'AIツール、ソフトウェア、仕事効率化の比較とレビュー',
+  },
+  {
+    href: '/category/smart-home',
+    label: '家電・ガジェット',
+    description: 'スマートロック、掃除機、照明、日常を楽にする家電',
+  },
+  {
+    href: '/products',
+    label: '商品を探す',
+    description: 'レビュー済み商品だけをまとめて探す',
+  },
+  {
+    href: '/compare',
+    label: '比較・ランキング',
+    description: '買う前の比較軸でランキングをチェックする',
+  },
+  {
+    href: '/reviews',
+    label: 'レビュー一覧',
+    description: '実際に公開しているレビュー記事へ',
+  },
+  {
+    href: '/about',
+    label: '運営方針',
+    description: '比較基準・更新方針・PRの考え方',
+  },
+];
 
-const POSTS_PER_PAGE = 6;
+const heroStats = [
+  'レビュー済み商品を優先',
+  '比較・ランキングを先に置く',
+  '購入先リンクは販売サイトで確認',
+  '日本の住環境に合わせて選ぶ',
+];
 
-export default async function HomePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
-  const params = await searchParams;
-  const allPosts = getAllPosts();
-  const featuredPost = allPosts[0];
-
-  // Pagination — read page from searchParams
-  const currentPage = Math.max(1, parseInt(params.page || '1', 10) || 1);
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
-  const safePage = Math.min(currentPage, totalPages || 1);
-  const startIndex = (safePage - 1) * POSTS_PER_PAGE;
-  const pagePosts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
-
-  // Tag counts
-  const tagCounts: Record<string, number> = {};
-  allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
-  const popularTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).slice(0, 12);
+export default async function HomePage() {
+  const featuredProducts = getFeaturedProducts();
+  const allProducts = getAllProducts();
+  const posts = getAllPosts();
+  const latestPosts = posts.slice(0, 4);
+  const reviewPost = posts.find((post) => post.slug.includes('review'));
 
   return (
     <main>
-      {/* ===== HERO SECTION ===== */}
-      {featuredPost && safePage === 1 && (
-        <section style={{ background: '#F7F5F2', color: '#3F3A36', position: 'relative', overflow: 'hidden' }}>
-          <div className="max-w-container mx-auto px-md" style={{ minHeight: '58vh', padding: '0 0 110px 0', position: 'relative', zIndex: 1 }}>
-
-            <div
+      <section style={{ background: 'linear-gradient(180deg, #F8F6F1 0%, #FFF 100%)', borderBottom: '1px solid #E7E5E4' }}>
+        <div className="max-w-container mx-auto px-md" style={{ padding: '32px 16px 40px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '24px',
+              alignItems: 'stretch',
+            }}
+          >
+            <section
               style={{
-                maxWidth: '980px',
-                borderRadius: '12px',
+                borderRadius: '28px',
                 border: '1px solid #DDD8D1',
-                overflow: 'hidden',
-                backgroundImage: "linear-gradient(to right, rgba(247,245,242,0.94) 0%, rgba(247,245,242,0.88) 48%, rgba(247,245,242,0.72) 100%), url('/hero-workspace.jpg')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                background: 'rgba(255,255,255,0.82)',
+                padding: 'clamp(24px, 4vw, 40px)',
+                boxShadow: '0 20px 50px rgba(63,58,54,0.08)',
               }}
             >
-              <div style={{ padding: '24px 24px 26px 24px', maxWidth: '760px' }}>
-                <span style={{ display: 'inline-block', padding: '4px 12px', background: '#E8E3DD', color: '#57514C', fontSize: '11px', fontWeight: 600, borderRadius: '8px', marginBottom: '16px' }}>
-                  注目記事
-                </span>
-                <h1 className="hero-title" style={{ fontSize: 'clamp(20px, 3.2vw, 40px)', fontWeight: 600, lineHeight: 1.15, marginBottom: '14px' }}>
-                  <Link href={`/posts/${featuredPost.slug}`} style={{ color: '#3F3A36', textDecoration: 'none' }}>
-                    {featuredPost.title}
-                  </Link>
-                </h1>
-                <p className="post-excerpt" style={{ fontSize: 'clamp(13px, 1.5vw, 16px)', color: '#57514C', lineHeight: 1.6, marginBottom: '20px', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                  {featuredPost.excerpt}
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '13px', color: '#726B65' }}>
-                  <time>{new Date(featuredPost.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-                </div>
-                <Link href={`/posts/${featuredPost.slug}`} className="japandi-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginTop: '16px', padding: '10px 18px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>
-                  続きを読む →
+              <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.12em', color: '#4F6F5D', marginBottom: '12px' }}>
+                PRODUCT DISCOVERY / AFFILIATE GUIDE
+              </p>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 4rem)', lineHeight: 1.1, marginBottom: '16px' }}>
+                日本で買って失敗しにくいAI・家電・ガジェットを、<br />
+                比較目線でわかりやすく探せる。
+              </h1>
+              <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.02rem', lineHeight: 1.8, maxWidth: '44rem' }}>
+                Smart Kurashi は、レビュー済み商品・比較記事・買い方ガイドをまとめて見せる商品発見サイト。価格だけでなく、賃貸適性・家族での使いやすさ・追加費用まで含めて選べるようにしています。
+              </p>
+
+              <div className="product-actions" style={{ marginTop: '24px' }}>
+                <Link href="/products" className="product-button product-button-primary">
+                  商品を探す
+                </Link>
+                <Link href="/compare" className="product-button">
+                  比較・ランキングを見る
+                </Link>
+                <Link href="/reviews" className="product-button">
+                  レビュー一覧を見る
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
-      )}
 
-      {/* ===== MAIN CONTENT + SIDEBAR ===== */}
-      <div className="max-w-container mx-auto px-md" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
+              <form action="/search" method="GET" style={{ marginTop: '22px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                <input
+                  name="q"
+                  type="search"
+                  placeholder="商品名・用途・悩みで検索"
+                  aria-label="サイト内検索"
+                  style={{
+                    flex: '1 1 320px',
+                    minHeight: '46px',
+                    padding: '12px 16px',
+                    borderRadius: '999px',
+                    border: '1px solid #DDD8D1',
+                    background: '#fff',
+                    fontSize: '16px',
+                  }}
+                />
+                <button type="submit" className="product-button product-button-primary" style={{ cursor: 'pointer' }}>
+                  検索する
+                </button>
+              </form>
 
-        <div className="main-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px' }}>
-
-          {/* ===== MAIN CONTENT ===== */}
-          <div>
-            {/* Latest Posts */}
-            <section style={{ marginBottom: '48px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
-                <h2 className="section-title" style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 600, color: '#3F3A36', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', background: '#9B9389', borderRadius: '50%' }} />
-                  最新記事
-                  {safePage > 1 && (
-                    <span style={{ fontSize: '13px', fontWeight: 400, color: '#726B65' }}>
-                      （{safePage}/{totalPages}ページ）
-                    </span>
-                  )}
-                </h2>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '22px' }}>
+                {heroStats.map((item) => (
+                  <span
+                    key={item}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      borderRadius: '999px',
+                      padding: '7px 12px',
+                      background: '#F1F5F4',
+                      color: '#4A433F',
+                      fontSize: '0.88rem',
+                      fontWeight: 700,
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-              <div className="post-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                {pagePosts.map((post) => {
-                  const cat = categoryColors[post.category] || categoryColors['article'];
-                  return (
-                    <Link key={post.slug} href={`/posts/${post.slug}`} className="post-card" style={{ display: 'block', background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', textDecoration: 'none' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
-                        <span style={{ padding: '2px 10px', background: cat.bg, color: cat.text, fontSize: '11px', fontWeight: 600, borderRadius: '8px' }}>
-                          {post.category === 'ai-tech' ? 'AI&Tech' : post.category === 'smart-home' ? 'スマートホーム' : '記事'}
-                        </span>
-                        <time style={{ fontSize: '11px', color: '#726B65' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
-                      </div>
-                      <h3 className="post-title" style={{ fontSize: 'clamp(13px, 1.5vw, 15px)', fontWeight: 600, color: '#3F3A36', lineHeight: 1.4, marginBottom: '8px' }}>
-                        {post.title}
-                      </h3>
-                      <p className="post-excerpt" style={{ fontSize: 'clamp(11px, 1.3vw, 13px)', color: '#726B65', lineHeight: 1.6, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                        {post.excerpt}
-                      </p>
-                      {post.tags.length > 0 && (
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '12px' }}>
-                          {post.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} style={{ padding: '2px 8px', background: '#EFE8DD', color: '#726B65', fontSize: '10px', fontWeight: 400, borderRadius: '8px' }}>
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <nav className="pagination" aria-label="ページネーション" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginTop: '40px', flexWrap: 'wrap' }}>
-                  {safePage > 1 && (
-                    <Link href={`/?page=${safePage - 1}`} className="japandi-btn" style={{ padding: '10px 16px', borderRadius: '8px', fontSize: '13px', textDecoration: 'none', minWidth: '44px', textAlign: 'center' }}>
-                      ← 前へ
-                    </Link>
-                  )}
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <Link
-                      key={page}
-                      href={`/?page=${page}`}
-                      className={page === safePage ? 'current' : ''}
-                      style={{
-                        padding: '10px 16px',
-                        borderRadius: '8px',
-                        fontSize: '13px',
-                        textDecoration: 'none',
-                        minWidth: '44px',
-                        textAlign: 'center',
-                        ...(page === safePage
-                          ? { background: '#3F3A36', color: '#fff', fontWeight: 600 }
-                          : { background: '#fff', border: '1px solid #DDD8D1', color: '#57514C' }),
-                      }}
-                    >
-                      {page}
-                    </Link>
-                  ))}
-                  {safePage < totalPages && (
-                    <Link href={`/?page=${safePage + 1}`} className="japandi-btn" style={{ padding: '10px 16px', borderRadius: '8px', fontSize: '13px', textDecoration: 'none', minWidth: '44px', textAlign: 'center' }}>
-                      次へ →
-                    </Link>
-                  )}
-                </nav>
-              )}
             </section>
 
-            {/* ===== MOBILE-ONLY SIDEBAR CONTENT ===== */}
-            <div className="sidebar-mobile-show" style={{ display: 'none' }}>
-              {/* Search box */}
-              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>記事を検索</h3>
-                <form action="/search" method="GET">
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '12px', border: '1px solid #DDD8D1', borderRadius: '8px', fontSize: '16px', background: '#F7F5F2' }} />
-                    <button type="submit" className="japandi-btn" style={{ padding: '12px 16px', color: '#57514C', borderRadius: '8px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Popular Tags */}
-              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>人気タグ</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {popularTags.map(([tag, count]) => (
-                    <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '8px 14px', background: '#EFE8DD', color: '#57514C', fontSize: '13px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
-                      {tag} <span style={{ color: '#726B65', fontSize: '11px' }}>({count})</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Recent Posts */}
-              <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-                <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>最新記事</h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {allPosts.slice(0, 6).map((post, i) => (
-                    <li key={post.slug} style={{ padding: '12px 0', borderBottom: i < 5 ? '1px solid #DDD8D1' : 'none' }}>
-                      <Link href={`/posts/${post.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
-                        <div style={{ minWidth: 0 }}>
-                          <h4 style={{ fontSize: '14px', fontWeight: 500, color: '#3F3A36', lineHeight: 1.4 }}>{post.title}</h4>
-                          <time style={{ fontSize: '11px', color: '#726B65', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
+            <aside style={{ display: 'grid', gap: '16px' }}>
+              <div style={{ borderRadius: '24px', border: '1px solid #DDD8D1', background: '#fff', padding: '22px' }}>
+                <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.08em', color: '#4F6F5D', marginBottom: '8px' }}>
+                  まず見るべきページ
+                </p>
+                <ul style={{ margin: 0, paddingLeft: '1.15rem', color: 'var(--color-text-secondary)', lineHeight: 1.9 }}>
+                  <li><Link href="/products">レビュー済み商品を一覧で探す</Link></li>
+                  <li><Link href="/compare">比較・ランキングから候補を絞る</Link></li>
+                  <li><Link href="/reviews">公開済みレビュー記事を読む</Link></li>
+                  <li><Link href="/about">比較基準と運営方針を確認する</Link></li>
                 </ul>
               </div>
-
-              {/* About CTA */}
-              <div style={{ background: '#EEEAE4', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '24px', color: '#57514C' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: '#57514C' }}>Smart Kurashi</h3>
-                <p style={{ fontSize: '13px', color: '#726B65', lineHeight: 1.6, marginBottom: '16px' }}>
-                  スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
+              <div style={{ borderRadius: '24px', border: '1px solid #DDD8D1', background: '#F9F7F2', padding: '22px' }}>
+                <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.08em', color: '#A9582D', marginBottom: '8px' }}>
+                  買う前の注意
                 </p>
-                <Link href="/about" className="japandi-btn" style={{ display: 'inline-block', padding: '8px 16px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
+                <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.8, marginBottom: 0 }}>
+                  価格と在庫は販売サイトで変動します。Smart Kurashi では、実際の使い勝手と購入条件を先に見てから、購入先を選べるようにしています。
+                </p>
               </div>
-            </div>
+            </aside>
           </div>
-
-          {/* ===== DESKTOP SIDEBAR ===== */}
-          <aside className="sidebar-mobile-hide">
-            {/* Search box */}
-            <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>記事を検索</h3>
-              <form action="/search" method="GET">
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <input type="search" name="q" placeholder="キーワード..." style={{ flex: 1, padding: '8px 12px', border: '1px solid #DDD8D1', borderRadius: '8px', fontSize: '13px', background: '#F7F5F2' }} />
-                  <button type="submit" className="japandi-btn" style={{ padding: '8px 16px', color: '#57514C', borderRadius: '8px', fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}>検索</button>
-                </div>
-              </form>
-            </div>
-
-            {/* Popular Tags */}
-            <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>人気タグ</h3>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {popularTags.map(([tag, count]) => (
-                  <Link key={tag} href={`/search?q=${encodeURIComponent(tag)}`} style={{ padding: '4px 12px', background: '#EFE8DD', color: '#57514C', fontSize: '12px', fontWeight: 400, borderRadius: '8px', textDecoration: 'none' }}>
-                    {tag} <span style={{ color: '#726B65', fontSize: '10px' }}>({count})</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Recent Posts */}
-            <div style={{ background: '#fff', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '20px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 600, color: '#3F3A36', marginBottom: '12px' }}>最新記事</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                {allPosts.slice(0, 6).map((post, i) => (
-                  <li key={post.slug} style={{ padding: '10px 0', borderBottom: i < 5 ? '1px solid #DDD8D1' : 'none' }}>
-                    <Link href={`/posts/${post.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
-                      <div style={{ minWidth: 0 }}>
-                        <h4 style={{ fontSize: '13px', fontWeight: 500, color: '#3F3A36', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{post.title}</h4>
-                        <time style={{ fontSize: '11px', color: '#726B65', marginTop: '4px', display: 'block' }}>{new Date(post.date).toLocaleDateString('ja-JP', { month: 'short', day: 'numeric' })}</time>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* About CTA */}
-            <div style={{ background: '#EEEAE4', border: '1px solid #DDD8D1', borderRadius: '8px', padding: '24px', color: '#57514C' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '8px', color: '#57514C' }}>Smart Kurashi</h3>
-              <p style={{ fontSize: '13px', color: '#726B65', lineHeight: 1.6, marginBottom: '16px' }}>
-                スマートホーム・AI家電・IoT技術の最新ニュースを日本語でお届け。
-              </p>
-              <Link href="/about" className="japandi-btn" style={{ display: 'inline-block', padding: '8px 16px', color: '#57514C', fontWeight: 600, borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>詳しく見る →</Link>
-            </div>
-          </aside>
         </div>
-      </div>
+      </section>
+
+      <section className="max-w-container mx-auto px-md" style={{ paddingTop: '40px' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
+              NAVIGATION
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>探し方から入れるカテゴリ</h2>
+          </div>
+          <Link href="/products" className="product-button">
+            商品一覧へ
+          </Link>
+        </div>
+        <div className="category-grid" style={{ marginTop: 0 }}>
+          {categoryTiles.map((tile) => (
+            <Link key={tile.href} href={tile.href} className="category-card" style={{ textDecoration: 'none' }}>
+              <span>{tile.label}</span>
+              <p>{tile.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-container mx-auto px-md" style={{ paddingTop: '44px' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
+              COMPARISON & RANKING
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>比較・ランキングの注目候補</h2>
+          </div>
+          <Link href="/compare" className="product-button">
+            すべて見る
+          </Link>
+        </div>
+        <ComparisonTable
+          title="買う前に比べたい3製品"
+          subtitle="価格帯だけでなく、賃貸適性・自動化のしやすさ・家族での使いやすさを見て選ぶ。"
+          items={featuredProducts.map((product, index) => ({ rank: index + 1, product, note: product.summary }))}
+        />
+      </section>
+
+      <section className="max-w-container mx-auto px-md" style={{ paddingTop: '44px' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
+              REVIEWED PRODUCTS
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>レビュー済み商品</h2>
+          </div>
+          <Link href="/products" className="product-button">
+            商品一覧へ
+          </Link>
+        </div>
+        <div className="product-grid" style={{ marginTop: 0 }}>
+          {allProducts.map((product) => (
+            <ProductCard key={product.slug} product={product} compact />
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-container mx-auto px-md" style={{ paddingTop: '44px' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
+              BUYING GUIDES
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>買う前に読むガイド</h2>
+          </div>
+          <Link href="/reviews" className="product-button">
+            レビュー一覧へ
+          </Link>
+        </div>
+        <div className="product-grid" style={{ marginTop: 0 }}>
+          {latestPosts.map((post) => (
+            <article key={post.slug} className="product-card">
+              <div className="product-meta">{post.category === 'ai-tech' ? 'AI・テック' : '家電・ガジェット'}</div>
+              <h2 style={{ fontSize: '1.2rem' }}>
+                <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+              </h2>
+              <p>{post.excerpt}</p>
+              <div className="product-actions" style={{ marginTop: '20px' }}>
+                <Link href={`/posts/${post.slug}`} className="product-button product-button-primary">
+                  読む
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-container mx-auto px-md" style={{ paddingTop: '44px' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
+              LATEST REVIEWS
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>最新レビュー / 更新情報</h2>
+          </div>
+          <Link href="/reviews" className="product-button">
+            もっと見る
+          </Link>
+        </div>
+        <div className="product-grid" style={{ marginTop: 0 }}>
+          {reviewPost ? (
+            <article className="product-card">
+              <div className="product-meta">レビュー記事</div>
+              <h2>
+                <Link href={`/posts/${reviewPost.slug}`}>{reviewPost.title}</Link>
+              </h2>
+              <p>{reviewPost.excerpt}</p>
+              <div className="product-actions">
+                <Link href={`/posts/${reviewPost.slug}`} className="product-button product-button-primary">
+                  レビューを読む
+                </Link>
+              </div>
+            </article>
+          ) : null}
+          {posts.slice(0, 2).map((post) => (
+            <article key={post.slug} className="product-card">
+              <div className="product-meta">更新記事</div>
+              <h2>
+                <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+              </h2>
+              <p>{post.excerpt}</p>
+              <div className="product-actions">
+                <Link href={`/posts/${post.slug}`} className="product-button product-button-primary">
+                  読む
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
