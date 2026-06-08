@@ -27,10 +27,10 @@ export default function Header() {
         role="banner"
       >
         <div
+          className="max-w-container mx-auto px-md"
           style={{
-            maxWidth: '1120px',
-            margin: '0 auto',
-            padding: '14px 16px 12px',
+            paddingTop: '14px',
+            paddingBottom: '12px',
             display: 'flex',
             alignItems: 'flex-end',
             gap: '16px',
