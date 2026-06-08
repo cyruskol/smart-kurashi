@@ -143,27 +143,6 @@ export default async function HomePage() {
               </div>
             </section>
 
-            <aside style={{ display: 'grid', gap: '16px' }}>
-              <div style={{ borderRadius: '24px', border: '1px solid #DDD8D1', background: '#fff', padding: '22px' }}>
-                <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.08em', color: '#4F6F5D', marginBottom: '8px' }}>
-                  まず見るべきページ
-                </p>
-                <ul style={{ margin: 0, paddingLeft: '1.15rem', color: 'var(--color-text-secondary)', lineHeight: 1.9 }}>
-                  <li><Link href="/products">レビュー済み商品を一覧で探す</Link></li>
-                  <li><Link href="/compare">比較・ランキングから候補を絞る</Link></li>
-                  <li><Link href="/reviews">公開済みレビュー記事を読む</Link></li>
-                  <li><Link href="/about">比較基準と運営方針を確認する</Link></li>
-                </ul>
-              </div>
-              <div style={{ borderRadius: '24px', border: '1px solid #DDD8D1', background: '#F9F7F2', padding: '22px' }}>
-                <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.08em', color: '#A9582D', marginBottom: '8px' }}>
-                  買う前の注意
-                </p>
-                <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.8, marginBottom: 0 }}>
-                  価格と在庫は販売サイトで変動します。Smart Kurashi では、実際の使い勝手と購入条件を先に見てから、購入先を選べるようにしています。
-                </p>
-              </div>
-            </aside>
           </div>
         </div>
       </section>
