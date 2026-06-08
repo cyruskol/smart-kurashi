@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { Post } from '@/lib/posts';
 import { type ProductMetadata } from '@/lib/products';
-import RetailerCTAButtons from '@/components/RetailerCTAButtons';
 
 export interface RetailerLink {
   label: string;
@@ -326,15 +325,6 @@ export default function ReviewTemplate({
         cons={summaryCons}
       />
 
-      {productSlug ? (
-        <RetailerCTAButtons
-          productSlug={productSlug}
-          sourcePage={source}
-          ctaPosition="review_top"
-          variant="default"
-        />
-      ) : null}
-
       <div className="two-column-panel" style={{ padding: 0, border: 'none', background: 'transparent' }}>
         <ProductInfoTable rows={infoRows} />
         <RecommendedForBlock items={summarySuitableFor} />
@@ -373,15 +363,6 @@ export default function ReviewTemplate({
             : '結論として、用途が合う人には有力な候補です。購入前は、価格、設置性、使い方の3点を優先して判断してください。')
         }
       />
-
-      {productSlug ? (
-        <RetailerCTAButtons
-          productSlug={productSlug}
-          sourcePage={source}
-          ctaPosition="review_bottom"
-          variant="default"
-        />
-      ) : null}
 
       <ReviewFAQBlock items={data.faq || []} />
     </div>

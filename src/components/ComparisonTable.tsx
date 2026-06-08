@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { type ProductMetadata } from '@/lib/products';
-import RetailerCTAButtons from '@/components/RetailerCTAButtons';
 
 interface ComparisonItem {
   rank: number;
@@ -107,13 +106,6 @@ export default function ComparisonTable({ title, subtitle, items, sourcePage = '
                   商品ページを見る
                 </Link>
               </div>
-
-              <RetailerCTAButtons
-                productSlug={product.slug}
-                sourcePage={sourcePage}
-                ctaPosition="comparison_table"
-                variant="compact"
-              />
             </article>
           );
         })}

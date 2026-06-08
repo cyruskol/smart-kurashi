@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllProducts, getProductBySlug } from '@/lib/products';
-import RetailerCTAButtons from '@/components/RetailerCTAButtons';
 
 interface PageProps { params: Promise<{ slug: string }>; }
 
@@ -103,7 +102,6 @@ export default async function ProductPage({ params }: PageProps) {
         <section className="buy-panel" aria-label="価格・在庫を確認する">
           <h2>価格・在庫を確認する</h2>
           <p>価格・在庫は販売サイトで確認してください。</p>
-          <RetailerCTAButtons productSlug={product.slug} sourcePage={`/products/${product.slug}`} ctaPosition="product_page" variant="default" />
         </section>
       </article>
     </main>
