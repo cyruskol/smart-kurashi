@@ -2,11 +2,13 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
+import { getProductByReviewUrl } from '@/lib/products';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
+import ReviewTemplate from '@/components/review/ReviewTemplate';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -47,8 +49,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
-  
-  // Dynamic OG image for posts - will be replaced with actual images later
+  const product = getProductByReviewUrl(`/posts/${slug}`);
+
   const ogImageStyle = {
     url: '/og-post-placeholder.png',
     width: 1200,
@@ -57,11 +59,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 
   return {
-    title: post.title,
-    description: post.excerpt,
-    openGraph: { 
-      title: post.title, 
-      description: post.excerpt, 
+    title: product?.seo.title || post.title,
+    description: product?.seo.description || post.excerpt,
+    openGraph: {
+      title: product?.seo.title || post.title,
+      description: product?.seo.description || post.excerpt,
       type: 'article',
       images: [ogImageStyle],
     },
@@ -86,22 +88,19 @@ export default async function PostPage({ params }: PageProps) {
   const relatedPosts = allPosts
     .filter((p) => p.slug !== slug && p.category === post.category)
     .slice(0, 4);
-  
-  // Popular tags
+
   const tagCounts: Record<string, number> = {};
   allPosts.forEach((p) => p.tags.forEach((t) => { tagCounts[t] = (tagCounts[t] || 0) + 1; }));
   const popularTags = Object.entries(tagCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10);
 
-  // Breadcrumb items
   const breadcrumbItems = [
     { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
     { label: post.category === 'ai-tech' ? 'AI & Tech' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
     { label: post.title, href: `https://smart-kurashi.jp/posts/${slug}` },
   ];
 
-  // Article-level JSON-LD (Article + NewsArticle schema)
   const jsonLdArticle = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -127,12 +126,13 @@ export default async function PostPage({ params }: PageProps) {
     },
   };
 
+  const product = getProductByReviewUrl(`/posts/${slug}`);
+  const isReviewPost = Boolean(product);
+
   return (
     <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
       <div className="max-w-container mx-auto px-md">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
-
-          {/* ===== ARTICLE ===== */}
           <article
             style={{
               background: '#fff',
@@ -141,66 +141,68 @@ export default async function PostPage({ params }: PageProps) {
               border: '1px solid #E7E5E4',
             }}
           >
-            {/* Breadcrumbs with JSON-LD */}
             <Breadcrumbs items={breadcrumbItems} />
 
-            {/* Header */}
-            <header style={{ marginBottom: '24px' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  marginBottom: '16px',
-                }}
-              >
-                <span
+            {!isReviewPost ? (
+              <header style={{ marginBottom: '24px' }}>
+                <div
                   style={{
-                    padding: '4px 14px',
-                    background: cat.bg,
-                    color: cat.text,
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    borderRadius: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '16px',
                   }}
                 >
-                  {categoryLabel}
-                </span>
-                <time style={{ fontSize: '13px', color: '#5A534E' }}>{formattedDate}</time>
-              </div>
-              <h1
-                style={{
-                  fontSize: 'clamp(24px, 3vw, 36px)',
-                  fontWeight: 600,
-                  color: '#292524',
-                  lineHeight: 1.2,
-                  letterSpacing: '',
-                  marginBottom: '16px',
-                }}
-              >
-                {post.title}
-              </h1>
-              <p style={{ fontSize: '18px', color: '#4A433F', lineHeight: 1.7 }}>
-                {post.excerpt}
-              </p>
-            </header>
+                  <span
+                    style={{
+                      padding: '4px 14px',
+                      background: cat.bg,
+                      color: cat.text,
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      borderRadius: '8px',
+                    }}
+                  >
+                    {categoryLabel}
+                  </span>
+                  <time style={{ fontSize: '13px', color: '#5A534E' }}>{formattedDate}</time>
+                </div>
+                <h1
+                  style={{
+                    fontSize: 'clamp(24px, 3vw, 36px)',
+                    fontWeight: 600,
+                    color: '#292524',
+                    lineHeight: 1.2,
+                    letterSpacing: '',
+                    marginBottom: '16px',
+                  }}
+                >
+                  {post.title}
+                </h1>
+                <p style={{ fontSize: '18px', color: '#4A433F', lineHeight: 1.7 }}>
+                  {post.excerpt}
+                </p>
+              </header>
+            ) : null}
 
-            <hr
-              style={{ border: 'none', borderTop: '1px solid #E7E5E4', margin: '0 0 24px 0' }}
-            />
+            {!isReviewPost ? <hr style={{ border: 'none', borderTop: '1px solid #E7E5E4', margin: '0 0 24px 0' }} /> : null}
 
-            {/* Table of Contents — after intro paragraph */}
-            <TableOfContents content={post.content} />
+            {isReviewPost ? (
+              <>
+                <ReviewTemplate post={post} data={post as any} product={product} sourcePage={`/posts/${slug}`} />
+              </>
+            ) : (
+              <>
+                <TableOfContents content={post.content} />
+                <div className="prose prose-lg max-w-none">
+                  <MDXRemote
+                    source={post.content}
+                    options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+                  />
+                </div>
+              </>
+            )}
 
-            {/* Article Body */}
-            <div className="prose prose-lg max-w-none">
-              <MDXRemote
-                source={post.content}
-                options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-              />
-            </div>
-
-            {/* Tags */}
             {post.tags.length > 0 && (
               <footer
                 style={{
@@ -244,7 +246,6 @@ export default async function PostPage({ params }: PageProps) {
               </footer>
             )}
 
-            {/* Author Trust Box (E-E-A-T) */}
             <AuthorProfile
               name={defaultAuthor.name}
               avatarUrl={defaultAuthor.avatarUrl || undefined}
@@ -253,9 +254,7 @@ export default async function PostPage({ params }: PageProps) {
             />
           </article>
 
-          {/* ===== SIDEBAR ===== */}
           <aside>
-            {/* Related Posts */}
             {relatedPosts.length > 0 && (
               <div
                 style={{
@@ -278,10 +277,7 @@ export default async function PostPage({ params }: PageProps) {
                 </h3>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {relatedPosts.map((rp) => (
-                    <li
-                      key={rp.slug}
-                      style={{ padding: '12px 0', borderBottom: '1px solid #F1F5F9' }}
-                    >
+                    <li key={rp.slug} style={{ padding: '12px 0', borderBottom: '1px solid #F1F5F9' }}>
                       <Link href={`/posts/${rp.slug}`} style={{ textDecoration: 'none' }}>
                         <h4
                           style={{
@@ -308,7 +304,6 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Popular Tags */}
             <div
               style={{
                 background: '#fff',
@@ -351,7 +346,6 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Back to top */}
             <div
               style={{
                 background: '#A9582D',

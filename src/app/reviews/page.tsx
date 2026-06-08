@@ -68,7 +68,7 @@ export default function ReviewsPage() {
         </div>
         <div className="product-grid" style={{ marginTop: 0 }}>
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} compact />
+            <ProductCard key={product.slug} product={product} compact sourcePage="/reviews" />
           ))}
         </div>
       </section>

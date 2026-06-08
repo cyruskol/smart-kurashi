@@ -14,6 +14,24 @@ export interface Post {
   source?: string;
   tags: string[];
   image?: string;
+  reviewType?: string;
+  productName?: string;
+  productCategory?: string;
+  priceRange?: string;
+  usagePeriod?: string;
+  updatedAt?: string;
+  conclusion?: string;
+  suitableFor?: string[];
+  notSuitableFor?: string[];
+  pros?: string[];
+  cons?: string[];
+  experienceIntro?: string;
+  experiencePoints?: string[];
+  featureReviews?: { title: string; description: string }[];
+  comparisonItems?: { name: string; suitableFor: string; feature: string; caution: string; href?: string }[];
+  finalVerdict?: string;
+  faq?: { question: string; answer: string }[];
+  retailerLinks?: { label: string; href: string }[];
 }
 
 // ── Cache layer ──────────────────────────────────────────────────────────────
@@ -25,18 +43,18 @@ const _slugCache: Map<string, Post | null> = new Map();
 const _categoryCache: Map<string, Post[]> = new Map();
 
 function ensureCache(): Post[] {
-  if (_allPostsCache) return _allPostsCache;
+  const isDev = process.env.NODE_ENV !== 'production';
+  if (!isDev && _allPostsCache) return _allPostsCache;
 
   const mainPosts = getPostsFromDir(path.join(contentDir, 'posts'), 'article');
   const aiNews = getPostsFromDir(path.join(contentDir, 'news', 'ai-tech'), 'ai-tech');
   const smartHomeNews = getPostsFromDir(path.join(contentDir, 'news', 'smart-home'), 'smart-home');
-  _allPostsCache = [...mainPosts, ...aiNews, ...smartHomeNews].sort((a, b) =>
+  const posts = [...mainPosts, ...aiNews, ...smartHomeNews].sort((a, b) =>
     b.date.localeCompare(a.date),
   );
-  return _allPostsCache;
+  if (!isDev) _allPostsCache = posts;
+  return posts;
 }
-
-// ── Internal helpers (no caching) ────────────────────────────────────────────
 
 function getMarkdownFiles(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -57,14 +75,30 @@ function parsePost(filePath: string, defaultCategory: string): Post {
     source: data.source || undefined,
     tags: data.tags || [],
     image: data.image || undefined,
+    reviewType: data.reviewType || undefined,
+    productName: data.productName || undefined,
+    productCategory: data.productCategory || undefined,
+    priceRange: data.priceRange || undefined,
+    usagePeriod: data.usagePeriod || undefined,
+    updatedAt: data.updatedAt || undefined,
+    conclusion: data.conclusion || undefined,
+    suitableFor: data.suitableFor || undefined,
+    notSuitableFor: data.notSuitableFor || undefined,
+    pros: data.pros || undefined,
+    cons: data.cons || undefined,
+    experienceIntro: data.experienceIntro || undefined,
+    experiencePoints: data.experiencePoints || undefined,
+    featureReviews: data.featureReviews || undefined,
+    comparisonItems: data.comparisonItems || undefined,
+    finalVerdict: data.finalVerdict || undefined,
+    faq: data.faq || undefined,
+    retailerLinks: data.retailerLinks || undefined,
   };
 }
 
 function getPostsFromDir(dir: string, category: string): Post[] {
   return getMarkdownFiles(dir).map((f) => parsePost(path.join(dir, f), category));
 }
-
-// ── Public API (cached) ─────────────────────────────────────────────────────
 
 export function getAllPosts(): Post[] {
   return ensureCache();
@@ -86,7 +120,8 @@ export function getPostsByTag(tag: string): Post[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  if (_slugCache.has(slug)) return _slugCache.get(slug)!;
+  const isDev = process.env.NODE_ENV !== 'production';
+  if (!isDev && _slugCache.has(slug)) return _slugCache.get(slug)!;
 
   const searchDirs = [
     path.join(contentDir, 'posts'),

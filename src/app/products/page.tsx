@@ -13,24 +13,24 @@ export default function ProductsPage() {
 
   const discoveryTiles = [
     {
-      href: '/products/sesame-5-smart-lock',
-      label: 'スマートロック',
-      description: '賃貸でも試しやすい玄関まわりの比較',
+      href: '/category/ai-tech',
+      label: 'AI・テック',
+      description: 'AIツール、ソフトウェア、仕事効率化の比較とレビュー',
     },
     {
-      href: '/products/switchbot-robot-vacuum-k10-plus',
-      label: 'ロボット掃除機',
-      description: '間取りと自動化のバランスで選ぶ',
-    },
-    {
-      href: '/products/echo-dot-matter-hub',
-      label: 'スマートスピーカー',
-      description: '音声操作と家族利用のしやすさで選ぶ',
+      href: '/category/smart-home',
+      label: '家電・ガジェット',
+      description: 'スマートホーム系の比較とレビュー',
     },
     {
       href: '/compare',
       label: '比較・ランキング',
       description: '買う前に比較軸を整理する',
+    },
+    {
+      href: '/reviews',
+      label: 'レビュー一覧',
+      description: '公開済みレビューから読む',
     },
   ];
 
@@ -73,7 +73,7 @@ export default function ProductsPage() {
         </div>
         <div className="product-grid" style={{ marginTop: 0 }}>
           {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+            <ProductCard key={product.slug} product={product} sourcePage="/products" />
           ))}
         </div>
       </section>

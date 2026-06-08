@@ -17,12 +17,6 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashi の記事を検索' };
 }
 
-  const categoryColors: Record<string, { bg: string; text: string }> = {
-    'ai-tech': { bg: '#F5F0EB', text: '#5C4A32' },
-    'smart-home': { bg: '#EDF2EE', text: '#2C4D38' },
-    'article': { bg: '#F5F0EB', text: '#5C4A32' },
-  };
-
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
   const allPosts = getAllPosts();
@@ -41,7 +35,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
 
   const productResults = q ? allProducts.filter((product) => {
     const s = q.toLowerCase();
-    return [product.name, product.maker, product.summary, categoryMeta[product.category].label, ...product.bestFor, ...product.cautions]
+    return [product.name, product.brand || '', product.shortDescription, product.category, product.bestFor || '', product.notFor || '', ...product.recommendedFor, ...product.notRecommendedFor, ...product.tags]
       .some((value) => value.toLowerCase().includes(s));
   }) : [];
 
@@ -77,9 +71,9 @@ export default async function SearchPage({ searchParams }: PageProps) {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
                       {productResults.map((product) => (
                         <Link key={product.slug} href={`/products/${product.slug}`} style={{ display: 'block', background: '#fff', border: '1px solid #E7E5E4', borderRadius: '8px', padding: '18px', textDecoration: 'none' }}>
-                          <div style={{ fontSize: '11px', color: '#A9582D', fontWeight: 700, marginBottom: '8px' }}>{categoryMeta[product.category].label}</div>
+                          <div style={{ fontSize: '11px', color: '#A9582D', fontWeight: 700, marginBottom: '8px' }}>{categoryMeta[product.category]?.label || product.category}</div>
                           <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#292524', lineHeight: 1.4, marginBottom: '8px' }}>{product.name}</h3>
-                          <p style={{ fontSize: '13px', color: '#5A534E', lineHeight: 1.6 }}>{product.summary}</p>
+                          <p style={{ fontSize: '13px', color: '#5A534E', lineHeight: 1.6 }}>{product.shortDescription}</p>
                         </Link>
                       ))}
                     </div>

@@ -205,7 +205,7 @@ export default async function HomePage() {
         <ComparisonTable
           title="買う前に比べたい3製品"
           subtitle="価格帯だけでなく、賃貸適性・自動化のしやすさ・家族での使いやすさを見て選ぶ。"
-          items={featuredProducts.map((product, index) => ({ rank: index + 1, product, note: product.summary }))}
+          items={featuredProducts.map((product, index) => ({ rank: index + 1, product, note: product.shortDescription }))}
         />
       </section>
 
@@ -223,7 +223,7 @@ export default async function HomePage() {
         </div>
         <div className="product-grid" style={{ marginTop: 0 }}>
           {allProducts.map((product) => (
-            <ProductCard key={product.slug} product={product} compact />
+            <ProductCard key={product.slug} product={product} compact sourcePage="/" />
           ))}
         </div>
       </section>

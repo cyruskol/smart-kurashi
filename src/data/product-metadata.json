@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "fp-dvision-jg32-pb",
+    "name": "FP-DVISION JG32-PB",
+    "brand": "FP-DVISION",
+    "group": "家電・ガジェット",
+    "category": "スマートテレビ",
+    "tags": ["スマートテレビ", "Google TV", "F1", "寝室用テレビ", "一人暮らし", "調査レビュー"],
+    "shortDescription": "寝室や書斎の2台目テレビとして使いやすい32インチの調査レビュー対象モデル。",
+    "bestFor": "寝室や書斎に置く2台目テレビを、できるだけ手頃に整えたい人向け。",
+    "notFor": "4K画質やゲーム性能を最優先する人には向かない。",
+    "reviewStatus": "research-review",
+    "handsOnStatus": "not-used",
+    "ratingBasis": "口コミ・販売ページ・スペック比較をもとに整理",
+    "pros": [
+      "Google TVで配信アプリをまとめて使いやすい",
+      "32インチで寝室や書斎に置きやすい",
+      "価格が比較的手に取りやすい",
+      "地デジ・BS・音声検索など日常用途に必要な機能がそろっている"
+    ],
+    "cons": [
+      "720Pなので4K前提の人には物足りない",
+      "大画面リビング用途にはやや小さい",
+      "高性能ゲーム機メインだと別機種比較が必要"
+    ],
+    "recommendedFor": [
+      "寝室や書斎に2台目テレビが欲しい人",
+      "F1やYouTubeを手軽に見たい人",
+      "一人暮らしや小さめの部屋でコスパを重視したい人"
+    ],
+    "notRecommendedFor": [
+      "4K画質を最優先したい人",
+      "リビングの主役になる大画面テレビを探している人",
+      "ゲーム用途で低遅延を最優先する人"
+    ],
+    "productUrl": "/products/fp-dvision-jg32-pb",
+    "reviewUrl": "/posts/2026-06-03_fp-dvision-jg32-pb-review",
+    "comparisonEligible": true,
+    "retailers": {
+      "amazon": {
+        "enabled": true,
+        "label": "Amazonで見る",
+        "url": "https://www.amazon.co.jp/s?k=FP-DVISION+JG32-PB",
+        "trackingId": "",
+        "trackingStatus": "not-configured",
+        "lastChecked": "2026-06-06"
+      },
+      "rakuten": {
+        "enabled": true,
+        "label": "楽天で見る",
+        "url": "https://search.rakuten.co.jp/search/mall/FP-DVISION+JG32-PB/",
+        "trackingId": "",
+        "trackingStatus": "not-configured",
+        "lastChecked": "2026-06-06"
+      },
+      "yahoo": {
+        "enabled": true,
+        "label": "Yahooで見る",
+        "url": "https://shopping.yahoo.co.jp/search?p=FP-DVISION+JG32-PB",
+        "trackingId": "",
+        "trackingStatus": "not-configured",
+        "lastChecked": "2026-06-06"
+      },
+      "official": {
+        "enabled": false,
+        "label": "公式サイトを見る",
+        "trackingId": "",
+        "trackingStatus": "not-needed",
+        "lastChecked": "2026-06-06"
+      }
+    },
+    "seo": {
+      "title": "FP-DVISION JG32-PBレビュー｜F1観戦にも使いやすい32インチスマートテレビ",
+      "description": "FP-DVISION JG32-PBの購入判断に必要なポイントを整理した調査レビュー。寝室や書斎の2台目テレビとしての使い勝手、Google TVの操作性、32インチの設置性、注意点をまとめています。",
+      "keywords": ["スマートテレビ", "寝室用テレビ", "一人暮らし向け", "F1 視聴", "32インチ コスパ"]
+    },
+    "updatedAt": "2026-06-06"
+  }
+]

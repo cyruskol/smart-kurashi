@@ -1,18 +1,18 @@
 import Link from 'next/link';
-import { categoryMeta, type ProductReview } from '@/lib/products';
+import { categoryMeta, type ProductMetadata } from '@/lib/products';
 
 interface ProductCardProps {
-  product: ProductReview;
+  product: ProductMetadata;
   href?: string;
   rank?: number;
   compact?: boolean;
   eyebrow?: string;
+  sourcePage?: string;
 }
 
-export default function ProductCard({ product, href, rank, compact = false, eyebrow }: ProductCardProps) {
-  const category = categoryMeta[product.category];
-  const productHref = href ?? `/products/${product.slug}`;
-  const primaryLink = product.affiliateLinks[0];
+export default function ProductCard({ product, href, rank, compact = false, eyebrow, sourcePage }: ProductCardProps) {
+  const productHref = href ?? product.productUrl ?? `/products/${product.slug}`;
+  const category = categoryMeta[product.category] || { label: product.category, description: '' };
 
   return (
     <article className={`product-card ${compact ? 'product-card-compact' : ''}`}>
@@ -42,26 +42,26 @@ export default function ProductCard({ product, href, rank, compact = false, eyeb
         <Link href={productHref}>{product.name}</Link>
       </h2>
 
-      <p>{product.summary}</p>
+      <p>{product.shortDescription}</p>
 
       <dl className="product-facts">
         <div>
-          <dt>メーカー</dt>
-          <dd>{product.maker}</dd>
+          <dt>ブランド</dt>
+          <dd>{product.brand || '—'}</dd>
         </div>
         <div>
-          <dt>価格帯</dt>
-          <dd>{product.priceRange}</dd>
+          <dt>カテゴリ</dt>
+          <dd>{product.category}</dd>
         </div>
         <div>
-          <dt>評価</dt>
-          <dd>{product.rating.toFixed(1)} / 5</dd>
+          <dt>レビュー種別</dt>
+          <dd>{product.reviewStatus === 'research-review' ? '調査レビュー' : product.reviewStatus}</dd>
         </div>
       </dl>
 
       <div style={{ display: 'grid', gap: '10px' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          {product.bestFor.slice(0, compact ? 2 : 3).map((item) => (
+          {product.recommendedFor.slice(0, compact ? 2 : 3).map((item) => (
             <span
               key={item}
               style={{
@@ -80,30 +80,23 @@ export default function ProductCard({ product, href, rank, compact = false, eyeb
           ))}
         </div>
         <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-text-secondary)', fontSize: '0.95rem' }}>
-          {product.cautions.slice(0, compact ? 1 : 2).map((item) => (
+          {product.cons.slice(0, compact ? 1 : 2).map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
       </div>
 
       <div className="product-actions">
-        <Link className="product-button product-button-primary" href={productHref}>
+        <Link className="product-button product-button-primary" href={product.reviewUrl || productHref}>
           レビューを読む
         </Link>
-        {primaryLink ? (
-          <a href={primaryLink.href} rel="sponsored nofollow noopener noreferrer" target="_blank" className="product-button">
-            {primaryLink.label}
-          </a>
-        ) : null}
       </div>
 
       {compact ? null : (
-        <div className="sk-link-list" aria-label={`${product.name} の購入リンク`}>
-          {product.affiliateLinks.slice(0, 3).map((link) => (
-            <a key={link.href} href={link.href} rel="sponsored nofollow noopener noreferrer" target="_blank">
-              {link.label}
-            </a>
-          ))}
+        <div style={{ marginTop: '14px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          <span className="sk-eyebrow">{product.reviewStatus === 'research-review' ? '調査レビュー' : product.reviewStatus}</span>
+          <span className="sk-eyebrow">{product.handsOnStatus === 'not-used' ? '未実使用' : product.handsOnStatus}</span>
+          {product.comparisonEligible ? <span className="sk-eyebrow">比較候補</span> : null}
         </div>
       )}
     </article>

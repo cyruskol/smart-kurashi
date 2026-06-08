@@ -47,7 +47,7 @@ export default function ComparePage() {
         <ComparisonTable
           title="用途別の有力候補"
           subtitle="ランキングは、価格帯よりも暮らしへのフィット感を優先して並べています。"
-          items={products.map((product, index) => ({ rank: index + 1, product, note: product.summary }))}
+          items={products.map((product, index) => ({ rank: index + 1, product, note: product.shortDescription }))}
         />
       </section>
 
@@ -85,7 +85,7 @@ export default function ComparePage() {
         </div>
         <div className="product-grid" style={{ marginTop: 0 }}>
           {products.map((product, index) => (
-            <ProductCard key={product.slug} product={product} rank={index + 1} />
+            <ProductCard key={product.slug} product={product} rank={index + 1} sourcePage="/compare" />
           ))}
         </div>
       </section>

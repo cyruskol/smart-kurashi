@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { type ProductReview } from '@/lib/products';
+import { type ProductMetadata } from '@/lib/products';
+import RetailerCTAButtons from '@/components/RetailerCTAButtons';
 
 interface ComparisonItem {
   rank: number;
-  product: ProductReview;
+  product: ProductMetadata;
   note?: string;
   href?: string;
 }
@@ -12,9 +13,10 @@ interface ComparisonTableProps {
   title?: string;
   subtitle?: string;
   items: ComparisonItem[];
+  sourcePage?: string;
 }
 
-export default function ComparisonTable({ title, subtitle, items }: ComparisonTableProps) {
+export default function ComparisonTable({ title, subtitle, items, sourcePage = '/compare' }: ComparisonTableProps) {
   if (!items.length) return null;
 
   return (
@@ -28,7 +30,7 @@ export default function ComparisonTable({ title, subtitle, items }: ComparisonTa
 
       <div style={{ display: 'grid', gap: '16px' }}>
         {items.map(({ rank, product, note, href }) => {
-          const productHref = href ?? `/products/${product.slug}`;
+          const productHref = href ?? product.productUrl ?? `/products/${product.slug}`;
           return (
             <article
               key={product.slug}
@@ -60,7 +62,7 @@ export default function ComparisonTable({ title, subtitle, items }: ComparisonTa
                   </span>
                   <div>
                     <h4 style={{ marginBottom: '4px', fontSize: '1.1rem' }}>{product.name}</h4>
-                    <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem' }}>{product.maker} / {product.priceRange}</p>
+                    <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem' }}>{product.brand || '—'} / {product.category}</p>
                   </div>
                 </div>
                 <span
@@ -75,44 +77,43 @@ export default function ComparisonTable({ title, subtitle, items }: ComparisonTa
                     fontWeight: 700,
                   }}
                 >
-                  {product.bestFor[0]}
+                  {product.reviewStatus === 'research-review' ? '調査レビュー' : product.reviewStatus}
                 </span>
               </div>
 
               <div style={{ display: 'grid', gap: '12px' }}>
-                <p style={{ color: 'var(--color-text-secondary)' }}>{note || product.summary}</p>
+                <p style={{ color: 'var(--color-text-secondary)' }}>{note || product.shortDescription}</p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
                   <div style={{ padding: '14px', borderRadius: '16px', background: '#F9FAF9', border: '1px solid var(--color-border)' }}>
                     <strong style={{ display: 'block', marginBottom: '8px' }}>向いている人</strong>
                     <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-text-secondary)' }}>
-                      {product.bestFor.slice(0, 3).map((item) => <li key={item}>{item}</li>)}
+                      {product.recommendedFor.slice(0, 3).map((item) => <li key={item}>{item}</li>)}
                     </ul>
                   </div>
                   <div style={{ padding: '14px', borderRadius: '16px', background: '#F9FAF9', border: '1px solid var(--color-border)' }}>
                     <strong style={{ display: 'block', marginBottom: '8px' }}>注意したい点</strong>
                     <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-text-secondary)' }}>
-                      {product.cautions.slice(0, 2).map((item) => <li key={item}>{item}</li>)}
+                      {product.cons.slice(0, 2).map((item) => <li key={item}>{item}</li>)}
                     </ul>
                   </div>
                 </div>
               </div>
 
               <div className="product-actions" style={{ marginTop: 0 }}>
-                <Link href={productHref} className="product-button product-button-primary">
+                <Link href={product.reviewUrl || productHref} className="product-button product-button-primary">
                   レビューを読む
                 </Link>
-                {product.affiliateLinks.slice(0, 2).map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    rel="sponsored nofollow noopener noreferrer"
-                    target="_blank"
-                    className="product-button"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                <Link href={productHref} className="product-button">
+                  商品ページを見る
+                </Link>
               </div>
+
+              <RetailerCTAButtons
+                productSlug={product.slug}
+                sourcePage={sourcePage}
+                ctaPosition="comparison_table"
+                variant="compact"
+              />
             </article>
           );
         })}
