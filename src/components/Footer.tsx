@@ -14,30 +14,17 @@ export default function Footer() {
   return (
     <footer style={{ background: '#292524', color: '#E7E5E4' }} role="contentinfo">
       <div className="max-w-container mx-auto px-md py-section">
-        <div className="grid grid-cols-2 gap-xl">
-          <div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#FAFAF9', marginBottom: '8px' }}>Smart Kurashi</h3>
-            <p style={{ fontSize: '13px', color: '#A8A29E', lineHeight: 1.75, maxWidth: '32rem' }}>
-              日本で買って失敗しにくいAI・家電・ガジェットを、レビュー・比較・購入導線までまとめて案内する商品発見サイト。
-            </p>
-          </div>
-          <div>
-            <h3 style={{ fontSize: '12px', fontWeight: 700, color: '#A8A29E', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>
-              サイト内リンク
-            </h3>
-            <nav aria-label="フッターナビゲーション">
-              <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {footerLinks.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
+        <nav aria-label="フッターナビゲーション">
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}>
+            {footerLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} style={{ fontSize: '14px', color: '#A8A29E', textDecoration: 'none' }}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
 
       <div style={{ borderTop: '1px solid #44403C' }}>
