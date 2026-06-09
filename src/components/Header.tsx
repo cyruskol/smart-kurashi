@@ -8,6 +8,7 @@ const headerItems = [
   { href: '/category/smart-home', label: '家電・ガジェット' },
   { href: '/products', label: '商品を探す' },
   { href: '/compare', label: '比較・ランキング' },
+  { href: '/fifa-world-cup-2026', label: 'FIFAワールドカップ2026' },
 ];
 
 export default function Header() {
