@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import MirofishTable from '@/components/MirofishTable';
 
 export const metadata: Metadata = {
   title: 'FIFAワールドカップ2026 視聴ガイド｜日本での放送・配信と海外無料視聴',
@@ -302,9 +303,38 @@ export default function FifaWorldCup2026Page() {
         </div>
       </section>
 
+      <section style={{ marginTop: '64px', paddingTop: '32px', borderTop: '2px solid #E7E5E4' }}>
+        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
+          <div>
+            <p className="sk-eyebrow">MIROFISH PREDICTION</p>
+            <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>Mirofish Group Stage Predictions</h2>
+          </div>
+        </div>
+
+        <div style={{ padding: '16px', background: '#F0F7FF', borderRadius: '8px', marginBottom: '24px', border: '1px solid #D0E3F5' }}>
+          <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#2C5282' }}>
+            These predictions are based on Mirofish simulations using 1,500+ AI agents.
+            Agents analyzed team strength, tactics, historical match data, market trends,
+            referee factors, and more to produce score forecasts for all 72 group-stage matches.
+            Model-based agents (Opta, Elo, FIFA Ranking) and human-judgment agents (journalist,
+            fan, referee) debated each match to arrive at the final predictions with confidence levels.
+            For reference only.
+          </p>
+        </div>
+
+        <MirofishTable limit={20} />
+
+        <p style={{ fontSize: '13px', color: '#888', marginTop: '16px', textAlign: 'center' }}>
+          Showing first 20 of 72 matches.{' '}
+          <a href="#mirofish-full" style={{ color: '#4A433F', textDecoration: 'underline' }}>
+            Scroll down for full table
+          </a>
+        </p>
+      </section>
+
       <section style={{ marginTop: '44px', textAlign: 'center' }}>
         <p style={{ fontSize: '14px', color: '#888' }}>
-          このページは随時更新されます。最新情報は各放送局・配信サービスの公式サイトでご確認ください。
+          This page is updated regularly. Check official broadcaster sites for latest info.
         </p>
       </section>
     </main>
