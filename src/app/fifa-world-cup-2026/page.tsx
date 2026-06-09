@@ -4,7 +4,7 @@ import MirofishTable from '@/components/MirofishTable';
 
 export const metadata: Metadata = {
   title: 'FIFAワールドカップ2026 視聴ガイド｜日本での放送・配信と海外無料視聴',
-  description: 'FIFAワールドカップ2026を日本で視聴する方法をまとめたページ。NHK、日本テレビ、フジテレビ、DAZN、ABEMAの放送・配信先、料金プラン、契約期間の注意点、海外旅行・出張先での無料視聴オプションを解説。ワールドカップ2026 放送権 配信 無料 有料 比較。',
+  description: 'FIFAワールドカップ2026を日本で視聴する方法をまとめたページ。NHK、日本テレビ、フジテレビ、DAZN、ABEMAの放送・配信先、料金プラン、契約期間の注意点、海外旅行・出張先での無料視聴オプションを解説。Mirofishによるグループステージ予測も掲載。',
 };
 
 export default function FifaWorldCup2026Page() {
@@ -24,7 +24,7 @@ export default function FifaWorldCup2026Page() {
             プラットフォーム比較
           </a>
           <a href="#overseas" className="product-button">
-            海外旅行・出張先での視聴
+            海外での視聴
           </a>
         </div>
       </section>
@@ -274,7 +274,7 @@ export default function FifaWorldCup2026Page() {
             上記の放送局は、それぞれの国内からアクセスした場合に無料で視聴できるサービスです。日本からアクセスする場合は、放送権の地域制限により視聴できない場合があります。海外旅行・出張の際は、現地のホテルや滞在先のテレビでも視聴できる可能性があります。
           </p>
           <p style={{ fontSize: '14px', lineHeight: '1.6', marginTop: '8px' }}>
-            F1の海外無料視聴についても同様の仕組みで視聴できます。詳しくは
+            スポーツ観戦についても同様の仕組みで視聴できます。詳しくは
             <Link href="/posts/2026-06-03_fp-dvision-jg32-pb-review" style={{ color: '#4A433F', textDecoration: 'underline' }}>
               FP-DVISION JG32-PBのレビュー記事
             </Link>
@@ -283,58 +283,30 @@ export default function FifaWorldCup2026Page() {
         </div>
       </section>
 
-      <section style={{ marginTop: '44px' }} id="summary">
-        <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
-          <div>
-            <p className="sk-eyebrow">SUMMARY</p>
-            <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>まとめ</h2>
-          </div>
-        </div>
-
-        <div style={{ padding: '20px', background: '#F9F7F5', borderRadius: '12px' }}>
-          <ul style={{ paddingLeft: '20px', lineHeight: '1.8', fontSize: '15px' }}>
-            <li>日本戦だけ見たいなら、NHK・日本テレビ・フジテレビの地上波で無料視聴可能</li>
-            <li>全試合網羅するならDAZNが最も確実（ネット配信権保有）</li>
-            <li>無料で多く見たいならNHK + ABEMAの組み合わせがコスパ◎</li>
-            <li>契約期間の縛りはほとんどなく、月額契約で柔軟に利用可能</li>
-            <li>海外旅行・出張先では、現地の公共放送で無料視聴できる場合がある（ORF、RTBF、ARD/ZDF、SRG SSRなど）</li>
-            <li>海外の放送局は、F1の視聴と同じ仕組みでワールドカップもカバー</li>
-          </ul>
-        </div>
-      </section>
-
-      <section style={{ marginTop: '64px', paddingTop: '32px', borderTop: '2px solid #E7E5E4' }}>
+      <section style={{ marginTop: '44px' }}>
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p className="sk-eyebrow">MIROFISH PREDICTION</p>
-            <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>Mirofish Group Stage Predictions</h2>
+            <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>Mirofishによるグループステージ予測</h2>
           </div>
         </div>
 
         <div style={{ padding: '16px', background: '#F0F7FF', borderRadius: '8px', marginBottom: '24px', border: '1px solid #D0E3F5' }}>
           <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#2C5282' }}>
-            These predictions are based on Mirofish simulations using 1,500+ AI agents.
-            Agents analyzed team strength, tactics, historical match data, market trends,
-            referee factors, and more to produce score forecasts for all 72 group-stage matches.
-            Model-based agents (Opta, Elo, FIFA Ranking) and human-judgment agents (journalist,
-            fan, referee) debated each match to arrive at the final predictions with confidence levels.
-            For reference only.
+            本予測はMirofishが実施したシミュレーションに基づいています。1500以上（11種類）のAgentが各チームの戦力、戦術、過去の対戦データ、市場動向、審判要因などを分析し、72場のグループステージ全試合について比分を予測しました。モデルベースのAgent（Opta、Elo、FIFAランキング）と人間判断ベースのAgent（ジャーナリスト、ファン、審判）の議論を経て、各試合の予測比分と信頼度を算出しています。参考情報としてご活用ください。
           </p>
         </div>
 
-        <MirofishTable limit={20} />
-
-        <p style={{ fontSize: '13px', color: '#888', marginTop: '16px', textAlign: 'center' }}>
-          Showing first 20 of 72 matches.{' '}
-          <a href="#mirofish-full" style={{ color: '#4A433F', textDecoration: 'underline' }}>
-            Scroll down for full table
-          </a>
-        </p>
+        <MirofishTable />
       </section>
 
       <section style={{ marginTop: '44px', textAlign: 'center' }}>
         <p style={{ fontSize: '14px', color: '#888' }}>
-          This page is updated regularly. Check official broadcaster sites for latest info.
+          このページは随時更新されます。Mirofishの予測について詳細は
+          <a href="https://github.com/cyruskol/smart-kurashi" target="_blank" rel="noopener noreferrer" style={{ color: '#4A433F', textDecoration: 'underline' }}>
+            リポジトリ
+          </a>
+          を参照してください。
         </p>
       </section>
     </main>

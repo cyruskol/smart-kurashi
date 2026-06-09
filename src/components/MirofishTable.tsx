@@ -4,16 +4,14 @@ import { mirofishPredictions, type MirofishPrediction } from '@/data/mirofish-pr
 
 function ResultBadge({ result }: { result: string }) {
   const color = result === 'Draw' ? '#B7791F' : result === 'B Win' ? '#C53030' : '#2D3748';
-  return <span style={{ color, fontWeight: 600 }}>{result}</span>;
+  const label = result === 'Draw' ? '引分' : result === 'B Win' ? 'B勝' : 'A勝';
+  return <span style={{ color, fontWeight: 600 }}>{label}</span>;
 }
 
 function ConfidenceBar({ value }: { value: number }) {
   const color = value >= 75 ? '#38A169' : value >= 60 ? '#D69E2E' : '#E53E3E';
-  return (
-    <span style={{ color, fontWeight: 600 }}>
-      {value >= 80 ? 'Very High' : value >= 70 ? 'High' : value >= 60 ? 'Medium' : 'Low'} ({value}%)
-    </span>
-  );
+  const label = value >= 80 ? '高' : value >= 70 ? 'やや高' : value >= 60 ? '中' : '低';
+  return <span style={{ color, fontWeight: 600 }}>{label}（{value}%）</span>;
 }
 
 export default function MirofishTable({ limit }: { limit?: number }) {
@@ -24,13 +22,13 @@ export default function MirofishTable({ limit }: { limit?: number }) {
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
         <thead>
           <tr style={{ background: '#F0F7FF', borderBottom: '2px solid #D0E3F5' }}>
-            <th style={{ padding: '8px 4px', minWidth: '32px', textAlign: 'center' }}>No.</th>
-            <th style={{ padding: '8px 4px', minWidth: '60px' }}>Date</th>
-            <th style={{ padding: '8px 4px', minWidth: '140px' }}>Match</th>
-            <th style={{ padding: '8px 4px', minWidth: '60px', textAlign: 'center' }}>Score</th>
-            <th style={{ padding: '8px 4px', minWidth: '60px', textAlign: 'center' }}>Result</th>
-            <th style={{ padding: '8px 4px', minWidth: '100px', textAlign: 'center' }}>Confidence</th>
-            <th style={{ padding: '8px 4px', minWidth: '180px' }}>Key Debate</th>
+            <th style={{ padding: '8px 4px', minWidth: '32px', textAlign: 'center' }}>試合</th>
+            <th style={{ padding: '8px 4px', minWidth: '60px' }}>日付</th>
+            <th style={{ padding: '8px 4px', minWidth: '140px' }}>対戦</th>
+            <th style={{ padding: '8px 4px', minWidth: '60px', textAlign: 'center' }}>予測</th>
+            <th style={{ padding: '8px 4px', minWidth: '50px', textAlign: 'center' }}>結果</th>
+            <th style={{ padding: '8px 4px', minWidth: '90px', textAlign: 'center' }}>信頼度</th>
+            <th style={{ padding: '8px 4px', minWidth: '180px' }}>主な議論</th>
           </tr>
         </thead>
         <tbody>
