@@ -2,106 +2,86 @@ export interface MirofishPrediction {
   match: number;
   date: string;
   teamA: string;
+  teamAJp: string;
   teamB: string;
+  teamBJp: string;
   score: string;
-  result: string;
+  winner: string;
+  winnerJp: string;
   confidence: number;
 }
 
 export const mirofishPredictions: MirofishPrediction[] = [
-  // Group A
-  { match: 1, date: "Jun 11", teamA: "Mexico", teamB: "South Africa", score: "2-0", result: "A Win", confidence: 70 },
-  { match: 2, date: "Jun 11", teamA: "South Korea", teamB: "Czech Republic", score: "1-2", result: "B Win", confidence: 65 },
-  { match: 25, date: "Jun 18", teamA: "Czech Republic", teamB: "South Africa", score: "2-0", result: "A Win", confidence: 60 },
-  { match: 28, date: "Jun 18", teamA: "Mexico", teamB: "South Korea", score: "2-1", result: "A Win", confidence: 68 },
-  { match: 53, date: "Jun 24", teamA: "Czech Republic", teamB: "Mexico", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 54, date: "Jun 24", teamA: "South Africa", teamB: "South Korea", score: "1-1", result: "Draw", confidence: 50 },
-
-  // Group B
-  { match: 3, date: "Jun 12", teamA: "Canada", teamB: "Bosnia and Herzegovina", score: "2-0", result: "A Win", confidence: 65 },
-  { match: 8, date: "Jun 13", teamA: "Qatar", teamB: "Switzerland", score: "0-2", result: "B Win", confidence: 70 },
-  { match: 26, date: "Jun 18", teamA: "Switzerland", teamB: "Bosnia and Herzegovina", score: "2-0", result: "A Win", confidence: 68 },
-  { match: 27, date: "Jun 18", teamA: "Canada", teamB: "Qatar", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 51, date: "Jun 24", teamA: "Switzerland", teamB: "Canada", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 52, date: "Jun 24", teamA: "Bosnia and Herzegovina", teamB: "Qatar", score: "1-0", result: "A Win", confidence: 50 },
-
-  // Group C
-  { match: 5, date: "Jun 13", teamA: "Haiti", teamB: "Scotland", score: "0-2", result: "B Win", confidence: 68 },
-  { match: 7, date: "Jun 13", teamA: "Brazil", teamB: "Morocco", score: "2-1", result: "A Win", confidence: 60 },
-  { match: 29, date: "Jun 19", teamA: "Brazil", teamB: "Haiti", score: "4-0", result: "A Win", confidence: 82 },
-  { match: 30, date: "Jun 19", teamA: "Scotland", teamB: "Morocco", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 49, date: "Jun 24", teamA: "Scotland", teamB: "Brazil", score: "0-3", result: "B Win", confidence: 78 },
-  { match: 50, date: "Jun 24", teamA: "Morocco", teamB: "Haiti", score: "3-0", result: "A Win", confidence: 75 },
-
-  // Group D
-  { match: 4, date: "Jun 12", teamA: "United States", teamB: "Paraguay", score: "2-0", result: "A Win", confidence: 68 },
-  { match: 6, date: "Jun 13", teamA: "Australia", teamB: "Turkey", score: "1-2", result: "B Win", confidence: 65 },
-  { match: 31, date: "Jun 19", teamA: "Turkey", teamB: "Paraguay", score: "2-0", result: "A Win", confidence: 70 },
-  { match: 32, date: "Jun 19", teamA: "United States", teamB: "Australia", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 59, date: "Jun 25", teamA: "Turkey", teamB: "United States", score: "1-2", result: "B Win", confidence: 55 },
-  { match: 60, date: "Jun 25", teamA: "Paraguay", teamB: "Australia", score: "1-1", result: "Draw", confidence: 50 },
-
-  // Group E
-  { match: 9, date: "Jun 14", teamA: "Ivory Coast", teamB: "Ecuador", score: "2-1", result: "A Win", confidence: 60 },
-  { match: 10, date: "Jun 14", teamA: "Germany", teamB: "Curaçao", score: "5-0", result: "A Win", confidence: 85 },
-  { match: 33, date: "Jun 20", teamA: "Germany", teamB: "Ivory Coast", score: "3-1", result: "A Win", confidence: 72 },
-  { match: 34, date: "Jun 20", teamA: "Ecuador", teamB: "Curaçao", score: "3-0", result: "A Win", confidence: 78 },
-  { match: 55, date: "Jun 25", teamA: "Curaçao", teamB: "Ivory Coast", score: "0-3", result: "B Win", confidence: 80 },
-  { match: 56, date: "Jun 25", teamA: "Ecuador", teamB: "Germany", score: "0-2", result: "B Win", confidence: 70 },
-
-  // Group F
-  { match: 11, date: "Jun 14", teamA: "Netherlands", teamB: "Japan", score: "2-0", result: "A Win", confidence: 68 },
-  { match: 12, date: "Jun 14", teamA: "Sweden", teamB: "Tunisia", score: "1-0", result: "A Win", confidence: 55 },
-  { match: 35, date: "Jun 20", teamA: "Netherlands", teamB: "Sweden", score: "2-1", result: "A Win", confidence: 65 },
-  { match: 36, date: "Jun 20", teamA: "Tunisia", teamB: "Japan", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 57, date: "Jun 25", teamA: "Japan", teamB: "Sweden", score: "1-2", result: "B Win", confidence: 55 },
-  { match: 58, date: "Jun 25", teamA: "Tunisia", teamB: "Netherlands", score: "0-2", result: "B Win", confidence: 72 },
-
-  // Group G
-  { match: 15, date: "Jun 15", teamA: "Iran", teamB: "New Zealand", score: "1-0", result: "A Win", confidence: 55 },
-  { match: 16, date: "Jun 15", teamA: "Belgium", teamB: "Egypt", score: "2-0", result: "A Win", confidence: 70 },
-  { match: 39, date: "Jun 21", teamA: "Belgium", teamB: "Iran", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 40, date: "Jun 21", teamA: "New Zealand", teamB: "Egypt", score: "0-2", result: "B Win", confidence: 68 },
-  { match: 63, date: "Jun 26", teamA: "Egypt", teamB: "Iran", score: "1-0", result: "A Win", confidence: 55 },
-  { match: 64, date: "Jun 26", teamA: "New Zealand", teamB: "Belgium", score: "0-4", result: "B Win", confidence: 82 },
-
-  // Group H
-  { match: 13, date: "Jun 15", teamA: "Saudi Arabia", teamB: "Uruguay", score: "0-2", result: "B Win", confidence: 72 },
-  { match: 14, date: "Jun 15", teamA: "Spain", teamB: "Cape Verde", score: "3-0", result: "A Win", confidence: 78 },
-  { match: 37, date: "Jun 21", teamA: "Uruguay", teamB: "Cape Verde", score: "3-0", result: "A Win", confidence: 80 },
-  { match: 38, date: "Jun 21", teamA: "Spain", teamB: "Saudi Arabia", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 65, date: "Jun 26", teamA: "Cape Verde", teamB: "Saudi Arabia", score: "0-1", result: "B Win", confidence: 50 },
-  { match: 66, date: "Jun 26", teamA: "Uruguay", teamB: "Spain", score: "1-1", result: "Draw", confidence: 55 },
-
-  // Group I
-  { match: 17, date: "Jun 16", teamA: "France", teamB: "Senegal", score: "2-1", result: "A Win", confidence: 60 },
-  { match: 18, date: "Jun 16", teamA: "Iraq", teamB: "Norway", score: "0-2", result: "B Win", confidence: 70 },
-  { match: 41, date: "Jun 22", teamA: "Norway", teamB: "Senegal", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 42, date: "Jun 22", teamA: "France", teamB: "Iraq", score: "3-0", result: "A Win", confidence: 78 },
-  { match: 61, date: "Jun 26", teamA: "Norway", teamB: "France", score: "0-2", result: "B Win", confidence: 72 },
-  { match: 62, date: "Jun 26", teamA: "Senegal", teamB: "Iraq", score: "2-0", result: "A Win", confidence: 68 },
-
-  // Group J
-  { match: 19, date: "Jun 16", teamA: "Argentina", teamB: "Algeria", score: "2-0", result: "A Win", confidence: 72 },
-  { match: 20, date: "Jun 16", teamA: "Austria", teamB: "Jordan", score: "2-0", result: "A Win", confidence: 65 },
-  { match: 43, date: "Jun 22", teamA: "Argentina", teamB: "Austria", score: "2-1", result: "A Win", confidence: 65 },
-  { match: 44, date: "Jun 22", teamA: "Jordan", teamB: "Algeria", score: "0-2", result: "B Win", confidence: 68 },
-  { match: 69, date: "Jun 27", teamA: "Algeria", teamB: "Austria", score: "1-1", result: "Draw", confidence: 55 },
-  { match: 70, date: "Jun 27", teamA: "Jordan", teamB: "Argentina", score: "0-3", result: "B Win", confidence: 80 },
-
-  // Group K
-  { match: 23, date: "Jun 17", teamA: "Portugal", teamB: "DR Congo", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 24, date: "Jun 17", teamA: "Uzbekistan", teamB: "Colombia", score: "0-2", result: "B Win", confidence: 70 },
-  { match: 47, date: "Jun 23", teamA: "Portugal", teamB: "Uzbekistan", score: "3-0", result: "A Win", confidence: 78 },
-  { match: 48, date: "Jun 23", teamA: "Colombia", teamB: "DR Congo", score: "2-0", result: "A Win", confidence: 68 },
-  { match: 71, date: "Jun 27", teamA: "Colombia", teamB: "Portugal", score: "1-2", result: "B Win", confidence: 55 },
-  { match: 72, date: "Jun 27", teamA: "DR Congo", teamB: "Uzbekistan", score: "1-0", result: "A Win", confidence: 50 },
-
-  // Group L
-  { match: 21, date: "Jun 17", teamA: "Ghana", teamB: "Panama", score: "2-0", result: "A Win", confidence: 65 },
-  { match: 22, date: "Jun 17", teamA: "England", teamB: "Croatia", score: "2-1", result: "A Win", confidence: 60 },
-  { match: 45, date: "Jun 23", teamA: "England", teamB: "Ghana", score: "3-0", result: "A Win", confidence: 75 },
-  { match: 46, date: "Jun 23", teamA: "Panama", teamB: "Croatia", score: "0-2", result: "B Win", confidence: 70 },
-  { match: 67, date: "Jun 27", teamA: "Panama", teamB: "England", score: "0-4", result: "B Win", confidence: 82 },
-  { match: 68, date: "Jun 27", teamA: "Croatia", teamB: "Ghana", score: "2-1", result: "A Win", confidence: 60 },
+  { match: 1, date: "6/11", teamA: "Mexico", teamAJp: "メキシコ", teamB: "South Africa", teamBJp: "南アフリカ", score: "2-0", winner: "A", winnerJp: "メキシコ", confidence: 70 },
+  { match: 2, date: "6/11", teamA: "South Korea", teamAJp: "韓国", teamB: "Czech Republic", teamBJp: "チェコ", score: "1-2", winner: "B", winnerJp: "チェコ", confidence: 65 },
+  { match: 25, date: "6/18", teamA: "Czech Republic", teamAJp: "チェコ", teamB: "South Africa", teamBJp: "南アフリカ", score: "2-0", winner: "A", winnerJp: "チェコ", confidence: 60 },
+  { match: 28, date: "6/18", teamA: "Mexico", teamAJp: "メキシコ", teamB: "South Korea", teamBJp: "韓国", score: "2-1", winner: "A", winnerJp: "メキシコ", confidence: 68 },
+  { match: 53, date: "6/24", teamA: "Czech Republic", teamAJp: "チェコ", teamB: "Mexico", teamBJp: "メキシコ", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 54, date: "6/24", teamA: "South Africa", teamAJp: "南アフリカ", teamB: "South Korea", teamBJp: "韓国", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 50 },
+  { match: 3, date: "6/12", teamA: "Canada", teamAJp: "カナダ", teamB: "Bosnia and Herzegovina", teamBJp: "ボスニア・ヘルツェゴビナ", score: "2-0", winner: "A", winnerJp: "カナダ", confidence: 65 },
+  { match: 8, date: "6/13", teamA: "Qatar", teamAJp: "カタール", teamB: "Switzerland", teamBJp: "スイス", score: "0-2", winner: "B", winnerJp: "スイス", confidence: 70 },
+  { match: 26, date: "6/18", teamA: "Switzerland", teamAJp: "スイス", teamB: "Bosnia and Herzegovina", teamBJp: "ボスニア・ヘルツェゴビナ", score: "2-0", winner: "A", winnerJp: "スイス", confidence: 68 },
+  { match: 27, date: "6/18", teamA: "Canada", teamAJp: "カナダ", teamB: "Qatar", teamBJp: "カタール", score: "3-0", winner: "A", winnerJp: "カナダ", confidence: 75 },
+  { match: 51, date: "6/24", teamA: "Switzerland", teamAJp: "スイス", teamB: "Canada", teamBJp: "カナダ", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 52, date: "6/24", teamA: "Bosnia and Herzegovina", teamAJp: "ボスニア・ヘルツェゴビナ", teamB: "Qatar", teamBJp: "カタール", score: "1-0", winner: "A", winnerJp: "ボスニア・ヘルツェゴビナ", confidence: 50 },
+  { match: 5, date: "6/13", teamA: "Haiti", teamAJp: "ハイチ", teamB: "Scotland", teamBJp: "スコットランド", score: "0-2", winner: "B", winnerJp: "スコットランド", confidence: 68 },
+  { match: 7, date: "6/13", teamA: "Brazil", teamAJp: "ブラジル", teamB: "Morocco", teamBJp: "モロッコ", score: "2-1", winner: "A", winnerJp: "ブラジル", confidence: 60 },
+  { match: 29, date: "6/19", teamA: "Brazil", teamAJp: "ブラジル", teamB: "Haiti", teamBJp: "ハイチ", score: "4-0", winner: "A", winnerJp: "ブラジル", confidence: 82 },
+  { match: 30, date: "6/19", teamA: "Scotland", teamAJp: "スコットランド", teamB: "Morocco", teamBJp: "モロッコ", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 49, date: "6/24", teamA: "Scotland", teamAJp: "スコットランド", teamB: "Brazil", teamBJp: "ブラジル", score: "0-3", winner: "B", winnerJp: "ブラジル", confidence: 78 },
+  { match: 50, date: "6/24", teamA: "Morocco", teamAJp: "モロッコ", teamB: "Haiti", teamBJp: "ハイチ", score: "3-0", winner: "A", winnerJp: "モロッコ", confidence: 75 },
+  { match: 4, date: "6/12", teamA: "United States", teamAJp: "アメリカ", teamB: "Paraguay", teamBJp: "パラグアイ", score: "2-0", winner: "A", winnerJp: "アメリカ", confidence: 68 },
+  { match: 6, date: "6/13", teamA: "Australia", teamAJp: "オーストラリア", teamB: "Turkey", teamBJp: "トルコ", score: "1-2", winner: "B", winnerJp: "トルコ", confidence: 65 },
+  { match: 31, date: "6/19", teamA: "Turkey", teamAJp: "トルコ", teamB: "Paraguay", teamBJp: "パラグアイ", score: "2-0", winner: "A", winnerJp: "トルコ", confidence: 70 },
+  { match: 32, date: "6/19", teamA: "United States", teamAJp: "アメリカ", teamB: "Australia", teamBJp: "オーストラリア", score: "3-0", winner: "A", winnerJp: "アメリカ", confidence: 75 },
+  { match: 59, date: "6/25", teamA: "Turkey", teamAJp: "トルコ", teamB: "United States", teamBJp: "アメリカ", score: "1-2", winner: "B", winnerJp: "アメリカ", confidence: 55 },
+  { match: 60, date: "6/25", teamA: "Paraguay", teamAJp: "パラグアイ", teamB: "Australia", teamBJp: "オーストラリア", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 50 },
+  { match: 9, date: "6/14", teamA: "Ivory Coast", teamAJp: "コートジボワール", teamB: "Ecuador", teamBJp: "エクアドル", score: "2-1", winner: "A", winnerJp: "コートジボワール", confidence: 60 },
+  { match: 10, date: "6/14", teamA: "Germany", teamAJp: "ドイツ", teamB: "Curaçao", teamBJp: "キュラソー", score: "5-0", winner: "A", winnerJp: "ドイツ", confidence: 85 },
+  { match: 33, date: "6/20", teamA: "Germany", teamAJp: "ドイツ", teamB: "Ivory Coast", teamBJp: "コートジボワール", score: "3-1", winner: "A", winnerJp: "ドイツ", confidence: 72 },
+  { match: 34, date: "6/20", teamA: "Ecuador", teamAJp: "エクアドル", teamB: "Curaçao", teamBJp: "キュラソー", score: "3-0", winner: "A", winnerJp: "エクアドル", confidence: 78 },
+  { match: 55, date: "6/25", teamA: "Curaçao", teamAJp: "キュラソー", teamB: "Ivory Coast", teamBJp: "コートジボワール", score: "0-3", winner: "B", winnerJp: "コートジボワール", confidence: 80 },
+  { match: 56, date: "6/25", teamA: "Ecuador", teamAJp: "エクアドル", teamB: "Germany", teamBJp: "ドイツ", score: "0-2", winner: "B", winnerJp: "ドイツ", confidence: 70 },
+  { match: 11, date: "6/14", teamA: "Netherlands", teamAJp: "オランダ", teamB: "Japan", teamBJp: "日本", score: "2-0", winner: "A", winnerJp: "オランダ", confidence: 68 },
+  { match: 12, date: "6/14", teamA: "Sweden", teamAJp: "スウェーデン", teamB: "Tunisia", teamBJp: "チュニジア", score: "1-0", winner: "A", winnerJp: "スウェーデン", confidence: 55 },
+  { match: 35, date: "6/20", teamA: "Netherlands", teamAJp: "オランダ", teamB: "Sweden", teamBJp: "スウェーデン", score: "2-1", winner: "A", winnerJp: "オランダ", confidence: 65 },
+  { match: 36, date: "6/20", teamA: "Tunisia", teamAJp: "チュニジア", teamB: "Japan", teamBJp: "日本", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 57, date: "6/25", teamA: "Japan", teamAJp: "日本", teamB: "Sweden", teamBJp: "スウェーデン", score: "1-2", winner: "B", winnerJp: "スウェーデン", confidence: 55 },
+  { match: 58, date: "6/25", teamA: "Tunisia", teamAJp: "チュニジア", teamB: "Netherlands", teamBJp: "オランダ", score: "0-2", winner: "B", winnerJp: "オランダ", confidence: 72 },
+  { match: 15, date: "6/15", teamA: "Iran", teamAJp: "イラン", teamB: "New Zealand", teamBJp: "ニュージーランド", score: "1-0", winner: "A", winnerJp: "イラン", confidence: 55 },
+  { match: 16, date: "6/15", teamA: "Belgium", teamAJp: "ベルギー", teamB: "Egypt", teamBJp: "エジプト", score: "2-0", winner: "A", winnerJp: "ベルギー", confidence: 70 },
+  { match: 39, date: "6/21", teamA: "Belgium", teamAJp: "ベルギー", teamB: "Iran", teamBJp: "イラン", score: "3-0", winner: "A", winnerJp: "ベルギー", confidence: 75 },
+  { match: 40, date: "6/21", teamA: "New Zealand", teamAJp: "ニュージーランド", teamB: "Egypt", teamBJp: "エジプト", score: "0-2", winner: "B", winnerJp: "エジプト", confidence: 68 },
+  { match: 63, date: "6/26", teamA: "Egypt", teamAJp: "エジプト", teamB: "Iran", teamBJp: "イラン", score: "1-0", winner: "A", winnerJp: "エジプト", confidence: 55 },
+  { match: 64, date: "6/26", teamA: "New Zealand", teamAJp: "ニュージーランド", teamB: "Belgium", teamBJp: "ベルギー", score: "0-4", winner: "B", winnerJp: "ベルギー", confidence: 82 },
+  { match: 13, date: "6/15", teamA: "Saudi Arabia", teamAJp: "サウジアラビア", teamB: "Uruguay", teamBJp: "ウルグアイ", score: "0-2", winner: "B", winnerJp: "ウルグアイ", confidence: 72 },
+  { match: 14, date: "6/15", teamA: "Spain", teamAJp: "スペイン", teamB: "Cape Verde", teamBJp: "カーボベルデ", score: "3-0", winner: "A", winnerJp: "スペイン", confidence: 78 },
+  { match: 37, date: "6/21", teamA: "Uruguay", teamAJp: "ウルグアイ", teamB: "Cape Verde", teamBJp: "カーボベルデ", score: "3-0", winner: "A", winnerJp: "ウルグアイ", confidence: 80 },
+  { match: 38, date: "6/21", teamA: "Spain", teamAJp: "スペイン", teamB: "Saudi Arabia", teamBJp: "サウジアラビア", score: "3-0", winner: "A", winnerJp: "スペイン", confidence: 75 },
+  { match: 65, date: "6/26", teamA: "Cape Verde", teamAJp: "カーボベルデ", teamB: "Saudi Arabia", teamBJp: "サウジアラビア", score: "0-1", winner: "B", winnerJp: "サウジアラビア", confidence: 50 },
+  { match: 66, date: "6/26", teamA: "Uruguay", teamAJp: "ウルグアイ", teamB: "Spain", teamBJp: "スペイン", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 17, date: "6/16", teamA: "France", teamAJp: "フランス", teamB: "Senegal", teamBJp: "セネガル", score: "2-1", winner: "A", winnerJp: "フランス", confidence: 60 },
+  { match: 18, date: "6/16", teamA: "Iraq", teamAJp: "イラク", teamB: "Norway", teamBJp: "ノルウェー", score: "0-2", winner: "B", winnerJp: "ノルウェー", confidence: 70 },
+  { match: 41, date: "6/22", teamA: "Norway", teamAJp: "ノルウェー", teamB: "Senegal", teamBJp: "セネガル", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 42, date: "6/22", teamA: "France", teamAJp: "フランス", teamB: "Iraq", teamBJp: "イラク", score: "3-0", winner: "A", winnerJp: "フランス", confidence: 78 },
+  { match: 61, date: "6/26", teamA: "Norway", teamAJp: "ノルウェー", teamB: "France", teamBJp: "フランス", score: "0-2", winner: "B", winnerJp: "フランス", confidence: 72 },
+  { match: 62, date: "6/26", teamA: "Senegal", teamAJp: "セネガル", teamB: "Iraq", teamBJp: "イラク", score: "2-0", winner: "A", winnerJp: "セネガル", confidence: 68 },
+  { match: 19, date: "6/16", teamA: "Argentina", teamAJp: "アルゼンチン", teamB: "Algeria", teamBJp: "アルジェリア", score: "2-0", winner: "A", winnerJp: "アルゼンチン", confidence: 72 },
+  { match: 20, date: "6/16", teamA: "Austria", teamAJp: "オーストリア", teamB: "Jordan", teamBJp: "ヨルダン", score: "2-0", winner: "A", winnerJp: "オーストリア", confidence: 65 },
+  { match: 43, date: "6/22", teamA: "Argentina", teamAJp: "アルゼンチン", teamB: "Austria", teamBJp: "オーストリア", score: "2-1", winner: "A", winnerJp: "アルゼンチン", confidence: 65 },
+  { match: 44, date: "6/22", teamA: "Jordan", teamAJp: "ヨルダン", teamB: "Algeria", teamBJp: "アルジェリア", score: "0-2", winner: "B", winnerJp: "アルジェリア", confidence: 68 },
+  { match: 69, date: "6/27", teamA: "Algeria", teamAJp: "アルジェリア", teamB: "Austria", teamBJp: "オーストリア", score: "1-1", winner: "Draw", winnerJp: "引分", confidence: 55 },
+  { match: 70, date: "6/27", teamA: "Jordan", teamAJp: "ヨルダン", teamB: "Argentina", teamBJp: "アルゼンチン", score: "0-3", winner: "B", winnerJp: "アルゼンチン", confidence: 80 },
+  { match: 23, date: "6/17", teamA: "Portugal", teamAJp: "ポルトガル", teamB: "DR Congo", teamBJp: "コンゴ民主共和国", score: "3-0", winner: "A", winnerJp: "ポルトガル", confidence: 75 },
+  { match: 24, date: "6/17", teamA: "Uzbekistan", teamAJp: "ウズベキスタン", teamB: "Colombia", teamBJp: "コロンビア", score: "0-2", winner: "B", winnerJp: "コロンビア", confidence: 70 },
+  { match: 47, date: "6/23", teamA: "Portugal", teamAJp: "ポルトガル", teamB: "Uzbekistan", teamBJp: "ウズベキスタン", score: "3-0", winner: "A", winnerJp: "ポルトガル", confidence: 78 },
+  { match: 48, date: "6/23", teamA: "Colombia", teamAJp: "コロンビア", teamB: "DR Congo", teamBJp: "コンゴ民主共和国", score: "2-0", winner: "A", winnerJp: "コロンビア", confidence: 68 },
+  { match: 71, date: "6/27", teamA: "Colombia", teamAJp: "コロンビア", teamB: "Portugal", teamBJp: "ポルトガル", score: "1-2", winner: "B", winnerJp: "ポルトガル", confidence: 55 },
+  { match: 72, date: "6/27", teamA: "DR Congo", teamAJp: "コンゴ民主共和国", teamB: "Uzbekistan", teamBJp: "ウズベキスタン", score: "1-0", winner: "A", winnerJp: "コンゴ民主共和国", confidence: 50 },
+  { match: 21, date: "6/17", teamA: "Ghana", teamAJp: "ガーナ", teamB: "Panama", teamBJp: "パナマ", score: "2-0", winner: "A", winnerJp: "ガーナ", confidence: 65 },
+  { match: 22, date: "6/17", teamA: "England", teamAJp: "イングランド", teamB: "Croatia", teamBJp: "クロアチア", score: "2-1", winner: "A", winnerJp: "イングランド", confidence: 60 },
+  { match: 45, date: "6/23", teamA: "England", teamAJp: "イングランド", teamB: "Ghana", teamBJp: "ガーナ", score: "3-0", winner: "A", winnerJp: "イングランド", confidence: 75 },
+  { match: 46, date: "6/23", teamA: "Panama", teamAJp: "パナマ", teamB: "Croatia", teamBJp: "クロアチア", score: "0-2", winner: "B", winnerJp: "クロアチア", confidence: 70 },
+  { match: 67, date: "6/27", teamA: "Panama", teamAJp: "パナマ", teamB: "England", teamBJp: "イングランド", score: "0-4", winner: "B", winnerJp: "イングランド", confidence: 82 },
+  { match: 68, date: "6/27", teamA: "Croatia", teamAJp: "クロアチア", teamB: "Ghana", teamBJp: "ガーナ", score: "2-1", winner: "A", winnerJp: "クロアチア", confidence: 60 },
 ];

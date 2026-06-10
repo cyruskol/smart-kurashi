@@ -11,7 +11,7 @@ export default function FifaWorldCup2026Page() {
   return (
     <main className="product-page">
       <section className="product-hero">
-        <p className="sk-eyebrow">FIFA WORLD CUP 2026</p>
+        <p className="sk-eyebrow">FIFA ワールドカップ 2026</p>
         <h1>FIFAワールドカップ2026 視聴ガイド</h1>
         <p>
           2026年夏、北米3カ国（アメリカ・カナダ・メキシコ）で開催されるFIFAワールドカップ。日本から全試合を視聴できる放送・配信先、料金プラン、契約の注意点、海外旅行・出張先での視聴オプションをまとめました。
@@ -116,7 +116,7 @@ export default function FifaWorldCup2026Page() {
       <section style={{ marginTop: '44px' }} id="comparison">
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
-            <p className="sk-eyebrow">PLATFORM COMPARISON</p>
+            <p className="sk-eyebrow">放送・配信プラットフォーム</p>
             <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>プラットフォーム詳細比較</h2>
           </div>
         </div>
@@ -206,7 +206,7 @@ export default function FifaWorldCup2026Page() {
       <section style={{ marginTop: '44px' }} id="overseas">
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
-            <p className="sk-eyebrow">OVERSEAS VIEWING</p>
+            <p className="sk-eyebrow">海外での視聴</p>
             <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>海外旅行・出張先での視聴</h2>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function FifaWorldCup2026Page() {
       <section style={{ marginTop: '44px' }}>
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
-            <p className="sk-eyebrow">MIROFISH PREDICTION</p>
+            <p className="sk-eyebrow">Mirofish予測</p>
             <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>Mirofishによるグループステージ予測</h2>
           </div>
         </div>
