@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+
+    <channel>
+    <atom:link href="http://gigazine.net/news/rss_2.0/" rel="self" type="application/rss+xml" />
+    <title>GIGAZINE</title>
+    <link>https://gigazine.net/</link>
+    <description>日々のあらゆる雑談に役立つネタを提供するIT系ニュースサイト。起きている限りほぼ毎日更新中。</description>
+    <dc:language>ja-JP</dc:language>
+    
+    <dc:rights>Copyright 2026</dc:rights>
+    <dc:date>2026-06-10T07:00:00+09:00</dc:date>
+    <admin:generatorAgent rdf:resource="http://www.pmachine.com/" />
+    
+
+    <item>
+      <title>イスラエルがイランの監視カメラ映像をAIで分析してハメネイ師の位置を特定したことを受けてロシアはプーチン大統領を警護する監視システムの一部を一時停止</title>
+      <link>https://gigazine.net/news/20260610&#45;protecting&#45;putin&#45;system/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260610-protecting-putin-system/</guid>
+      <description><![CDATA[現地時間2026年2月28日にイスラエルがイランへ先制攻撃を実施し、首都テヘラン中心部を爆撃した際に、イランの最高指導者アリ・ハメネイ師が死亡しています。この攻撃について、ハメネイ師と側近らが会談する場所と日時を、交通監視カメラにハッキングすることでイスラエル諜報機関が特定していたとされています。これを受けてロシアの治安機関は、ウラジーミル・プーチン大統領とその側近を保護するための特別な監視システムの一部を停止したことが関係者の証言により明らかになりました。<p><b><a href="https://gigazine.net/news/20260610&#45;protecting&#45;putin&#45;system/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Wed, 10 Jun 2026 07:00:00 +0900</pubDate>
+      <dc:subject>メモ,</dc:subject>
+      <dc:date>2026-06-10T07:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>無料でMetaがデータセンター建設の訓練を行う短期プログラム「人材育成アカデミー」を開設、1億1500万ドルを投じ卒業後はMetaの建設現場での雇用を保証</title>
+      <link>https://gigazine.net/news/20260610&#45;meta&#45;workforce&#45;academy/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260610-meta-workforce-academy/</guid>
+      <description><![CDATA[Metaがデータセンターの建設を促進するため、熟練技能職への新規参入者を対象とした研修プログラム「アメリカ人材育成アカデミー」を開設しました。Metaはプログラムに1億1500万ドル(約180億円)を投資しており、参加費は無料で卒業生にはMetaデータセンター関係の就職を保証することが約束されています。<p><b><a href="https://gigazine.net/news/20260610&#45;meta&#45;workforce&#45;academy/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Wed, 10 Jun 2026 06:00:00 +0900</pubDate>
+      <dc:subject>メモ,</dc:subject>
+      <dc:date>2026-06-10T06:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>「ゼルダの伝説 時のオカリナ」がNintendo Switch 2でフルリメイク</title>
+      <link>https://gigazine.net/news/20260610&#45;the&#45;legend&#45;of&#45;zelda&#45;ocarina&#45;of&#45;time&#45;nintendo&#45;switch&#45;2/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260610-the-legend-of-zelda-ocarina-of-time-nintendo-switch-2/</guid>
+      <description><![CDATA[1998年にNINTENDO 64向けのゲームとして登場した、ゼルダの伝説シリーズ初の3D作品である「ゼルダの伝説 時のオカリナ」が、Nintendo Switch 2で再びリメイクされます。なお、「ゼルダの伝説 時のオカリナ」は2011年6月にニンテンドー3DS向けにリメイクされ「ゼルダの伝説 時のオカリナ 3D」として発売されています。<p><b><a href="https://gigazine.net/news/20260610&#45;the&#45;legend&#45;of&#45;zelda&#45;ocarina&#45;of&#45;time&#45;nintendo&#45;switch&#45;2/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Wed, 10 Jun 2026 01:38:00 +0900</pubDate>
+      <dc:subject>動画, ゲーム,</dc:subject>
+      <dc:date>2026-06-10T01:38:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>2026年後半に発売されるNintendo Switch 2向けソフトを中心に最新情報を発信しまくる「Nintendo Direct 2026.6.9」まとめ</title>
+      <link>https://gigazine.net/news/20260610&#45;nintendo&#45;direct&#45;2026&#45;6&#45;9/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260610-nintendo-direct-2026-6-9/</guid>
+      <description><![CDATA[任天堂が2026年後半に発売されるNintendo Switch 2／Nintendo Switch向けソフトに関する情報を中心に発信する「Nintendo Direct 2026.6.9」を、2026年6月9日23時から配信しました。<p><b><a href="https://gigazine.net/news/20260610&#45;nintendo&#45;direct&#45;2026&#45;6&#45;9/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Wed, 10 Jun 2026 01:22:00 +0900</pubDate>
+      <dc:subject>動画, ゲーム,</dc:subject>
+      <dc:date>2026-06-10T01:22:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>サイバー攻撃性能が高すぎるAI「Claude Mythos Preview」は公開済みの脆弱性「N&#45;day」から数時間で攻撃を開発できるため「N&#45;dayからN&#45;hourに常識が変わる」とAnthropicが指摘</title>
+      <link>https://gigazine.net/news/20260609&#45;anthropics&#45;mythos&#45;exploit/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-anthropics-mythos-exploit/</guid>
+      <description><![CDATA[Anthropicが2026年4月に発表した「Claude Mythos Preview」は「ソフトウェアの脆弱(ぜいじゃく)性を発見して悪用する」という能力が極めて高く、脆弱性発見スピードにOSSメンテナーが追いつけずリスクが増大する可能性が指摘されていたり、ネットワーク完全乗っ取り攻撃を自律的に実行できてしまうことがイギリス政府機関のテストで判明したりと、その高性能ぶりが注目されています。Anthropicは新たに、通常は数週間かかる脆弱性を悪用する攻撃の開発について、Claude Mythos Previewが数時間で実行できることを示しています。<p><b><a href="https://gigazine.net/news/20260609&#45;anthropics&#45;mythos&#45;exploit/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 21:00:00 +0900</pubDate>
+      <dc:subject>AI, セキュリティ,</dc:subject>
+      <dc:date>2026-06-09T21:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>「AIスタートアップのサイトが全部同じに見える問題」をネタにしたReactライブラリ「performative&#45;ui」が登場</title>
+      <link>https://gigazine.net/news/20260609&#45;performative&#45;ui/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-performative-ui/</guid>
+      <description><![CDATA[AIスタートアップの公式サイトでよく見る演出をReactコンポーネントとしてまとめたライブラリ「performative-ui」が公開されています。光るボタン、グラデーション文字、プロンプト入力欄など、AI関連サービスのランディングページで見覚えのある表現を実装できる部品集です。<p><b><a href="https://gigazine.net/news/20260609&#45;performative&#45;ui/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 20:00:00 +0900</pubDate>
+      <dc:subject>AI, ソフトウェア, デザイン,</dc:subject>
+      <dc:date>2026-06-09T20:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>アメリカが「中国人民解放軍を支援する企業のリスト」にAlibaba・Baidu・BYD・Unitreeなどを追加</title>
+      <link>https://gigazine.net/news/20260609&#45;china&#45;military&#45;pentagon&#45;alibaba&#45;byd&#45;baidu/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-china-military-pentagon-alibaba-byd-baidu/</guid>
+      <description><![CDATA[アメリカの国防総省が現地時間の2026年6月8日、中国の電子商取引大手であるAlibaba(阿里巴巴)や中国最大手の検索エンジンのBaidu(百度)、電気自動車メーカー大手のBYD(比亜迪)などを、中国の人民解放軍を支援しているとされる企業を載せたブラックリスト「1260H条リスト」に追加しました。<p><b><a href="https://gigazine.net/news/20260609&#45;china&#45;military&#45;pentagon&#45;alibaba&#45;byd&#45;baidu/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 19:00:00 +0900</pubDate>
+      <dc:subject>メモ,</dc:subject>
+      <dc:date>2026-06-09T19:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>2026年6月9日のヘッドラインニュース</title>
+      <link>https://gigazine.net/news/20260609&#45;headline/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-headline/</guid>
+      <description><![CDATA[任天堂が2026年6月9日(火)23時より「Nintendo Direct 2026.6.9」を配信します。今回の番組では、2026年後半に発売予定のタイトルを中心に、Nintendo Switch 2 / Nintendo Switch向けソフトの情報が紹介される予定です。<p><b><a href="https://gigazine.net/news/20260609&#45;headline/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 18:25:00 +0900</pubDate>
+      <dc:subject>ヘッドライン,</dc:subject>
+      <dc:date>2026-06-09T18:25:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>ベリーの甘酸っぱさやマンゴーの南国感を楽しめるスタバの「FRUITY CHEERS TORORI ストロベリーベリーベルガモット／マンゴーパッションフルーツ」を飲んでみた</title>
+      <link>https://gigazine.net/news/20260609&#45;starbucks&#45;fruity&#45;cheers&#45;torori&#45;strawberry&#45;mango/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-starbucks-fruity-cheers-torori-strawberry-mango/</guid>
+      <description><![CDATA[フルーツ・ティー・ミルクが組み合わさった新シリーズ「スターバックス FRUITY CHEERS TORORI ストロベリーベリーベルガモット／マンゴーパッションフルーツ」が、2026年6月16日(火)からセブン‐イレブン限定で登場します。果汁の明るい味わいやティーの爽やかさ、そしてミルクがもたらす満足感を組み合わせたドリンクになっているというドリンクが編集部に届いたので、どんな味になっているのか一足先に飲んで確かめてみました。<p><b><a href="https://gigazine.net/news/20260609&#45;starbucks&#45;fruity&#45;cheers&#45;torori&#45;strawberry&#45;mango/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 17:00:00 +0900</pubDate>
+      <dc:subject>試食,</dc:subject>
+      <dc:date>2026-06-09T17:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>iPhoneが出生率低下に関係していると全米経済研究所「NBER」が発表、人々がスマホにのめり込んで性行為の機会が減ったとの指摘</title>
+      <link>https://gigazine.net/news/20260609&#45;iphone&#45;reduce&#45;birth&#45;rate/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-iphone-reduce-birth-rate/</guid>
+      <description><![CDATA[2007年以降、アメリカの出生率は減少しています。多くの専門家はこの減少を世界金融危機と結びつけていますが、新たに「2007年に初代iPhoneが登場したことが原因ではないか」とする仮説が提唱されました。<p><b><a href="https://gigazine.net/news/20260609&#45;iphone&#45;reduce&#45;birth&#45;rate/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 16:00:00 +0900</pubDate>
+      <dc:subject>サイエンス, スマホ,</dc:subject>
+      <dc:date>2026-06-09T16:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>Cloudflareが「攻撃者名」で通信を遮断可能に、脅威インテリジェンスをWAFに統合</title>
+      <link>https://gigazine.net/news/20260609&#45;cloudflare&#45;realtime&#45;waf/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-cloudflare-realtime-waf/</guid>
+      <description><![CDATA[Cloudflareが脅威インテリジェンスをウェブアプリケーションファイアウォール(WAF)に直接取り込める新機能を発表しました。攻撃元IPアドレスにひも付く攻撃者名やそのIPアドレスが過去に標的にした業界などを条件にしてCloudflare WAFでブロックルールを作成できるようになります。<p><b><a href="https://gigazine.net/news/20260609&#45;cloudflare&#45;realtime&#45;waf/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 15:30:00 +0900</pubDate>
+      <dc:subject>ネットサービス, セキュリティ,</dc:subject>
+      <dc:date>2026-06-09T15:30:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>macOS 27ではAppleシリコンが必須となりIntel Macのサポートがついに終了</title>
+      <link>https://gigazine.net/news/20260609&#45;macos&#45;27&#45;intel&#45;mac/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-macos-27-intel-mac/</guid>
+      <description><![CDATA[Appleは2025年に「最新のmacOSがIntel内蔵Macをサポートする最後のOSになる」と発表していました。2026年のApple年次開発者会議「WWDC26」の基調講演でmacOS 27「Golden Gate」が発表されましたが、 macOS 27正式版がリリースされる2026年秋に、Intel内蔵Macのサポートが終了することになります。<p><b><a href="https://gigazine.net/news/20260609&#45;macos&#45;27&#45;intel&#45;mac/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 15:15:00 +0900</pubDate>
+      <dc:subject>ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T15:15:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>MicrosoftのGitHubリポジトリ73件が無効化される、AIユーザーから認証情報を盗むマルウェアに侵害されたため</title>
+      <link>https://gigazine.net/news/20260609&#45;microsofts&#45;open&#45;source&#45;tools&#45;hacked/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-microsofts-open-source-tools-hacked/</guid>
+      <description><![CDATA[2026年6月5日、MicrosoftのGitHubリポジトリ73件が、GitHubの不正利用対策システムによって無効化されました。これらのリポジトリは、開発者がAIコーディングツールでパッケージを開いた際に認証情報を盗むマルウェアに侵害されていたとのことです。<p><b><a href="https://gigazine.net/news/20260609&#45;microsofts&#45;open&#45;source&#45;tools&#45;hacked/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 15:00:00 +0900</pubDate>
+      <dc:subject>AI, ネットサービス, セキュリティ,</dc:subject>
+      <dc:date>2026-06-09T15:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>動画生成AI「Grok Imagine 1.5 Preview」が動画生成AIベンチマークで世界1位と2位を獲得</title>
+      <link>https://gigazine.net/news/20260609&#45;grok&#45;imagine&#45;1&#45;5&#45;preview&#45;artificial&#45;analysis&#45;video&#45;arena/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-grok-imagine-1-5-preview-artificial-analysis-video-arena/</guid>
+      <description><![CDATA[2026年6月3日、xAIは画像から動画を生成することができるAIモデルの「Grok Imagine 1.5 Preview」を発表しました。このGrok Imagine 1.5 Previewは、複数のAIベンチマークで世界1位と2位を記録したことが明らかになっています。<p><b><a href="https://gigazine.net/news/20260609&#45;grok&#45;imagine&#45;1&#45;5&#45;preview&#45;artificial&#45;analysis&#45;video&#45;arena/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 14:00:00 +0900</pubDate>
+      <dc:subject>AI, 動画,</dc:subject>
+      <dc:date>2026-06-09T14:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>1兆パラメーター級モデルを1000トークン/秒超という爆速で動かす「MiMo&#45;V2.5&#45;Pro&#45;UltraSpeed」が登場、基盤モデルはオープンソースで公開</title>
+      <link>https://gigazine.net/news/20260609&#45;xiaomi&#45;v2&#45;5&#45;pro&#45;ultraspeed/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-xiaomi-v2-5-pro-ultraspeed/</guid>
+      <description><![CDATA[Xiaomiが、「コーディングエージェントの生産性の限界を完全に解き放つ」とする1兆パラメーター級モデルを高速推論できるサービス「MiMo-V2.5-Pro-UltraSpeed」を発表しました。<p><b><a href="https://gigazine.net/news/20260609&#45;xiaomi&#45;v2&#45;5&#45;pro&#45;ultraspeed/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 13:30:00 +0900</pubDate>
+      <dc:subject>AI,</dc:subject>
+      <dc:date>2026-06-09T13:30:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>AIブームに便乗した犯罪が急増、ChatGPTやClaudeの名前で認証情報を盗む手口をMicrosoftが分析</title>
+      <link>https://gigazine.net/news/20260609&#45;ai&#45;brands&#45;as&#45;bait/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-ai-brands-as-bait/</guid>
+      <description><![CDATA[Microsoftが、ChatGPT、Claude、DeepSeek、Microsoft CopilotなどのAIブランドをかたるフィッシング攻撃や、不正広告を使った誘導であるマルバタイジングが増えていると警告しています。<p><b><a href="https://gigazine.net/news/20260609&#45;ai&#45;brands&#45;as&#45;bait/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 13:10:00 +0900</pubDate>
+      <dc:subject>AI, セキュリティ,</dc:subject>
+      <dc:date>2026-06-09T13:10:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>食べ物の「捨てた方がいいライン」と「まだ食べても大丈夫なライン」について専門家が解説</title>
+      <link>https://gigazine.net/news/20260609&#45;food&#45;rescue&#45;chuck&#45;it&#45;out/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-food-rescue-chuck-it-out/</guid>
+      <description><![CDATA[スーパーに行ってお買い得な食料品を大量に買い込んだものの、なかなか消費することができず腐ってしまったり、水分が抜けてしわしわになってしまったりした経験がある人もいるはず。オーストラリアンカソリック大学で栄養・食品科学の上級講師を務めるエマ・ベケット氏が、「食品を捨てた方がいいライン」と「まだ食べても大丈夫なライン」について解説しました。<p><b><a href="https://gigazine.net/news/20260609&#45;food&#45;rescue&#45;chuck&#45;it&#45;out/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 12:00:00 +0900</pubDate>
+      <dc:subject>無料メンバー, サイエンス, 食,</dc:subject>
+      <dc:date>2026-06-09T12:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>「Xbox Game Passの値上げで数百万人のユーザーを失った」とXboxの幹部が明かす</title>
+      <link>https://gigazine.net/news/20260609&#45;xbox&#45;game&#45;pass&#45;lost&#45;millions&#45;players&#45;price&#45;hikes/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-xbox-game-pass-lost-millions-players-price-hikes/</guid>
+      <description><![CDATA[Xboxの最高戦略責任者であるマシュー・ボール氏が、ゲームサブスクリプションサービスであるXbox Game Passの大幅値上げにより、数百万人のユーザーを失ったことを明かしています。<p><b><a href="https://gigazine.net/news/20260609&#45;xbox&#45;game&#45;pass&#45;lost&#45;millions&#45;players&#45;price&#45;hikes/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 11:44:00 +0900</pubDate>
+      <dc:subject>ゲーム,</dc:subject>
+      <dc:date>2026-06-09T11:44:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>AIが経済に与える影響を研究する交流プラットフォーム「OpenAI Economic Research Exchange」をOpenAIが設立</title>
+      <link>https://gigazine.net/news/20260609&#45;openai&#45;economic&#45;research&#45;exchange/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-openai-economic-research-exchange/</guid>
+      <description><![CDATA[AIは人々の生活に多大な影響を及ぼし企業の運営方法を一変させたといわれていますが、実際にどれほど変化したのかを理解するためには確固たる証拠と研究者らによる厳密な実証研究が必要だとして、それらを統合するための交流プラットフォーム「OpenAI Economic Research Exchange」をOpenAIが設立しました。<p><b><a href="https://gigazine.net/news/20260609&#45;openai&#45;economic&#45;research&#45;exchange/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 11:25:00 +0900</pubDate>
+      <dc:subject>AI,</dc:subject>
+      <dc:date>2026-06-09T11:25:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>iOS 27のコードに折りたたみiPhoneが間もなく登場することを示す明確な兆候が見つかる</title>
+      <link>https://gigazine.net/news/20260609&#45;code&#45;ios&#45;27&#45;support&#45;iphone&#45;fold/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-code-ios-27-support-iphone-fold/</guid>
+      <description><![CDATA[Appleが折りたたみiPhoneを計画していることは長らく報じられてきました。新たに、iOS 27に折りたたみiPhone向けのコードが含まれていることを、コード解析の専門家が発見しました。<p><b><a href="https://gigazine.net/news/20260609&#45;code&#45;ios&#45;27&#45;support&#45;iphone&#45;fold/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 11:17:00 +0900</pubDate>
+      <dc:subject>ソフトウェア, スマホ,</dc:subject>
+      <dc:date>2026-06-09T11:17:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>OpenAIがIPOに向け書類提出、「自動AI研究者」構想も発表</title>
+      <link>https://gigazine.net/news/20260609&#45;openai&#45;ipo&#45;s&#45;i&#45;draft/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-openai-ipo-s-i-draft/</guid>
+      <description><![CDATA[「ChatGPT」を開発するOpenAIが、新規株式公開(IPO)に向けた登録届出書の草案を証券取引委員会に提出したことを明かしました。ライバルのAnthropicが同様の書類を提出してからわずか1週間あまり後のことになります。<p><b><a href="https://gigazine.net/news/20260609&#45;openai&#45;ipo&#45;s&#45;i&#45;draft/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 11:15:00 +0900</pubDate>
+      <dc:subject>メモ,</dc:subject>
+      <dc:date>2026-06-09T11:15:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>「テレビ史上最高のショット」と語り継がれる映像とは？</title>
+      <link>https://gigazine.net/news/20260609&#45;greatest&#45;shot&#45;in&#45;television/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-greatest-shot-in-television/</guid>
+      <description><![CDATA[世界で初めてテレビの定期放送が始まったのは1936年のイギリスであり、その後アメリカやソ連などでも定期放送が開始され、今日に至るまで世界中で膨大な数のテレビ番組が放送されてきました。その中でも「テレビ史上最高のショット」と語り継がれる映像が、イギリスの科学史家であるジェームズ・バーク氏がBBCのドキュメンタリー番組『Connections』で見せたあるシーンです。<p><b><a href="https://gigazine.net/news/20260609&#45;greatest&#45;shot&#45;in&#45;television/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 08:00:00 +0900</pubDate>
+      <dc:subject>動画,</dc:subject>
+      <dc:date>2026-06-09T08:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>トランプ大統領一族が仮想通貨市場や予測市場に参入するため政府機関から職員を追放したとの報道</title>
+      <link>https://gigazine.net/news/20260609&#45;cftc&#45;trump/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-cftc-trump/</guid>
+      <description><![CDATA[ニューヨーク・タイムズの調査で、ドナルド・トランプ大統領の親族とビジネス上のつながりを持つ予測市場のPolymarket、クリプト・ドットコム、Gemini Titanについて懸念を表明した商品先物取引委員会(CFTC)の職員たちが、同機関から追放されたことが明らかになりました。<p><b><a href="https://gigazine.net/news/20260609&#45;cftc&#45;trump/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 07:00:00 +0900</pubDate>
+      <dc:subject>メモ,</dc:subject>
+      <dc:date>2026-06-09T07:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>腸内細菌のバランスを保って睡眠を改善するための3つのヒント</title>
+      <link>https://gigazine.net/news/20260609&#45;gut&#45;microbiota&#45;sleep/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-gut-microbiota-sleep/</guid>
+      <description><![CDATA[よく眠れない時は睡眠時間や寝室の環境、寝る前のスマートフォン操作などを見直す人が多いはず。しかし、良い睡眠には腸内細菌を中心とする微生物群のバランスも関わっているとして、スペイン・マドリードにあるネブリハ大学で心理生物学を研究するサラ・ウセダ・グティエレス氏とマヌエル・レイリス・ロハス氏が、睡眠と腸内細菌叢(そう)の関係や日常生活で意識できる3つのヒントについて解説しています。<p><b><a href="https://gigazine.net/news/20260609&#45;gut&#45;microbiota&#45;sleep/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 06:00:00 +0900</pubDate>
+      <dc:subject>サイエンス,</dc:subject>
+      <dc:date>2026-06-09T06:00:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>iPadOS 27では第8世代iPadや第5世代iPad miniがサポート対象から外れることが明らかに</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;ipados&#45;27&#45;support/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-ipados-27-support/</guid>
+      <description><![CDATA[2026年6月9日(火)に開催されたAppleの年次開発者会議「WWDC26」でiPadOSの次期バージョンとなる「iPadOS 27」が発表されました。同時に発表されたiOS 27はiOS 26と同様にiPhone 11以降をサポートすることが明らかにされた一方で、Appleが公開したiPadOS 27の対応機種リストにより、第8世代iPadや第5世代iPad miniがサポート対象から外れることが明らかになりました。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;ipados&#45;27&#45;support/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 05:15:00 +0900</pubDate>
+      <dc:subject>ハードウェア, ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T05:15:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>iOS 27の目玉機能である「Siri AI」がEU圏内では延期されることが決定</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;ai&#45;siri&#45;eu/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-wwdc26-ai-siri-eu/</guid>
+      <description><![CDATA[Appleが日本時間の2026年6月9日にWWDC26の基調講演を実施し、SiriとApple Intelligenceを統合した「Siri AI」を発表しました。このSiri AIについて、EU域内ではiOS 27とiPadOS 27におけるSiri AIの提供を延期することが発表されました。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;ai&#45;siri&#45;eu/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 04:46:00 +0900</pubDate>
+      <dc:subject>AI, ソフトウェア, スマホ,</dc:subject>
+      <dc:date>2026-06-09T04:46:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>Appleの画像生成AIが大幅強化されて高品質生成や画像編集が可能に</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;image&#45;generation/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-wwdc26-image-generation/</guid>
+      <description><![CDATA[日本時間の2026年6月9日(火)午前2時から開催されているAppleの年次開発者会議「WWDC26」の基調講演で、Appleの画像生成AIが大幅強化されて高品質生成や画像編集が可能になることが発表されました。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;image&#45;generation/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 03:15:00 +0900</pubDate>
+      <dc:subject>AI, 動画, ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T03:15:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>SiriとApple Intelligenceが統合した「Siri AI」発表、SiriやSafariやパスワードでGoogle Geminiベースの新生Apple Intelligenceを駆使できる</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;apple&#45;intelligence/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-wwdc26-apple-intelligence/</guid>
+      <description><![CDATA[日本時間の2026年6月9日(火)午前2時から開催されているAppleの年次開発者会議「WWDC26」の基調講演で、Google Geminiベースで刷新したApple Foundation Modelsを中核にアップデートされたApple Intelligenceと統合した「Siri AI」が発表されました。さらにSafariやメール、パスワードなどAppleアプリがApple Intelligenceと連携し、自然言語でさまざまなタスクを自動でこなせるようになることも併せて明らかにされました。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;apple&#45;intelligence/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 02:42:00 +0900</pubDate>
+      <dc:subject>AI, 動画, ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T02:42:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>macOS 27のコードネームは「Golden Gate」、Siriの単体アプリを搭載しLiquid Glassの視認性も向上</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;macos&#45;27/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-wwdc26-macos-27/</guid>
+      <description><![CDATA[日本時間の2026年6月9日(火)午前2時から開催されているAppleの年次開発者会議「WWDC26」の基調講演で、iOS・iPadOS・macOS・watchOS・tvOS・visionOS にバージョン27が登場することが発表されました。macOS 27のコードネームは「Golden Gate」になります。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;macos&#45;27/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 02:30:00 +0900</pubDate>
+      <dc:subject>動画, ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T02:30:00+09:00</dc:date>
+    </item>
+
+    <item>
+      <title>iPhoneの次期OS「iOS 27」が登場、iPhone 11以降をサポートし写真の読み込みや検索機能などが高速化</title>
+      <link>https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;ios&#45;27/</link>
+      <guid isPermaLink="true">https://gigazine.net/news/20260609-apple-wwdc26-ios-27/</guid>
+      <description><![CDATA[Appleの年次開発者会議「WWDC26」が日本時間の2026年6月9日(火)午前2時から開催され、その基調講演でiOS 27が発表されました。iOS 27はiPhone 11以降を引き続きサポートし、Liquid Glassの可読性が再調整されたほか、写真の読み込みや検索機能が高速化します。<p><b><a href="https://gigazine.net/news/20260609&#45;apple&#45;wwdc26&#45;ios&#45;27/">続きを読む...</a></b></p>]]></description>
+      <pubDate>Tue, 09 Jun 2026 02:27:00 +0900</pubDate>
+      <dc:subject>動画, ソフトウェア,</dc:subject>
+      <dc:date>2026-06-09T02:27:00+09:00</dc:date>
+    </item>
+
+    
+    </channel>
+</rss>
