@@ -4,14 +4,14 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'プライバシーポリシー',
   description:
-    'Smart Kurashiのプライバシーポリシー。個人情報、アクセス解析、Cookie、広告・アフィリエイト、ユーザーの権利について記載しています。',
+    'スマートくらしのプライバシーポリシー。個人情報、アクセス解析、Cookie、広告・アフィリエイト、ユーザーの権利について記載しています。',
   alternates: {
     canonical: '/privacy',
   },
   openGraph: {
-    title: 'プライバシーポリシー | Smart Kurashi',
+    title: 'プライバシーポリシー | スマートくらし',
     description:
-      'Smart Kurashiのプライバシーポリシー。個人情報、アクセス解析、Cookie、広告・アフィリエイト、ユーザーの権利について記載しています。',
+      'スマートくらしのプライバシーポリシー。個人情報、アクセス解析、Cookie、広告・アフィリエイト、ユーザーの権利について記載しています。',
     url: '/privacy',
   },
   robots: {
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             プライバシーポリシー
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed">
-            Smart Kurashi（以下「当サイト」）は、スマートホーム・AI家電・IoTに関する情報を安心して読んでいただけるよう、個人情報と閲覧データの取り扱いを以下の通り定めます。
+            スマートくらし（以下「当サイト」）は、スマートホーム・AI家電・IoTに関する情報を安心して読んでいただけるよう、個人情報と閲覧データの取り扱いを以下の通り定めます。
           </p>
           <p className="text-text-muted text-sm mt-md">最終更新日: {lastUpdated}</p>
         </header>

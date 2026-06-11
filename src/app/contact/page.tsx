@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'お問い合わせ',
-  description: 'Smart Kurashi へのお問い合わせはこちらから。',
+  description: 'スマートくらし へのお問い合わせはこちらから。',
 };
 
 interface PageProps {}

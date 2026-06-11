@@ -43,14 +43,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     url: '/og-category-placeholder.png',
     width: 1200,
     height: 630,
-    alt: `${info.label} | Smart Kurashi`,
+    alt: `${info.label} | スマートくらし`,
   };
 
   return {
-    title: `${info.label} | Smart Kurashi`,
+    title: `${info.label} | スマートくらし`,
     description: info.description,
     openGraph: {
-      title: `${info.label} | Smart Kurashi`,
+      title: `${info.label} | スマートくらし`,
       description: info.description,
       type: 'website',
       images: [ogImageStyle],

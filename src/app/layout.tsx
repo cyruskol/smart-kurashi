@@ -23,8 +23,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://smart-kurashi.jp'),
   title: {
-    default: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
-    template: '%s | Smart Kurashi',
+    default: 'スマートくらし — 日本の暮らしのための商品発見サイト',
+    template: '%s | スマートくらし',
   },
   description:
     '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     'レビュー',
     'アフィリエイト',
   ],
-  authors: [{ name: 'Smart Kurashi' }],
-  creator: 'Smart Kurashi',
-  publisher: 'Smart Kurashi',
+  authors: [{ name: 'スマートくらし' }],
+  creator: 'スマートくらし',
+  publisher: 'スマートくらし',
   robots: {
     index: true,
     follow: true,
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
-    siteName: 'Smart Kurashi',
-    title: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
+    siteName: 'スマートくらし',
+    title: 'スマートくらし — 日本の暮らしのための商品発見サイト',
     description:
       '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
     images: [
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
         url: '/og-home.png',
         width: 1200,
         height: 630,
-        alt: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
+        alt: 'スマートくらし — 日本の暮らしのための商品発見サイト',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Smart Kurashi — 日本の暮らしのための商品発見サイト',
+    title: 'スマートくらし — 日本の暮らしのための商品発見サイト',
     description:
       '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
     images: ['/og-image.png'],
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Smart Kurashi',
+  name: 'スマートくらし',
   url: 'https://smart-kurashi.jp',
   description:
     '日本で買って失敗しにくいAIツール、家電、ガジェットを、レビュー・比較・買い方ガイドで整理する商品発見サイト。',
@@ -108,7 +108,7 @@ const jsonLdWebSite = {
 const jsonLdOrganization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Smart Kurashi',
+  name: 'スマートくらし',
   url: 'https://smart-kurashi.jp',
   logo: 'https://smart-kurashi.jp/logo.png',
   description:
@@ -119,7 +119,7 @@ const jsonLdOrganization = {
 const jsonLdItemList = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Smart Kurashi メインメニュー',
+  name: 'スマートくらし メインメニュー',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'AI・テック', url: 'https://smart-kurashi.jp/category/ai-tech' },
     { '@type': 'ListItem', position: 2, name: '家電・ガジェット', url: 'https://smart-kurashi.jp/category/smart-home' },

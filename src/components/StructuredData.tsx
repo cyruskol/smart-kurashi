@@ -25,11 +25,11 @@ export default function StructuredData({ title, description = '', type = 'NewsAr
       dateModified: new Date().toISOString(),
       author: {
         '@type': 'Organization',
-        name: 'Smart Kurashi 編集部',
+        name: 'スマートくらし 編集部',
       },
       publisher: {
         '@type': 'Organization',
-        name: 'Smart Kurashi',
+        name: 'スマートくらし',
         logo: {
           '@type': 'ImageObject',
           url: siteUrl + '/logo.png',
@@ -46,7 +46,7 @@ export default function StructuredData({ title, description = '', type = 'NewsAr
     schema = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Smart Kurashi',
+      name: 'スマートくらし',
       url: siteUrl,
       description,
       inLanguage: 'ja-JP',
@@ -63,7 +63,7 @@ export default function StructuredData({ title, description = '', type = 'NewsAr
     schema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Smart Kurashi',
+      name: 'スマートくらし',
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',

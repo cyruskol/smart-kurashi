@@ -26,7 +26,7 @@ export default function MobileNavDrawer({ triggerId = 'mobile-nav-trigger' }: Mo
       {/* Drawer Panel */}
       <div className={`drawer ${isOpen ? 'open' : ''}`} role="dialog" aria-modal="true" aria-label="メニュー">
         <header className="drawer-header">
-          <span style={{ fontSize: '18px', fontWeight: 600, color: '#3F3A36' }}>Smart Kurashi メニュー</span>
+          <span style={{ fontSize: '18px', fontWeight: 600, color: '#3F3A36' }}>スマートくらし メニュー</span>
           <button 
             className="drawer-close" 
             onClick={toggleDrawer}

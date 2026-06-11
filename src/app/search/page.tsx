@@ -14,7 +14,7 @@ const breadcrumbItems = [
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { q } = await searchParams;
-  return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'Smart Kurashi の記事を検索' };
+  return { title: q ? `「${q}」の検索結果` : '検索', description: q ? `「${q}」に関する記事を検索` : 'スマートくらし の記事を検索' };
 }
 
 export default async function SearchPage({ searchParams }: PageProps) {

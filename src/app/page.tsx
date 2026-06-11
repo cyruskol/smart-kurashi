@@ -7,7 +7,7 @@ import ProductCard from '@/components/ProductCard';
 
 export const metadata: Metadata = {
   title: 'ホーム',
-  description: 'AIツール、家電、ガジェットをレビュー・比較・買い方ガイドで探せる Smart Kurashi のホーム。',
+  description: 'AIツール、家電、ガジェットをレビュー・比較・買い方ガイドで探せるスマートくらしのホーム。',
 };
 
 const categoryTiles = [
@@ -79,14 +79,14 @@ export default async function HomePage() {
               }}
             >
               <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.12em', color: '#4F6F5D', marginBottom: '12px' }}>
-                PRODUCT DISCOVERY / AFFILIATE GUIDE
+                商品案内 / アフィリエイトガイド
               </p>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 4rem)', lineHeight: 1.1, marginBottom: '16px' }}>
                 日本で買って失敗しにくいAI・家電・ガジェットを、<br />
                 比較目線でわかりやすく探せる。
               </h1>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.02rem', lineHeight: 1.8, maxWidth: '44rem' }}>
-                Smart Kurashi は、レビュー済み商品・比較記事・買い方ガイドをまとめて見せる商品発見サイト。価格だけでなく、賃貸適性・家族での使いやすさ・追加費用まで含めて選べるようにしています。
+                スマートくらしは、レビュー済み商品・比較記事・買い方ガイドをまとめて見せる商品発見サイト。価格だけでなく、賃貸適性・家族での使いやすさ・追加費用まで含めて選べるようにしています。
               </p>
 
               <div className="product-actions" style={{ marginTop: '24px' }}>
@@ -151,7 +151,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
-              NAVIGATION
+              案内
             </p>
             <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>探し方から入れるカテゴリ</h2>
           </div>
@@ -173,7 +173,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
-              COMPARISON & RANKING
+              比較・ランキング
             </p>
             <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>比較・ランキングの注目候補</h2>
           </div>
@@ -192,7 +192,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
-              REVIEWED PRODUCTS
+              レビュー済み商品
             </p>
             <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>レビュー済み商品</h2>
           </div>
@@ -211,7 +211,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
-              BUYING GUIDES
+              購入ガイド
             </p>
             <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>買う前に読むガイド</h2>
           </div>
@@ -241,7 +241,7 @@ export default async function HomePage() {
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
             <p style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.1em', color: '#4F6F5D', marginBottom: '8px' }}>
-              LATEST REVIEWS
+              最新レビュー
             </p>
             <h2 style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)' }}>最新レビュー / 更新情報</h2>
           </div>

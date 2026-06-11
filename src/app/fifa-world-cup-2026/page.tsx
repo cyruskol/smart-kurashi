@@ -3,18 +3,18 @@ import type { Metadata } from 'next';
 import MirofishTable from '@/components/MirofishTable';
 
 export const metadata: Metadata = {
-  title: 'FIFAワールドカップ2026 視聴ガイド｜日本での放送・配信と海外無料視聴',
-  description: 'FIFAワールドカップ2026を日本で視聴する方法をまとめたページ。NHK、日本テレビ、フジテレビ、DAZN、ABEMAの放送・配信先、料金プラン、契約期間の注意点、海外旅行・出張先での無料視聴オプションを解説。Mirofishによるグループステージ予測も掲載。',
+  title: '2026年サッカーW杯 視聴ガイド｜日本での放送・配信と海外無料視聴',
+  description: '2026年サッカーW杯を日本で視聴する方法をまとめたページ。NHK、日本テレビ、フジテレビ、DAZN、ABEMAの放送・配信先、料金プラン、契約期間の注意点、海外旅行・出張先での無料視聴オプションを解説。Mirofishによるグループステージ予測も掲載。',
 };
 
 export default function FifaWorldCup2026Page() {
   return (
     <main className="product-page">
       <section className="product-hero">
-        <p className="sk-eyebrow">FIFA ワールドカップ 2026</p>
-        <h1>FIFAワールドカップ2026 視聴ガイド</h1>
+        <p className="sk-eyebrow">2026年サッカーW杯</p>
+        <h1>2026年サッカーW杯 視聴ガイド</h1>
         <p>
-          2026年夏、北米3カ国（アメリカ・カナダ・メキシコ）で開催されるFIFAワールドカップ。日本から全試合を視聴できる放送・配信先、料金プラン、契約の注意点、海外旅行・出張先での視聴オプションをまとめました。
+          2026年夏、北米3カ国（アメリカ・カナダ・メキシコ）で開催されるサッカーW杯。日本から全試合を視聴できる放送・配信先、料金プラン、契約の注意点、海外旅行・出張先での視聴オプションをまとめました。
         </p>
         <div className="product-actions">
           <a href="#japan-broadcast" className="product-button product-button-primary">
@@ -32,7 +32,7 @@ export default function FifaWorldCup2026Page() {
       <section style={{ marginTop: '44px' }} id="japan-broadcast">
         <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '16px', marginBottom: '18px', flexWrap: 'wrap' }}>
           <div>
-            <p className="sk-eyebrow">JAPAN BROADCAST</p>
+            <p className="sk-eyebrow">日本での放送・配信</p>
             <h2 style={{ fontSize: 'clamp(1.35rem, 2vw, 1.8rem)' }}>日本での放送・配信先</h2>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function FifaWorldCup2026Page() {
             <div className="product-meta">配信（有料）</div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>DAZN</h3>
             <p style={{ marginBottom: '12px' }}>
-              FIFAワールドカップ2026のネット配信権を保有。全試合の配信をカバーする予定で、日本戦以外の全試合を視聴するにはDAZNが最も確実です。
+              2026年サッカーW杯のネット配信権を保有。全試合の配信をカバーする予定で、日本戦以外の全試合を視聴するにはDAZNが最も確実です。
             </p>
             <div style={{ fontSize: '14px', color: '#666' }}>
               <strong>料金:</strong> 月額制（詳細は公式サイト参照）<br />
@@ -191,7 +191,7 @@ export default function FifaWorldCup2026Page() {
               <strong>「日本戦だけ見たい」場合：</strong>NHKが最も確実です。総合テレビ・BSで日本戦全試合を生中継し、受信料のみで視聴できます。日本テレビやフジテレビも日本戦を中継しますが、NHKが最もカバー範囲が広いです。
             </p>
             <p style={{ marginBottom: '8px' }}>
-              <strong>「全試合網羅したい」場合：</strong>DAZNが最も確実です。FIFAワールドカップ2026のネット配信権を保有し、全試合の配信をカバーする予定です。月額契約ですが、大会期間だけの利用も可能です。
+              <strong>「全試合網羅したい」場合：</strong>DAZNが最も確実です。2026年サッカーW杯のネット配信権を保有し、全試合の配信をカバーする予定です。月額契約ですが、大会期間だけの利用も可能です。
             </p>
             <p style={{ marginBottom: '8px' }}>
               <strong>「無料でできるだけ多く見たい」場合：</strong>NHK（日本戦）+ ABEMA（無料プラン）の組み合わせがコスパが良いです。ABEMAは無料で視聴できる試合もあるため、DAZNと併用するのも手です。
@@ -216,10 +216,10 @@ export default function FifaWorldCup2026Page() {
 
         <div className="product-grid" style={{ marginTop: 0 }}>
           <article className="product-card">
-            <div className="product-meta">Austria 🇦🇹</div>
+            <div className="product-meta">オーストリア</div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>ORF（オーストリア放送協会）</h3>
             <p style={{ marginBottom: '12px' }}>
-              オーストリアの公共放送ORFは、FIFAワールドカップの放送権を保有しています。オーストリア旅行・出張中はORFのウェブサイトやアプリから無料でライブ視聴が可能です。
+              オーストリアの公共放送ORFは、サッカーW杯の放送権を保有しています。オーストリア旅行・出張中はORFのウェブサイトやアプリから無料でライブ視聴が可能です。
             </p>
             <div style={{ fontSize: '14px', color: '#666' }}>
               <strong>視聴方法:</strong> ORF ON（ウェブ・アプリ）<br />
@@ -229,7 +229,7 @@ export default function FifaWorldCup2026Page() {
           </article>
 
           <article className="product-card">
-            <div className="product-meta">Belgium 🇧🇪</div>
+            <div className="product-meta">ベルギー</div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>RTBF（ベルギー・フランス語放送）</h3>
             <p style={{ marginBottom: '12px' }}>
               ベルギーのフランス語圏公共放送RTBFもワールドカップの放送権を保有。ベルギー旅行・出張中はRTBFのウェブサイトから無料で視聴できます。
@@ -242,10 +242,10 @@ export default function FifaWorldCup2026Page() {
           </article>
 
           <article className="product-card">
-            <div className="product-meta">Germany 🇩🇪</div>
+            <div className="product-meta">ドイツ</div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>ARD / ZDF（ドイツ公共放送）</h3>
             <p style={{ marginBottom: '12px' }}>
-              ドイツのARDとZDFは、FIFAワールドカップの主要試合の放送権を保有しています。ドイツ旅行・出張中は無料で視聴可能です。
+              ドイツのARDとZDFは、サッカーW杯の主要試合の放送権を保有しています。ドイツ旅行・出張中は無料で視聴可能です。
             </p>
             <div style={{ fontSize: '14px', color: '#666' }}>
               <strong>視聴方法:</strong> ARD Mediathek / ZDFmediathek<br />
@@ -255,7 +255,7 @@ export default function FifaWorldCup2026Page() {
           </article>
 
           <article className="product-card">
-            <div className="product-meta">Switzerland 🇨🇭</div>
+            <div className="product-meta">スイス</div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>SRG SSR（スイス公共放送）</h3>
             <p style={{ marginBottom: '12px' }}>
               スイスのSRG SSRもワールドカップ放送権を保有。スイス旅行・出張中は無料視聴が可能です。
@@ -293,7 +293,7 @@ export default function FifaWorldCup2026Page() {
 
         <div style={{ padding: '16px', background: '#F0F7FF', borderRadius: '8px', marginBottom: '24px', border: '1px solid #D0E3F5' }}>
           <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#2C5282' }}>
-            本予測はMirofishが実施したシミュレーションに基づいています。1500以上（11種類）のAgentが各チームの戦力、戦術、過去の対戦データ、市場動向、審判要因などを分析し、72場のグループステージ全試合について比分を予測しました。モデルベースのAgent（Opta、Elo、FIFAランキング）と人間判断ベースのAgent（ジャーナリスト、ファン、審判）の議論を経て、各試合の予測比分と信頼度を算出しています。参考情報としてご活用ください。
+            本予測はMirofishが実施したシミュレーションに基づいています。1500以上（11種類）のエージェントが各チームの戦力、戦術、過去の対戦データ、市場動向、審判要因などを分析し、72場のグループステージ全試合について比分を予測しました。モデルベースのエージェント（Opta、Elo、国際ランキング）と人間判断ベースのエージェント（ジャーナリスト、ファン、審判）の議論を経て、各試合の予測比分と信頼度を算出しています。参考情報としてご活用ください。
           </p>
         </div>
 

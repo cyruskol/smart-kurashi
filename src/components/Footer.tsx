@@ -30,7 +30,7 @@ export default function Footer() {
       <div style={{ borderTop: '1px solid #44403C' }}>
         <div className="max-w-container mx-auto px-md" style={{ padding: '16px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
           <p style={{ fontSize: '12px', color: '#A8A29E' }}>
-            &copy; {new Date().getFullYear()} Smart Kurashi. All rights reserved.
+            &copy; {new Date().getFullYear()} スマートくらし. All rights reserved.
           </p>
           <p style={{ fontSize: '12px', color: '#A8A29E' }}>
             価格・在庫は販売サイトで確認してください。

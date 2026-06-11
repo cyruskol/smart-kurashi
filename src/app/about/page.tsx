@@ -3,7 +3,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: '会社概要',
-  description: 'Smart Kurashi は、スマートホーム・AI 家電・IoT 技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
+  description: 'スマートくらし は、スマートホーム・AI 家電・IoT 技術の最新ニュースと専門情報を提供する日本のテクノロジーメディアです。',
 };
 
 interface PageProps {}
@@ -23,16 +23,16 @@ export default function AboutPage({}: PageProps) {
         <div style={{ background: '#fff', borderRadius: '8px', padding: '48px', border: '1px solid #E7E5E4' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <div style={{ width: '64px', height: '64px', background: '#A9582D', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-              <span style={{ color: '#fff', fontWeight: 600, fontSize: '24px' }}>SK</span>
+              <span style={{ color: '#fff', fontWeight: 600, fontSize: '24px' }}>す</span>
             </div>
-            <h1 style={{ fontSize: '32px', fontWeight: 600, color: '#292524', letterSpacing: '', marginBottom: '8px' }}>Smart Kurashi</h1>
+            <h1 style={{ fontSize: '32px', fontWeight: 600, color: '#292524', letterSpacing: '', marginBottom: '8px' }}>スマートくらし</h1>
             <p style={{ fontSize: '16px', color: '#5A534E' }}>スマートなくらいの情報をお届け</p>
           </div>
 
           <div style={{ marginBottom: '40px' }}>
             <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>私たちについて</h2>
             <p style={{ fontSize: '16px', color: '#4A433F', lineHeight: 1.8, marginBottom: '16px' }}>
-              Smart Kurashi は、「スマートなくらい」の実現をミッションに、最新のテクノロジー情報を日本語で提供しています。
+              スマートくらしは、「スマートなくらい」の実現をミッションに、最新のテクノロジー情報を日本語で提供しています。
               スマートホームデバイス、AI 家電、IoT 技術、省エネルギーソリューションなど、私たちの生活を変える技術トレンドを、専門的かつわかりやすくお届けします。
             </p>
             <p style={{ fontSize: '16px', color: '#4A433F', lineHeight: 1.8 }}>
@@ -45,10 +45,10 @@ export default function AboutPage({}: PageProps) {
             <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#292524', marginBottom: '16px' }}>メディア情報</h2>
             <dl style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               {[
-                ['メディア名', 'Smart Kurashi（スマートくらし）'],
+                ['メディア名', 'スマートくらし'],
                 ['設立', '2026 年'],
-                ['運営', 'Smart Kurashi'],
-                ['URL', 'smart-kurashi.jp'],
+                ['運営', 'スマートくらし'],
+                ['サイト', 'smart-kurashi.jp'],
               ].map(([dt, dd]) => (
                 <div key={dt}>
                   <dt style={{ fontSize: '12px', fontWeight: 600, color: '#5A534E', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>{dt}</dt>

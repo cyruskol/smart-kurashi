@@ -4,11 +4,11 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 export const metadata: Metadata = {
   title: '利用規約',
   description:
-    'Smart Kurashi の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
+    'スマートくらし の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
   openGraph: {
-    title: '利用規約 | Smart Kurashi',
+    title: '利用規約 | スマートくらし',
     description:
-      'Smart Kurashi の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
+      'スマートくらし の利用規約。サイトのご利用にあたっての条件や注意事項を記載しています。',
   },
   robots: {
     index: true,
@@ -43,7 +43,7 @@ export default function TermsPage({}: PageProps) {
           <section className="mb-xl">
             <h2 className="text-2xl font-bold text-primary mb-md">1. はじめに</h2>
             <p className="text-text-secondary leading-relaxed mb-md">
-              本利用規約（以下「本規約」）は、Smart Kurashi（以下「当サイト」）の利用条件を定めるものです。
+              本利用規約（以下「本規約」）は、スマートくらし（以下「当サイト」）の利用条件を定めるものです。
               当サイトをご利用いただくことで、本規約に同意したものとみなします。
             </p>
           </section>

@@ -22,8 +22,8 @@ const categoryColors: Record<string, { bg: string; text: string }> = {
 };
 
 const categoryLabels: Record<string, string> = {
-  'ai-tech': 'AI & Tech',
-  'smart-home': 'Smart Home',
+  'ai-tech': 'AI・テック',
+  'smart-home': 'スマート家電',
   'article': '記事',
 };
 
@@ -35,7 +35,7 @@ const categoryHrefs: Record<string, string> = {
 
 // Default author — can be overridden per-post via frontmatter later
 const defaultAuthor = {
-  name: 'Smart Kurashi 編集部',
+  name: 'スマートくらし 編集部',
   avatarUrl: '',
   bio: 'スマートホーム愛好家として 50 台以上の IoT 製品を自宅でテストしてきた実務経験を持つ。HEMS、音声アシスタント、スマートロック、カメラセンサーなど、住まいに関わるあらゆる IoT 機器の導入・運用・比較評価を専門とする。',
   expertise: ['スマートホーム', 'IoT', 'HEMS', '音声アシスタント', 'AI 家電'],
@@ -98,7 +98,7 @@ export default async function PostPage({ params }: PageProps) {
 
   const breadcrumbItems = [
     { label: 'ホーム', href: 'https://smart-kurashi.jp/' },
-    { label: post.category === 'ai-tech' ? 'AI & Tech' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
+    { label: post.category === 'ai-tech' ? 'AI・テック' : 'スマート家電', href: `https://smart-kurashi.jp${categoryHref}` },
     { label: post.title, href: `https://smart-kurashi.jp/posts/${slug}` },
   ];
 
@@ -115,7 +115,7 @@ export default async function PostPage({ params }: PageProps) {
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Smart Kurashi',
+      name: 'スマートくらし',
       logo: {
         '@type': 'ImageObject',
         url: 'https://smart-kurashi.jp/logo.png',
