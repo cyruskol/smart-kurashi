@@ -8,7 +8,7 @@ const headerItems = [
   { href: '/category/smart-home', label: '家電・ガジェット' },
   { href: '/products', label: '商品を探す' },
   { href: '/compare', label: '比較・ランキング' },
-  { href: '/fifa-world-cup-2026', label: '2026年大会' },
+  { href: '/fifa-world-cup-2026', label: 'FIFAワールドカップ2026' },
 ];
 
 export default function Header() {
@@ -41,11 +41,11 @@ export default function Header() {
           <Link
             href="/"
             style={{ display: 'inline-flex', alignItems: 'center', flex: '0 0 auto', textDecoration: 'none' }}
-            aria-label="スマートくらし ホーム"
+            aria-label="Smart Kurashi ホーム"
           >
             <img
               src="/logo.png"
-              alt="スマートくらし"
+              alt="Smart Kurashi"
               width={180}
               height={180}
               style={{ width: 'clamp(120px, 18vw, 180px)', height: 'auto', display: 'block' }}
