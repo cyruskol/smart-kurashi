@@ -61,6 +61,13 @@ function getMarkdownFiles(dir: string): string[] {
   return fs.readdirSync(dir).filter((f) => f.endsWith('.md') || f.endsWith('.mdx'));
 }
 
+function normalizeDate(input: unknown, fallbackPath: string): string {
+  if (input instanceof Date) return input.toISOString().slice(0, 10);
+  if (typeof input === 'string') return input;
+  if (typeof input === 'number') return new Date(input).toISOString().slice(0, 10);
+  return fs.statSync(fallbackPath).birthtime.toISOString().slice(0, 10);
+}
+
 function parsePost(filePath: string, defaultCategory: string): Post {
   const raw = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(raw);
@@ -70,7 +77,7 @@ function parsePost(filePath: string, defaultCategory: string): Post {
     title: data.title || slug,
     excerpt: data.excerpt || content.slice(0, 160).replace(/\n/g, ' ') + '...',
     content,
-    date: data.date || fs.statSync(filePath).birthtime.toISOString().slice(0, 10),
+    date: normalizeDate(data.date, filePath),
     category: data.category || defaultCategory,
     source: data.source || undefined,
     tags: data.tags || [],
