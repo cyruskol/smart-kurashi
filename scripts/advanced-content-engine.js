@@ -34,6 +34,7 @@ const STATE_FILE = path.join(SCRIPTS_DIR, '.engine_state.json');
 const LOCK_FILE = '/tmp/newsroom.lock';
 const LOCK_STALE_MS = 2 * 60 * 60 * 1000; // 2 hours — assume crashed if older
 const IMAGE_DIR = path.join(PROJECT_ROOT, 'public', 'images', 'blog');
+const AFFILIATE_REGISTRY_FILE = '/Users/gengar_chan/Documents/AI_Vault/Projects/Smart_Kurashi/Affiliate_Link_Registry.md';
 
 const LM_STUDIO_BASE = 'http://127.0.0.1:1234';
 const LM_MODEL = 'qwen/qwen3.5-9b';   // exact LM Studio model identifier
@@ -143,6 +144,186 @@ async function downloadImage(imageUrl, slug) {
   });
 }
 
+function shuffleArray(items) {
+  return items
+    .map((item) => ({ item, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .map(({ item }) => item);
+}
+
+function pickRandomIndices(total, count) {
+  const indices = Array.from({ length: total }, (_, i) => i);
+  return shuffleArray(indices).slice(0, count).sort((a, b) => a - b);
+}
+
+function extractFirstHttpUrl(text) {
+  if (!text) return '';
+  const match = String(text).match(/https?:\/\/\S+/);
+  return match ? match[0].replace(/[)\],.]+$/, '') : '';
+}
+
+function parseAffiliateRegistryRows() {
+  if (!fs.existsSync(AFFILIATE_REGISTRY_FILE)) return [];
+
+  const raw = fs.readFileSync(AFFILIATE_REGISTRY_FILE, 'utf-8');
+  const headerMatch = raw.match(/(\| 商品名 \| 商品サイト \| Image & Textリンク \| Link Onlyリンク \| レビュー執筆状況 \| smart-kurashi掲載URL \| メモ \|\n\|---\|---\|---\|---\|---\|---\|---\|\n)([\s\S]*?)(\n## Updating rule)/);
+  if (!headerMatch) return [];
+
+  return headerMatch[2]
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('|'))
+    .filter((line) => !line.includes('---'))
+    .map((line) => {
+      const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
+      return {
+        productName: cells[0] || '',
+        productSite: cells[1] || '',
+        imageTextLink: cells[2] || '',
+        linkOnlyLink: cells[3] || '',
+        status: cells[4] || '',
+        publishedUrl: cells[5] || '',
+        memo: cells[6] || '',
+      };
+    })
+    .filter((row) => row.productName);
+}
+
+function formatAffiliateRegistryRow(row) {
+  return `| ${row.productName || ''} | ${row.productSite || ''} | ${row.imageTextLink || ''} | ${row.linkOnlyLink || ''} | ${row.status || ''} | ${row.publishedUrl || ''} | ${row.memo || ''} |`;
+}
+
+function writeAffiliateRegistryRows(rows) {
+  const raw = fs.readFileSync(AFFILIATE_REGISTRY_FILE, 'utf-8');
+  const updated = raw.replace(
+    /(\| 商品名 \| 商品サイト \| Image & Textリンク \| Link Onlyリンク \| レビュー執筆状況 \| smart-kurashi掲載URL \| メモ \|\n\|---\|---\|---\|---\|---\|---\|---\|\n)([\s\S]*?)(\n## Updating rule)/,
+    (_, header, _rows, footer) => `${header}${rows.map((row) => formatAffiliateRegistryRow(row)).join('\n')}\n${footer}`,
+  );
+  fs.writeFileSync(AFFILIATE_REGISTRY_FILE, updated, 'utf-8');
+}
+
+function updateAffiliateRegistryRow(productName, updates) {
+  const rows = parseAffiliateRegistryRows();
+  let changed = false;
+  const nextRows = rows.map((row) => {
+    if (row.productName !== productName) return row;
+    changed = true;
+    return { ...row, ...updates };
+  });
+
+  if (!changed) {
+    console.warn(`[AFFILIATE] Registry row not found: ${productName}`);
+    return false;
+  }
+
+  writeAffiliateRegistryRows(nextRows);
+  return true;
+}
+
+function getPendingAffiliateRows() {
+  return parseAffiliateRegistryRows().filter((row) => row.status !== '公開済み');
+}
+
+function inferAffiliateTopic(productName) {
+  const text = String(productName || '');
+  if (/(iPhone|iPad|Mac|Apple|RTX|GPU|GeForce|NVIDIA|Palit|GIGABYTE|モニター|ディスプレイ|ノートパソコン|パソコン|PC|Mac Studio|Radeon|Sapphire)/i.test(text)) {
+    return 'ai-tech';
+  }
+  return 'smart-home';
+}
+
+const WORLD_CUP_CAMPAIGN_END_DATE = '2026-07-06';
+const WORLD_CUP_STATIC_PAGE = '/fifa-world-cup-2026';
+
+function isWorldCupBroadcastRelated(product) {
+  const text = `${product.productName || ''} ${product.productSite || ''} ${product.memo || ''}`.toLowerCase();
+  return /テレビ|tv|broadcast|放送|配信|地上波|bs|cs|チューナー|アンテナ|録画|hdmi|projector|プロジェクタ|プロジェクター|soundbar|サウンドバー|fire tv|chromecast|apple tv|roku|set-top|stb|レコーダ|ホームシアター|モニター|display|ディスプレイ/i.test(text);
+}
+
+function buildAffiliatePrompt(product) {
+  const worldCupAddon = isWorldCupBroadcastRelated(product)
+    ? `
+
+【20日間の期間限定ルール】
+- ${WORLD_CUP_CAMPAIGN_END_DATE} までの間は、テレビ・放送・配信・視聴まわりの商品では、本文のどこかで FIFA World Cup を自然に触れてください。
+- 「無料放送」「無料中継」「無料視聴」系の語を、自然で事実に沿う範囲で盛り込んでください。
+- 詳細な放送局名や対戦カードは書きすぎず、読者は World Cup 静的ページへ案内してください。
+- 本文内に ${WORLD_CUP_STATIC_PAGE} への内部リンクを 1 回以上入れてください。
+- 可能なら関連する他のアフィリエイト記事へも自然に内部リンクしてください。`
+    : '';
+
+  return `以下はアフィリエイト登録済み商品の1件です。これをもとに、1本の日本語MDX記事にしてください。
+
+商品情報:
+- 商品名: ${product.productName}
+- 商品サイト: ${product.productSite}
+- 画像URL: ${extractFirstHttpUrl(product.memo)}
+- 執筆状況: ${product.status}
+- メモ: ${product.memo || 'なし'}
+
+執筆ルール:
+- これは調査レビューとして書く
+- 実機体験は捏造しない
+- タイトルは日本語中心で、英字は最小限にする
+- 商品の強み、向いている人、向いていない人、設置・利用シーン、比較軸を入れる
+- 室内サイズや設置環境の目安を自然に触れる
+- 価格や在庫は断定しない
+- 画像URLや生の販売URLは本文に出さない
+- 1つの主題に絞って、読みやすく自然な日本語でまとめる${worldCupAddon}
+
+出力形式:
+- YAMLフロントマター（title, date, categories, tags）
+- 本文
+- 最後に「編集部の視点」セクション
+
+本文は、読者が「自分に合うか」を判断しやすい流れで書いてください。`;
+}
+
+function buildEditorialSystemPrompt(topic, extraRules = '') {
+  const linkDictJSON = JSON.stringify(buildInternalLinkDictionary(topic));
+  return SYSTEM_PROMPT + `
+
+## 内部リンク（Internal Links）
+以下は、すでに公開されている関連記事の一覧です。記事を書く際に、自然な文脈で1〜2つの過去記事へのハイパーリンクを挿入してください。Markdown形式: [関連記事のタイトル](/posts/slug)。強制的に入れる必要はなく、文脈的に滑らかに遷移する場合のみ挿入してください。使用可能な記事一覧（JSON形式）: ${linkDictJSON}${extraRules}`;
+}
+
+function buildRunPlan(groups, pendingAffiliateRows) {
+  const articleSlots = groups.slice(0, 3);
+  const slotCount = articleSlots.length;
+  if (slotCount === 0) return [];
+
+  const maxAffiliate = slotCount === 1 ? 1 : Math.min(2, slotCount - 1);
+  const desiredAffiliate = Math.min(
+    pendingAffiliateRows.length,
+    maxAffiliate,
+    Math.random() < 0.5 ? 1 : 2,
+  );
+
+  if (desiredAffiliate <= 0) {
+    return articleSlots.map((group, index) => ({ kind: 'news', index, group }));
+  }
+
+  const selectedAffiliateRows = shuffleArray(pendingAffiliateRows).slice(0, desiredAffiliate);
+  const affiliateIndices = new Set(pickRandomIndices(slotCount, desiredAffiliate));
+  let affiliateCursor = 0;
+
+  return articleSlots.map((group, index) => {
+    if (affiliateIndices.has(index)) {
+      return { kind: 'affiliate', index, product: selectedAffiliateRows[affiliateCursor++] };
+    }
+    return { kind: 'news', index, group };
+  });
+}
+
+function extractHeroImageFromProduct(product) {
+  return extractFirstHttpUrl(product.memo || '');
+}
+
+function buildPublishedUrl(filepath) {
+  const filename = path.basename(filepath, path.extname(filepath));
+  return `https://smart-kurashi.jp/posts/${filename}`;
+}
+
 // ─── Internal Link Dictionary ──────────────────────────────────────────────
 
 /**
@@ -211,13 +392,13 @@ function writeState(lastRunTime, targetInterval) {
 }
 
 /**
- * Calculate a new random jitter interval: 300 + random(10-100) minutes.
- * This gives a window of 310–400 minutes (~5.2h to ~6.7h).
+ * Calculate a new random jitter interval: 180 + random(17-131) minutes.
+ * This gives a window of 197–311 minutes (~3.3h to ~5.2h).
  */
 function calculateJitterInterval() {
-  const BASE = 300;
-  const MIN_EXTRA = 10;
-  const MAX_EXTRA = 100;
+  const BASE = 180;
+  const MIN_EXTRA = 17;
+  const MAX_EXTRA = 131;
   const extra = Math.floor(Math.random() * (MAX_EXTRA - MIN_EXTRA + 1)) + MIN_EXTRA;
   return BASE + extra;
 }
@@ -228,13 +409,12 @@ function calculateJitterInterval() {
  *   - No state file exists (first run), OR
  *   - last_run_time is null, OR
  *   - minutes elapsed since last_run_time >= current_target_interval
- * Otherwise logs cooldown and returns false.
+ * Otherwise returns false.
  */
 function isTimeToRun() {
   const state = readState();
 
   if (!state.last_run_time) {
-    console.log('[JITTER] No previous run found. Proceeding.');
     return true;
   }
 
@@ -245,12 +425,9 @@ function isTimeToRun() {
   const target = state.current_target_interval;
 
   if (elapsedMin < target) {
-    const remaining = Math.round(target - elapsedMin);
-    console.log(`[JITTER] Cooldown active. ${elapsedMin.toFixed(0)}m elapsed, need ≥${target}m. Waiting ~${remaining}m more.`);
     return false;
   }
 
-  console.log(`[JITTER] ${elapsedMin.toFixed(0)}m elapsed (≥${target}m target). Proceeding.`);
   return true;
 }
 
@@ -623,7 +800,7 @@ function groupSimilar(items, minOverlap = 2) {
 
 // ─── Synthesis via LM Studio ──────────────────────────────────────────────
 
-const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）」のチーフコンテンツライターです。日本のスマートホームとAIテクノロジーに関するニュースサイトを運営しています。
+const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）」の kolseo 記事執筆担当です。日本のスマートホームとAIテクノロジーに関するニュースサイトの記事を、SEO記事として書いてください。
 
 ## Universal Tone（絶対条件）
 - 温かみのある会話調の日本語（です・ます調）で書いてください。お茶を飲みながら知識豊富な友達と話すように。
@@ -633,8 +810,9 @@ const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）�
 - 専門用語の羅列、受動態、英語の直訳は避けてください。
 
 ## 絶対禁止事項（違反すると記事は破棄されます）
-- 英語の単語・フレーズは本文・タイトル・タグ・カテゴリーのすべてで禁止。製品名（iPhone、Google等）は日本語カタカナ表記（アイフォーン、グーグル等）にしてください。
-- YAMLフロントマターのcategoriesとtagsは日本語のみ。['AI', 'Smart Home']ではなく['人工知能', 'スマートホーム']と書いてください。
+- 英語の単語・フレーズは本文・タイトル・タグのすべてで禁止。製品名（iPhone、Google等）は日本語カタカナ表記（アイフォーン、グーグル等）にしてください。
+- YAMLフロントマターのtagsは日本語のみ。['AI', 'Smart Home']ではなく['人工知能', 'スマートホーム']と書いてください。
+- カテゴリー（categories）は ai-tech または smart-home のみ。これらは英語表記のまま使用してください（サイトの内部カテゴリ名です）。それ以外のカテゴリー（science, article, news 等）は禁止。
 - スラッグ（URL用のファイル名）は日本語のみ使用。英単語の混入禁止。
 - 著者名は「Smart Kurashi 編集部」固定。それ以外の表記は禁止。
 
@@ -645,15 +823,27 @@ const SYSTEM_PROMPT = `あなたは「Smart Kurashi（スマートクラシ）�
 4. カテゴリーは ai-tech または smart-home のみ。それ以外のカテゴリー（science, article, news 等）は禁止。ai-tech = AI/テクノロジー系の話題、smart-home = 家電・スマートホーム系の話題。
 
 ## 出力形式
-最初にYAMLフロントマター（title, date, categories, tags）、次に本文、最後に「編集部の視点」セクション。すべて日本語。`;
+最初にYAMLフロントマター（title, date, categories, tags）を必ず含めてください。frontmatterは「---」で囲み、必ず「---」で閉じてから本文を書いてください。frontmatterなしの記事は破棄されます。`;
 
-const USER_PROMPT_TEMPLATE = `以下は、複数の異なるニュースソースから集めた関連記事のグループです。これらを統合して、1本の日本語MDX記事にしてください。
+const USER_PROMPT_TEMPLATE = `以下は、複数の異なるニュースソースから集めた関連記事のグループです。これらを統合して、kolseo として1本の日本語MDX記事にしてください。
 
 グループに含まれるソース:
 {{GROUP_SUMMARY}}
 
 Universal Tone（温かい会話調・ですます調）と編集ルール（日本視点・複数ソース統合）に従って記事を書いてください。
 YAMLフロントマター（title, date, categories, tags）から始めて、本文、最後に「編集部の視点」セクションを入れてください。`;
+
+const AFFILIATE_REVIEW_RULES = `
+
+## アフィリエイト商品記事ルール
+- これは調査レビューとして書く
+- 実機体験は捏造しない
+- タイトルは日本語中心で、英字は最小限にする
+- 商品の強み、向いている人、向いていない人、設置・利用シーン、比較軸を入れる
+- 室内サイズや設置環境の目安を自然に触れる
+- 価格や在庫は断定しない
+- 画像URLや生の販売URLは本文に出さない
+- 1つの主題に絞って、読みやすく自然な日本語でまとめる`;
 
 function buildGroupSummary(group) {
   return group.map((item, i) =>
@@ -772,11 +962,7 @@ function validateJapaneseOnly(content) {
   const catMatch = content.match(/categories:\s*\[([^\]]+)\]/);
   if (catMatch) {
     const cats = catMatch[1];
-    if (/[a-zA-Z]{2,}/.test(cats)) {
-      console.warn('[VALIDATE] REJECTED: categories contain English:', cats.slice(0, 80));
-      return false;
-    }
-    // Also check for forbidden category values (science, article, news)
+    // Extract individual category values
     const catValues = cats.match(/["']([^"']+)["']/g) || [];
     for (const cv of catValues) {
       const val = cv.replace(/["']/g, '').trim().toLowerCase();
@@ -784,6 +970,12 @@ function validateJapaneseOnly(content) {
         console.warn('[VALIDATE] REJECTED: invalid category "' + val + '". Only ai-tech or smart-home allowed.');
         return false;
       }
+    }
+    // Also reject if categories line has unquoted English words that are not ai-tech/smart-home
+    const stripped = cats.replace(/["'][^"']*["']/g, '').trim();
+    if (/[a-zA-Z]{2,}/.test(stripped) && !/^(ai-tech|smart-home)(\s*,\s*(ai-tech|smart-home))?$/.test(stripped)) {
+      console.warn('[VALIDATE] REJECTED: categories contain invalid English:', cats.slice(0, 80));
+      return false;
     }
   }
 
@@ -877,50 +1069,90 @@ async function runPipeline(topic) {
     }
 
     // ── Step 4.6: Build internal link dictionary ──
-    const linkDict = buildInternalLinkDictionary(topic);
-    const linkDictJSON = JSON.stringify(linkDict);
+    const pendingAffiliateRows = getPendingAffiliateRows();
+    const runPlan = buildRunPlan(groups, pendingAffiliateRows);
+    const affiliateCount = runPlan.filter((slot) => slot.kind === 'affiliate').length;
+    const normalCount = runPlan.filter((slot) => slot.kind === 'news').length;
+    console.log(`\n🔀 Step 4.6: Run plan = ${normalCount} ABAB post(s) + ${affiliateCount} affiliate post(s)`);
 
-    // Update system prompt with internal link injection
-    const systemPromptWithLinks = SYSTEM_PROMPT + `
+    if (pendingAffiliateRows.length === 0) {
+      console.log('  [AFFILIATE] All affiliate products are already published. Using ABAB only.');
+    }
 
-## 内部リンク（Internal Links）
-以下は、すでに公開されている関連記事の一覧です。記事を書く際に、自然な文脈で1〜2つの過去記事へのハイパーリンクを挿入してください。Markdown形式: [関連記事のタイトル](/posts/slug)。強制的に入れる必要はなく、文脈的に滑らかに遷移する場合のみ挿入してください。使用可能な記事一覧（JSON形式）: ${linkDictJSON}`;
+    const normalSystemPrompt = buildEditorialSystemPrompt(topic);
 
     // ── Step 5: Generate articles (max 3 per run) ──
-    const MAX_ARTICLES = 3;
     const savedFiles = [];
 
-    for (let i = 0; i < groups.length; i++) {
-      const group = groups[i];
-      console.log(`\\n📝 Step 5.${i + 1}: Scraping sources from ${group.length} RSS feeds...`);
+    for (let i = 0; i < runPlan.length; i++) {
+      const slot = runPlan[i];
+      console.log(`\n📝 Step 5.${i + 1}: Building ${slot.kind === 'affiliate' ? 'affiliate' : 'news'} article...`);
 
-      const summary = buildGroupSummary(group);
-      const prompt = USER_PROMPT_TEMPLATE.replace('{{GROUP_SUMMARY}}', summary);
-      const content = await lmGenerate(systemPromptWithLinks, prompt);
+      let prompt;
+      let systemPrompt;
+      let ogImagePath = null;
+      let finalTopic = topic;
+      let registryProductName = null;
+
+      if (slot.kind === 'affiliate') {
+        const product = slot.product;
+        registryProductName = product.productName;
+        finalTopic = inferAffiliateTopic(product.productName || topic);
+        systemPrompt = buildEditorialSystemPrompt(finalTopic, AFFILIATE_REVIEW_RULES);
+        prompt = buildAffiliatePrompt(product);
+        updateAffiliateRegistryRow(product.productName, { status: '執筆中' });
+
+        const heroImageUrl = extractHeroImageFromProduct(product);
+        if (heroImageUrl) {
+          ogImagePath = await downloadImage(heroImageUrl, slugify(product.productName || `affiliate-${i}`));
+          console.log(`  [IMG] Downloaded affiliate hero image: ${ogImagePath || 'none'}`);
+        }
+      } else {
+        const group = slot.group;
+        systemPrompt = normalSystemPrompt;
+        const summary = buildGroupSummary(group);
+        prompt = USER_PROMPT_TEMPLATE.replace('{{GROUP_SUMMARY}}', summary);
+
+        const groupImage = ogImages[slot.index];
+        ogImagePath = groupImage || null;
+      }
+
+      const content = await lmGenerate(systemPrompt, prompt);
 
       // Reject if English detected in frontmatter — skip this article
       if (!validateJapaneseOnly(content)) {
         console.warn('[PIPELINE] Skipping article with English content.');
+        if (registryProductName) {
+          updateAffiliateRegistryRow(registryProductName, { status: '未執筆', publishedUrl: '' });
+        }
         continue;
       }
 
-      // Prepend the OG image to the content if we scraped one
+      // Prepend the image to the content if we have one and it is not already included
       let finalContent = content;
-      const ogImagePath = ogImages[i];
       if (ogImagePath && !finalContent.includes(ogImagePath)) {
         // Insert the image at the very top of the content (after frontmatter)
         const frontmatterEnd = finalContent.indexOf('---', 3) + 3;
         const before = finalContent.slice(0, frontmatterEnd);
         const after = finalContent.slice(frontmatterEnd);
-        finalContent = `${before}\n![${group[0]?.title || ''}](${ogImagePath})\n${after}`;
-        console.log(`  [IMG] Injected OG image: ${ogImagePath}`);
+        finalContent = `${before}\n![${slot.kind === 'affiliate' ? slot.product.productName : slot.group[0]?.title || ''}](${ogImagePath})\n${after}`;
+        console.log(`  [IMG] Injected hero image: ${ogImagePath}`);
       }
 
-      const filepath = saveMdx(finalContent, topic, ogImagePath);
+      const filepath = saveMdx(finalContent, finalTopic, ogImagePath);
       if (filepath) {
         savedFiles.push(filepath);
+        if (registryProductName) {
+          updateAffiliateRegistryRow(registryProductName, {
+            status: '公開済み',
+            publishedUrl: buildPublishedUrl(filepath),
+          });
+        }
       } else {
-        console.warn(`[PIPELINE] Skipped saving invalid content for group ${i + 1}`);
+        console.warn(`[PIPELINE] Skipped saving invalid content for slot ${i + 1}`);
+        if (registryProductName) {
+          updateAffiliateRegistryRow(registryProductName, { status: '未執筆', publishedUrl: '' });
+        }
       }
 
       await sleep(2000);
@@ -955,7 +1187,7 @@ async function runPipeline(topic) {
  * Every-87-minute node-cron wrapper.
  * On each tick, reads .engine_state.json and checks whether enough
  * randomized time has elapsed. If not, exits quietly. If yes, runs
- * the full pipeline with ABAB topic alternation and stores a new randomized interval.
+ * the full pipeline with ABAB topic alternation plus occasional affiliate substitutions and stores a new randomized interval.
  */
 function startCron() {
   // Wake every 87 minutes — jitter state determines whether to actually run
@@ -965,17 +1197,15 @@ function startCron() {
   console.log(`  Poll: ${WRAPPER_INTERVAL}`);
 
   cron.schedule(WRAPPER_INTERVAL, () => {
-    console.log(`\n⏰ Wake check — ${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })}`);
-
     if (!isTimeToRun()) {
-      console.log('[CRON] Cooldown. Exiting without loading LM Studio.');
       process.exit(0);
     }
 
     // Time to run — determine ABAB topic and execute the full pipeline
     const state = readState();
     const lastTopic = state.last_topic || null;
-    // ABAB: alternate between ai-tech and smart-home
+    // ABAB: alternate between ai-tech and smart-home as the base lane;
+    // affiliate posts are mixed into the run plan separately.
     const thisTopic = (lastTopic === 'ai-tech') ? 'smart-home' : 'ai-tech';
     console.log(`[TOPIC] last=${lastTopic || 'none'} → this=${thisTopic}`);
 
@@ -1012,8 +1242,8 @@ if (args.includes('--cron')) {
   console.log(`[DRY-RUN] State file written to ${STATE_FILE}`);
   console.log(`  last_run_time:             ${saved.last_run_time}`);
   console.log(`  current_target_interval:  ${saved.current_target_interval} min`);
-  const valid = saved.last_run_time && saved.current_target_interval >= 310 && saved.current_target_interval <= 400;
-  console.log(`[DRY-RUN] ${valid ? '✅ VALID' : '❌ INVALID'} — interval ${saved.current_target_interval} is within [310, 400]`);
+  const valid = saved.last_run_time && saved.current_target_interval >= 197 && saved.current_target_interval <= 311;
+  console.log(`[DRY-RUN] ${valid ? '✅ VALID' : '❌ INVALID'} — interval ${saved.current_target_interval} is within [197, 311]`);
 } else {
   console.log(`Usage:
   node scripts/advanced-content-engine.js --once           Run pipeline once
