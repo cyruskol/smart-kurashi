@@ -1,0 +1,90 @@
+---
+title: "WWDC26の本命はApple Intelligenceを使うアプリ開発――Foundation Models frameworkで何が変わるのか"
+excerpt: "AppleはFoundation Models frameworkを開放し、Private Cloud Compute、Vision対応、外部モデル連携まで広げました。Siriだけではない新しいAIの入口を、競合比較とコミュニティ反応込みで整理します。"
+date: "2026-06-10T18:04:28+09:00"
+category: "ai-tech"
+tags: ["WWDC26", "Apple Intelligence", "Foundation Models", "Siri", "App Intents", "Private Cloud Compute", "AI開発"]
+source: "Smart Kurashi"
+image: "/images/blog/apple-aids-app-development-with-new-intelligence-frameworks-.jpg"
+---
+
+# WWDC26の本命はApple Intelligenceを使うアプリ開発――Foundation Models frameworkで何が変わるのか
+
+WWDC26でAppleが本当に広げたのは、派手なデモだけではありません。もちろん基調講演のSiriやLiquid Glassは目立ちますが、開発者向け動画を追うと、もっと大きな変化が見えてきます。それは、Apple Intelligenceを「Appleの機能」として閉じるのではなく、アプリ側が使える土台として開く動きです。
+
+とくに重要なのが、Apple Developerの「What’s new in the Foundation Models framework」と「Build agentic app experiences with the Foundation Models framework」です。ここでAppleは、Foundation Models frameworkの中身を大きく広げ、オンデバイスモデル、Private Cloud Compute、Vision対応、外部モデル連携、そして新しいLanguageModel protocolまで見せました。要するに、AppleはAIを見せる会社から、AIを使わせる会社へ寄ってきたということです。
+
+## 何が発表されたか
+
+Foundation Models frameworkのアップデートでまず目立つのは、Appleがこの基盤をオープンソース化すると明言したことです。動画では、コアのFrameworkだけでなく、OSリリースの間でも更新されるUtilitiesパッケージも案内されました。これは、開発者が「次のOSを待つしかない」状態を減らし、実験しやすい層を作る動きです。
+
+さらに、オンデバイスモデルはVision機能を獲得し、Private Cloud Compute側のモデルにもアクセスしやすくなりました。Appleはここで、端末の中で完結する軽い推論と、クラウドで補う重い推論を分けています。しかも、モデルに触る方法をLanguageModel protocolという抽象層に乗せたので、将来的にはAppleのモデルだけでなく、外部のモデルも同じ考え方で扱いやすくなります。
+
+| 項目 | 何が変わるか | 開発者にとっての意味 |
+|---|---|---|
+| オープンソース化 | コアの仕組みを外から見やすくする | 実装の理解と検証がしやすくなる |
+| Utilities | OSの合間でも更新される部品群 | 新しい機能を待たずに試しやすい |
+| Vision対応 | テキストだけでなく画像にも広がる | 画像を使う機能をアプリに入れやすい |
+| Private Cloud Compute | 必要なときだけサーバー側の力を借りる | プライバシーと性能の両立を狙いやすい |
+| LanguageModel protocol | 使うモデルを抽象化する | Appleだけでなく他社モデルも扱いやすい |
+
+ここで大事なのは、Appleが「巨大モデル単体の勝負」に乗っていないことです。Appleは、端末、OS、クラウド、開発者APIを全部つなぐ設計で勝ちに行っています。モデルの大きさだけで勝負するのではなく、どの場面で、どのモデルを、どのプライバシー条件で使うかを設計しているわけです。
+
+## 競合と比べると何が違うか
+
+Appleのやり方は、GoogleやOpenAI、Microsoftと比べるとかなり独特です。ざっくり言うと、Googleはモデルの知能そのものを前に出し、OpenAIは会話体験を前に出し、Microsoftは業務導線を前に出します。Appleはそのどれとも少し違って、端末とOSの中で自然にAIを使わせることを前に出しています。
+
+| 会社 | 前に出している価値 | Appleとの違い |
+|---|---|---|
+| Google | いちばん広い知識とモデル性能 | モデルそのものが主役になりやすい |
+| OpenAI | 会話と生成のわかりやすさ | 単体アプリとしての体験が中心 |
+| Microsoft | 仕事の流れに入るAI | Windowsと業務ソフトが起点 |
+| Apple | 端末内とOS内にしみこむAI | 体験そのものを裏側から支える |
+
+この違いは、見た目以上に大きいです。なぜなら、Appleが持っているのはiPhoneやMacのハードだけではないからです。App Intents、Spotlight、画像認識、Siri、Visual Intelligenceのような入口を、自社OSの中に全部持っています。つまりAppleは、AIモデルを売るより先に、AIが通る道を握っているのです。
+
+実際、基調講演のトランスクリプトでも、AppleはApple Intelligenceの中心にApple Foundation modelsがあると説明し、その上でVisual Intelligenceを広げ、App Intentsを使った操作までつないでいました。開発者向けの動画では、その流れがさらに明確になります。Appleは「AIを搭載する」より、「AIで動くアプリを作れるようにする」方向へ進んでいます。
+
+## コミュニティの反応はどうだったか
+
+Xでは、この発表を見て「Appleはついに実用寄りに振った」という受け止めが目立ちました。特に、Foundation Models frameworkがオープンソース化され、LanguageModel protocolで外部モデルも扱いやすくなる点は、開発者コミュニティから好意的に見られています。Appleが自前モデルだけで全部を抱え込むのではなく、使えるモデルをまとめる“司令塔”に寄っている、と見る声もありました。
+
+一方で、慎重な見方も強いです。Xでは「Appleはついに自前主義をやめたのではないか」という見方や、「結局は他社モデルをまとめるだけでは差別化になりにくい」という声もありました。Redditでも開発者系の反応は総じて前向きですが、実際の精度や対応言語がどうなるかはまだ様子見という空気です。Threadsでも、私たちの観察では「理屈は面白いが、日常で本当に便利かが大事」という温度感が近く、期待と保留が半分ずつでした。
+
+この反応は、Appleが今どこにいるかをよく表しています。Appleはまだ「世界一のAIモデルを持つ会社」ではありません。でも、「日常の端末にAIを自然に入れる会社」としては、かなり強い位置にいます。コミュニティが興奮しているのはモデル性能そのものというより、Appleの設計がようやく現実的になったからです。
+
+## Appleの未来と会社価値にどうつながるか
+
+この方向転換は、Appleの会社価値にかなり大きな意味があります。理由は3つあります。
+
+第一に、開発者の囲い込みが強くなります。AI機能を単なるAPIとしてではなく、OSと結びついた設計で使えるなら、アプリ開発者はAppleの道具を使う理由が増えます。これは将来のアプリ品質だけでなく、プラットフォームの粘着力にも直結します。
+
+第二に、Apple Intelligenceが「iPhoneの売り文句」から「アプリの標準機能」へ変わります。これは端末販売だけでなく、サービスやエコシステム全体の価値にも効きます。ユーザーが一度AI対応アプリに慣れると、同じ体験を他の端末に移すのが面倒になるからです。
+
+第三に、AppleはAIレースで無理に最大モデルを追わなくてもよくなります。巨大モデルの勝負は、計算資源、電力、運用コストの戦いです。Appleはそこを単独で背負うのではなく、オンデバイス、Private Cloud Compute、外部モデルの組み合わせで解こうとしています。これは派手ではありませんが、かなりAppleらしいやり方です。
+
+もちろんリスクもあります。モデルを開くほど、Appleらしさは薄まるかもしれません。外部モデルに依存しすぎると、差別化の軸が「中身」ではなく「つなぎ方」になります。ただ、Appleはもともと「何を作るか」だけでなく「どう見せるか」「どう使わせるか」で勝ってきた会社です。だからこそ、AIの時代でもこの戦略には十分な意味があります。
+
+## 日本ユーザーへの影響
+
+日本のユーザーにとって重要なのは、Apple Intelligenceが単なる英語圏の話で終わらないかどうかです。現時点で細かな提供条件は動画や公式ガイドを見ながら確認する必要がありますが、少なくとも開発者向け基盤が広がること自体は、日本のアプリにも追い風です。
+
+たとえば、翻訳、要約、画像理解、メモ整理、予定管理、検索補助といった機能は、日本の生活アプリでも需要が大きい分野です。しかもAppleはPrivate Cloud Computeを前に出しているので、ただクラウドに投げるAIよりも、企業や自治体が採用しやすい余地があります。日本ではプライバシーと説明責任が重く見られるので、ここはかなり大事です。
+
+さらに、日本の開発者は「Siriが賢くなるか」だけでなく、「自分のアプリがSiriやApple Intelligenceの入口になれるか」を考えやすくなります。Appleはもう、AIをAppleだけの機能として終わらせようとしていません。アプリ側に食い込ませるからこそ、次の成長がある、という設計に見えます。
+
+## 編集部の見方
+
+今回のFoundation Models frameworkの本質は、AppleがAIを“完成品”として見せるのをやめたことにあります。代わりにAppleは、AIをアプリの中でどう使うかを開発者に委ねました。これは少し地味に見えますが、実はかなり強い一手です。
+
+なぜなら、AIの本当の価値はチャット画面の中だけではなく、日常の操作にどれだけ溶け込むかで決まるからです。Appleはその入口をOSの中に持っています。だからこそ、Foundation Models frameworkの拡張は、単なるSDK追加ではなく、Appleが次の10年をどこで勝つかの宣言だと見ています。
+
+Appleは「いちばん賢いAI」を目指しているのではなく、「いちばん自然に使えるAI」を目指している。WWDC26の開発者動画を見ていると、その姿勢がかなりはっきりします。
+
+## 参考
+
+- [WWDC26 キーノート](https://developer.apple.com/videos/play/wwdc2026/101/)
+- [What’s new in the Foundation Models framework](https://developer.apple.com/videos/play/wwdc2026/241/)
+- [Build agentic app experiences with the Foundation Models framework](https://developer.apple.com/videos/play/wwdc2026/242/)
+- [Apple Foundation Models ドキュメント](https://developer.apple.com/documentation/foundationmodels)
+- [WWDC26 - Apple Developer](https://developer.apple.com/wwdc26/)
