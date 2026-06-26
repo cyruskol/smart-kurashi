@@ -1,0 +1,152 @@
+---
+title: "GMKtec EVO-X2 レビュー：Ryzen AI Max+ 395と128GB統合メモリが拓くローカルAIの最前線"
+date: "2026-06-27"
+category: "smart-home"
+tags: ["ミニPC", "AI", "GMKtec", "Ryzen AI Max+", "ローカルAI", "Strix Halo", "128GB"]
+description: "GMKtec EVO-X2は、AMD Ryzen AI Max+ 395と128GB LPDDR5X統合メモリを搭載したミニPCです。Radeon 8060S統合グラフィックスと8K4画面出力を備え、70BクラスのLLMをローカル推論できるAIワークステーションです。"
+---
+
+![GMKtec EVO-X2](https://thumbnail.image.rakuten.co.jp/@0_mall/gmktecdirect/cabinet/10289896/evo-x2/imgrc0127790539.jpg)
+
+## 結論サマリー
+
+GMKtec EVO-X2は、AMD Ryzen AI Max+ 395と128GB LPDDR5X統合メモリを搭載したローカルAI特化ミニPCです。Radeon 8060S統合グラフィックス、WiFi7、8K4画面出力を備え、一台で本格的なAI推論環境を構築できます。649,998円は高額ですが、同等スペックのクラウド利用料と比較すれば合理的です。
+
+**こんな人におすすめ：**
+- 70BクラスのLLMをローカルで動かしたいAI研究者
+- クラウドにデータを出したくない企業
+- 統合メモリによるGPU推論高速性を求める機械学習エンジニア
+- 省スペースAIワークステーションを構築したいクリエイター
+
+**こんな人には不向き：**
+- ゲームがメインのユーザー
+- 予算30万円以下で済ませたい方
+- GPUレンダリングが主用途の方
+
+## 基本情報
+
+| 項目 | 内容 |
+|------|------|
+| プロセッサー | AMD Ryzen AI Max+ 395（16コア/32スレッド、最大5.1GHz） |
+| アーキテクチャ | Zen 5 CPU + RDNA 3.5 GPU + XDNA 2 NPU |
+| メモリ | 128GB LPDDR5X 8000MHz（統合/固定） |
+| ストレージ | 2TB PCIe 4.0 M.2 2280 NVMe SSD |
+| グラフィックス | AMD Radeon 8060S（40 CU統合） |
+| NPU | XDNA 2 アーキテクチャ（50TOPS以上） |
+| ビデオ出力 | 4画面8K対応（USB4 + HDMI2.1 + DP2.0） |
+| ネットワーク | WiFi 7 + 2.5Gbps LAN |
+| 拡張 | USB4 × 2、USB-A、3.5mmオーディオ |
+| OS | Windows 11 Pro |
+| TDP | 140W |
+| 価格 | 649,998円 |
+
+![GMKtec EVO-X2の外観](https://thumbnail.image.rakuten.co.jp/@0_mall/gmktecdirect/cabinet/10289896/evo-x2/imgrc0127790539.jpg)
+
+## Ryzen AI Max+ 395が切り開く新境地
+
+AMD Ryzen AI Max+ 395は、ストリクス・ハロー（Strix Halo）プラットフォームの最上位プロセッサーです。16のZen 5コアがSMTで32スレッドを処理し、最大5.1GHzに達します。
+
+最大の特徴はRadeon 8060S統合グラフィックスです。40基のCUを搭載するRDNA 3.5アーキテクチャで、Radeon 890M（16 CU）の2.5倍の規模を誇ります。このGPUが128GB LPDDR5Xメモリと統合されている点が極めて重要で、NVIDIAのRTX 4090（24GB）では不可能な大規模メモリ空間をGPU推論に提供します。
+
+XDNA 2 NPUは50TOPS以上のINT8推論性能を持ち、Copilot+ PC要件を満たします。
+
+## 128GB LPDDR5Xの真価
+
+ローカルAI推論において、メモリ容量はプロセッサー性能以上に重要な要素です。大規模言語モデル（LLM）は、パラメータ数に応じたメモリを必要とします。
+
+- 8Bモデル（Llama 3.1 8B等）：量子化版で約6GB → 128GBあれば数十インスタンス同時起動も可能
+- 13Bモデル：量子化版で約10GB → 余裕の一言
+- 30Bモデル：量子化版で約20GB → 快適に動作
+- 70Bモデル（Llama 3.1 70B等）：量子化版で約40GB → 128GBあれば単体推論が十分可能
+128GBあれば、70Bクラスのモデルでも余裕を持って動作します。LPDDR5X 8000MHzの帯域幅はGPU推論のトークン生成速度に直結し、DDR5システムメモリに比べてはるかに高い帯域をGPU推論に提供します。メモリ増設不可のトレードオフはありますが、128GB固定は当面のAI用途において十分すぎる水準です。
+
+## 実際のAI推論性能を考える
+
+EVO-X2でローカルAI推論を行う場合、Radeon 8060Sの40 CUがGPU経由の推論エンジンとして働きます。ROCmを経由したPyTorchやllama.cppのVulkanバックエンドを利用すれば、統合GPU上で直接LLMをロードできます。
+
+- Llama 3.1 8B Q4：30〜50トークン/秒（対話アプリとして十分快適）
+- Llama 3.1 70B Q4：5〜10トークン/秒（バッチ推論に実用十分）
+- Mixtral 8x7B Q4：10〜15トークン/秒（MoEは統合GPUと相性良好）
+
+同等のCPU推論と比較して5〜10倍の速度に相当します。
+
+![GMKtec EVO-X2の接続端子](https://thumbnail.image.rakuten.co.jp/@0_mall/gmktecdirect/cabinet/10289896/evo-x2/imgrc0127790539.jpg)
+
+## 4画面8K出力の実用性
+
+USB4を2ポート、HDMI 2.1、DP 2.0を搭載し、最大4画面の8K出力に対応します。AI開発でコード＋ターミナル＋推論結果＋ドキュメントの4画面構成、あるいは監視ダッシュボード用途に直結する機能です。USB4はThunderbolt 4互換の40Gbps帯域で、外付けGPUエンクロージャや高速NVMeストレージの接続にも対応します。
+
+## 接続性とネットワーク
+
+WiFi 7と2.5Gbps有線LANを搭載し、MLOによる低遅延化はAIモデルの大規模ダウンロードや分散推論時の通信においてボトルネックを抑制します。
+
+## ストレージと冷却
+
+2TB NVMe SSDはAIモデルの大容量化に伴い妥当な容量です。PCIe 4.0帯域で70Bモデルのロードが数十秒で完了します。TDP 140WはミニPCとしては高めですが、24時間稼働AI推論サーバーとしてデスクトップGPUより省電力です。
+
+## 良い点
+
+1. **8060Sの規格外の統合GPU性能**：40 CUは統合GPUとして破格で、ローカルAI推論をGPU経由で高速化
+2. **128GB LPDDR5X統合メモリ**：70BクラスのLLMをローカル推論できる容量とGPU加速する帯域幅
+3. **Ryzen AI Max+ 395の完成度**：Zen 5＋RDNA 3.5＋XDNA 2の先進的APU設計
+4. **4画面8K出力**：USB4 ×2＋HDMI 2.1＋DP 2.0の豊富なビデオ出力
+5. **WiFi7標準装備**：次世代無線LANによる高速・低遅延通信
+
+## 気になる点
+
+1. **価格649,998円は高額**：必要性が明確なユーザーに限られる存在です
+2. **メモリ増設不可**：LPDDR5Xオンボード実装のため将来拡張不可
+3. **統合GPUのゲーム性能**：RTX 4070クラスのディスクリートGPUには及びません
+4. **冷却音**：140W TDPをミニPCボディで冷やすため高負荷時のファン音は目立ちます
+
+## 他製品との比較
+
+| 項目 | GMKtec EVO-X2 | GEEKOM A9 MAX AI | Mac Studio M4 Max |
+|------|---------------|------------------|-------------------|
+| プロセッサー | Ryzen AI Max+ 395 | Ryzen AI 9 HX 370 | M4 Max |
+| CPUコア | 16C/32T | 12C/24T | 16C |
+| メモリ | 128GB LPDDR5X | 128GB DDR5 | 48〜128GB 統合 |
+| 統合GPU | Radeon 8060S (40CU) | Radeon 890M (16CU) | 40コアGPU |
+| NPU | 50TOPS+ | 50TOPS | 38TOPS |
+| ローカルAI | ◎（70B級快適） | ○（70B級可能） | ◎（70B級快適） |
+| 価格帯 | 約65万円 | 約28万円 | 約60〜100万円 |
+
+[GEEKOM A9 MAX AIレビュー](https://smart-kurashi.jp/posts/2026-06-25_geekom-a9-max-ai-mini-pc-review)と比較すると、EVO-X2は統合GPU性能で圧倒的です。Radeon 8060Sの40 CUはRadeon 890Mの16 CUの2.5倍規模で、GPU推論速度に大きな差を生みます。
+
+Mac Studio M4 Maxとはメモリ帯域とGPUアーキテクチャの違いが推論速度に影響します。ROCm/Vulkan生態系はMetalほど成熟していませんが、Windowsネイティブ環境とOSSツールチェーンの親和性ではEVO-X2が有利な場面もあります。
+
+## どんな用途に向いているか
+
+### AI開発・研究
+
+最も明確な用途です。128GB統合メモリで70Bクラスのモデルを推論し、8060SでGPU加速する — AI開発の3要素が一台に揃います。
+
+### プライバシー重視の企業用途
+
+機密データをクラウドに送信できない金融・医療分野において、完全ローカルでのAI推論は必須要件です。EVO-X2はサーバーラック不要でその要件を満たします。
+
+[商品を楽天で見る](https://affiliate.rakuten.co.jp/link/pc/item?me_id=1425036&item_id=10000080&me_url=https://item.rakuten.co.jp/gmktecdirect/evo-x2/?variantId=evox2-128-2t&me_img_src=https://thumbnail.image.rakuten.co.jp/@0_mall/gmktecdirect/cabinet/10289896/evo-x2/imgrc0127790539.jpg)
+
+## よくある質問
+
+**Q: 70Bモデルは実際に動きますか？**
+A: 128GBメモリにより、4-bit量子化された70Bモデル（約40GB）は動作可能です。推論速度は毎秒5〜10トークン程度で、バッチ処理や文章生成に実用十分です。
+
+**Q: CUDAは使えますか？**
+A: Radeon 8060SはAMD GPUのためCUDAは直接使用できません。ROCmやVulkanバックエンドを利用します。llama.cpp、PyTorch ROCm版などが対応しています。
+
+**Q: メモリは後から増やせますか？**
+A: LPDDR5Xは基板直付けのため増設不可能です。128GB固定となります。
+
+[楽天市場で最新価格を確認](https://affiliate.rakuten.co.jp/link/pc/shop?me_id=1425036&item_id=10000080)
+
+## 関連記事
+
+- [GEEKOM A9 MAX AIレビュー：ローカルAI実行の新たな基準](https://smart-kurashi.jp/posts/2026-06-25_geekom-a9-max-ai-mini-pc-review)
+- [Acer Predator Helios Neo 16S AIレビュー：RTX 5070搭載ハイエンドゲーミングノート](https://smart-kurashi.jp/posts/2026-06-24_acer-predator-helios-neo-16s-ai-review)
+- [AIネイティブデバイスの時代：PC・ウェアラブル・エッジAI](https://smart-kurashi.jp/posts/2026-06-23_ai-native-device-era-pc-wearable-edge-ai)
+- [AIインフラ競争の最前線：OpenAI、Groq、Claudeの推論チップ戦略を読む](https://smart-kurashi.jp/posts/2026-06-24_ai-infrastructure-race-openai-groq-claude-tag)
+
+---
+
+649,998円という価格は、ミニPCとしては一見して高額に映ります。しかし視点を変えれば、70Bクラスの言語モデルをローカルで推論できる128GB統合メモリ環境が、たった一台の小さな箱で手に入るのです。同等のメモリ容量をNVIDIA GPUで確保しようとすれば、データセンタークラスのGPUが必要になり、そこには数百万円のコストとラックマウントの物理的インフラが伴います。Ryzen AI Max+ 395が切り開いた「大一括メモリ＋強力統合GPU」というパラダイムは、ローカルAIの未来像をかなり前倒しで実現しています。あなたのデスクの上に、次世代のAI体験を置いてみる気はありませんか。
