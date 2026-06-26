@@ -10,6 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
 import ReviewTemplate from '@/components/review/ReviewTemplate';
+import PRBanner from '@/components/PRBanner';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -185,6 +186,8 @@ export default async function PostPage({ params }: PageProps) {
                 </p>
               </header>
             ) : null}
+
+            {!isReviewPost ? <PRBanner /> : null}
 
             {!isReviewPost ? <hr style={{ border: 'none', borderTop: '1px solid #E7E5E4', margin: '0 0 24px 0' }} /> : null}
 

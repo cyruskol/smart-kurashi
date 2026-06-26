@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Post } from '@/lib/posts';
 import { type ProductMetadata } from '@/lib/products';
+import PRBanner from '@/components/PRBanner';
 
 export interface RetailerLink {
   label: string;
@@ -306,6 +307,7 @@ export default function ReviewTemplate({
 
   return (
     <div style={{ display: 'grid', gap: '22px', marginTop: '24px' }}>
+      <PRBanner />
       <section className="product-card" style={{ background: 'linear-gradient(180deg, #FFFDF8 0%, #fff 100%)' }}>
         <p className="sk-eyebrow">{resolvedProductCategory}</p>
         <h2 style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', lineHeight: 1.2, marginBottom: '12px' }}>
