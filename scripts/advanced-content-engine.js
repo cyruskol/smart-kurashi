@@ -232,26 +232,7 @@ function inferAffiliateTopic(productName) {
   return 'smart-home';
 }
 
-const WORLD_CUP_CAMPAIGN_END_DATE = '2026-07-06';
-const WORLD_CUP_STATIC_PAGE = '/fifa-world-cup-2026';
-
-function isWorldCupBroadcastRelated(product) {
-  const text = `${product.productName || ''} ${product.productSite || ''} ${product.memo || ''}`.toLowerCase();
-  return /テレビ|tv|broadcast|放送|配信|地上波|bs|cs|チューナー|アンテナ|録画|hdmi|projector|プロジェクタ|プロジェクター|soundbar|サウンドバー|fire tv|chromecast|apple tv|roku|set-top|stb|レコーダ|ホームシアター|モニター|display|ディスプレイ/i.test(text);
-}
-
 function buildAffiliatePrompt(product) {
-  const worldCupAddon = isWorldCupBroadcastRelated(product)
-    ? `
-
-【20日間の期間限定ルール】
-- ${WORLD_CUP_CAMPAIGN_END_DATE} までの間は、テレビ・放送・配信・視聴まわりの商品では、本文のどこかで FIFA World Cup を自然に触れてください。
-- 「無料放送」「無料中継」「無料視聴」系の語を、自然で事実に沿う範囲で盛り込んでください。
-- 詳細な放送局名や対戦カードは書きすぎず、読者は World Cup 静的ページへ案内してください。
-- 本文内に ${WORLD_CUP_STATIC_PAGE} への内部リンクを 1 回以上入れてください。
-- 可能なら関連する他のアフィリエイト記事へも自然に内部リンクしてください。`
-    : '';
-
   return `以下はアフィリエイト登録済み商品の1件です。これをもとに、1本の日本語MDX記事にしてください。
 
 商品情報:
@@ -269,7 +250,7 @@ function buildAffiliatePrompt(product) {
 - 室内サイズや設置環境の目安を自然に触れる
 - 価格や在庫は断定しない
 - 画像URLや生の販売URLは本文に出さない
-- 1つの主題に絞って、読みやすく自然な日本語でまとめる${worldCupAddon}
+- 1つの主題に絞って、読みやすく自然な日本語でまとめる
 
 出力形式:
 - YAMLフロントマター（title, date, categories, tags）
@@ -619,15 +600,14 @@ async function lmGenerate(systemMsg, userMsg) {
       { role: 'user', content: userMsg },
     ],
     temperature: 0.7,
-    max_tokens: 4096,
-    reasoning: 'off',   // prevents thinking tokens leaking into content
+    max_tokens: 8192,
   };
 
   const res = await fetch(`${LM_STUDIO_BASE}/v1/chat/completions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(180000), // 3 min for generation
+    signal: AbortSignal.timeout(300000), // 5 min for generation
   });
 
   if (!res.ok) {
@@ -979,11 +959,16 @@ function validateJapaneseOnly(content) {
     }
   }
 
-  // Check tags - must not contain English words
+  // Check tags - must not contain English words (allow common tech names in English)
   const tagMatch = content.match(/tags:\s*\[([^\]]+)\]/);
   if (tagMatch) {
     const tags = tagMatch[1];
-    if (/[a-zA-Z]{2,}/.test(tags)) {
+    // Allow common tech terms in English within tags
+    const allowedTechTerms = ['Apple', 'Intelligence', 'AI', 'GPU', 'CPU', 'SSD', 'HDD', 'USB', 'HDMI', 'WiFi', 'Bluetooth', 'Wi-Fi', 'iOS', 'Android', 'iOS', 'Mac', 'iPhone', 'iPad', 'MacBook', 'AirPods', 'HomePod', 'AppleTV', 'AppleWatch', 'AppStore', 'iTunes', 'Siri', 'FaceID', 'TouchID', 'AirDrop', 'AirPlay', 'CarPlay', 'HomeKit', 'HealthKit', 'ARKit', 'CoreML', 'Metal', 'Swift', 'ObjectiveC', 'Xcode', 'SwiftUI', 'Combine', 'RealityKit', 'ARKit', 'VisionOS', 'iOS', 'iPadOS', 'macOS', 'watchOS', 'tvOS', 'iOS', 'iPadOS'];
+    // Check if tags contain only Japanese or allowed English terms
+    const englishWords = (tags.match(/[a-zA-Z]+/g) || []);
+    const nonTechEnglish = englishWords.filter(w => !allowedTechTerms.includes(w));
+    if (nonTechEnglish.length > 0) {
       console.warn('[VALIDATE] REJECTED: tags contain English:', tags.slice(0, 80));
       return false;
     }
@@ -994,8 +979,13 @@ function validateJapaneseOnly(content) {
   if (titleMatch) {
     const title = titleMatch[1];
     // Allow only if title is almost entirely Japanese chars
-    const enChars = (title.match(/[a-zA-Z]/g) || []).length;
-    if (enChars > 10) {
+    // Count English chars that are NOT common tech terms
+    const englishWords = (title.match(/[a-zA-Z]+/g) || []);
+    const nonTechEnglish = englishWords.filter(w => 
+      !['Apple', 'Intelligence', 'AI', 'GPU', 'CPU', 'SSD', 'HDD', 'USB', 'HDMI', 'WiFi', 'Bluetooth', 'Wi-Fi', 'iOS', 'Android', 'iOS', 'Mac', 'iPhone', 'iPad', 'iPhone', 'MacBook', 'AirPods', 'HomePod', 'AppleTV', 'AppleWatch', 'AppStore', 'iTunes', 'Siri', 'FaceID', 'TouchID', 'AirDrop', 'AirPlay', 'CarPlay', 'HomeKit', 'HealthKit', 'ARKit', 'CoreML', 'Metal', 'Metal', 'Swift', 'ObjectiveC', 'Xcode', 'SwiftUI', 'Combine', 'RealityKit', 'ARKit', 'VisionOS', 'iOS', 'iPadOS', 'macOS', 'watchOS', 'tvOS', 'iOS', 'iPadOS'].includes(w)
+    );
+    const nonTechEnglishChars = nonTechEnglish.join('').length;
+    if (nonTechEnglishChars > 10) {
       console.warn('[VALIDATE] REJECTED: title contains too much English:', title.slice(0, 60));
       return false;
     }
@@ -1232,7 +1222,11 @@ const args = process.argv.slice(2);
 if (args.includes('--cron')) {
   startCron();
 } else if (args.includes('--once')) {
-  runPipeline().catch(() => process.exit(1));
+  // Determine topic from state (same logic as cron)
+  const state = readState();
+  const lastTopic = state.last_topic || null;
+  const thisTopic = (lastTopic === 'ai-tech') ? 'smart-home' : 'ai-tech';
+  runPipeline(thisTopic).catch(() => process.exit(1));
 } else if (args.includes('--dry-run-state')) {
   // STOIC EXIT CONDITION test: dry-run that generates .engine_state.json
   const now = new Date().toISOString();

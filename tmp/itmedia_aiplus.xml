@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+<channel>
+<title>ITmedia AI＋ 最新記事一覧</title>
+<link>https://www.itmedia.co.jp/aiplus/</link>
+<description>ITmedia AI＋ の最新記事一覧です。</description>
+<language>ja</language>
+<copyright>Copyright (c) 2026 ITmedia, Inc. All Rights Reserved.</copyright>
+<pubDate>Sun, 05 Jul 2026 14:55:00 +0900</pubDate>
+<item>
+<title>マイクロン、AI需要で広島工場増強へ起工式　1.5兆円投資</title>
+<link>https://eetimes.itmedia.co.jp/ee/articles/2607/06/news047.html</link>
+<description>マイクロンメモリ ジャパンは2026年7月、広島工場の生産能力増強に向けた新クリーンルーム建設の起工式を開催した。AI技術の進展に伴うメモリ需要の増加に対応するもので、2028年後半に製造装置の搬入を開始する予定だ。広島工場には今後、この新クリーンルーム建設を含めて1兆5000億円を投じる。</description>
+<pubDate>Sun, 05 Jul 2026 11:00:00 +0900</pubDate>
+</item>
+<item>
+<title>米トランプ大統領、AI規制は「できるだけ介入少なく」　中国に対して開発競争「大幅リード」を強調</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/04/2000000159/</link>
+<description>トランプ米大統領がCNBCのインタビューで、AI規制について「ガードレールは必要だが、介入はできるだけ少なくしたい」と述べ、規制最小限の路線を改めて示した。</description>
+<pubDate>Sat, 04 Jul 2026 08:00:00 +0900</pubDate>
+</item>
+<item>
+<title>フィジカルAIに挑む日の丸連合、「Noetra」とは何か</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/04/news016.html</link>
+<description>2026年6月29日～7月3日に公開された記事の中から、MONOist編集部が厳選した今週の注目ニュースをお届けします。</description>
+<pubDate>Sat, 04 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>3万円で「Yahoo!ニュース」にPR掲載　プレスリリースをAIで「ニュース風記事」に</title>
+<link>https://www.itmedia.co.jp/news/articles/2607/03/news116.html</link>
+<description>Yahoo!ニュース内に、企業の発表情報をニュース記事と同じフォーマットで掲載する。</description>
+<pubDate>Fri, 03 Jul 2026 15:44:00 +0900</pubDate>
+</item>
+<item>
+<title>「Claude Fable 5」をサブスクの標準機能に――AnthropicのエンジニアがXに投稿　7月8日以降の「早期復活目指す」</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000158/</link>
+<description>「Fable 5をサブスクリプションの標準機能として復活させることを目指している」――米AnthropicのITエンジニアであるタリク・シヒパー氏は、自身のXアカウントにこのように投稿した。</description>
+<pubDate>Fri, 03 Jul 2026 15:34:43 +0900</pubDate>
+</item>
+<item>
+<title>「Claude Fable 5」の性能が落ちた？　提供停止前後で比べた結果　米AI企業2社がそれぞれ報告</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000157/</link>
+<description>「Claude Fable 5」の性能は提供停止前後で変化したのか。米AI企業2社がそれぞれ調査結果を報告している。</description>
+<pubDate>Fri, 03 Jul 2026 12:59:30 +0900</pubDate>
+</item>
+<item>
+<title>ゲームエンジン「Godot」AI生成コードを原則禁止へ　レビュアー疲弊「機械と話したくない」</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000156/</link>
+<description>新規コントリビューターからAI生成のプルリクが急増する一方、審査するレビュアーの数は変わらず、負担が限界に達したという。人間同士のやりとりで、AI生成の文章を使うことも禁止する。</description>
+<pubDate>Fri, 03 Jul 2026 12:22:21 +0900</pubDate>
+</item>
+<item>
+<title>Meta、「Claude Codeと組織改編で爆速開発」のはずが「想定より加速せず」　ザッカーバーグ氏、社内集会で発言</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000155/</link>
+<description>MetaはAI向けの巨額投資や組織改編でAIエージェント開発の加速を図ったが、ザッカーバーグCEOによれば、それらの取り組みはまだ実を結んでいないようだ。</description>
+<pubDate>Fri, 03 Jul 2026 11:01:17 +0900</pubDate>
+</item>
+<item>
+<title>「顧客管理システム作って」日本語で指示するだけでシステムが完成する最新AIとは？</title>
+<link>https://kn.itmedia.co.jp/kn/articles/2607/03/news034.html</link>
+<description>業務システムを開発したくても、費用や人材の確保がネックとなり、なかなか着手できない会社は少なくない。こうした課題に対し、専門知識がなくても開発を進められる手段が広がりつつある。</description>
+<pubDate>Fri, 03 Jul 2026 10:00:00 +0900</pubDate>
+</item>
+<item>
+<title>AWSの「静かな」戦略シフト　OpenAIとAnthropic“1日違い登壇”の意味を読み解く</title>
+<link>https://www.itmedia.co.jp/enterprise/articles/2607/06/news016.html</link>
+<description>生成AIで競合するOpenAIとAnthropicを1日違いで基調講演に招く――。「AWS Summit Japan 2026」で浮かび上がったのは、モデルの賢さではなく「別のあるもの」を握ることで、基盤の価値を保ち続けようとするAWSの戦略シフトだ。</description>
+<pubDate>Fri, 03 Jul 2026 09:00:00 +0900</pubDate>
+</item>
+<item>
+<title>AIで実機との形状差を学習するプレス成形シミュレーションソフトウェア</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/03/news006.html</link>
+<description>JSOLは、プレス成形シミュレーションソフトウェア「JSTAMP」にAI機能を搭載した。実機トライとシミュレーションの形状差を学習して補正し、高強度鋼板のスプリングバック予測精度を向上させる。</description>
+<pubDate>Fri, 03 Jul 2026 09:00:00 +0900</pubDate>
+</item>
+<item>
+<title>「Mythosがないと守れない」は本当か??AIセキュリティの勝負を分ける「ハーネス」とは</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000154/</link>
+<description>「Mythos級のAIにアクセスできない企業は、もう守れない」??。Mythosのアクセスが一部の組織に限られていた2026年春、そんな脅威論が広がった。だが、AIによる初期侵入の自動化を世界で初めて実現したと公表する当事者は、そうは見ていない。勝負を分けるのは、アクセスの有無ではない。</description>
+<pubDate>Fri, 03 Jul 2026 08:00:00 +0900</pubDate>
+</item>
+<item>
+<title>え、21日で37テラも？　高性能SSDを食いつぶす「あのAIツール」にご用心：886th Lap</title>
+<link>https://kn.itmedia.co.jp/kn/articles/2607/03/news041.html</link>
+<description>AIツールを使っていただけなのに、SSDの寿命が想像以上の速さで縮んでいた。そんな問題が明らかになった。原因は、ツールの実装上の不具合だ。もし、そのAIツールを使っているなら、一度確認しておきたい。</description>
+<pubDate>Fri, 03 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>フィジカルAIに“二刀流”で対応するアドバンテック、日本に第3の製造拠点を構築</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/03/news065.html</link>
+<description>産業用PCで世界シェアトップのアドバンテックが、エッジAI市場の拡大に併せて組み込み機器部門の事業への注力を鮮明にしている。アドバンテック台湾本社のTony Chen氏と、アドバンテック日本法人の李威震氏に、フィジカルAIをはじめエッジAIを中核とする事業戦略について聞いた。</description>
+<pubDate>Fri, 03 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>ソフトウェアエンジニアの仕事は「ループを書くこと」になる　内側ループと外側ループ（ハーネス）入門</title>
+<link>https://atmarkit.itmedia.co.jp/ait/articles/2607/03/news016.html</link>
+<description>AIコーディングにおける「ループ」には、エージェントが回す内側ループと、ハーネスが回す外側ループの2種類がある。両者の違いと外側ループがもたらす課題を、アルミン・ロナッハー氏の記事に沿って初心者向けに解説し、その「記憶」の扱いについての筆者の考えも添える。</description>
+<pubDate>Fri, 03 Jul 2026 05:00:00 +0900</pubDate>
+</item>
+<item>
+<title>人型ロボットが工場で稼働する様子を6日間生配信、作業成功率99.99％をうたう　中国メーカー</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/02/2000000153/</link>
+<description>中国の人型ロボット開発企業AGIBOTは、実際のタブレット量産ラインで複数の人型ロボットを6日間連続で動かす様子をライブ配信した。延べ64時間で1万7625個のタブレット生産に貢献し、作業成功率は99.99％だったという。</description>
+<pubDate>Thu, 02 Jul 2026 16:56:29 +0900</pubDate>
+</item>
+<item>
+<title>復活した「Fable 5」　米政府からのオーダーに対して、Anthropicはどう対策したのか</title>
+<link>https://www.itmedia.co.jp/news/articles/2607/02/news095.html</link>
+<description>米AnthropicのAIモデル「Claude Fable 5」が世界的にサービスを再開した。Anthropicは復活に向けてどういった経緯と対策を行ったのか、モデル再開にあわせて詳細を公開した。</description>
+<pubDate>Thu, 02 Jul 2026 16:40:00 +0900</pubDate>
+</item>
+<item>
+<title>国内大手ロボットメーカー3社が協力、「フィジカルAI」向けデータセット構築へ</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/02/2000000152/</link>
+<description>川崎重工業は、ロボットメーカー大手のファナックや安川電機などと協力し、「フィジカルAI」向けのデータセットを構築すると発表した。「GENIAC」の公募に採択された。</description>
+<pubDate>Thu, 02 Jul 2026 14:15:42 +0900</pubDate>
+</item>
+<item>
+<title>「賢さよりツール連携力が重要」　Microsoftが実験的な小型AIエージェント基盤を公開</title>
+<link>https://atmarkit.itmedia.co.jp/ait/articles/2607/02/news050.html</link>
+<description>MicrosoftのAI研究チームであるMicrosoft Research AI Frontiersは、小型モデル向けに最適化したエージェント基盤「MagenticLite」を公開した。「エージェント能力は知識量ではなくツール統合と実行ハーネスで決まる」という仮説に基づき構成されており、小型モデルでも実用的なエージェント性能を引き出すという。</description>
+<pubDate>Thu, 02 Jul 2026 13:00:00 +0900</pubDate>
+</item>
+<item>
+<title>光接続の標準規格「OCI」対応シリコン、GFが27年に投入</title>
+<link>https://eetimes.itmedia.co.jp/ee/articles/2607/02/news065.html</link>
+<description>GlobalFoundries（GF）が、AIインフラ向けの光インターコネクトのオープン規格である「Optical Compute Interconnect Multi-Source Agreement（OCI MSA）」をサポートするシリコンを投入する。早ければ2027年になる予定だ。</description>
+<pubDate>Thu, 02 Jul 2026 11:00:00 +0900</pubDate>
+</item>
+</channel>
+</rss>
