@@ -1,0 +1,103 @@
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hacker News: Front Page</title><link>https://news.ycombinator.com/</link><description>Hacker News RSS</description><docs>https://hnrss.org/</docs><generator>hnrss v2.1.1</generator><lastBuildDate>Mon, 06 Jul 2026 13:44:11 +0000</lastBuildDate><atom:link href="https://hnrss.org/frontpage" rel="self" type="application/rss+xml"></atom:link><item><title><![CDATA[Aluminum Foil]]></title><description><![CDATA[
+<p>Article URL: <a href="https://dernocua.github.io/notes/aluminum-foil.html">https://dernocua.github.io/notes/aluminum-foil.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804297">https://news.ycombinator.com/item?id=48804297</a></p>
+<p>Points: 3</p>
+<p># Comments: 0</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:28:57 +0000</pubDate><link>https://dernocua.github.io/notes/aluminum-foil.html</link><dc:creator>firephox</dc:creator><comments>https://news.ycombinator.com/item?id=48804297</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804297</guid></item><item><title><![CDATA[Regression to the Mean: on LLMs and the quiet death of the new]]></title><description><![CDATA[
+<p>Article URL: <a href="https://rruxandra.github.io/regression-to-the-mean.html">https://rruxandra.github.io/regression-to-the-mean.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804219">https://news.ycombinator.com/item?id=48804219</a></p>
+<p>Points: 16</p>
+<p># Comments: 9</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:20:59 +0000</pubDate><link>https://rruxandra.github.io/regression-to-the-mean.html</link><dc:creator>rruxandra_l</dc:creator><comments>https://news.ycombinator.com/item?id=48804219</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804219</guid></item><item><title><![CDATA[Show HN: Scan your AI agents for dangerous capabilities]]></title><description><![CDATA[
+<p>Article URL: <a href="https://github.com/makerchecker/MakerChecker">https://github.com/makerchecker/MakerChecker</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804182">https://news.ycombinator.com/item?id=48804182</a></p>
+<p>Points: 7</p>
+<p># Comments: 1</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:17:27 +0000</pubDate><link>https://github.com/makerchecker/MakerChecker</link><dc:creator>smashini</dc:creator><comments>https://news.ycombinator.com/item?id=48804182</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804182</guid></item><item><title><![CDATA[Bryan Johnson: I have an autoimmune disease. My stomach is eating itself]]></title><description><![CDATA[
+<p>Article URL: <a href="https://twitter.com/bryan_johnson/status/2072069730517860385">https://twitter.com/bryan_johnson/status/2072069730517860385</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804049">https://news.ycombinator.com/item?id=48804049</a></p>
+<p>Points: 19</p>
+<p># Comments: 5</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:06:49 +0000</pubDate><link>https://twitter.com/bryan_johnson/status/2072069730517860385</link><dc:creator>danso</dc:creator><comments>https://news.ycombinator.com/item?id=48804049</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804049</guid></item><item><title><![CDATA[Why low-latency Java still requires discipline?]]></title><description><![CDATA[
+<p>Article URL: <a href="https://chronicle.software/insights/blogs/why-low-latency-java-still-requires-discipline">https://chronicle.software/insights/blogs/why-low-latency-java-still-requires-discipline</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804017">https://news.ycombinator.com/item?id=48804017</a></p>
+<p>Points: 7</p>
+<p># Comments: 0</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:03:35 +0000</pubDate><link>https://chronicle.software/insights/blogs/why-low-latency-java-still-requires-discipline</link><dc:creator>theanonymousone</dc:creator><comments>https://news.ycombinator.com/item?id=48804017</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804017</guid></item><item><title><![CDATA[Workers Cache]]></title><description><![CDATA[
+<p>Article URL: <a href="https://blog.cloudflare.com/workers-cache/">https://blog.cloudflare.com/workers-cache/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804014">https://news.ycombinator.com/item?id=48804014</a></p>
+<p>Points: 50</p>
+<p># Comments: 5</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:02:51 +0000</pubDate><link>https://blog.cloudflare.com/workers-cache/</link><dc:creator>ilreb</dc:creator><comments>https://news.ycombinator.com/item?id=48804014</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804014</guid></item><item><title><![CDATA[Show HN: Pet Reminder – A macOS reminder app with a desktop pet]]></title><description><![CDATA[
+<p>Article URL: <a href="https://reminder.w3cub.com/">https://reminder.w3cub.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804000">https://news.ycombinator.com/item?id=48804000</a></p>
+<p>Points: 6</p>
+<p># Comments: 1</p>
+]]></description><pubDate>Mon, 06 Jul 2026 13:01:29 +0000</pubDate><link>https://reminder.w3cub.com/</link><dc:creator>terryXyz</dc:creator><comments>https://news.ycombinator.com/item?id=48804000</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48804000</guid></item><item><title><![CDATA[Fable 5 On Vending-Bench: Misbehaving, With Plausible Deniability]]></title><description><![CDATA[
+<p>Article URL: <a href="https://andonlabs.com/blog/fable5-vending-bench">https://andonlabs.com/blog/fable5-vending-bench</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803762">https://news.ycombinator.com/item?id=48803762</a></p>
+<p>Points: 11</p>
+<p># Comments: 0</p>
+]]></description><pubDate>Mon, 06 Jul 2026 12:38:13 +0000</pubDate><link>https://andonlabs.com/blog/fable5-vending-bench</link><dc:creator>optimalsolver</dc:creator><comments>https://news.ycombinator.com/item?id=48803762</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803762</guid></item><item><title><![CDATA[Anthropic's Method to Losing Goodwill in a Few Easy Steps]]></title><description><![CDATA[
+<p>Article URL: <a href="https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/">https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803751">https://news.ycombinator.com/item?id=48803751</a></p>
+<p>Points: 29</p>
+<p># Comments: 3</p>
+]]></description><pubDate>Mon, 06 Jul 2026 12:37:06 +0000</pubDate><link>https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</link><dc:creator>raheelrjunaid</dc:creator><comments>https://news.ycombinator.com/item?id=48803751</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803751</guid></item><item><title><![CDATA[The AI Marketing Backlash: Why 'AI-First' Brands Are Starting to Fall Flat]]></title><description><![CDATA[
+<p>Article URL: <a href="https://www.breef.com/breefingroom/articles/the-ai-marketing-backlash-why-ai-first-brands-are-starting-to-fall-flat">https://www.breef.com/breefingroom/articles/the-ai-marketing-backlash-why-ai-first-brands-are-starting-to-fall-flat</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803711">https://news.ycombinator.com/item?id=48803711</a></p>
+<p>Points: 27</p>
+<p># Comments: 13</p>
+]]></description><pubDate>Mon, 06 Jul 2026 12:33:09 +0000</pubDate><link>https://www.breef.com/breefingroom/articles/the-ai-marketing-backlash-why-ai-first-brands-are-starting-to-fall-flat</link><dc:creator>hasudon7171</dc:creator><comments>https://news.ycombinator.com/item?id=48803711</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803711</guid></item><item><title><![CDATA[Road to Elm 1.0]]></title><description><![CDATA[
+<p>Article URL: <a href="https://elm-lang.org/news/faster-builds">https://elm-lang.org/news/faster-builds</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803364">https://news.ycombinator.com/item?id=48803364</a></p>
+<p>Points: 105</p>
+<p># Comments: 48</p>
+]]></description><pubDate>Mon, 06 Jul 2026 11:47:37 +0000</pubDate><link>https://elm-lang.org/news/faster-builds</link><dc:creator>wolfadex</dc:creator><comments>https://news.ycombinator.com/item?id=48803364</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803364</guid></item><item><title><![CDATA[C programmers commit fresh crimes against readability]]></title><description><![CDATA[
+<p>Article URL: <a href="https://www.theregister.com/offbeat/2026/07/05/c-programmers-commit-fresh-crimes-against-readability/5265981">https://www.theregister.com/offbeat/2026/07/05/c-programmers-commit-fresh-crimes-against-readability/5265981</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803347">https://news.ycombinator.com/item?id=48803347</a></p>
+<p>Points: 64</p>
+<p># Comments: 4</p>
+]]></description><pubDate>Mon, 06 Jul 2026 11:44:39 +0000</pubDate><link>https://www.theregister.com/offbeat/2026/07/05/c-programmers-commit-fresh-crimes-against-readability/5265981</link><dc:creator>Bender</dc:creator><comments>https://news.ycombinator.com/item?id=48803347</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803347</guid></item><item><title><![CDATA[Study: ultra-black coating could reduce satellite light pollution]]></title><description><![CDATA[
+<p>Article URL: <a href="https://www.surrey.ac.uk/news/astrophysicists-show-how-worlds-darkest-coating-could-protect-night-sky-satellite-light-pollution">https://www.surrey.ac.uk/news/astrophysicists-show-how-worlds-darkest-coating-could-protect-night-sky-satellite-light-pollution</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803244">https://news.ycombinator.com/item?id=48803244</a></p>
+<p>Points: 19</p>
+<p># Comments: 27</p>
+]]></description><pubDate>Mon, 06 Jul 2026 11:29:30 +0000</pubDate><link>https://www.surrey.ac.uk/news/astrophysicists-show-how-worlds-darkest-coating-could-protect-night-sky-satellite-light-pollution</link><dc:creator>giuliomagnifico</dc:creator><comments>https://news.ycombinator.com/item?id=48803244</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48803244</guid></item><item><title><![CDATA[How the U.S. Engineered Its Sovereignty]]></title><description><![CDATA[
+<p>Article URL: <a href="https://spectrum.ieee.org/us-engineered-sovereignty">https://spectrum.ieee.org/us-engineered-sovereignty</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802971">https://news.ycombinator.com/item?id=48802971</a></p>
+<p>Points: 44</p>
+<p># Comments: 36</p>
+]]></description><pubDate>Mon, 06 Jul 2026 10:49:29 +0000</pubDate><link>https://spectrum.ieee.org/us-engineered-sovereignty</link><dc:creator>rbanffy</dc:creator><comments>https://news.ycombinator.com/item?id=48802971</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48802971</guid></item><item><title><![CDATA[X402, a static blog monetization excercise]]></title><description><![CDATA[
+<p>Article URL: <a href="https://shtein.me/posts/x402-poc/">https://shtein.me/posts/x402-poc/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802885">https://news.ycombinator.com/item?id=48802885</a></p>
+<p>Points: 13</p>
+<p># Comments: 9</p>
+]]></description><pubDate>Mon, 06 Jul 2026 10:37:58 +0000</pubDate><link>https://shtein.me/posts/x402-poc/</link><dc:creator>morty28</dc:creator><comments>https://news.ycombinator.com/item?id=48802885</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48802885</guid></item><item><title><![CDATA[Show HN: Paint the Earth on a live, interactive globe (collaborative art.)]]></title><description><![CDATA[
+<p>Earth.tattoo divides the earth into 510 million 16x16 pixel "tiles" that you can own and paint as you like. You can claim one free tile per hour.</p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802818">https://news.ycombinator.com/item?id=48802818</a></p>
+<p>Points: 11</p>
+<p># Comments: 8</p>
+]]></description><pubDate>Mon, 06 Jul 2026 10:28:32 +0000</pubDate><link>https://earth.tattoo</link><dc:creator>earth-tattoo</dc:creator><comments>https://news.ycombinator.com/item?id=48802818</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48802818</guid></item><item><title><![CDATA[Real-time map of Great Britain's rail network]]></title><description><![CDATA[
+<p>Article URL: <a href="https://www.map.signalbox.io">https://www.map.signalbox.io</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802535">https://news.ycombinator.com/item?id=48802535</a></p>
+<p>Points: 235</p>
+<p># Comments: 96</p>
+]]></description><pubDate>Mon, 06 Jul 2026 09:38:36 +0000</pubDate><link>https://www.map.signalbox.io</link><dc:creator>scrlk</dc:creator><comments>https://news.ycombinator.com/item?id=48802535</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48802535</guid></item><item><title><![CDATA[The Hitchhiker's Guide to Agentic AI]]></title><description><![CDATA[
+<p>Article URL: <a href="https://arxiv.org/abs/2606.24937">https://arxiv.org/abs/2606.24937</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802156">https://news.ycombinator.com/item?id=48802156</a></p>
+<p>Points: 24</p>
+<p># Comments: 3</p>
+]]></description><pubDate>Mon, 06 Jul 2026 08:40:29 +0000</pubDate><link>https://arxiv.org/abs/2606.24937</link><dc:creator>jonbaer</dc:creator><comments>https://news.ycombinator.com/item?id=48802156</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48802156</guid></item><item><title><![CDATA[Building relationships with customers through support didn't turn out as hoped]]></title><description><![CDATA[
+<p>Article URL: <a href="https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support">https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48799929">https://news.ycombinator.com/item?id=48799929</a></p>
+<p>Points: 225</p>
+<p># Comments: 140</p>
+]]></description><pubDate>Mon, 06 Jul 2026 02:06:49 +0000</pubDate><link>https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support</link><dc:creator>dabluck</dc:creator><comments>https://news.ycombinator.com/item?id=48799929</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48799929</guid></item><item><title><![CDATA[GPT-5.6 Sol Ultra will be in Codex]]></title><description><![CDATA[
+<p><a href="https://x.com/haider1/status/2073695124220006575" rel="nofollow">https://x.com/haider1/status/2073695124220006575</a>, <a href="https://xcancel.com/haider1/status/2073695124220006575" rel="nofollow">https://xcancel.com/haider1/status/2073695124220006575</a></p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48799614">https://news.ycombinator.com/item?id=48799614</a></p>
+<p>Points: 351</p>
+<p># Comments: 299</p>
+]]></description><pubDate>Mon, 06 Jul 2026 01:04:03 +0000</pubDate><link>https://twitter.com/thsottiaux/status/2073933490513752151</link><dc:creator>mfiguiere</dc:creator><comments>https://news.ycombinator.com/item?id=48799614</comments><guid isPermaLink="false">https://news.ycombinator.com/item?id=48799614</guid></item></channel></rss>

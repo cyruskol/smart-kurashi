@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+<channel>
+<title>ITmedia AI＋ 最新記事一覧</title>
+<link>https://www.itmedia.co.jp/aiplus/</link>
+<description>ITmedia AI＋ の最新記事一覧です。</description>
+<language>ja</language>
+<copyright>Copyright (c) 2026 ITmedia, Inc. All Rights Reserved.</copyright>
+<pubDate>Mon, 06 Jul 2026 22:25:00 +0900</pubDate>
+<item>
+<title>パランティアCEOがOpenAIやAnthropicを批判　「AIモデルを強化するためのデータをなぜ顧客が渡すのか」</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/06/2000000161/</link>
+<description>Palantirのアレックス・カープCEOがCNBCのインタビューで、OpenAIのサム・アルトマンCEOやAnthropicのダリオ・アモデイCEOの名前を挙げつつ、フロンティアモデル提供企業が顧客のデータを使って競争優位性を確保する業界の現状を批判した。対抗して打ち出したのがNVIDIAとの提携だ。</description>
+<pubDate>Mon, 06 Jul 2026 18:50:54 +0900</pubDate>
+</item>
+<item>
+<title>「AIはもう十分賢い」　活用のボトルネックは「モデル性能」から「評価」へ　米データ基盤開発企業のAI研究者に聞く</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/06/2000000160/</link>
+<description>AIの進化は学習データや計算資源の不足で止まるのか。米DatabricksのチーフAIサイエンティスト、ジョナサン・フランクル氏は「モデルはもう十分賢い」と語り、真のボトルネックは「AIを評価すること」にあると指摘する。</description>
+<pubDate>Mon, 06 Jul 2026 16:40:18 +0900</pubDate>
+</item>
+<item>
+<title>目が不自由な人の歩行をAIが音声で支援、歩行補助デバイス開発へ</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/06/news086.html</link>
+<description>サフラテクノは、AI画像認識技術で障害物を検知する歩行支援デバイスの試作機を開発している。独自の電力最適化技術により、6時間以上の連続駆動と軽量設計の両立を目指す。</description>
+<pubDate>Mon, 06 Jul 2026 15:00:00 +0900</pubDate>
+</item>
+<item>
+<title>AI推進にブレーキ？　AWS「コスト抑制の動きある」　“トークン消費問題”への有効策は</title>
+<link>https://www.itmedia.co.jp/business/articles/2607/06/news072.html</link>
+<description>AI利用を巡って、処理コストを抑えようとする動きが出てきている。AWSも把握しているという“トークンコスト問題”について、対策を聞いた。</description>
+<pubDate>Mon, 06 Jul 2026 11:50:00 +0900</pubDate>
+</item>
+<item>
+<title>「AIは依然として古い性能法則に従っている」 Tenstorrent Jim Keller氏</title>
+<link>https://eetimes.itmedia.co.jp/ee/articles/2607/06/news069.html</link>
+<description>Tenstorrentは2026年4月に、同社のチップを搭載したサーバの性能を披露するイベントを開催した。Tenstorrent CEOのJim Keller氏は米国EE Timesのインタビューに答え、同社のサーバ「Galaxy」の性能や、競争環境について語った。</description>
+<pubDate>Mon, 06 Jul 2026 11:30:00 +0900</pubDate>
+</item>
+<item>
+<title>FDEとリコーの新コンサルサービス、どこが違う？　AXのパートナー選びを考察</title>
+<link>https://www.itmedia.co.jp/enterprise/articles/2607/06/news054.html</link>
+<description>企業はAXに向けてどのようなベンダーをパートナーに選べばよいのか。リコーの新たなAIコンサル会社と最近よく聞く「FDE」との共通点と相違点を明らかにしつつ、考察する。</description>
+<pubDate>Mon, 06 Jul 2026 10:45:00 +0900</pubDate>
+</item>
+<item>
+<title>AIサーバで稼ぐシャープ　2030年度の新規事業売上高の8割強目指す　鴻海と連携</title>
+<link>https://www.itmedia.co.jp/news/articles/2607/06/news060.html</link>
+<description>シャープの河村哲治社長は7月3日、大阪市内で報道陣の取材に応じ、目標とする2030年度の新規事業の年間売上高2000億～3000億円のうち、8割強はAI向けサーバ関連を想定していると明らかにした。親会社の鴻海（ホンハイ）精密工業の調達・製造力を活用し、シャープが国内販売や保守を担う方向で調整を進める。</description>
+<pubDate>Mon, 06 Jul 2026 10:35:00 +0900</pubDate>
+</item>
+<item>
+<title>キオクシア、新型メモリのサンプル出荷開始　岩手の工場の最先端設備活用</title>
+<link>https://www.itmedia.co.jp/news/articles/2607/06/news059.html</link>
+<description>半導体大手キオクシアホールディングスが、大容量で低消費電力の新型メモリのサンプル品の出荷を開始したと発表した。北上工場（岩手県北上市）第2製造棟の最先端設備を活用して生産する。</description>
+<pubDate>Mon, 06 Jul 2026 10:22:00 +0900</pubDate>
+</item>
+<item>
+<title>アシックス、AIでシューズ設計を高度化</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/06/news012.html</link>
+<description>アシックスは、RebuilderAIと共同で、AIを活用した次世代シューズ設計／製造シミュレーション技術を公開した。デザイナーが描いた2Dスケッチやコンセプトを基に、AIが3Dデータを生成し、CAE／FEA解析へとつなげることで、デザインから検証までの期間短縮を目指す。</description>
+<pubDate>Mon, 06 Jul 2026 09:00:00 +0900</pubDate>
+</item>
+<item>
+<title>カクヤス「30年物の泥沼システム」をAIでどう解読？　現場が思いついた“ある考え”</title>
+<link>https://kn.itmedia.co.jp/kn/articles/2607/06/news040.html</link>
+<description>動いてはいるものの、誰もその中身を把握できない。多くの企業が直面する基幹システムの“老い”に、カクヤスは生成AIを使った。鍵となったのは、AIによる解析と現場の業務知見を組み合わせ、「AIを制御する技術」を確立したことだ。</description>
+<pubDate>Mon, 06 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>富裕層にいかに金を使わせる？　ダイナースとニューオータニ「18万円超カード」の真意</title>
+<link>https://www.itmedia.co.jp/business/articles/2607/06/news019.html</link>
+<description>内閣府のデータが示す「85歳でも資産が減らない」というデフレマインドに縛られた日本型富裕層。インフレ時代を迎え「資産を体験に変える」ためのコンパスとして、ダイナースクラブとホテルニューオータニが年会費18万円超のプレミアムカードを解禁した。「全員平等」を守ってきた老舗ホテルの方針転換の裏には、半世紀続く厳格な審査体制と「平均値しか出せないAI」には不可能な人間のおもてなし戦略があった。</description>
+<pubDate>Mon, 06 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>マイクロン、AI需要で広島工場増強へ起工式　1.5兆円投資</title>
+<link>https://eetimes.itmedia.co.jp/ee/articles/2607/06/news047.html</link>
+<description>マイクロンメモリ ジャパンは2026年7月、広島工場の生産能力増強に向けた新クリーンルーム建設の起工式を開催した。AI技術の進展に伴うメモリ需要の増加に対応するもので、2028年後半に製造装置の搬入を開始する予定だ。広島工場には今後、この新クリーンルーム建設を含めて1兆5000億円を投じる。</description>
+<pubDate>Sun, 05 Jul 2026 11:00:00 +0900</pubDate>
+</item>
+<item>
+<title>米トランプ大統領、AI規制は「できるだけ介入少なく」　中国に対して開発競争「大幅リード」を強調</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/04/2000000159/</link>
+<description>トランプ米大統領がCNBCのインタビューで、AI規制について「ガードレールは必要だが、介入はできるだけ少なくしたい」と述べ、規制最小限の路線を改めて示した。</description>
+<pubDate>Sat, 04 Jul 2026 08:00:00 +0900</pubDate>
+</item>
+<item>
+<title>フィジカルAIに挑む日の丸連合、「Noetra」とは何か</title>
+<link>https://monoist.itmedia.co.jp/mn/articles/2607/04/news016.html</link>
+<description>2026年6月29日～7月3日に公開された記事の中から、MONOist編集部が厳選した今週の注目ニュースをお届けします。</description>
+<pubDate>Sat, 04 Jul 2026 07:00:00 +0900</pubDate>
+</item>
+<item>
+<title>3万円で「Yahoo!ニュース」にPR掲載　プレスリリースをAIで「ニュース風記事」に</title>
+<link>https://www.itmedia.co.jp/news/articles/2607/03/news116.html</link>
+<description>Yahoo!ニュース内に、企業の発表情報をニュース記事と同じフォーマットで掲載する。</description>
+<pubDate>Fri, 03 Jul 2026 15:44:00 +0900</pubDate>
+</item>
+<item>
+<title>「Claude Fable 5」をサブスクの標準機能に――AnthropicのエンジニアがXに投稿　7月8日以降の「早期復活目指す」</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000158/</link>
+<description>「Fable 5をサブスクリプションの標準機能として復活させることを目指している」――米AnthropicのITエンジニアであるタリク・シヒパー氏は、自身のXアカウントにこのように投稿した。</description>
+<pubDate>Fri, 03 Jul 2026 15:34:43 +0900</pubDate>
+</item>
+<item>
+<title>「Claude Fable 5」の性能が落ちた？　提供停止前後で比べた結果　米AI企業2社がそれぞれ報告</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000157/</link>
+<description>「Claude Fable 5」の性能は提供停止前後で変化したのか。米AI企業2社がそれぞれ調査結果を報告している。</description>
+<pubDate>Fri, 03 Jul 2026 12:59:30 +0900</pubDate>
+</item>
+<item>
+<title>ゲームエンジン「Godot」AI生成コードを原則禁止へ　レビュアー疲弊「機械と話したくない」</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000156/</link>
+<description>新規コントリビューターからAI生成のプルリクが急増する一方、審査するレビュアーの数は変わらず、負担が限界に達したという。人間同士のやりとりで、AI生成の文章を使うことも禁止する。</description>
+<pubDate>Fri, 03 Jul 2026 12:22:21 +0900</pubDate>
+</item>
+<item>
+<title>Meta、「Claude Codeと組織改編で爆速開発」のはずが「想定より加速せず」　ザッカーバーグ氏、社内集会で発言</title>
+<link>https://www.itmedia.co.jp/aiplus/article/2607/03/2000000155/</link>
+<description>MetaはAI向けの巨額投資や組織改編でAIエージェント開発の加速を図ったが、ザッカーバーグCEOによれば、それらの取り組みはまだ実を結んでいないようだ。</description>
+<pubDate>Fri, 03 Jul 2026 11:01:17 +0900</pubDate>
+</item>
+<item>
+<title>「顧客管理システム作って」日本語で指示するだけでシステムが完成する最新AIとは？</title>
+<link>https://kn.itmedia.co.jp/kn/articles/2607/03/news034.html</link>
+<description>業務システムを開発したくても、費用や人材の確保がネックとなり、なかなか着手できない会社は少なくない。こうした課題に対し、専門知識がなくても開発を進められる手段が広がりつつある。</description>
+<pubDate>Fri, 03 Jul 2026 10:00:00 +0900</pubDate>
+</item>
+</channel>
+</rss>
