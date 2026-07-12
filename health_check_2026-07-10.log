@@ -1,0 +1,21 @@
+🏥 Smart Kurashi Site Monitor: Health Check — 2026-07-10 22:25 JST
+
+✅ Website: HTTP 200 OK — https://smart-kurashi.vercel.app
+✅ Git: Clean working tree (1 untracked file: scripts/.engine_state.json)
+✅ Disk: 3% used (581 GiB free / 599 GiB total)
+✅ Engine Daemon: Running (PID 13412, node scripts/advanced-content-engine.js --cron)
+✅ Content Engine State: Last run 2026-07-10T16:38, interval 324min, last topic: affiliate
+✅ Published Posts: 190 articles in content/posts/
+✅ Gateway: Running (Hermes gateway on port 1234)
+✅ Hermes App: Running (main process + renderer + helpers)
+
+🟢 ALL SYSTEMS HEALTHY — Site fully operational
+
+New articles published today (2026-07-10):
+- 2026-07-10_ai-agent-enterprise-adoption-japan-sovereign-infrastructure.mdx (19KB)
+- 2026-07-10_ai-agent-infrastructure-race-japan-sovereign-energy.mdx (17KB)
+- 2026-07-10_amzfast-27inch-dual-mode-gaming-monitor-review.mdx (25KB)
+- 2026-07-10_dreame-l10s-ultra-gen2-robot-vacuum-review.mdx (19KB)
+- 2026-07-10_アップル-人工知能と半導体への投資-日本の住まいと暮らしがどう変わるか.mdx (6KB)
+
+Content engine state: last_topic=affiliate, interval=324min, last_run=2026-07-10T16:38:14
