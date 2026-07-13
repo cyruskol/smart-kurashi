@@ -1,0 +1,632 @@
+[
+  {
+    "source": "ITmedia_AI",
+    "title": "OpenAIのブラウザ「ChatGPT Atlas」終了へ　公開から1年足らずで",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news090.html",
+    "description": "米OpenAIがAIブラウザ「ChatGPT Atlas」の停止日を2026年8月9日と案内し、データの移行手順を公開した。移行先には新しいChatGPTデスクトップアプリとChrome拡張機能を挙げている。",
+    "pub_date": "Mon, 13 Jul 2026 14:20:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "GMOグループ、AI時代に「エンジニア含む組織体制見直し」　熊谷代表が「AI変革最高責任者」に",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news093.html",
+    "description": "熊谷正寿代表が「グループCAIO」に。「エンジニアを含む組織体制を見直し、AIナイズされた組織へと変革する」",
+    "pub_date": "Mon, 13 Jul 2026 14:02:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "Claude、利用制限を全リセット　競合「GPT-5.6」公開と同日……OpenAI幹部「ビビってるね」",
+    "link": "https://www.itmedia.co.jp/aiplus/article/2607/10/2000000179/",
+    "description": "OpenAIが「GPT-5.6」を一般公開した同日、AnthropicがClaude全ユーザーの利用制限を一斉リセット。OpenAI幹部の「ビビってるね」という煽り返信も話題だ。",
+    "pub_date": "Mon, 13 Jul 2026 13:27:45 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "アニメ特化動画生成AI「AnimeGen」無償公開、商用利用も可　国内AIベンチャーAIdeaLab",
+    "link": "https://www.itmedia.co.jp/aiplus/article/2607/13/2000000187/",
+    "description": "AI開発企業のAIdeaLabは、アニメに特化した動画生成AIモデル「AnimeGen」（アニメジェン）を公開した。ライセンスは商用利用もできる「Apache-2.0」。",
+    "pub_date": "Mon, 13 Jul 2026 13:17:01 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "「ChatGPT Work」「Codex」の5時間制限枠を一時解除　「GPT-5.6 Sol」の処理効率も改良へ",
+    "link": "https://www.itmedia.co.jp/aiplus/article/2607/13/2000000186/",
+    "description": "米OpenAIは、デスクトップ向けAIツール「ChatGPT Work」や、付随するAIコーディングエージェント「Codex」に設定されている5時間の利用制限枠を一時的に解除すると発表した。",
+    "pub_date": "Mon, 13 Jul 2026 13:06:08 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "エージェントによる業務自動化をどう実現？　「Microsoft Build 2026」で発表された多数の新技術",
+    "link": "https://atmarkit.itmedia.co.jp/ait/articles/2607/13/news034.html",
+    "description": "Microsoftは開発者向けイベント「Microsoft Build 2026」で、エージェント基盤からモデル、開発端末、量子コンピューティングまで多数の新技術を発表した。",
+    "pub_date": "Mon, 13 Jul 2026 13:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "人に残る「クリエイティブな仕事」とは？　Adobeの“人×AI”の取り組みから探る",
+    "link": "https://www.itmedia.co.jp/enterprise/articles/2607/13/news061.html",
+    "description": "広告分野では制作業務に生成AIが広範囲で利用されるようになり、クリエイターやデザイナーの仕事が一部で奪われつつある。「われわれはAIが全てを決める世界を目指しているのではない」と語るAdobeの新たな取り組みから、クリエイティブ業務における人とAIの関係を考察する。",
+    "pub_date": "Mon, 13 Jul 2026 12:20:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "「GPT-Liveが“まるで人間”」ってホンマ？　出汁を「でじる」、トーストを「素焼き」て言うてたけど……",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news068.html",
+    "description": "AIは、何も塗らないトーストを「素焼き」と呼び、出汁を「でじる」と言い出した。",
+    "pub_date": "Mon, 13 Jul 2026 11:59:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "3D CADから組立工程／手順書を作成、設計と製造をつなぐAI活用機能",
+    "link": "https://monoist.itmedia.co.jp/mn/articles/2607/13/news010.html",
+    "description": "Sceneは、製造業向け統合ワークスペース「Scene Workspace」に、3D CADデータから組立工程や組立手順書を作成するAI活用機能をβ機能として搭載した。デンソーの工機部と共同開発したもので、設計、生産技術、製造の連携を1つの基盤でつなぐ。",
+    "pub_date": "Mon, 13 Jul 2026 09:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "「足りないのはCOBOL人材じゃない」　日立が語る、AI時代のシステム刷新における“人”の役割",
+    "link": "https://www.itmedia.co.jp/enterprise/articles/2607/13/news001.html",
+    "description": "従来は人海戦術に頼っていた領域にAIが入り込み、さまざまな課題が解消しつつある。レガシーシステムの刷新もそのうちの一つだ。しかし、AIをシステム刷新プロジェクトで積極的に活用している日立製作所（以下、日立）は、「人間の力がこれまで以上に重要になる」と語る。AI時代のシステム刷新で人間が果たす役割を探る。",
+    "pub_date": "Mon, 13 Jul 2026 08:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "Anthropic、「Fable 5」の無償アクセスと「Claude Code」利用上限50％増を7月19日まで延長",
+    "link": "https://www.itmedia.co.jp/aiplus/article/2607/13/2000000185/",
+    "description": "Anthropicは、「Claude Fable 5」を有料プランで追加費用なく使えるキャンペーンと、AIコーディング支援ツール「Claude Code」の週間利用上限を50％引き上げる措置を、いずれも米太平洋時間の7月19日まで延長すると発表した。Fable 5の無償アクセスは7月12日で終了する予定だったが、期限直前に再び1週間延長された形だ。",
+    "pub_date": "Mon, 13 Jul 2026 07:25:21 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "テスラ車内で「Grok」と会話、日本でも展開へ　ナビ設定やルート確認を音声で",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/10/news157.html",
+    "description": "対話型AI「Grok」を日本のテスラ車で利用できるようになった。Tesla Japanが7月10日、X公式アカウントで発表した。利用には、ソフトウェアバージョン2026.20以降、「プレミアムコネクティビティ」（有料の車内通信プラン）の契約が必要になる。",
+    "pub_date": "Fri, 10 Jul 2026 21:15:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "「まるで人間」　OpenAIの新モデル「GPT-Live」のトーク力が話題　間を空けずに考えながら会話できる",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/10/news114.html",
+    "description": "OpenAIが提供を始めた音声会話向けモデル「GPT-Live」がXで話題だ。同社はこれまでも音声会話モデルを提供していたが、聞き取りと発話を同時に行う新アーキテクチャにより「会話が自然すぎる」などの声が上がっている。",
+    "pub_date": "Fri, 10 Jul 2026 16:45:00 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "M365 CopilotにOpenAI最新モデル「GPT-5.6」追加　複雑な作業を「より効率的に処理」",
+    "link": "https://www.itmedia.co.jp/aiplus/article/2607/10/2000000184/",
+    "description": "米Microsoftは、Microsoft 365のAI機能「Microsoft 365 Copilot」に、米OpenAIの最新のAIモデル「GPT-5.6」シリーズを追加すると発表した。WordやExcel、PowerPointなどで順次展開する。",
+    "pub_date": "Fri, 10 Jul 2026 16:16:10 +0900"
+  },
+  {
+    "source": "ITmedia_AI",
+    "title": "「生成AIをもう手放せない人」が約6割　逆に“使わなくなったもの”1位は？",
+    "link": "https://atmarkit.itmedia.co.jp/ait/articles/2607/10/news056.html",
+    "description": "ICT総研の調査では、生成AIサービスが使えなくなると困ると答えた人は約6割に上った。生成AIサービスが日常的なツールとして定着する一方で、利用頻度が減ったものもあるという。それは何なのか。",
+    "pub_date": "Fri, 10 Jul 2026 13:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "リチウムイオン電池の出火、都内で過去最多382件　26年は1.5倍ペースで急増　東京消防庁",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news129.html",
+    "description": "東京消防庁管内でリチウムイオン電池を搭載した製品から出火する火災が急増している。同庁は7月13日、2026年5月末までの発生件数が179件に上り、前年同期の117件から1.5倍に増えたと発表した。25年は年間382件と過去最多だったが、26年はそれを上回るペースとなる。",
+    "pub_date": "Mon, 13 Jul 2026 20:23:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "ニチレイに不正アクセス、冷凍食品の出荷に支障　システムに障害",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news128.html",
+    "description": "ニチレイは7月13日、不正アクセスによるシステム障害が発生したと発表した。冷蔵倉庫の入出庫や冷凍食品の出荷業務に影響が出ている。",
+    "pub_date": "Mon, 13 Jul 2026 19:36:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "LINEヤフー、710万件の識別情報を誤送信　「LINEポコポコ」などゲームユーザー対象",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news126.html",
+    "description": "LINEヤフーが、ゲーム「LINE ポコポコ」「LINE ポコパンタウン」「LINE ポコパン」ユーザーの識別情報710万件近くを外部の広告ツールに誤送信していたと発表した。",
+    "pub_date": "Mon, 13 Jul 2026 19:19:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "中国ロボット企業が“ヒト型ロボ格闘大会”開催へ　さながら「リアルスティール」なプロモ映像公開",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news125.html",
+    "description": "ロボット開発を手掛ける中国Unitree Roboticsが、ヒト型ロボットによる格闘大会「CMG 2026 Humanoid Robot Combat Competition」の開催を発表した。ロボット格闘技を描く映画「リアルスティール」さながらのバトルシーンを含んだプロモーション映像も公開。イベントの詳細は後日発表する予定だ。",
+    "pub_date": "Mon, 13 Jul 2026 19:10:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "今後17年間アホのまま？──数を数え続ける「世界のナベアツbot」が30万に到達　本家「いっけー！の気持ち」",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news119.html",
+    "description": "Xで数字を数え続ける非公式botアカウント「数え続ける世界のナベアツbot」さんのカウント数が7月13日、30万に到達した。ネタの生みの親で、かつて「世界のナベアツ」として活動した落語家の桂三度さんも同日、自身のXアカウントで反応した。",
+    "pub_date": "Mon, 13 Jul 2026 18:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "ポケカ、本人確認にマイナカード「デジタル認証アプリ」　8月の抽選販売に導入　事前登録を呼び掛け",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news122.html",
+    "description": "ポケモン社は7月13日、ポケモンカードゲームの本人認証で使う「デジタル認証アプリ」の事前登録を呼びかけた。公式通販サイト「ポケモンセンターオンライン」で8月に始める抽選販売を前に、アクセス集中を見込んで早めの手続きを促している。",
+    "pub_date": "Mon, 13 Jul 2026 18:00:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "「今ネットで販売されているグッズは全て非公式品」　人気ゲーム「めっちゃカメレオン」開発者が注意喚起",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news107.html",
+    "description": "人気ゲーム「めっちゃカメレオン」開発者の一人であるLEMORION（レモリオン）さんは12日、今ネット上で販売されているグッズは全て非公式品だと注意喚起した。",
+    "pub_date": "Mon, 13 Jul 2026 15:49:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "近くでクマ目撃投稿→5秒以内に通知「クマップ」提供開始　秋田の学生スタートアップ発",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news099.html",
+    "description": "開発の原点は、大学の正面玄関にクマが出没した際、事務局の対応が土曜日だったため週明けまで3日かかった経験だったという。",
+    "pub_date": "Mon, 13 Jul 2026 14:36:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "ローソンでステーブルコイン支払い　KDDI・HashPortが技術実証へ　高輪ゲートウェイ店で8月実施",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news098.html",
+    "description": "HashPortは7月13日、KDDI、ローソンと店頭でのステーブルコイン決済の技術実証を8月に実施すると発表した。日本円ステーブルコインでのレジ決済について、POS連携やレジ運用面を検証する。",
+    "pub_date": "Mon, 13 Jul 2026 14:35:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "OpenAIのブラウザ「ChatGPT Atlas」終了へ　公開から1年足らずで",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news090.html",
+    "description": "米OpenAIがAIブラウザ「ChatGPT Atlas」の停止日を2026年8月9日と案内し、データの移行手順を公開した。移行先には新しいChatGPTデスクトップアプリとChrome拡張機能を挙げている。",
+    "pub_date": "Mon, 13 Jul 2026 14:20:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "GMOグループ、AI時代に「エンジニア含む組織体制見直し」　熊谷代表が「AI変革最高責任者」に",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news093.html",
+    "description": "熊谷正寿代表が「グループCAIO」に。「エンジニアを含む組織体制を見直し、AIナイズされた組織へと変革する」",
+    "pub_date": "Mon, 13 Jul 2026 14:02:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "日本交通に不正アクセス、電話でタクシー配車不能に　「GO」経由は無事",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news088.html",
+    "description": "電話によるタクシー配車やハイヤーのWeb予約が停止しているが、アプリ「GO」経由の配車は影響なく利用できる。",
+    "pub_date": "Mon, 13 Jul 2026 13:01:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "Anthropic、「Fable 5」またも延長　追加費用なしで7月19日まで利用可能に　「GPT-5.6」に対抗？",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news081.html",
+    "description": "米Anthropicは7月12日（現地時間）、AIモデル「Claude Fable 5」を有料プランで追加料金なしに使える提供期間を、7月19日まで延長すると発表した。開発支援ツール「Claude Code」の週次利用制限を通常より50％引き上げる措置も、同じく19日まで続く。",
+    "pub_date": "Mon, 13 Jul 2026 12:27:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "「GPT-Liveが“まるで人間”」ってホンマ？　出汁を「でじる」、トーストを「素焼き」て言うてたけど……",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news068.html",
+    "description": "AIは、何も塗らないトーストを「素焼き」と呼び、出汁を「でじる」と言い出した。",
+    "pub_date": "Mon, 13 Jul 2026 11:59:00 +0900"
+  },
+  {
+    "source": "ITmedia_NEWS",
+    "title": "AIグラスへの不安感は、盗撮問題に集中しすぎると問題を見誤るのではないか",
+    "link": "https://www.itmedia.co.jp/news/articles/2607/13/news063.html",
+    "description": "ディスプレイ搭載AIグラス市場で世界首位とされる中国「Rokid」が日本市場へ本格参入した。以前から「盗撮」の道具となる可能性を指摘されているAIグラスだが、発表会に参加して、もっと別のことに対して不安になった。",
+    "pub_date": "Mon, 13 Jul 2026 11:12:00 +0900"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Data center demand drives 66% surge in natural gas power plant costs",
+    "link": "https://techcrunch.com/2026/04/27/data-center-demand-drives-66-surge-in-natural-gas-power-plant-costs/",
+    "description": "Natural gas power plant costs have nearly doubled in two years and take 23% longer to build as data center electricity demand skyrockets.",
+    "pub_date": "Mon, 27 Apr 2026 15:27:52 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Converge Bio raises $25M, backed by Bessemer and execs from Meta, OpenAI, Wiz",
+    "link": "https://techcrunch.com/2026/01/13/ai-drug-discovery-startup-converge-bio-pulls-in-25m-from-bessemer-and-execs-from-meta-openai-and-wiz/",
+    "description": "AI drug discovery startup Converge Bio raised $25 million in a Series A led by Bessemer Venture Partners, with additional backing from executives at Meta, OpenAI, and Wiz.",
+    "pub_date": "Tue, 13 Jan 2026 11:30:00 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Meta bought 1 GW of solar this week",
+    "link": "https://techcrunch.com/2025/10/31/meta-bought-1-gw-of-solar-this-week/",
+    "description": "The social media company inked three deals in the U.S. to power its data centers and offset its carbon footprint.",
+    "pub_date": "Fri, 31 Oct 2025 19:26:30 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "How one AI startup is helping rice farmers battle climate change",
+    "link": "https://techcrunch.com/2025/08/26/how-one-ai-startup-is-helping-rice-farmers-battle-climate-change/",
+    "description": "Mitti Labs is working with The Nature Conservancy to expand the use of climate-friendly rice farming practices in India. The startup uses its AI to verify reductions in methane emissions.",
+    "pub_date": "Tue, 26 Aug 2025 15:21:19 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Harvard dropouts to launch ‘always on’ AI smart glasses that listen and record every conversation",
+    "link": "https://techcrunch.com/2025/08/20/harvard-dropouts-to-launch-always-on-ai-smart-glasses-that-listen-and-record-every-conversation/",
+    "description": "After developing a facial-recognition app for Meta’s Ray-Ban glasses and doxing random people, two former Harvard students are now launching a startup that makes smart glasses with an always-on microphone.",
+    "pub_date": "Wed, 20 Aug 2025 16:00:00 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Meta to add 100MW of solar power from US gear",
+    "link": "https://techcrunch.com/2025/08/20/meta-to-add-100-mw-of-solar-power-from-u-s-gear/",
+    "description": "The social media company is adding another tranche of solar to power a new AI data center in South Carolina.",
+    "pub_date": "Wed, 20 Aug 2025 15:56:53 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Perplexity accused of scraping websites that explicitly blocked AI scraping",
+    "link": "https://techcrunch.com/2025/08/04/perplexity-accused-of-scraping-websites-that-explicitly-blocked-ai-scraping/",
+    "description": "Internet giant Cloudflare says it detected Perplexity crawling and scraping websites, even after customers had added technical blocks telling Perplexity not to scrape their pages.",
+    "pub_date": "Mon, 04 Aug 2025 15:41:39 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Obvio’s stop sign cameras use AI to root out unsafe drivers",
+    "link": "https://techcrunch.com/2025/06/04/obvios-stop-sign-cameras-use-ai-to-root-out-unsafe-drivers/",
+    "description": "American streets are incredibly dangerous for pedestrians. A San Carlos, California-based startup called Obvio thinks it can change that by installing cameras at stop signs -- a solution the founders also say won’t create a panopticon.",
+    "pub_date": "Wed, 04 Jun 2025 14:00:00 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Breakneck data center growth challenges Microsoft’s sustainability goals",
+    "link": "https://techcrunch.com/2025/06/02/breakneck-data-center-growth-challenges-microsofts-sustainability-goals/",
+    "description": "Microsoft's sustainability goals are imperiled by its push into AI and cloud services.",
+    "pub_date": "Mon, 02 Jun 2025 18:07:05 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Gridcare thinks more than 100 GW of data center capacity is hiding in the grid",
+    "link": "https://techcrunch.com/2025/05/27/gridcare-thinks-more-than-100-gw-of-data-center-capacity-is-hiding-in-the-grid/",
+    "description": "Gridcare raised $13.3 million for its data platform that finds underutilized capacity on the electrical grid.",
+    "pub_date": "Tue, 27 May 2025 12:00:00 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Meta adds another 650 MW of solar power to its AI push",
+    "link": "https://techcrunch.com/2025/05/22/meta-adds-another-650-mw-of-solar-power-to-its-ai-push/",
+    "description": "The company already has more than 12 gigawatts of capacity in its renewable power portfolio.",
+    "pub_date": "Thu, 22 May 2025 16:49:53 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Who are climate-conscious consumers? Not who you’d expect, says Northwind Climate",
+    "link": "https://techcrunch.com/2025/04/01/who-are-climate-conscious-consumers-not-who-youd-expect-says-northwind-climate/",
+    "description": "Rather than divide people into demographic buckets, Northwind Climate analyzes survey responses for behavioral clues.",
+    "pub_date": "Tue, 01 Apr 2025 19:52:59 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Data centers love solar: Here’s a comprehensive guide to deals over 100 megawatts",
+    "link": "https://techcrunch.com/2025/03/30/data-centers-love-solar-heres-a-comprehensive-guide-to-deals-over-100-megawatts/",
+    "description": "New and expanded data centers are expected to double the sector’s power demand by 2029 as tech companies rush to capitalize on AI.",
+    "pub_date": "Sun, 30 Mar 2025 14:00:00 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Nvidia thinks AI can solve electrical grid problems caused by AI",
+    "link": "https://techcrunch.com/2025/03/20/nvidia-thinks-ai-can-solve-electrical-grid-problems-caused-by-ai/",
+    "description": "The Open Power AI Consortium says it will use domain-specific AI models to tackle problems in the power industry.",
+    "pub_date": "Thu, 20 Mar 2025 16:41:12 +0000"
+  },
+  {
+    "source": "TechCrunch_AI",
+    "title": "Solar notches another win as Microsoft adds 475 MW to power its AI data centers",
+    "link": "https://techcrunch.com/2025/03/20/solar-notches-another-win-as-microsoft-adds-475-mw-to-power-its-ai-data-centers/",
+    "description": "The company recently signed a deal with energy provider AES for three solar projects across the Midwest.",
+    "pub_date": "Thu, 20 Mar 2025 14:57:11 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Users report that GPT 5.6 Sol had become less capable than its initial release",
+    "link": "https://twitter.com/i/status/2076495156757577895",
+    "description": "<p>Article URL: <a href=\"https://twitter.com/i/status/2076495156757577895\">https://twitter.com/i/status/2076495156757577895</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892416\">https://news.ycombinator.com/item?id=48892416</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:31:43 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "AI and Job Postings: From Destruction to Creation",
+    "link": "https://www.hiringlab.org/2026/07/08/ai-and-job-postings-from-destruction-to-creation/",
+    "description": "<p>Article URL: <a href=\"https://www.hiringlab.org/2026/07/08/ai-and-job-postings-from-destruction-to-creation/\">https://www.hiringlab.org/2026/07/08/ai-and-job-postings-from-destruction-to-creation/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892343\">https://news.ycombinator.com/item?id=48892343</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:25:31 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Who Owns What Your Agent Knows?",
+    "link": "https://www.safiware.com/p/who-owns-what-your-agent-knows",
+    "description": "<p>Article URL: <a href=\"https://www.safiware.com/p/who-owns-what-your-agent-knows\">https://www.safiware.com/p/who-owns-what-your-agent-knows</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892279\">https://news.ycombinator.com/item?id=48892279</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:20:59 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "The State of AGENTS.md: scoring the 16 biggest AI agent repos' own instructions",
+    "link": "https://fpaul.dev/writing/state-of-agents-md-2026/",
+    "description": "<p>Article URL: <a href=\"https://fpaul.dev/writing/state-of-agents-md-2026/\">https://fpaul.dev/writing/state-of-agents-md-2026/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892210\">https://news.ycombinator.com/item?id=48892210</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:16:03 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "The New York nurses replaced by AI: 'It should concern every patient who cares'",
+    "link": "https://www.theguardian.com/technology/2026/jul/13/nurses-new-york-ai",
+    "description": "<p>Article URL: <a href=\"https://www.theguardian.com/technology/2026/jul/13/nurses-new-york-ai\">https://www.theguardian.com/technology/2026/jul/13/nurses-new-york-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892188\">https://news.ycombinator.com/item?id=48892188</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:14:17 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "69% support forcible transfer of 50% AI stock to public fund: Verasight",
+    "link": "https://reports.verasight.io/reports/june-2026-ai-survey",
+    "description": "<p>Article URL: <a href=\"https://reports.verasight.io/reports/june-2026-ai-survey\">https://reports.verasight.io/reports/june-2026-ai-survey</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892103\">https://news.ycombinator.com/item?id=48892103</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:07:51 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "How the most impactful AI startups will be built in emerging markets",
+    "link": "https://blogs.worldbank.org/en/voices/small-ai--big-bets--how-the-world-s-most-impactful-ai-startups-w",
+    "description": "<p>Article URL: <a href=\"https://blogs.worldbank.org/en/voices/small-ai--big-bets--how-the-world-s-most-impactful-ai-startups-w\">https://blogs.worldbank.org/en/voices/small-ai--big-bets--how-the-world-s-most-impactful-ai-startups-w</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892073\">https://news.ycombinator.com/item?id=48892073</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:04:33 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "SociaLLM Engineering: On Manipulating AI Agents and what we can do about it",
+    "link": "https://cephalosec.com/blog/sociallm-engineering-old-tricks-ai-agents-are-the-new-victims/",
+    "description": "<p>Article URL: <a href=\"https://cephalosec.com/blog/sociallm-engineering-old-tricks-ai-agents-are-the-new-victims/\">https://cephalosec.com/blog/sociallm-engineering-old-tricks-ai-agents-are-the-new-victims/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892053\">https://news.ycombinator.com/item?id=48892053</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:03:12 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Cairn, an AI agent with a $50 budget, an email address, and a constitution",
+    "link": "https://github.com/opitaru-sys/seed-agent",
+    "description": "<p>Article URL: <a href=\"https://github.com/opitaru-sys/seed-agent\">https://github.com/opitaru-sys/seed-agent</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892048\">https://news.ycombinator.com/item?id=48892048</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 13:02:57 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Show HN: Latent-free ternary LLM training",
+    "link": "https://github.com/ValerioDolci/bitbop",
+    "description": "<p>Article URL: <a href=\"https://github.com/ValerioDolci/bitbop\">https://github.com/ValerioDolci/bitbop</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48892013\">https://news.ycombinator.com/item?id=48892013</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "pub_date": "Mon, 13 Jul 2026 12:59:57 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Make LLM-powered apps Smarter and Cheaper, Reliable, Auditable changing 1 LOC",
+    "link": "https://github.com/AlhasanIQ/consortium",
+    "description": "<p>Article URL: <a href=\"https://github.com/AlhasanIQ/consortium\">https://github.com/AlhasanIQ/consortium</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48891916\">https://news.ycombinator.com/item?id=48891916</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "pub_date": "Mon, 13 Jul 2026 12:51:01 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Anduril CEO Warns AI and Defense Valuations Are Becoming Dangerously Overvalued",
+    "link": "https://finance.yahoo.com/technology/ai/articles/anduril-ceo-warns-ai-defense-180112499.html",
+    "description": "<p>Article URL: <a href=\"https://finance.yahoo.com/technology/ai/articles/anduril-ceo-warns-ai-defense-180112499.html\">https://finance.yahoo.com/technology/ai/articles/anduril-ceo-warns-ai-defense-180112499.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48891865\">https://news.ycombinator.com/item?id=48891865</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 12:45:03 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Open source AI matters more than ever, according to Hugging Face's Clem Delangue",
+    "link": "https://techcrunch.com/podcast/open-source-ai-matters-more-than-ever-according-to-hugging-faces-clem-delangue/",
+    "description": "<p>Article URL: <a href=\"https://techcrunch.com/podcast/open-source-ai-matters-more-than-ever-according-to-hugging-faces-clem-delangue/\">https://techcrunch.com/podcast/open-source-ai-matters-more-than-ever-according-to-hugging-faces-clem-delangue/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=48891832\">https://news.ycombinator.com/item?id=48891832</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "pub_date": "Mon, 13 Jul 2026 12:42:49 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Show HN: OSS Web Based AI Video Studio (Vivijure)",
+    "link": "https://news.ycombinator.com/item?id=48891809",
+    "description": "<p>Hello Everyone!<p>So I wanted to introduce everyone to an AGPL-3.0 OSS, free forever, AI Video Studio that I've been working on for the past few months called \"Vivijure.\" Vivijure is a web based modular frontend that allows you to collaborate with AI to plan your videos, create images of your cast members and generate all the images for a full LoRA training set, and render your videos either on your own iron (LTX Video) or rent by the second serverless workers (Wan 2.2). It also has integrati",
+    "pub_date": "Mon, 13 Jul 2026 12:40:17 +0000"
+  },
+  {
+    "source": "Hacker_News",
+    "title": "Show HN: Costbase – See what each of your AI apps costs, without a proxy",
+    "link": "https://costbase.co",
+    "description": "<p>Live demo, no signup: <a href=\"https://costbase.co/demo\" rel=\"nofollow\">https://costbase.co/demo</a><p>Hi there, over the past 1-2 years I've built and experimented with many AI apps. Some are in production, some died in the experimental stage.<p>The ones in production currently costs me ~$500 a month to run – using a variety of models from OpenAI's Whisper to Anthropic LLM.<p>Because it's important for me to track the Cost of Goods Sold of each individual app, the strategy I've used so far i",
+    "pub_date": "Mon, 13 Jul 2026 12:38:19 +0000"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "ソフトバンクと安川電機、フィジカルAIの開発基盤として「AIデータセンター GPUクラウド」を活用し、柔軟物体ハンドリングシステムを実証～NVIDIAと協力し、ロボットの動作データ収集からAIの学習・評価、実機への適用までを効率化～ | 企業・IR - ソフトバンク",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1rSDJoUTBHMXFIMUsyanJmaU1VVDNQYUhLME9oZHJwektFNjB1ekZfU2wySDF6UmVtaWhsRVg2dGNvZ1E2SFZaT0RibC1VVDBsQlpldFcxQklYcGhseGhMeFhYWGdJcmVZM0JHNFJxUQ?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE1rSDJoUTBHMXFIMUsyanJmaU1VVDNQYUhLME9oZHJwektFNjB1ekZfU2wySDF6UmVtaWhsRVg2dGNvZ1E2SFZaT0RibC1VVDBsQlpldFcxQklYcGhseGhMeFhYWGdJcmVZM0JHNFJxUQ?oc=5\" target=\"_blank\">ソフトバンクと安川電機、フィジカルAIの開発基盤として「AIデータセンター GPUクラウド」を活用し、柔軟物体ハンドリングシステムを実証～NVIDIAと協力し、ロボットの動作データ収集からAIの学習・評価、実機への適用までを効率化～ | 企業・IR</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ソフトバンク</font>",
+    "pub_date": "Mon, 13 Jul 2026 04:00:00 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "アニメ特化動画生成AI「AnimeGen」無償公開、商用利用も可 国内AIベンチャーAIdeaLab（1/2 ページ） - ITmedia",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5wYXdaYTJCWEc2ZVhDODRWaGJfMG1xVmhhMlRsYUNnTTZ0REJadldjdUVuaDhPOFNXSkxaeEttRGpKbG9QU3Fnc09CMk1nR2FyR3k4YS1uY25vY0FLQUJZWEs3c2FqaDZ4cEp1RA?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE5wYXdaYTJCWEc2ZVhDODRWaGJfMG1xVmhhMlRsYUNnTTZ0REJadldjdUVuaDhPOFNXSkxaeEttRGpKbG9QU3Fnc09CMk1nR2FyR3k4YS1uY25vY0FLQUJZWEs3c2FqaDZ4cEp1RA?oc=5\" target=\"_blank\">アニメ特化動画生成AI「AnimeGen」無償公開、商用利用も可 国内AIベンチャーAIdeaLab（1/2 ページ）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ITmedia</font>",
+    "pub_date": "Mon, 13 Jul 2026 04:17:01 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "「声」も法的保護対象 生成ＡＩ巡り法務省原案 - 時事ドットコム",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBkN1d1Q0dMV1V0T3ZxbTNEV0Z3QXo3VkhqUzJlTFB0YVFQMUFfbS1walhtTVVNbmV6cjhKU2FwV0lFX3lIQ1N2bW1ZUnp4WUZSRnlldldndjNWNzlfLTdQckhDNA?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTFBkN1d1Q0dMV1V0T3ZxbTNEV0Z3QXo3VkhqUzJlTFB0YVFQMUFfbS1walhtTVVNbmV6cjhKU2FwV0lFX3lIQ1N2bW1ZUnp4WUZSRnlldldndjNWNzlfLTdQckhDNA?oc=5\" target=\"_blank\">「声」も法的保護対象 生成ＡＩ巡り法務省原案</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">時事ドットコム</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:37:00 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "なぜ日本はAIで米中に勝てないのか？「世界11位」でも喜べない「教育の致命的欠陥」（ビジネス＋IT） - Yahoo!ニュース",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1kbC0xV1Ric0lhUWJTWXpjMjVvNFJDcnhFa0c4dUFKSXBMQ2lpd0tQamM0b3RJQ1dnZ1I5R2Y1c2FCdk52VmVBeHpONHpHZ09aSlMxVVR5bDVHaWw5YjUtVmFiMjJ5SXFSLUNiV2VmRnk1U0RydmV0a3h2T28ydnc?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE1kbC0xV1Ric0lhUWJTWXpjMjVvNFJDcnhFa0c4dUFKSXBMQ2lpd0tQamM0b3RJQ1dnZ1I5R2Y1c2FCdk52VmVBeHpONHpHZ09aSlMxVVR5bDVHaWw5YjUtVmFiMjJ5SXFSLUNiV2VmRnk1U0RydmV0a3h2T28ydnc?oc=5\" target=\"_blank\">なぜ日本はAIで米中に勝てないのか？「世界11位」でも喜べない「教育の致命的欠陥」（ビジネス＋IT）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ニュース</font>",
+    "pub_date": "Sun, 12 Jul 2026 21:40:06 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "米政権、ＡＩ電力コスト巡りデータセンターなどに結集呼びかけへ - ロイター",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0yQmtFb3VSU19Dckd1WjctLTNwc21pUFQzaUxwUTRhaWNnZGwteEZuWEduQjVYVHdkWF9weG9paTBHY2djMkpib3VRYWFzNkZxdzRrcktmNllSeWxDZ3JZb2FLT0pxQ25sdnBQMV80dDUtcVFXT2EzQg?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE0yQmtFb3VSU19Dckd1WjctLTNwc21pUFQzaUxwUTRhaWNnZGwteEZuWEduQjVYVHdkWF9weG9paTBHY2djMkpib3VRYWFzNkZxdzRrcktmNllSeWxDZ3JZb2FLT0pxQ25sdnBQMV80dDUtcVFXT2EzQg?oc=5\" target=\"_blank\">米政権、ＡＩ電力コスト巡りデータセンターなどに結集呼びかけへ</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ロイター</font>",
+    "pub_date": "Mon, 13 Jul 2026 10:33:44 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "米国株「新恐怖指数」が右肩上がり AI株の波乱予兆 - 日本経済新聞",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1UbTJZajR2cFJsYjRWSkM5UWZYN2NTX0szQkFPa1NSSDV5QjNsdDVhUllSZHVqcWpwSWRWMzJkUWpfWFRiSm5Ic3RFOFFDdklUeE5YaEpaMVlRT1o0aUJhT3dkak5sLTU4LWhCZw?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE1UbTJZajR2cFJsYjRWSkM5UWZYN2NTX0szQkFPa1NSSDV5QjNsdDVhUllSZHVqcWpwSWRWMzJkUWpfWFRiSm5Ic3RFOFFDdklUeE5YaEpaMVlRT1o0aUJhT3dkak5sLTU4LWhCZw?oc=5\" target=\"_blank\">米国株「新恐怖指数」が右肩上がり AI株の波乱予兆</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日本経済新聞</font>",
+    "pub_date": "Mon, 13 Jul 2026 07:22:54 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "生成AI 業務変革カオスマップを公開！～実務を再定義する「自律・自動化・専門特化」、200製品以上の最新ソリューションを集約～ - AIsmiley",
+    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOR0RBalpBQ1lwLXJkLUh6V09IQzRXeHMtTDN3VmVDc05TWjdSYlFfSmhaQXo3TkU1Z0Z0RlZiTTUxcDhRaF9rS3RENUNKcWkyZlNZQXFac2ZFejRhaXJuWmtZaU1mODBFNnNBUGk4N0t0ZkdoblRLQXVpcFhKMFV4X1YwOA?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMigwFBVV95cUxOR0RBalpBQ1lwLXJkLUh6V09IQzRXeHMtTDN3VmVDc05TWjdSYlFfSmhaQXo3TkU1Z0Z0RlZiTTUxcDhRaF9rS3RENUNKcWkyZlNZQXFac2ZFejRhaXJuWmtZaU1mODBFNnNBUGk4N0t0ZkdoblRLQXVpcFhKMFV4X1YwOA?oc=5\" target=\"_blank\">生成AI 業務変革カオスマップを公開！～実務を再定義する「自律・自動化・専門特化」、200製品以上の最新ソリューションを集約～</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">AIsmiley</font>",
+    "pub_date": "Mon, 13 Jul 2026 10:12:42 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "人工知能戦略本部 - 首相官邸",
+    "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE4tajN1a2locGVtTGxvSmVpVEpOdVNFY2ZBR1NWcGdHUEROZVU1VjRBNUViWk9aNlZlUTh5cWdjTjBfTER5WHUzanYzN04xSEc3TnM0Q19URnhvQ21TbnBUR0YzbUxmTjFZWWg3N3lnbk5lUDFPUWc?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMidkFVX3lxTE4tajN1a2locGVtTGxvSmVpVEpOdVNFY2ZBR1NWcGdHUEROZVU1VjRBNUViWk9aNlZlUTh5cWdjTjBfTER5WHUzanYzN04xSEc3TnM0Q19URnhvQ21TbnBUR0YzbUxmTjFZWWg3N3lnbk5lUDFPUWc?oc=5\" target=\"_blank\">人工知能戦略本部</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">首相官邸</font>",
+    "pub_date": "Fri, 10 Jul 2026 06:53:40 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "アニメ特化動画生成AIモデル『AnimeGen』を公開 - PR TIMES",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1GeDA2c3FuZTJIdy1ZTm5rclFnNXJfZ1ZyUFBmRml4TVIyeDhYQXhob1JnOFF0bTMwMkwzWjlKXzNCQWo1bTE4NngwTkk1VHRlRXlXSC1KcENxbWw5RkFEZUFoZTVyM3RoaGc?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE1GeDA2c3FuZTJIdy1ZTm5rclFnNXJfZ1ZyUFBmRml4TVIyeDhYQXhob1JnOFF0bTMwMkwzWjlKXzNCQWo1bTE4NngwTkk1VHRlRXlXSC1KcENxbWw5RkFEZUFoZTVyM3RoaGc?oc=5\" target=\"_blank\">アニメ特化動画生成AIモデル『AnimeGen』を公開</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">PR TIMES</font>",
+    "pub_date": "Mon, 13 Jul 2026 00:10:02 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "ニュース 商用利用可能なアニメ特化動画生成AIモデル「AnimeGen」を無償公開 - 株式会社インプレス",
+    "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBWSzYzM2pKQlphcnZGLUV0aWQtbTZSVHRVMmFlUnpOcDdtbzkzT3ZBbnhIQ0l4dGdvSFVpN19RSFY0QzBLQUVlYzZvdE1wXy1pZENfR3ZoNy1HaDVKODV2NTRLUQ?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiY0FVX3lxTFBWSzYzM2pKQlphcnZGLUV0aWQtbTZSVHRVMmFlUnpOcDdtbzkzT3ZBbnhIQ0l4dGdvSFVpN19RSFY0QzBLQUVlYzZvdE1wXy1pZENfR3ZoNy1HaDVKODV2NTRLUQ?oc=5\" target=\"_blank\">ニュース 商用利用可能なアニメ特化動画生成AIモデル「AnimeGen」を無償公開</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">株式会社インプレス</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:52:42 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "TSMC、AIブームの異変示すか 16日決算 弱気見通しなら半導体株下落も - ig.com",
+    "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOWU1QamtIQU1iTWtzSDVBR1JiS1Q3OE1ZQ0ZMZldtMGhwN0UxOGtTSERYOUxQMkw5QkZQd3B2V0FlajdCSDh3b1dJdGowOVpNTWF5V2VScjFEWkcwSWt3d3lVZlJvQ0pUVTI3RHg3bm04dnBJYTdfRnFFcngzRzlHcnZLNXN2Wno4YVN2TXFfMjQ2dw?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMikgFBVV95cUxOWU1QamtIQU1iTWtzSDVBR1JiS1Q3OE1ZQ0ZMZldtMGhwN0UxOGtTSERYOUxQMkw5QkZQd3B2V0FlajdCSDh3b1dJdGowOVpNTWF5V2VScjFEWkcwSWt3d3lVZlJvQ0pUVTI3RHg3bm04dnBJYTdfRnFFcngzRzlHcnZLNXN2Wno4YVN2TXFfMjQ2dw?oc=5\" target=\"_blank\">TSMC、AIブームの異変示すか 16日決算 弱気見通しなら半導体株下落も</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ig.com</font>",
+    "pub_date": "Mon, 13 Jul 2026 07:25:14 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "ソフトバンク「AIガバナンス策定支援サービス」で法人の生成AI安全活用を支援 - ロボスタ",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5NY0FjV3c5RmRHZUVCTlJlVzdLSlAtZHY4cWI0c2poWm9TVDFYSUZ5dkJSZnpsZDlaVFI3TVo0ZUgwa2NqVW9YLVd3SWtEelVSQjd2LW41MFE0UjN2Z1lDVDVpd0I?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE5NY0FjV3c5RmRHZUVCTlJlVzdLSlAtZHY4cWI0c2poWm9TVDFYSUZ5dkJSZnpsZDlaVFI3TVo0ZUgwa2NqVW9YLVd3SWtEelVSQjd2LW41MFE0UjN2Z1lDVDVpd0I?oc=5\" target=\"_blank\">ソフトバンク「AIガバナンス策定支援サービス」で法人の生成AI安全活用を支援</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ロボスタ</font>",
+    "pub_date": "Mon, 13 Jul 2026 10:30:03 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "浪川大輔が代表を務める声優事務所、“新たな挑戦”を発表 生成AI技術活用で「海賊版との対比を明確化」（オリコン） - Yahoo!ニュース",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9JVmNYTnZwMzJYcWRvQlFKWUZFd3NFR0xRWk1Db2N2MTEwR1E3LUtjWXhvZEFZM1hzMWN0RktLZjFhY3h6Y1c0amJjSUhxb0RlM2x3NkVtOTdWb3JjbGJZMnYwQkZadW9JT1B6QmN1U2ZKMXU0bHVwN2lubTIyVnc?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE9JVmNYTnZwMzJYcWRvQlFKWUZFd3NFR0xRWk1Db2N2MTEwR1E3LUtjWXhvZEFZM1hzMWN0RktLZjFhY3h6Y1c0amJjSUhxb0RlM2x3NkVtOTdWb3JjbGJZMnYwQkZadW9JT1B6QmN1U2ZKMXU0bHVwN2lubTIyVnc?oc=5\" target=\"_blank\">浪川大輔が代表を務める声優事務所、“新たな挑戦”を発表 生成AI技術活用で「海賊版との対比を明確化」（オリコン）</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Yahoo!ニュース</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:27:41 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "Gemini活用で「Siri AI」がついに実現 だがアップルが越えるべき壁は多い - 日経ビジネス電子版",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE50ekQ4UENURnlFN1BPOFJDOE1xSm9JdVp5M1A3c0stTWRxd3hjYmVFZjhiOFhTX0FWckFSUkszZTlvdkk3M0t4ZkZvQ2tVdDI2UTEtWnpNY0R1ckJrWERIY2pvQl9WQ0E?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE50ekQ4UENURnlFN1BPOFJDOE1xSm9JdVp5M1A3c0stTWRxd3hjYmVFZjhiOFhTX0FWckFSUkszZTlvdkk3M0t4ZkZvQ2tVdDI2UTEtWnpNY0R1ckJrWERIY2pvQl9WQ0E?oc=5\" target=\"_blank\">Gemini活用で「Siri AI」がついに実現 だがアップルが越えるべき壁は多い</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">日経ビジネス電子版</font>",
+    "pub_date": "Mon, 13 Jul 2026 08:00:00 GMT"
+  },
+  {
+    "source": "Google_News_JP_AI",
+    "title": "韓国株が5％超安、ＡＩ懸念でＳＫハイニックスなど半導体に売り - ロイター",
+    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1saThtN1dGUng0Z3MtNzNqNlI3WXNKSG85Ri0tNWFVaVVzWVJVUUlzYTFOUHpEbkFDdmg0Q3pESDNPdmI1dWExMi1wdS1KRXIwWWJ0cG1yTDQ2LUNlU0FNVDFZQ2tFVnpsTExJWkltRmJlSGJWcF9heA?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE1saThtN1dGUng0Z3MtNzNqNlI3WXNKSG85Ri0tNWFVaVVzWVJVUUlzYTFOUHpEbkFDdmg0Q3pESDNPdmI1dWExMi1wdS1KRXIwWWJ0cG1yTDQ2LUNlU0FNVDFZQ2tFVnpsTExJWkltRmJlSGJWcF9heA?oc=5\" target=\"_blank\">韓国株が5％超安、ＡＩ懸念でＳＫハイニックスなど半導体に売り</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">ロイター</font>",
+    "pub_date": "Mon, 13 Jul 2026 03:30:00 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "“We Must Act Now”: Sixteen Nobel Laureates Join Leading Economists and AI Researchers in Call to Prepare for AI’s Economic Transformation - Stanford Digital Economy Lab",
+    "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE15SUdjbjdsTlBkdkZnTHB5TVhPcjBsS1BrZ1Q4NXFXSl9rVEUwRnNzVy1HbG84aFlJUDVpd08tenFDdUE1dm1ydVdFODNXY29KV2JOSGYycTB2dzJCNEd2ZW41cm4?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiZEFVX3lxTE15SUdjbjdsTlBkdkZnTHB5TVhPcjBsS1BrZ1Q4NXFXSl9rVEUwRnNzVy1HbG84aFlJUDVpd08tenFDdUE1dm1ydVdFODNXY29KV2JOSGYycTB2dzJCNEd2ZW41cm4?oc=5\" target=\"_blank\">“We Must Act Now”: Sixteen Nobel Laureates Join Leading Economists and AI Researchers in Call to Prepare for AI’s Economic Transformation</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Stanford Digital Economy Lab</font>",
+    "pub_date": "Mon, 13 Jul 2026 11:09:04 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Economists Warn of A.I. Threat - The New York Times",
+    "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9PWHFybHBYa2pBTGg3WjE3T3Z3RHd0dzZGZ2FoRzFwd055cl9lalpsUUd2VHJrSDA1UjBWdHpGMmxoeFAxZTZwN2I1OV9GcGhUVGFCNm04cTRQeG1WYzFRWUEwNVNjSU1aQzh3OVpORUptVUoxUjZfUHFrTHRGUDA?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTE9PWHFybHBYa2pBTGg3WjE3T3Z3RHd0dzZGZ2FoRzFwd055cl9lalpsUUd2VHJrSDA1UjBWdHpGMmxoeFAxZTZwN2I1OV9GcGhUVGFCNm04cTRQeG1WYzFRWUEwNVNjSU1aQzh3OVpORUptVUoxUjZfUHFrTHRGUDA?oc=5\" target=\"_blank\">Economists Warn of A.I. Threat</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The New York Times</font>",
+    "pub_date": "Mon, 13 Jul 2026 11:00:05 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "I was a software engineer who couldn't get excited about AI. Now I'm studying to be a nurse. - Business Insider",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQMlVfRGRhaTcyTUF0eTV2TmlRY3VpeTVuMFJCdTRaSHZyRkVicHY5aGIxWTAzNkJWb25xOHBJSTI1dFV5ZWswUVFnLUNFSlp6dUNIZmNTeHZHbFhmajBTV3NORGtjaThIMi1oTUVDSTlzWTJzYUNhS3JSV2t0MGZkSE5FQVlzZjd6blJ1bXRUT21LZURB?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxQMlVfRGRhaTcyTUF0eTV2TmlRY3VpeTVuMFJCdTRaSHZyRkVicHY5aGIxWTAzNkJWb25xOHBJSTI1dFV5ZWswUVFnLUNFSlp6dUNIZmNTeHZHbFhmajBTV3NORGtjaThIMi1oTUVDSTlzWTJzYUNhS3JSV2t0MGZkSE5FQVlzZjd6blJ1bXRUT21LZURB?oc=5\" target=\"_blank\">I was a software engineer who couldn't get excited about AI. Now I'm studying to be a nurse.</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Business Insider</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:50:24 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Meta's Louisiana data center investment to reach $50 billion, aided by generous tax incentives - CNBC",
+    "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdUtTQ2toaDhkd1dtTmQ2MlpDVkJSSFlidkxnUjVNMllfZmd1allzZjRxUm9qYWtCOXNSUk53QWd1akdLZWJyekJjYTVhQ2ZWa1lzclhQYUpSVF9fYUg3LURpQ1dkUUg5TGpJVnY1NDVBbFBxcXFtRXU2T1VZV0dzNHVvYjVtT0xmVXJvZ19JaE9JYU52WkU5SmVnb1o4aXRrdDZPRVFDTHM5QdIBrwFBVV95cUxNSzVPT3Rpbmx1LVcwMUJnX1dKVVIzX0ZYSFZ3TExSNWtHODFpT2hOVTdOSDUteDhPdGtxOGVWaUROREVBME05dUFiSGZ2bWloN3VpZjVTaERLRENib2NSVmhkMnAzXzlvdTVWeUs0SUstME1xaE9HbXg5d3Qwd0gtT1ZVZl8tUjg0RjIzVGVsbVJMb19SSzZKTkdQR2ZFelRkaTJvaFNSQmNTWkYwMlFR?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdUtTQ2toaDhkd1dtTmQ2MlpDVkJSSFlidkxnUjVNMllfZmd1allzZjRxUm9qYWtCOXNSUk53QWd1akdLZWJyekJjYTVhQ2ZWa1lzclhQYUpSVF9fYUg3LURpQ1dkUUg5TGpJVnY1NDVBbFBxcXFtRXU2T1VZV0dzNHVvYjVtT0xmVXJvZ19JaE9JYU52WkU5SmVnb1o4aXRrdDZPRVFDTHM5QdIBrwFBVV95cUxNSzVPT3Rpbmx1LVcwMUJnX1dKVVIzX0ZYSFZ3TExSNWtHODFpT2hOVTdOSDUteDhPdGtxOGVWaUROREVBME05dUFiSGZ2bWloN3VpZjVTaERLRENib2NSVmhkMnAzXzlvdTVWeUs0SUstME1xaE9HbXg5d3Qwd0gtT1ZVZl8tUjg0RjIzVGVsbVJMb19SSzZKTkdQR2ZFelRkaT",
+    "pub_date": "Mon, 13 Jul 2026 09:30:01 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "White House to rally utilities, data centers for AI power cost pledge, sources say - Reuters",
+    "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQW9VcURIMWNFdXRxakJ3c3ZHcnJucDRjY0NZU3k2b2tJM1V4SnNYT0ZlVWZwQ3E0LUFIaXlJWnk2aDU1OTFIVkQzRVgxWmJDZXUtS09wZkFuUmhfbGVWOHNEbDA2azVBQXA3ZlZpR2Z5RHQyd1N5aC1GbWE2cUprZS16QzNrdFBRdHdvQlRJWDNRLWpKQkY5ZjBVWElWbVlmMmxFbUF5R3pDc1ZMc3FlTExHZw?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxOQW9VcURIMWNFdXRxakJ3c3ZHcnJucDRjY0NZU3k2b2tJM1V4SnNYT0ZlVWZwQ3E0LUFIaXlJWnk2aDU1OTFIVkQzRVgxWmJDZXUtS09wZkFuUmhfbGVWOHNEbDA2azVBQXA3ZlZpR2Z5RHQyd1N5aC1GbWE2cUprZS16QzNrdFBRdHdvQlRJWDNRLWpKQkY5ZjBVWElWbVlmMmxFbUF5R3pDc1ZMc3FlTExHZw?oc=5\" target=\"_blank\">White House to rally utilities, data centers for AI power cost pledge, sources say</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Reuters</font>",
+    "pub_date": "Mon, 13 Jul 2026 11:21:14 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "GPT-5.6: Frontier intelligence that scales with your ambition - OpenAI",
+    "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1pWmhBYnBfLXg2OGhrbmlYM2FobFBJanp6RHFiZ1lIa1BSSE1CTnNYSExtRW1USTFWbDloOUxIS3FKY2hXbm5ULQ?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiSEFVX3lxTE1pWmhBYnBfLXg2OGhrbmlYM2FobFBJanp6RHFiZ1lIa1BSSE1CTnNYSExtRW1USTFWbDloOUxIS3FKY2hXbm5ULQ?oc=5\" target=\"_blank\">GPT-5.6: Frontier intelligence that scales with your ambition</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">OpenAI</font>",
+    "pub_date": "Fri, 10 Jul 2026 09:15:24 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Analysis of 380 trillion AI tokens reveals how the technology is transforming financial markets - YaleNews",
+    "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc3MyaFR2VlpzZUU2TVhENmZNcUljdElUcjlPd1l2Z09JZHAxNWtMd01YSFFKWUEtUWtKR3ROdEpEZEY5NG9LVGNsTE5McnVKOVFFVWdJSjlLd1JfRVZHSUExVElER05xRVNHSzEtblphWGlIU1dhUHFoeVRrOEFRTDNKclBHemNHV09rZmFOb1FFUTNJanJtTFJzX2FneThtWGtEUWNGUUZNdnd5VlVqRFBrZWxVSm5Rbnc?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxQc3MyaFR2VlpzZUU2TVhENmZNcUljdElUcjlPd1l2Z09JZHAxNWtMd01YSFFKWUEtUWtKR3ROdEpEZEY5NG9LVGNsTE5McnVKOVFFVWdJSjlLd1JfRVZHSUExVElER05xRVNHSzEtblphWGlIU1dhUHFoeVRrOEFRTDNKclBHemNHV09rZmFOb1FFUTNJanJtTFJzX2FneThtWGtEUWNGUUZNdnd5VlVqRFBrZWxVSm5Rbnc?oc=5\" target=\"_blank\">Analysis of 380 trillion AI tokens reveals how the technology is transforming financial markets</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">YaleNews</font>",
+    "pub_date": "Mon, 13 Jul 2026 12:37:37 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Which AI model should you bet your company on? - InfoWorld",
+    "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQdVVMTGtFWWdZUDRWempRWWJZSDdMVU81TTNrdUpKbGdXNnFFdnBtWmUtcjQ4eVU0X0pFWjROSU1SbXFFN1o0TU0zRkhucW1lNmJGUjg5NkppemNwNkxzMVN0UVlnVnd3OUdPU1djMDBUdmZCU3NpVElVUk1DT1RXWXpta2ZfbS1YWnBWbk9HVDBORzlESjlR?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxQdVVMTGtFWWdZUDRWempRWWJZSDdMVU81TTNrdUpKbGdXNnFFdnBtWmUtcjQ4eVU0X0pFWjROSU1SbXFFN1o0TU0zRkhucW1lNmJGUjg5NkppemNwNkxzMVN0UVlnVnd3OUdPU1djMDBUdmZCU3NpVElVUk1DT1RXWXpta2ZfbS1YWnBWbk9HVDBORzlESjlR?oc=5\" target=\"_blank\">Which AI model should you bet your company on?</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">InfoWorld</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:06:40 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Companies turn to Chinese AI models to cut costs - Financial Times",
+    "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNQUdyLUhvQl9DcmlTLUZHamZYeHh4Smw2SGlxcWRXdHpSb2pJWTl0NXlhWDl0d0oyWjhHZm50YzhOdmV4c3BSMTZBaVFDTUJqWU1rUHY0QjFjOFowMVhvWHVKU3IxaVdDQ0dWdUQwS2ZNNVpDUnBNOVhYc1NkcXdTQ2pRNnY?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMihAFBVV95cUxNQUdyLUhvQl9DcmlTLUZHamZYeHh4Smw2SGlxcWRXdHpSb2pJWTl0NXlhWDl0d0oyWjhHZm50YzhOdmV4c3BSMTZBaVFDTUJqWU1rUHY0QjFjOFowMVhvWHVKU3IxaVdDQ0dWdUQwS2ZNNVpDUnBNOVhYc1NkcXdTQ2pRNnY?oc=5\" target=\"_blank\">Companies turn to Chinese AI models to cut costs</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Financial Times</font>",
+    "pub_date": "Mon, 13 Jul 2026 04:00:50 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Teachers save time with AI. Their students may pay the price - The Hechinger Report",
+    "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WR3l0RktOVmdRSVhVWHJrZ1B2RzlLYks1UkVyMEl2dkRzZU51TUFKTDQydERlUkxFMW9yUUR5OTk3VnBGVFpVQ25OMjB4UUNwNEhrTGFTQndyeU5iY1hfTndTRVBweEU?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9WR3l0RktOVmdRSVhVWHJrZ1B2RzlLYks1UkVyMEl2dkRzZU51TUFKTDQydERlUkxFMW9yUUR5OTk3VnBGVFpVQ25OMjB4UUNwNEhrTGFTQndyeU5iY1hfTndTRVBweEU?oc=5\" target=\"_blank\">Teachers save time with AI. Their students may pay the price</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">The Hechinger Report</font>",
+    "pub_date": "Mon, 13 Jul 2026 10:00:00 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Waze rolls out new customization features and more Gemini updates - blog.google",
+    "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9UQzg5TzBLZmpySnhPQWlaTkVGRmJCcllzR2I4RnZMRGxkYzV3MjFCWHJIQWJfTlB5R3JBeEZPSUM0amV3eFhNUnFldEk0NnNOd0lyQ191TjF6dmlmMkw0eHd0M2Zqem5qQWVRTnJ3?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMibkFVX3lxTE9UQzg5TzBLZmpySnhPQWlaTkVGRmJCcllzR2I4RnZMRGxkYzV3MjFCWHJIQWJfTlB5R3JBeEZPSUM0amV3eFhNUnFldEk0NnNOd0lyQ191TjF6dmlmMkw0eHd0M2Zqem5qQWVRTnJ3?oc=5\" target=\"_blank\">Waze rolls out new customization features and more Gemini updates</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">blog.google</font>",
+    "pub_date": "Mon, 13 Jul 2026 09:46:54 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "How AI clears the way for colonoscopy screening - American Medical Association | AMA",
+    "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPNGMtLVFyM2QzU1QtMktzejNQUEZoX0RsRUZpeWJ1WldhTWhDcEZTVFFQS3VSSE1UMnQ3blFObWJqeHR4ckZJNFBTQ1U1cE5peE9KSVppd0w3VVFGVllwNUJ1TWxHX25OeTdtaFJFaVVuT19VMm5Cajh1MlZUTnI5aDg3dXp0MkpnMm1xMTZ4MnBQSUNuWHpQNG5PZVhNSFla?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPNGMtLVFyM2QzU1QtMktzejNQUEZoX0RsRUZpeWJ1WldhTWhDcEZTVFFQS3VSSE1UMnQ3blFObWJqeHR4ckZJNFBTQ1U1cE5peE9KSVppd0w3VVFGVllwNUJ1TWxHX25OeTdtaFJFaVVuT19VMm5Cajh1MlZUTnI5aDg3dXp0MkpnMm1xMTZ4MnBQSUNuWHpQNG5PZVhNSFla?oc=5\" target=\"_blank\">How AI clears the way for colonoscopy screening</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">American Medical Association | AMA</font>",
+    "pub_date": "Mon, 13 Jul 2026 12:00:00 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "The House’s top progressive thinks Democrats are failing on AI - Politico",
+    "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQUnRpQWZLLUg2Qk1MUm0wOVJVX1IxSFlmUVh0bVpSWVRTcUxvemtOTmFfazFTb3p6OGt3dTNheGUyMlRiQnBlT1NnTWdfYnB5UmZTWlZMZmJKYlFONUdIalpUT1lzOFhLWDVXNXY0MG1aZzlueWhZUEhnbkFHR3ZoajU2RUJWTkxPbWV5OEhn?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxQUnRpQWZLLUg2Qk1MUm0wOVJVX1IxSFlmUVh0bVpSWVRTcUxvemtOTmFfazFTb3p6OGt3dTNheGUyMlRiQnBlT1NnTWdfYnB5UmZTWlZMZmJKYlFONUdIalpUT1lzOFhLWDVXNXY0MG1aZzlueWhZUEhnbkFHR3ZoajU2RUJWTkxPbWV5OEhn?oc=5\" target=\"_blank\">The House’s top progressive thinks Democrats are failing on AI</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Politico</font>",
+    "pub_date": "Mon, 13 Jul 2026 08:45:00 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "6 months to live for open models - Interconnects AI",
+    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBa1ZLVElUWDVPUDVGQjViSTVfbDJ3Mkc2b2JpcF85WlpUSnNyVWhZZHZjNVUtOEl4SGVKZWo3MkUyUTZXTndVUUtmRl9kRm9LeS1OYTM1dFZCYTRicE1CYloyRUhkcm54MmhjQm05anM?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMicEFVX3lxTFBBa1ZLVElUWDVPUDVGQjViSTVfbDJ3Mkc2b2JpcF85WlpUSnNyVWhZZHZjNVUtOEl4SGVKZWo3MkUyUTZXTndVUUtmRl9kRm9LeS1OYTM1dFZCYTRicE1CYloyRUhkcm54MmhjQm05anM?oc=5\" target=\"_blank\">6 months to live for open models</a>&nbsp;&nbsp;<font color=\"#6f6f6f\">Interconnects AI</font>",
+    "pub_date": "Sun, 12 Jul 2026 16:47:42 GMT"
+  },
+  {
+    "source": "Google_News_EN_AI",
+    "title": "Massive AI buildout poses latest inflation threat as consumers pay more for laptops and electricity - ABC News - Breaking News, Latest News and Videos",
+    "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNRGd2SGxGUXpYUjVqTURfSGdxQ0JuWm9OelhsSjBtRHJ1cndxdzdkSzI3dmRTVEt3bkd1eFZRMjZSbEJPX1lfdVN6RTItcUFhak5YSTZsdUZvWG1jQ0c5QW9QOXN1OWs5WnotelJzYWRsREtXZDhTS3J2YmxwWEo2cHdDbXBhMXlNMk9QWFdHQlQtcDVPZ3BzTE4zWGV5eFY0TWpvedIBqgFBVV95cUxNUGxnYUtsYU9vZ3h0M09YQmtkSUtQVzE3OVlzSTN2RGJ5ZFdGVFduUHZTYnMteUd3U3JDZWVjbTZYOV9sX0hIaVg2dE5RdGRoUmlOSHJBa0k0OTB1SFB5SVpDZ0dZQVE2UjZPcW1CSmJXa0xVZThEY2ZHR3doV1BOQnM1SHlwWHRVLVJoU25HbG5Yell5Ul93Rnk0Ul8wdVAyZEluSHozc3Z1QQ?oc=5",
+    "description": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxNRGd2SGxGUXpYUjVqTURfSGdxQ0JuWm9OelhsSjBtRHJ1cndxdzdkSzI3dmRTVEt3bkd1eFZRMjZSbEJPX1lfdVN6RTItcUFhak5YSTZsdUZvWG1jQ0c5QW9QOXN1OWs5WnotelJzYWRsREtXZDhTS3J2YmxwWEo2cHdDbXBhMXlNMk9QWFdHQlQtcDVPZ3BzTE4zWGV5eFY0TWpvedIBqgFBVV95cUxNUGxnYUtsYU9vZ3h0M09YQmtkSUtQVzE3OVlzSTN2RGJ5ZFdGVFduUHZTYnMteUd3U3JDZWVjbTZYOV9sX0hIaVg2dE5RdGRoUmlOSHJBa0k0OTB1SFB5SVpDZ0dZQVE2UjZPcW1CSmJXa0xVZThEY2ZHR3doV1BOQnM1SHlwWHRVLVJoU25HbG5Yell5Ul93Rnk0Ul8wdVAyZEluSHozc3",
+    "pub_date": "Mon, 13 Jul 2026 10:39:31 GMT"
+  }
+]
