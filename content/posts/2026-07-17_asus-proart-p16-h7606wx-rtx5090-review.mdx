@@ -34,6 +34,8 @@ ASUS ProArt P16 H7606WXが日本市場に投入された。RTX 5090 Laptop GPU 2
 
 RTX 5090 Laptop GPUは、デスクトップ版RTX 5090（32GB）よりVRAMが8GB少ないが、CUDAコア数は同等の10,752基、メモリバス256bit、メモリ帯域幅1.5TB/s超を維持する。ローカルLLMであれば24GB VRAMは70Bパラメータ級（4bit量子化）まで余裕で収まる。
 
+[当サイトのMSI Raider 16 Max HXレビュー](https://smart-kurashi.jp/posts/2026-06-22_msi-raider-16-max-hx-rtx5090-review)でも確認した通り、RTX 5090 Laptop GPU 24GBはゲーミングノートPCとしてもトップクラスの性能を発揮する。
+
 ---
 
 ## 外観とビルドクオリティ
@@ -86,7 +88,9 @@ OLED特有の「黒の沈み込み」は動画編集・グレーディング現�
 | Gemma-2-27B-IT | Q4_K_M | 約15.2GB | 110 | 実用的 |
 | DeepSeek-Coder-V2-Lite | Q4_K_M | 約9.8GB | 165 | コード生成特化 |
 
-**結論：24GB VRAMの壁は厳しい。** 70B級モデルはQ4_K_MでもVRAM不足でシステムメモリへオフロードが発生し、生成速度が実用外（1-2 tok/s）まで低下する。32B〜48B級までが「快適に動く上限」だ。
+**[当サイトのGIGABYTE RTX 5090 AORUSレビュー](https://smart-kurashi.jp/posts/2026-06-20_gigabyte-rtx5090-aorus-review)**でも確認した通り、デスクトップ版RTX 5090 32GBはVRAM余裕で70B級モデルを収容できるが、ノートPC版の24GBではギリギリのラインだ。
+
+---
 
 NPU活用（AMD Ryzen AI Software、ONNX Runtime、DirectML経由）を試したが、現状（2026年7月時点）ではllama.cppのNPUバックエンドは実験的で、安定動作するモデルは限られる。NPU 50 TOPSは将来への投資として評価すべきで、現時点の実戦投入はGPU推論が主力になる。
 
@@ -111,6 +115,8 @@ NPU活用（AMD Ryzen AI Software、ONNX Runtime、DirectML経由）を試した
 | Fusion合成（3Dパーティクル 10万パーティクル）プレビュー | 24fps | 30fps |
 
 NVENC/NVDECデュアル搭載（AV1エンコード対応）の恩恵で、H.265/HEVC、AV1のハードウェアエンコード/デコードは高速。ただ、8K RAWネイティブ再生はVRAM 24GBでも厳しく、プロキシワークフロー前提になる。M3 Max 128GBユニファイドメモリの「メモリ不足がない強さ」とは対照的だ。
+
+[当サイトのBenQ MA270U 4Kモニターレビュー](https://smart-kurashi.jp/posts/2026-06-24_benq-ma270u-4k-mac-monitor-review)でも触れた通り、正確なカラーグレーディングには外部リファレンスモニター併用が現実的だ。
 
 ### 3Dレンダリング（Blender 4.2 / Cycles / OptiX）
 
@@ -205,9 +211,12 @@ ProArt P16の冷却系は、ベイパーチャンバー＋デュアルファン�
 | **MacBook Pro 16 M3 Max (128GB)** | 40コアGPU (UMA) | 18 TOPS (Neural Engine) | 2.16kg | ~65万円 | 128GB UMA、バッテリー最強、ファンレスに近い静音 | Windows非ネイティブ、VRAM上限なしだがGPU性能はRTX 4080 Laptop級 |
 | **Dell Precision 5690** | RTX 5000 Ada 16GB | なし (Intel Core Ultra NPU 11 TOPS) | 1.84kg | ~90万円 | ISV認証、堅牢、サポート手厚い | NPU弱い、OLED非搭載、ポート少ない |
 | **Lenovo ThinkPad P1 Gen 7** | RTX 5000 Ada 16GB | Intel NPU 11 TOPS | 1.78kg | ~85万円 | キーボード最強、軽量、信頼性 | GPU上位選べない、OLED非搭載 |
-| **MSI Creator Z17 HX Studio** | RTX 5090 24GB | なし | 2.5kg | ~95万円 | 17型 4K MiniLED、デスクトップ級冷却 | 重い、NPUなし、バッテリー短い |
+|| **MSI Creator Z17 HX Studio** | RTX 5090 24GB | なし | 2.5kg | ~95万円 | 17型 4K MiniLED、デスクトップ級冷却 | 重い、NPUなし、バッテリー短い ||
+|| **MSI Raider 16 Max HX** | RTX 5090 24GB | なし | 2.6kg | ~85万円 | 240Hz MiniLED、64GB/2TB、ゲーミング特化 | NPUなし、重い、バッテリー短い ||
 
 **「ローカルLLM推論＋動画編集＋モバイル」の三点セットを1台で完結させたいなら、現状ProArt P16一択。** NPU 50 TOPSは将来のWindows AI機能（Recall正式版、Copilot+ローカル処理拡張、NPU対応フレームワーク成熟）を見据えた投資になる。
+
+[MSI Raider 16 Max HXレビュー](https://smart-kurashi.jp/posts/2026-06-22_msi-raider-16-max-hx-rtx5090-review)と比較すると、ProArt P16はNPU 50 TOPS、OLED、薄型軽量（1.85kg vs 2.6kg）でクリエイター向けに特化しているが、ゲーミング性能・メモリ容量（64GB vs 64GB同等、ストレージ4TB vs 2TB）ではRaiderに分がある。
 
 一方、「動画編集メインでLLMはクラウドAPI」なら、MacBook Pro M3 Max 128GBの方がバッテリー・静音・総コストで勝る。また「ISV認証必須のCAD/CAE現場」ならDell Precision / Lenovo ThinkPad Pシリーズの方が安心感がある。
 
