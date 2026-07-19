@@ -1,5 +1,7 @@
 {
-  "last_run_time": "2026-07-18T06:41:39.017781+00:00",
-  "current_target_interval": 329,
-  "last_topic": "affiliate"
+  "last_run_time": "2026-07-18T13:00:00.131Z",
+  "current_target_interval": 296,
+  "last_topic": "ai-tech",
+  "last_check_time": "2026-07-18T23:41:27.398437+09:00",
+  "last_check_result": "skipped - interval not reached"
 }
