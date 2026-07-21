@@ -1,8 +1,8 @@
 {
-  "last_run_time": "2026-07-20T11:21:15.041502+00:00",
-  "current_target_interval": 339,
-  "last_topic": "ai-tech",
-  "last_check_time": "2026-07-20T11:21:15.041584+00:00",
+  "last_run_time": "2026-07-21T00:13:08.840280+00:00",
+  "current_target_interval": 319,
+  "last_topic": "affiliate",
+  "last_check_time": "2026-07-21T00:13:08.840383+00:00",
   "last_check_result": "published",
-  "next_run_interval_minutes": 339
+  "next_run_interval_minutes": 319
 }
