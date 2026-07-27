@@ -373,13 +373,13 @@ function writeState(lastRunTime, targetInterval) {
 }
 
 /**
- * Calculate a new random jitter interval: 180 + random(17-131) minutes.
- * This gives a window of 197–311 minutes (~3.3h to ~5.2h).
+ * Calculate a new random jitter interval: 90 + random(25-120) minutes.
+ * This gives a window of 115–210 minutes (~1.9h to ~3.5h).
  */
 function calculateJitterInterval() {
-  const BASE = 180;
-  const MIN_EXTRA = 17;
-  const MAX_EXTRA = 131;
+  const BASE = 90;
+  const MIN_EXTRA = 25;
+  const MAX_EXTRA = 120;
   const extra = Math.floor(Math.random() * (MAX_EXTRA - MIN_EXTRA + 1)) + MIN_EXTRA;
   return BASE + extra;
 }
@@ -1185,6 +1185,7 @@ function startCron() {
 
   console.log('⏰ Starting jitter scheduler (87-min wrapper)...');
   console.log(`  Poll: ${WRAPPER_INTERVAL}`);
+  console.log(`  Jitter window: 115–210 min (~1.9–3.5h)`);
 
   cron.schedule(WRAPPER_INTERVAL, () => {
     if (!isTimeToRun()) {
@@ -1236,8 +1237,8 @@ if (args.includes('--cron')) {
   console.log(`[DRY-RUN] State file written to ${STATE_FILE}`);
   console.log(`  last_run_time:             ${saved.last_run_time}`);
   console.log(`  current_target_interval:  ${saved.current_target_interval} min`);
-  const valid = saved.last_run_time && saved.current_target_interval >= 197 && saved.current_target_interval <= 311;
-  console.log(`[DRY-RUN] ${valid ? '✅ VALID' : '❌ INVALID'} — interval ${saved.current_target_interval} is within [197, 311]`);
+  const valid = saved.last_run_time && saved.current_target_interval >= 115 && saved.current_target_interval <= 210;
+  console.log(`[DRY-RUN] ${valid ? '✅ VALID' : '❌ INVALID'} — interval ${saved.current_target_interval} is within [115, 210]`);
 } else {
   console.log(`Usage:
   node scripts/advanced-content-engine.js --once           Run pipeline once
