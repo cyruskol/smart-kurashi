@@ -1188,8 +1188,7 @@ function startCron() {
   console.log(`  Jitter window: 115–210 min (~1.9–3.5h)`);
 
   cron.schedule(WRAPPER_INTERVAL, () => {
-    if (!isTimeToRun()) {
-      process.exit(0);
+    if (!isTimeToRun()) { return; // Was process.exit(0)
     }
 
     // Time to run — determine ABAB topic and execute the full pipeline
