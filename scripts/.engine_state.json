@@ -1,5 +1,7 @@
 {
-  "last_run_time": "2026-07-30T14:00:00.012Z",
-  "current_target_interval": 200,
-  "last_topic": "smart-home"
+  "last_run_time": "2026-07-30T23:06:52.072Z",
+  "current_target_interval": 152,
+  "last_check_time": "2026-07-31T01:03:55.678214Z",
+  "last_check_result": "skipped_interval_not_elapsed",
+  "minutes_since_last_run": 117.1
 }
