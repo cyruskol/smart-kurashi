@@ -128,7 +128,9 @@ export function getPostsByTag(tag: string): Post[] {
 
 export function getPostBySlug(slug: string): Post | null {
   const isDev = process.env.NODE_ENV !== 'production';
-  if (!isDev && _slugCache.has(slug)) return _slugCache.get(slug)!;
+  // Decode URL-encoded slugs (Next.js may pass encoded slugs for non-ASCII chars)
+  const decodedSlug = decodeURIComponent(slug);
+  if (!isDev && _slugCache.has(decodedSlug)) return _slugCache.get(decodedSlug)!;
 
   const searchDirs = [
     path.join(contentDir, 'posts'),
@@ -136,21 +138,21 @@ export function getPostBySlug(slug: string): Post | null {
     path.join(contentDir, 'news', 'smart-home'),
   ];
   for (const dir of searchDirs) {
-    const filePathMd = path.join(dir, `${slug}.md`);
-    const filePathMdx = path.join(dir, `${slug}.mdx`);
+    const filePathMd = path.join(dir, `${decodedSlug}.md`);
+    const filePathMdx = path.join(dir, `${decodedSlug}.mdx`);
     if (fs.existsSync(filePathMd)) {
       const category = dir.includes('ai-tech') ? 'ai-tech' : dir.includes('smart-home') ? 'smart-home' : 'article';
       const post = parsePost(filePathMd, category);
-      _slugCache.set(slug, post);
+      _slugCache.set(decodedSlug, post);
       return post;
     }
     if (fs.existsSync(filePathMdx)) {
       const category = dir.includes('ai-tech') ? 'ai-tech' : dir.includes('smart-home') ? 'smart-home' : 'article';
       const post = parsePost(filePathMdx, category);
-      _slugCache.set(slug, post);
+      _slugCache.set(decodedSlug, post);
       return post;
     }
   }
-  _slugCache.set(slug, null);
+  _slugCache.set(decodedSlug, null);
   return null;
 }
