@@ -46,6 +46,15 @@ for (const file of files) {
       failures.push(`${file}: malformed Rakuten affiliate URL`);
     }
   }
+  for (const match of text.matchAll(/<a\b[^>]*href=["'][^"']*hb\.afl\.rakuten\.co\.jp[^"']*["'][^>]*>/gi)) {
+    const rawAnchor = match[0];
+    if (!/rel=["'][^"']*sponsored[^"']*nofollow[^"']*noopener[^"']*["']/i.test(rawAnchor)) {
+      failures.push(`${file}: raw Rakuten anchor is missing sponsored/nofollow/noopener`);
+    }
+    if (!/target=["']_blank["']/i.test(rawAnchor)) {
+      failures.push(`${file}: raw Rakuten anchor is missing target=_blank`);
+    }
+  }
   for (const match of text.matchAll(/\/images\/[^\s"')\]]+/g)) {
     const localUrl = match[0].split(/[?#]/)[0];
     const imagePath = path.join(root, 'public', localUrl);
