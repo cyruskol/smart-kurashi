@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:affiliate": "node scripts/audit-affiliate-content.mjs",
     "report:products": "node scripts/report-products.mjs",
     "newsroom": "node scripts/advanced-content-engine.js --once",
     "newsroom:cron": "node scripts/advanced-content-engine.js --cron"

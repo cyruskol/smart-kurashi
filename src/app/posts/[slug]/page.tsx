@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import RakutenAffiliateTable from '@/components/RakutenAffiliateTable';
+import AffiliateAnchor from '@/components/AffiliateAnchor';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { getProductByReviewUrl } from '@/lib/products';
 import Link from 'next/link';
@@ -202,7 +203,7 @@ export default async function PostPage({ params }: PageProps) {
                   <MDXRemote
                     source={post.content}
                     options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
-                    components={{ RakutenAffiliateTable }}
+                    components={{ RakutenAffiliateTable, a: AffiliateAnchor }}
                   />
                 </div>
               </>
