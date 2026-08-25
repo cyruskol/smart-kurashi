@@ -11,7 +11,7 @@ description: "ASUS ProArt P16 H7606WXを実機レビュー。RTX 5090 Laptop GPU
 
 ASUS ProArt P16 H7606WXが日本市場に投入された。RTX 5090 Laptop GPU 24GB GDDR7、Ryzen AI 9 HX 370（NPU 50 TOPS）、64GB LPDDR5X、4TB SSD、16型4K OLED（120Hz、100% DCI-P3）を詰め込んだ、いわゆる「フルスペック」のクリエイター向けモバイルワークステーションだ。価格は998,000円（税込、ASUS Store楽天市場店価格）。
 
-スペック表だけ見れば「最強」の一言で片付くが、実際の現場——ローカルLLM推論、動画編集、3Dレンダリング、AIアシスタント開発——でどこまで通用するのか。実機を借りて2週間、開発現場に持ち込んで検証した。
+スペック表だけ見れば「最強」の一言で片付くが、実際の現場——[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)推論、動画編集、3Dレンダリング、AIアシスタント開発——でどこまで通用するのか。実機を借りて2週間、開発現場に持ち込んで検証した。
 
 ---
 
@@ -30,7 +30,7 @@ ASUS ProArt P16 H7606WXが日本市場に投入された。RTX 5090 Laptop GPU 2
 | 重量 | 約1.85kg |
 | OS | Windows 11 Pro |
 
-**NPU 50 TOPS**は、Copilot+ PC認定基準（40 TOPS以上）を余裕でクリアする。ローカルAI推論でNPUを活用するアプリ（Windows Studio Effects、Live Captions、Recall、サードパーティのNPU対応アプリ）では、GPUを使わずにバックグラウンド処理が回せる。
+**NPU 50 TOPS**は、Copilot+ PC認定基準（40 TOPS以上）を余裕でクリアする。[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)推論でNPUを活用するアプリ（Windows Studio Effects、Live Captions、Recall、サードパーティのNPU対応アプリ）では、GPUを使わずにバックグラウンド処理が回せる。
 
 RTX 5090 Laptop GPUは、デスクトップ版RTX 5090（32GB）よりVRAMが8GB少ないが、CUDAコア数は同等の10,752基、メモリバス256bit、メモリ帯域幅1.5TB/s超を維持する。ローカルLLMであれば24GB VRAMは70Bパラメータ級（4bit量子化）まで余裕で収まる。
 
@@ -102,7 +102,7 @@ NPU活用（AMD Ryzen AI Software、ONNX Runtime、DirectML経由）を試した
 | Qwen2.5-14B QLoRA (r=32, 1epoch, 5kサンプル) | 約42分 | 4bit NF4、バッチサイズ2 |
 | Gemma-2-27B QLoRA (r=16, 1epoch, 3kサンプル) | 約1時間15分 | VRAMギリギリ、スワップ発生 |
 
-デスクトップ版RTX 5090（32GB）比で約1.3〜1.5倍の時間を要するが、ノートPCで「その場でLoRAを回せる」のは大きい。学習中のGPU温度は83℃前後、ファン音は「静かな部屋で気になるレベル」（約48dB）。サーマルスロットリングは発生しなかった。
+デスクトップ版RTX 5090（32GB）比で約1.3〜1.5倍の時間を要するが、[ノートPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)で「その場でLoRAを回せる」のは大きい。学習中のGPU温度は83℃前後、ファン音は「静かな部屋で気になるレベル」（約48dB）。サーマルスロットリングは発生しなかった。
 
 ### 動画編集・レンダリング（DaVinci Resolve Studio 19 / Premiere Pro 2025）
 
@@ -168,7 +168,7 @@ ProArt P16の冷却系は、ベイパーチャンバー＋デュアルファン�
 | ファン騒音（耳元30cm） | 48dBA（高負荷）、38dBA（アイドル） |
 | スロットリング発生 | なし（30分継続でクロック維持） |
 
-**驚異的な冷却性能。** 1.85kg、19.9mm厚の筐体で140W継続をスロットリングなしで捌く。ファン曲線は「静音優先」寄りにチューニングされており、高負荷でも「うるさい」ではなく「風切り音がする」レベル。会議中にバックグラウンドでレンダリングを回しても、マイクにファン音が乗ることはない（指向性マイク使用時）。
+**驚異的な[冷却性能](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)。** 1.85kg、19.9mm厚の筐体で140W継続をスロットリングなしで捌く。ファン曲線は「静音優先」寄りにチューニングされており、高負荷でも「うるさい」ではなく「風切り音がする」レベル。会議中にバックグラウンドでレンダリングを回しても、マイクにファン音が乗ることはない（指向性マイク使用時）。
 
 バッテリー駆動時はTGPが自動で60W程度に制限され、性能は約55%に抑制される。外部電源必須のマシンと割り切るのが正解だ。
 
@@ -236,7 +236,7 @@ ProArt P16の冷却系は、ベイパーチャンバー＋デュアルファン�
 
 ## 総評：今、買うべき「ローカルAI開発の相棒」か
 
-ASUS ProArt P16 H7606WXは、**「2026年現在、ノートPCでローカルAI開発を本気でやるなら、妥協点が最も少ない1台」**だ。
+ASUS ProArt P16 H7606WXは、**「2026年現在、ノートPCでローカル[AI開発](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)を本気でやるなら、妥協点が最も少ない1台」**だ。
 
 RTX 5090 24GB VRAMは、32B〜48Bパラメータモデルの快速推論と、8B〜14BモデルのLoRA/QLoRA学習をノートPC単体でこなせるギリギリのライン。NPU 50 TOPSは「今すぐ劇的に速い」わけではないが、WindowsのAI基盤がNPU前提へシフトする向きを考えれば、2〜3年の資産価値を守る保険になる。
 

@@ -12,11 +12,11 @@ bodyImage2: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&
 
 当サイトはアフィリエイト広告（Amazonアソシエイト含む）を掲載しています。
 
-ローカルLLMをカフェや出張先で動かしたい、でも「重いワークステーションは持ち歩けない」「バッテリーが持たない」「ファンの音が気になる」——そんな悩みを抱えるAI開発者・エンジニア・クリエイターの間で、ここ半年ほど「Copilot+ PC認定の超軽量ノートPCでローカルAI」という選択肢が急速に現実味を帯びてきました。
+ローカルLLMをカフェや出張先で動かしたい、でも「重いワークステーションは持ち歩けない」「バッテリーが持たない」「ファンの音が気になる」——そんな悩みを抱えるAI開発者・エンジニア・クリエイターの間で、ここ半年ほど「Copilot+ PC認定の超軽量[ノートPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)でローカルAI」という選択肢が急速に現実味を帯びてきました。
 
 2026年夏、その「現実解」の最有力候補として浮上しているのが **HP OmniBook 7 Aero 13-bg** です。AMD Ryzen AI 300シリーズ（NPU 最大50 TOPS）、13.3型ディスプレイ、超軽量薄型筐体、Windows 11、Copilot+ PC認定搭載で、なんと **139,900円〜（送料無料・楽天市場ランキング入賞）**。さらに **HP直営店でメーカー保証付き** という、この価格帯・重量帯では「あり得ない」スペック構成が話題を呼んでいます。
 
-本記事では、OmniBook 7 Aero 13-bg を **「ローカルLLM推論」「AI開発環境構築」「モバイルワーク・クリエイティブ作業」** の3つのユースケースで徹底検証。競合機（ASUS ZenBook S 16、Lenovo Yoga Slim 7x、MacBook Air M3、自作デスクトップ等）との比較まで、**「14万円台でローカルAIモバイル機を手に入れる」ための意思決定材料をすべて網羅** します。
+本記事では、OmniBook 7 Aero 13-bg を **「ローカルLLM推論」「AI開発環境構築」「モバイルワーク・クリエイティブ作業」** の3つのユースケースで徹底検証。競合機（ASUS ZenBook S 16、Lenovo Yoga Slim 7x、MacBook Air M3、自作デスクトップ等）との比較まで、**「14万円台で[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)モバイル機を手に入れる」ための意思決定材料をすべて網羅** します。
 
 ---
 
@@ -52,7 +52,7 @@ bodyImage2: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&
 
 ## なぜ今「OmniBook 7 Aero 13-bg」なのか——「14万円台・1kg切り・NPU 50 TOPS」の三拍子
 
-2026年現在、ローカルLLM推論に「実用的」なハードウェア要件はおおむね以下の通りと言われています。
+2026年現在、[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)推論に「実用的」なハードウェア要件はおおむね以下の通りと言われています。
 
 - **VRAM/システムメモリ**: 7B-4bit なら 8GB 以上、13B-4bit なら 16GB 以上、32B-4bit なら 24GB 以上
 - **NPU/GPU**: NPU 40+ TOPS または VRAM 8GB+ のディスクリートGPU が望ましい
@@ -120,7 +120,7 @@ Ryzen AI NPU (XDNA 2) は、llama.cpp の Vulkan/ROCm バックエンドで **�
 - **FFN (Feed-Forward Network) の中間層** を NPU で並列化
 - これにより **CPU 負荷を 30-35% 削減**、発熱・消費電力・ファン騒音を抑制
 
-実際の検証では、7B 推論時の **CPU 平均使用率が 55% → 35% に低下**、ファン回転数が **3,200 RPM → 2,400 RPM** に抑えられ、表面温度も **42℃ → 38℃** に改善されました。バッテリー駆動時の推論持続時間も **約 15% 延伸** しています。
+実際の検証では、7B 推論時の **CPU 平均使用率が 55% → 35% に低下**、ファン回転数が **3,200 RPM → 2,400 RPM** に抑えられ、表面温度も **42℃ → 38℃** に改善されました。[バッテリー](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)駆動時の推論持続時間も **約 15% 延伸** しています。
 
 > **編集部メモ**：前回の「[HP OMEN 16-ap0086AX レビュー](https://smart-kurashi.jp/posts/2026-07-27_hp-omen-16-ryzen-ai-7-rtx5060-local-llm-affiliate-review)」では RTX 5060 Laptop GPU (8GB VRAM) が 13B/32B の主力でしたが、OmniBook 7 Aero は **NPU + 統合GPUのみで 7B/13B をカバー** する「NPUファースト」アーキテクチャ。ディスクリートGPU非搭載でも「モバイルで 7B 常用」が成立することを証明した点で、Copilot+ PC の意義を体現しています。
 
@@ -305,7 +305,7 @@ A. あります。主なメリット：
 A. **13.3 型・0.99kg・14.9mm** を実現するためにタッチ・ペン・360度ヒンジを割り切っています。クラムシェル派・キーボード主体派・外部モニター併用派には「余計な重量・厚み・コスト・故障点がない」というメリットの方が大きい設計思想です。タッチ必須なら Yoga / Surface / Galaxy Book を検討ください。
 
 **Q. ファン音は本当に静かですか？**
-A. **アイドル・文書作成・ブラウジング・動画視聴では 0 dB (ファン停止・パッシブ冷却)** です。7B 推論時でも 25-30 dB (図書館レベル)、13B 推論・動画書き出し時でも 35-38 dB (静かなオフィスレベル) に抑えられます。カフェ・会議室・飛行機での使用に耐えうる静音性です。
+A. **アイドル・文書作成・ブラウジング・動画視聴では 0 dB (ファン停止・パッシブ冷却)** です。7B 推論時でも 25-30 dB (図書館レベル)、13B 推論・動画書き出し時でも 35-38 dB (静かなオフィスレベル) に抑えられます。カフェ・会議室・飛行機での使用に耐えうる[静音性](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)です。
 
 **Q. 保証・サポート体制はどうですか？**
 A. **HP Directplus楽天市場店購入で「メーカー1年保証 + HP直営店サポート + PSE/TELEC取得済み + 日本語マニュアル + 日本語電話/チャットサポート」** が付きます。法人向けケアパック (延長保証・オンサイト修理・アクシデンタルダメージ保証) も別途購入可能です (約 15,000円/3年〜)。

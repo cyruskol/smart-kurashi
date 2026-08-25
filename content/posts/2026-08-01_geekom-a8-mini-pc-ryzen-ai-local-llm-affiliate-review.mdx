@@ -8,13 +8,13 @@ author: "Smart Kurashi編集部"
 image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1200&q=80"
 ---
 
-GEEKOMから登場したミニPC「A8」は、AMD Ryzen 7 8745HS（8コア16スレッド、最大5.1GHz）とRadeon 780M（12CU、RDNA 3アーキテクチャ）を搭載し、USB4×2ポート（最大40Gbps）によるOcuLink代替のeGPU接続と4画面同時出力を実現した意欲作です。25%オフクーポン適用で実質106,425円（税込・送料無料）という価格設定も含め、ローカルLLM推論・ゲーミング・クリエイティブワークの「三役」を一台でこなせるのか、実機レベルで検証していきます。
+GEEKOMから登場した[ミニPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)「A8」は、AMD Ryzen 7 8745HS（8コア16スレッド、最大5.1GHz）とRadeon 780M（12CU、RDNA 3アーキテクチャ）を搭載し、USB4×2ポート（最大40Gbps）によるOcuLink代替のeGPU接続と4画面同時出力を実現した意欲作です。25%オフクーポン適用で実質106,425円（税込・送料無料）という価格設定も含め、ローカルLLM推論・ゲーミング・クリエイティブワークの「三役」を一台でこなせるのか、実機レベルで検証していきます。
 
 ## なぜ今「ミニPCでローカルLLM」なのか
 
-2026年に入り、ローカルLLM実行の環境整備が急速に進んでいます。OllamaやLM Studio、llama.cppといったツールチェーンが成熟し、7B〜14Bパラメータクラスのモデルなら一般的なGPUメモリ8〜16GBでも実用的な速度で動作するようになりました。一方で、デスクトップPCを常時稼働させる電力コストや設置スペース、騒音を懸念する声も根強いです。
+2026年に入り、[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)実行の環境整備が急速に進んでいます。OllamaやLM Studio、llama.cppといったツールチェーンが成熟し、7B〜14Bパラメータクラスのモデルなら一般的なGPUメモリ8〜16GBでも実用的な速度で動作するようになりました。一方で、デスクトップPCを常時稼働させる電力コストや設置スペース、騒音を懸念する声も根強いです。
 
-ミニPCは「省電力・静音・省スペース」の三拍子が揃い、NPU（Neural Processing Unit）を内蔵する最新APUと組み合わせることで、CPU+GPU+NPUのハイブリッド推論が可能になります。GEEKOM A8のRyzen 7 8745HSはNPUを持たないものの、Radeon 780Mの12CU（768シェーダー）とDDR5-5600デュアルチャネル（最大96GB/s帯域）で、純GPU推論でも一定のスコアを叩き出せるはずです。
+ミニPCは「[省電力](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)・静音・省スペース」の三拍子が揃い、NPU（Neural Processing Unit）を内蔵する最新APUと組み合わせることで、CPU+GPU+NPUのハイブリッド推論が可能になります。GEEKOM A8のRyzen 7 8745HSはNPUを持たないものの、Radeon 780Mの12CU（768シェーダー）とDDR5-5600デュアルチャネル（最大96GB/s帯域）で、純GPU推論でも一定のスコアを叩き出せるはずです。
 
 前回の記事「[NPU 50 TOPSのCopilot+ PCが変えるローカルAI実行の現実](https://smart-kurashi.jp/posts/2026-07-29_hp-omnibook-7-aero-13-bg-copilot-plus-pc-review)」ではNPU特化型のアプローチを検証しましたが、今回は「GPUメモリ共有型＋eGPU拡張」という異なるベクトルでのアプローチを試します。
 
@@ -192,7 +192,7 @@ M.2 2280スロット×2（片側Gen4×4、もう片側Gen4×4またはGen3×4共
 | GMKtec K8 | R7 8845HS | Radeon 780M | USB4×2 | 約11.2万 | NPU搭載（Ryzen AI）、新しいAPU | 実績少、保証1年 |
 | Apple Mac mini M4 | M4 (10C) | M4 GPU | TB4×3 | 約9.8万〜 | NPU 38 TOPS、macOS最適化 | Windows非ネイティブ、eGPU非対応 |
 
-**A8の勝ち筋：**「USB4×2でeGPU＋4画面」「3年保証」「10万円台前半」の三拍子です。NPUが必要ならGMKtec K8かMac mini M4、OcuLinkネイティブにこだわるならUM790 Proですが、価格・拡張性・安心感のバランスではA8が頭一つ抜けています。
+**A8の勝ち筋：**「USB4×2でeGPU＋4画面」「3年保証」「10万円台前半」の三拍子です。NPUが必要ならGMKtec K8かMac mini M4、OcuLinkネイティブにこだわるならUM790 Proですが、価格・[拡張性](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)・安心感のバランスではA8が頭一つ抜けています。
 
 ## 運用Tips：ローカルLLM環境構築の勘所
 
@@ -250,7 +250,7 @@ GEEKOM A8は「NPUを持たない代わりにGPUと拡張性で勝負する」�
 - OcuLinkネイティブにこだわる方
 - macOS環境で完結させたい方
 
-25%クーポン適用で106,425円という価格は、同等スペックの自作ミニITX機（CPU+マザー+ケース+電源＋メモリ＋SSD）を組むより安く、組み立て手間・動作検証手間・保証手続きの手間を全部丸投げできます。ローカルAI時代の「最初の一台」として、あるいは「リビング・寝室・サブ機」として、非常に説得力のある選択肢だと言えます。
+25%クーポン適用で106,425円という価格は、同等スペックの自作ミニITX機（CPU+マザー+ケース+電源＋メモリ＋SSD）を組むより安く、組み立て手間・動作検証手間・保証手続きの手間を全部丸投げできます。[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)時代の「最初の一台」として、あるいは「リビング・寝室・サブ機」として、非常に説得力のある選択肢だと言えます。
 
 ---
 

@@ -24,6 +24,10 @@ const http = require('http');
 const { execSync } = require('child_process');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const {
+  buildTrackedAffiliateUrl,
+  validateAffiliateDraft,
+} = require('./lib/affiliate-linking.cjs');
 
 // ─── Configuration ────────────────────────────────────────────────────────
 
@@ -221,7 +225,27 @@ function updateAffiliateRegistryRow(productName, updates) {
 }
 
 function getPendingAffiliateRows() {
-  return parseAffiliateRegistryRows().filter((row) => row.status !== '公開済み');
+  return parseAffiliateRegistryRows().filter(
+    (row) => row.status !== '公開済み' && buildTrackedAffiliateUrl(row.imageTextLink),
+  );
+}
+
+async function verifyAffiliateUrl(url) {
+  try {
+    const response = await fetch(url, {
+      headers: { 'user-agent': 'Mozilla/5.0' },
+      redirect: 'follow',
+      signal: AbortSignal.timeout(30000),
+    });
+    const html = await response.text();
+    const finalUrl = new URL(response.url);
+    return response.ok
+      && finalUrl.hostname === 'item.rakuten.co.jp'
+      && /[?&](?:scid|sc2id)=af_/.test(response.url)
+      && !/こちらの商品は現在ご購入いただけません/.test(html);
+  } catch {
+    return false;
+  }
 }
 
 function inferAffiliateTopic(productName) {
@@ -233,12 +257,14 @@ function inferAffiliateTopic(productName) {
 }
 
 function buildAffiliatePrompt(product) {
+  const affiliateUrl = buildTrackedAffiliateUrl(product.imageTextLink);
   return `以下はアフィリエイト登録済み商品の1件です。これをもとに、1本の日本語MDX記事にしてください。
 
 商品情報:
 - 商品名: ${product.productName}
 - 商品サイト: ${product.productSite}
 - 画像URL: ${extractFirstHttpUrl(product.memo)}
+- 検証済み楽天アフィリエイトURL: ${affiliateUrl}
 - 執筆状況: ${product.status}
 - メモ: ${product.memo || 'なし'}
 
@@ -250,12 +276,17 @@ function buildAffiliatePrompt(product) {
 - 室内サイズや設置環境の目安を自然に触れる
 - 価格や在庫は断定しない
 - 画像URLや生の販売URLは本文に出さない
+- 検証済み楽天アフィリエイトURLだけを使い、別の商品URLや店舗トップURLを作らない
+- 本文の自然な文章内で、商品カテゴリ・用途・主要機能など異なるキーワード5〜8個をそれぞれMarkdownリンクにする
+- 商品名だけ、または「購入」「価格を確認」「楽天で見る」だけのリンクを5件として数えない
+- 同じキーワードの反復を避け、リンク先はすべて上記の検証済み楽天アフィリエイトURLに統一する
+- CTAとは別に、本文段落内のキーワードリンクを必ず5〜8個入れる
 - 1つの主題に絞って、読みやすく自然な日本語でまとめる
 
 出力形式:
 - YAMLフロントマター（title, date, categories, tags）
 - 本文
-- 最後に「編集部の視点」セクション
+- 最後は読者への自然な問いかけで締める
 
 本文は、読者が「自分に合うか」を判断しやすい流れで書いてください。`;
 }
@@ -823,6 +854,9 @@ const AFFILIATE_REVIEW_RULES = `
 - 室内サイズや設置環境の目安を自然に触れる
 - 価格や在庫は断定しない
 - 画像URLや生の販売URLは本文に出さない
+- 検証済み楽天アフィリエイトURL以外の商品リンクを作らない
+- CTAとは別に、本文段落内の異なる商品キーワード5〜8個を検証済みURLへリンクする
+- 商品名や購入CTAだけで件数を満たさず、カテゴリ・用途・機能キーワードを自然にリンクする
 - 1つの主題に絞って、読みやすく自然な日本語でまとめる`;
 
 function buildGroupSummary(group) {
@@ -1083,10 +1117,17 @@ async function runPipeline(topic) {
       let ogImagePath = null;
       let finalTopic = topic;
       let registryProductName = null;
+      let verifiedAffiliateUrl = null;
 
       if (slot.kind === 'affiliate') {
         const product = slot.product;
         registryProductName = product.productName;
+        verifiedAffiliateUrl = buildTrackedAffiliateUrl(product.imageTextLink);
+        if (!verifiedAffiliateUrl || !(await verifyAffiliateUrl(verifiedAffiliateUrl))) {
+          console.warn(`[AFFILIATE] Skipping unavailable or invalid product: ${product.productName}`);
+          updateAffiliateRegistryRow(product.productName, { status: '保留', publishedUrl: '' });
+          continue;
+        }
         finalTopic = inferAffiliateTopic(product.productName || topic);
         systemPrompt = buildEditorialSystemPrompt(finalTopic, AFFILIATE_REVIEW_RULES);
         prompt = buildAffiliatePrompt(product);
@@ -1116,6 +1157,15 @@ async function runPipeline(topic) {
           updateAffiliateRegistryRow(registryProductName, { status: '未執筆', publishedUrl: '' });
         }
         continue;
+      }
+
+      if (verifiedAffiliateUrl) {
+        const affiliateValidation = validateAffiliateDraft(content, verifiedAffiliateUrl);
+        if (!affiliateValidation.ok) {
+          console.warn(`[AFFILIATE] Skipping draft that failed link validation: ${affiliateValidation.errors.join('; ')}`);
+          updateAffiliateRegistryRow(registryProductName, { status: '未執筆', publishedUrl: '' });
+          continue;
+        }
       }
 
       // Prepend the image to the content if we have one and it is not already included

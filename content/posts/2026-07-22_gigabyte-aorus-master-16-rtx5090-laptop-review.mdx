@@ -16,7 +16,7 @@ ogImage: "https://thumbnail.image.rakuten.co.jp/@0_mall/applied2/cabinet/iwmt/1/
 affiliateLink: "https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9"
 ---
 
-**RTX 5090 Laptop GPU（24GB GDDR7）× Core Ultra 9 275HX × 16 型 240 Hz OLED × 32 GB DDR5 × 2 TB（Gen5＋Gen4）**。このスペックが税込 **79 万円** で購入できる――と聞いて「本当に？」と思う方は少なくないでしょう。GIGABYTE AORUS MASTER 16 BZHC6JPE65SP は、2026 年夏時点で**「ローカル LLM 推論・動画編集・3D レンダリングの三軸を一台で完結させる、最も合理的な答え」**の一つです。
+**RTX 5090 Laptop GPU（24GB GDDR7）× Core Ultra 9 275HX × 16 型 240 Hz OLED × 32 GB DDR5 × 2 TB（Gen5＋Gen4）**。このスペックが税込 **79 万円** で購入できる――と聞いて「本当に？」と思う方は少なくないでしょう。[GIGABYTE AORUS MASTER 16](https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9) BZHC6JPE65SP は、2026 年夏時点で**「ローカル LLM 推論・動画編集・3D レンダリングの三軸を一台で完結させる、最も合理的な答え」**の一つです。
 
 前回の Smart Kurashi 記事「[ASUS ProArt P16 H7606WX（RTX 5090 / Ryzen AI 9 HX 370 / 64 GB / 4 TB）レビュー——16 型 OLED・NPU 50 TOPS・GDDR7 24 GB を 99.8 万円で実現した、ローカル AI 開発の「完成形」モバイルワークステーション](https://smart-kurashi.jp/posts/2026-07-17_asus-proart-p16-h7606wx-rtx5090-review)」では、NPU 50 TOPS を武器にした ProArt P16（99.8 万円）を検証しました。今回は **20 万円安い 79 万円** で、VRAM 24 GB・メモリ 32 GB・SSD 2 TB を確保しつつ、OLED 240 Hz・Thunderbolt 5・Wi-Fi 7 まで揃えた AORUS MASTER 16 の実力を、2 週間・ローカル LLM・DaVinci Resolve・Blender の実運用で徹底検証します。
 
@@ -59,7 +59,7 @@ affiliateLink: "https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e
 | Llama-3.1-8B | Q4_K_M | 32,768 | **120+ tok/s** | 6 GB | 約 2 GB | 余裕で全層 GPU |
 | Gemma-2-27B | Q4_K_M | 8,192 | **45-55 tok/s** | 14 GB | 約 6 GB | 実用圏内 |
 
-**所感**：**70B-4bit が 18-22 tok/s で動く**のは、モバイル RTX 5090 24 GB GDDR7 のメモリ帯域幅（約 1.5 TB/s）と CUDA コア増強の賜物です。ProArt P16（同 GPU・64 GB メモリ）では 20-24 tok/s でしたから、メモリ帯域がボトルネックになりにくい 70B クラスでは **32 GB でもほぼ同等**の性能が出ます。一方で 32 GB は「70B 以上を同時に複数走らせる」「長文脈（32k+）で推論する」用途では心許なく、64 GB への増設（DDR5-5600 32 GB ×2 約 3 万円）を前提に購入するのが正解です。
+**所感**：**70B-4bit が 18-22 tok/s で動く**のは、モバイル RTX 5090 24 GB GDDR7 の[メモリ](https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9)帯域幅（約 1.5 TB/s）と CUDA コア増強の賜物です。ProArt P16（同 GPU・64 GB メモリ）では 20-24 tok/s でしたから、メモリ帯域がボトルネックになりにくい 70B クラスでは **32 GB でもほぼ同等**の性能が出ます。一方で 32 GB は「70B 以上を同時に複数走らせる」「長文脈（32k+）で推論する」用途では心許なく、64 GB への増設（DDR5-5600 32 GB ×2 約 3 万円）を前提に購入するのが正解です。
 
 > **前回記事との比較**：ProArt P16 は NPU 50 TOPS で DaVinci の Neural Engine オフロードが効くのが強みでしたが、純粋な **LLM 推論スループットでは同等**です。NPU を使わないワークロードなら、20 万円安い本機が圧倒的にコスパ良し。
 
@@ -121,7 +121,7 @@ Blackwell 第 5 世代 Tensor Core と GDDR7 の帯域向上で、前世代モ�
    NPU 非搭載でも NVENC 書き出し・通常編集は快適。ProRes 等の CPU エンコード案件が多い場合は ProArt 検討。
 
 3. **ゲーミングも 4K 高リフレッシュで楽しみたい／外部 GPU ドック（OCuLink/TB5）で拡張したい**  
-   OLED 240 Hz・TB5（PCIe Gen4 ×4 相当）搭載で、外部 GPU・高速 NVMe・8K ディスプレイ接続に将来対応。
+   OLED 240 Hz・TB5（PCIe Gen4 ×4 相当）搭載で、外部 GPU・高速 NVMe・8K [ディスプレイ](https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9)接続に将来対応。
 
 4. **「アプライド楽天市場店」で楽天ポイント・SPU・クーポンを併用して実質価格をさらに下げたい**  
    記事執筆時点でもポイント還元で実質 70 万円台前半まで狙えます。
@@ -129,7 +129,7 @@ Blackwell 第 5 世代 Tensor Core と GDDR7 の帯域向上で、前世代モ�
 ### ❌ 見送るべき人
 
 1. **NPU 協調エンコード（DaVinci Neural Engine）をフル活用する動画プロダクション**  
-   書き出し 20% 高速化・バッテリー駆動時の持続性能で ProArt P16 の 20 万円差はすぐ回収できます。
+   書き出し 20% 高速化・[バッテリー](https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9)駆動時の持続性能で ProArt P16 の 20 万円差はすぐ回収できます。
 
 2. **メモリ 64 GB・SSD 4 TB を「最初から」必要とし、増設したくない人**  
    増設コスト（メモリ 3 万＋SSD 2 万＝約 5 万）と手間を嫌うなら、最初から 64 GB/4 TB 搭載の ProArt または Razer/MSI が安心。
@@ -180,7 +180,7 @@ GIGABYTE AORUS MASTER 16 BZHC6JPE65SP は、以下の 3 点で **「買い」の
 
 1. **VRAM 24 GB GDDR7 を 80 万円切りで手に入れられる唯一無二の存在**（競合は全て 95 万円〜）
 2. **OLED 240 Hz・Thunderbolt 5・Wi-Fi 7・2 TB SSD** と、クリエイター・ゲーマー・AI 開発者が欲しいインターフェースを漏れなく搭載
-3. **メモリ 32 GB → 64 GB 増設（約 3 万円）で、ProArt P16 (99.8 万円) とほぼ同等の LLM 推論性能を獲得可能**
+3. **メモリ 32 GB → 64 GB 増設（約 3 万円）で、ProArt P16 (99.8 万円) とほぼ同等の LLM [推論性能](https://hb.afl.rakuten.co.jp/ichiba/55931435.016e8acb.55931436.e331eeb3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fapplied2%2F4719331762551-ds%2F&link_type=hybrid_url&ut=eyJwYW...c2V9)を獲得可能**
 
 一方で、**NPU なし・メモリ 32 GB 標準・Gen5 SSD 1 スロット・バッテリー駆動短い**という「割り切り」も明確です。これらを許容し、**「今すぐ 70B ローカル推論環境が欲しい」「動画編集も 3D もゲームも一台で済ませたい」「予算は 80 万円まで」**という方には、2026 年夏時点で **最も合理的な答え**の一台と言えます。
 

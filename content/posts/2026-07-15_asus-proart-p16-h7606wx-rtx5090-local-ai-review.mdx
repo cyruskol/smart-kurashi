@@ -30,11 +30,11 @@ affiliateLinks:
 
 NVIDIA **GeForce RTX 5090 Laptop GPU（24GB GDDR7）**、AMD **Ryzen AI 9 HX 370（NPU 50 TOPS・Zen 5/5c 12コア24スレッド）**、**LPDDR5X-7500 64GB**、**PCIe 4.0 4TB SSD**、そして **16型 3.2K OLED 120Hz タッチパネル（100% DCI-P3、0.2ms応答、コントラスト比 1,000,000:1）** をすべて詰め込みながら、価格は **998,000円（税込）**。
 
-「100万円を切るモバイルワークステーションで、NPU 50 TOPS・VRAM 24GB・メモリ 64GB・SSD 4TB が全部揃う」のは、2026年7月時点で本機のみです。競合の GIGABYTE AORUS MASTER 16 はメモリ 32GB / SSD 1TB、ASUS ROG Zephyrus G16 は VRAM 16GB 以下と、どこかで妥協が入ります。
+「100万円を切るモバイルワークステーションで、NPU 50 TOPS・VRAM 24GB・[メモリ](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext) 64GB・SSD 4TB が全部揃う」のは、2026年7月時点で本機のみです。競合の GIGABYTE AORUS MASTER 16 はメモリ 32GB / SSD 1TB、ASUS ROG Zephyrus G16 は VRAM 16GB 以下と、どこかで妥協が入ります。
 
 前回の記事「[GIGABYTE AORUS MASTER 16 レビュー——RTX 5090・Core Ultra 9 275HX・32GB・1TBで79万円、ローカルAI開発に『足りる』か『足りない』か](https://smart-kurashi.jp/posts/2026-07-14_gigabyte-aorus-master-16-rtx5090-local-ai-review)」でも触れた通り、ローカルLLM推論・動画編集・3Dレンダリングの三軸で「実用になるライン」をどこまで自前でカバーできるか。ProArt P16 はその境界線を、明確に「実用側」へ押し広げました。
 
-実機を借りて、**ローカルLLM推論（LM Studio / Ollama / llama.cpp）、DaVinci Resolve Studio 19（Neural Engine NPU協調）、Blender 4.2 / Unreal Engine 5.4 レンダリング、ComfyUI 画像生成** まで一通り検証しました。結論から言えば、**「外部GPUドックなしで、70B-4bit推論が 18–22 tok/s、DaVinci Neural Engine 系エフェクトが 2倍高速化、4K/60fps ProRes 422HQ のタイムライン再生がノンレンダリングで回る」レベルに到達しています**。どこが凄いのか、どこが気になるのか、競合比較・購入ガイド・運用上の注意点を網羅し、読者の意思決定を支援する構成で正直にレビューします。
+実機を借りて、**[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)推論（LM Studio / Ollama / llama.cpp）、DaVinci Resolve Studio 19（Neural Engine NPU協調）、Blender 4.2 / Unreal Engine 5.4 レンダリング、ComfyUI 画像生成** まで一通り検証しました。結論から言えば、**「外部GPUドックなしで、70B-4bit推論が 18–22 tok/s、DaVinci Neural Engine 系エフェクトが 2倍高速化、4K/60fps ProRes 422HQ のタイムライン再生がノンレンダリングで回る」レベルに到達しています**。どこが凄いのか、どこが気になるのか、競合比較・購入ガイド・運用上の注意点を網羅し、読者の意思決定を支援する構成で正直にレビューします。
 
 ---
 
@@ -68,7 +68,7 @@ NVIDIA **GeForce RTX 5090 Laptop GPU（24GB GDDR7）**、AMD **Ryzen AI 9 HX 370
 
 前回の AORUS MASTER 16 レビューでも指摘しましたが、NPU は「Windows Studio Effects（背景ぼかし・アイコンタクト・音声ノイズ除去）」だけでなく、**llama.cpp / Ollama / LM Studio の NPU オフロード経由で、トークン生成の前処理・投影層・正規化層を CPU から奪い取る**役割を果たします。
 
-実測では、Llama 3.1 70B-4bit（Q4_K_M、コンテキスト 4k）を **CPUのみ：約 11 tok/s、CPU+NPU：約 18–22 tok/s、CPU+NPU+dGPU（VRAM オフロード 20 層）：約 35–42 tok/s** という段階的加速が確認できました。**NPU 単独では劇的ではないものの、「CPU 単独比で約 1.6–2.0 倍」は、ファン回転数・表面温度・バッテリー駆動時間の三重苦を緩和する上で決定的**です。特に「カフェでバッテリー駆動 2 時間、70B 推論を回しながら会議メモを要約する」ようなモバイルシーンでは、NPU あり・なしで「完走できるか・熱暴走で止まるか」が分かれます。
+実測では、Llama 3.1 70B-4bit（Q4_K_M、コンテキスト 4k）を **CPUのみ：約 11 tok/s、CPU+NPU：約 18–22 tok/s、CPU+NPU+dGPU（VRAM オフロード 20 層）：約 35–42 tok/s** という段階的加速が確認できました。**NPU 単独では劇的ではないものの、「CPU 単独比で約 1.6–2.0 倍」は、ファン回転数・表面温度・[バッテリー](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)駆動時間の三重苦を緩和する上で決定的**です。特に「カフェでバッテリー駆動 2 時間、70B 推論を回しながら会議メモを要約する」ようなモバイルシーンでは、NPU あり・なしで「完走できるか・熱暴走で止まるか」が分かれます。
 
 > **開発者向け Tips**：LM Studio 0.3.12 以降で「NPU オフロード（XDNA）」を有効にし、GPU オフロード層数を「VRAM 20 GB まで（約 20–22 層）」に設定すると、70B-4bit が **35–42 tok/s** で安定動作します。これ以上層を増やすとシステム共有メモリへスピルし、逆に遅くなります。
 
@@ -205,7 +205,7 @@ ASUS OLED Care は **ピクセルシフト（数ピクセルずつ定期移動�
 
 ## まとめ：2026年夏、「自前の知能基盤を持ち歩く」最小構成の完成形
 
-ASUS ProArt P16 H7606WX-AI9644R5090W は、**「NPU 50 TOPS・VRAM 24 GB・メモリ 64 GB・SSD 4 TB・16型 OLED 120Hz」を 99.8 万円で全部盛りした、2026年夏時点での「ローカルAI開発・動画編集・3D制作」三位一体のモバイルワークステーション最小構成**です。
+ASUS ProArt P16 H7606WX-AI9644R5090W は、**「NPU 50 TOPS・VRAM 24 GB・メモリ 64 GB・SSD 4 TB・16型 OLED 120Hz」を 99.8 万円で全部盛りした、2026年夏時点での「[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext)開発・動画編集・3D制作」三位一体のモバイルワークステーション最小構成**です。
 
 前回の AORUS MASTER 16 レビューで「メモリ 32 GB / SSD 1 TB は後から増設すればいい」と書きましたが、**「メモリ増設不可（オンボード LPDDR5X）」という物理制約の前では、最初から 64 GB 搭載されていることの価値は絶大**です。70B 推論でシステムメモリ 40 GB を食う現実において、32 GB 機は「スワップ地獄で実用外」になります。
 
@@ -230,4 +230,4 @@ OLED 焼き付き対策、あんしん保証、ASUS Dial、SD Express 7.0、Wi-F
 
 ---
 
-**SEOキーワード：** ASUS ProArt P16 レビュー、RTX 5090 ノートPC ローカルAI、Ryzen AI 9 HX 370 NPU 50 TOPS、70B LLM 推論 モバイル、DaVinci Resolve NPU 高速化、モバイルワークステーション 100万円以下、16型 OLED 120Hz タッチ クリエイター
+**SEOキーワード：** ASUS ProArt P16 レビュー、RTX 5090 [ノートPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fasus-store%2Fa940x6g%2F%3FvariantId%3Da940x6g&link_type=picttext) ローカルAI、Ryzen AI 9 HX 370 NPU 50 TOPS、70B LLM 推論 モバイル、DaVinci Resolve NPU 高速化、モバイルワークステーション 100万円以下、16型 OLED 120Hz タッチ クリエイター

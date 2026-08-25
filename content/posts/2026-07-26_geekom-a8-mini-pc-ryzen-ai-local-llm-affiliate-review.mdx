@@ -12,11 +12,11 @@ bodyImage2: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609
 
 ![GEEKOM A8 ミニPC フルアルミCNC筐体とUSB4ポート](https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260121160540_1.jpg?_ex=1200x800)
 
-2026年夏、ローカルLLM環境を「自宅で、手頃に、静かに」構築したいエンジニア・研究者・クリエイターの間で、ミニPCという選択肢が急速に現実味を帯びてきました。クラウドGPUの時間課金を積み上げるより、手元に推論環境を置くほうがトータルコストで勝る場面が増えているからです。
+2026年夏、ローカルLLM環境を「自宅で、手頃に、静かに」構築したいエンジニア・研究者・クリエイターの間で、[ミニPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...IifQ%3D%3D)という選択肢が急速に現実味を帯びてきました。クラウドGPUの時間課金を積み上げるより、手元に推論環境を置くほうがトータルコストで勝る場面が増えているからです。
 
 そんな中、GEEKOMから登場した「A8」は、**Ryzen 7 8745HS（8コア16スレッド・最大5.2GHz）**、**Radeon 780M（12CU・RDNA 3）**、**USB4×2（40Gbps）とOcuLink（PCIe 4.0×4）**、**1TB SSD＋16GB DDR5-5600** をフルアルミCNC筐体に詰め込み、**クーポン適用で106,425円（通常141,900円）** という価格で投入されました。
 
-「10万円台でローカルAI開発機が買える」という触れ込みは魅力的ですが、実際のところ70B-4bitモデルの推論速度は出るのか、メモリ16GBでどこまで戦えるのか、発熱・騒音・拡張性のトレードオフは許容できるのか、といった疑問が湧いてくることは自然です。本記事では、競合ミニPC（GMKtec EVO-X2、Minisforum AI X1 Pro、ASUS NUC 14 Pro+）との比較表を交えつつ、実用判断の材料を整理いたします。
+「10万円台で[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...IifQ%3D%3D)開発機が買える」という触れ込みは魅力的ですが、実際のところ70B-4bitモデルの推論速度は出るのか、メモリ16GBでどこまで戦えるのか、発熱・騒音・拡張性のトレードオフは許容できるのか、といった疑問が湧いてくることは自然です。本記事では、競合ミニPC（GMKtec EVO-X2、Minisforum AI X1 Pro、ASUS NUC 14 Pro+）との比較表を交えつつ、実用判断の材料を整理いたします。
 
 ---
 
@@ -86,7 +86,7 @@ bodyImage2: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609
 2. **DDR5スロット2基・最大64GBまで増設可能**──LPDDR固定の競合と違い、用途に合わせてメモリを後から増やせる。70Bモデル実用化の鍵。
 3. **2.5GbE ×2 ポート**──自宅サーバー・NAS接続・クラスタ構築で有利。
 4. **業界最長3年保証**──1,000項目超の独自品質試験（GEEKOM Quality Standard 1000+）をクリアした製品のみ出荷される自信の表れ。
-5. **圧倒的コスパ**──クーポン適用で10.6万円。同等拡張性を持つNUC 14 Pro+より5万円以上安い。
+5. **圧倒的コスパ**──クーポン適用で10.6万円。同等[拡張性](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...IifQ%3D%3D)を持つNUC 14 Pro+より5万円以上安い。
 
 ### 妥協が必要なポイント
 
@@ -126,7 +126,7 @@ A. Llama-3.1-8B / Qwen2.5-7B / Gemma-2-9B クラスのQ4_K_M量子化モデル�
 **Q. OcuLinkでeGPU繋ぐなら、どのドックがおすすめでしょうか？**  
 A. **Razer Core X Chroma**、**Sonnet eGFX Breakaway Box 750**、**ADT-Link R43SG-TB3**（OcuLink→TB3変換）あたりが実績豊富。PCIe 4.0×4の帯域を活かすなら、Thunderbolt 4/5対応ドック経由ではなく**OcuLink直結ケーブル＋PCIe ＋ **オープンフレーム型ドック** が最もロスが少ない。
 
-**Q. Ubuntu/LinuxでローカルLLM環境構築できるでしょうか？**  
+**Q. Ubuntu/Linuxで[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...IifQ%3D%3D)環境構築できるでしょうか？**<br />
 A. できます。Ryzen 8000シリーズはLinuxカーネル 6.8以降でAMD GPUドライバ（ROCm 6.0+）が成熟しており、llama.cpp・Ollama・vLLM・text-generation-webui 等が問題なく動作いたします。Windowsデュアルブート前提なら、BitLocker解除とSecure Boot設定に注意が必要です。
 
 **Q. 騒音・発熱は本当に大丈夫でしょうか？**  
@@ -157,7 +157,7 @@ A. 「メモリ増設したい・eGPU繋ぎたい・2.5GbE二ポート欲しい�
 
 ---
 
-**「10万円台でローカルAI開発機を手に入れる」という選択肢が、ついに現実のラインに乗ってきました。** GEEKOM A8は、拡張性（OcuLink・DDR5スロット・デュアル2.5GbE）と保証（3年）で「将来の不確実性」を吸収しつつ、エントリーモデルとしての価格破壊を実現した一台です。メモリ64GB化を前提にすれば、70Bクラスまで視野に入る「育てるPC」として、今後数年のAIローカル実行需要に応え続けてくれるはずです。
+**「10万円台でローカル[AI開発](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...IifQ%3D%3D)機を手に入れる」という選択肢が、ついに現実のラインに乗ってきました。** GEEKOM A8は、拡張性（OcuLink・DDR5スロット・デュアル2.5GbE）と保証（3年）で「将来の不確実性」を吸収しつつ、エントリーモデルとしての価格破壊を実現した一台です。メモリ64GB化を前提にすれば、70Bクラスまで視野に入る「育てるPC」として、今後数年のAIローカル実行需要に応え続けてくれるはずです。
 
 クーポン期限と在庫状況は楽天市場GEEKOM公式店でご確認ください。あなたの「手元の知能基盤」構築の第一歩として、検討リストに加えてみてはいかがでしょうか。
 

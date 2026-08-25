@@ -10,11 +10,11 @@ heroAlt: "GEEKOM A8 ミニPC フルアルミCNC筐体とUSB4ポート"
 
 ![GEEKOM A8 ミニPC フルアルミCNC筐体とUSB4ポート](https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260121160540_1.jpg?_ex=1200x800)
 
-2026年夏、ローカルLLM環境を「自宅で、手頃に、静かに」構築したいエンジニア・研究者・クリエイターの間で、ミニPCという選択肢が急速に現実味を帯びてきました。クラウドGPUの時間課金を積み上げるより、手元に推論環境を置くほうがトータルコストで勝る場面が増えているからです。
+2026年夏、ローカルLLM環境を「自宅で、手頃に、静かに」構築したいエンジニア・研究者・クリエイターの間で、[ミニPC](https://hb.afl.rakuten.co.jp/ichiba/55af97ce.8d3c8cf1.55af97cf.fc8eb34f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...)という選択肢が急速に現実味を帯びてきました。クラウドGPUの時間課金を積み上げるより、手元に推論環境を置くほうがトータルコストで勝る場面が増えているからです。
 
 そんな中、GEEKOMから登場した「A8」は、**Ryzen 7 8745HS（8コア16スレッド・最大5.2GHz・NPU 16 TOPS）**、**Radeon 780M（12CU・RDNA 3）**、**USB4×2（40Gbps）とOcuLink（PCIe 4.0×4）**、**1TB SSD＋16GB DDR5-5600** をフルアルミCNC筐体に詰め込み、**クーポン適用で106,425円（通常141,900円）** という価格で投入されました。
 
-「10万円台でローカルAI開発機が買える」という触れ込みは魅力的ですが、実際のところ70B-4bitモデルの推論速度は出るのか、メモリ16GBでどこまで戦えるのか、発熱・騒音・拡張性のトレードオフは許容できるのか。本記事では、競合ミニPC（GMKtec EVO-X2、Minisforum AI X1 Pro、ASUS NUC 14 Pro+）との比較表を交えつつ、実用判断の材料を整理します。
+「10万円台で[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55af97ce.8d3c8cf1.55af97cf.fc8eb34f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...)開発機が買える」という触れ込みは魅力的ですが、実際のところ70B-4bitモデルの推論速度は出るのか、メモリ16GBでどこまで戦えるのか、発熱・騒音・拡張性のトレードオフは許容できるのか。本記事では、競合ミニPC（GMKtec EVO-X2、Minisforum AI X1 Pro、ASUS NUC 14 Pro+）との比較表を交えつつ、実用判断の材料を整理します。
 
 ---
 
@@ -62,7 +62,7 @@ heroAlt: "GEEKOM A8 ミニPC フルアルミCNC筐体とUSB4ポート"
 
 ### NPU 16 TOPS の実力は？
 
-Ryzen AI 300シリーズのNPU（XDNAアーキテクチャ）は、Windows標準の **DirectML / ONNX Runtime** 経由で利用可能です。現状では **llama.cpp / ollama / LM Studio など主要ローカルLLMランタイムはNPU未対応**（CUDA/ROCm/Metal優先）ですが、Microsoft Olive や AMD Ryzen AI Software で最適化されたモデル（Phi-3、Llama-3.2-1B/3B など）であればNPU推論が可能です。将来的に llama.cpp が NPU バックエンドをサポートすれば、iGPU（Radeon 780M）のメモリ圧迫を緩和できる期待があります。
+Ryzen AI 300シリーズのNPU（XDNAアーキテクチャ）は、Windows標準の **DirectML / ONNX Runtime** 経由で利用可能です。現状では **llama.cpp / ollama / LM Studio など主要[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55af97ce.8d3c8cf1.55af97cf.fc8eb34f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...)ランタイムはNPU未対応**（CUDA/ROCm/Metal優先）ですが、Microsoft Olive や AMD Ryzen AI Software で最適化されたモデル（Phi-3、Llama-3.2-1B/3B など）であればNPU推論が可能です。将来的に llama.cpp が NPU バックエンドをサポートすれば、iGPU（Radeon 780M）のメモリ圧迫を緩和できる期待があります。
 
 ![GEEKOM A8 内部レイアウト メモリスロット SSDスロット](https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260121160540_1.jpg?_ex=800x600)
 
@@ -103,7 +103,7 @@ USB4が2ポートあるため、**片方を4K/8Kモニタ、もう片方をeGPU�
 | Cinebench R23 継続 | 78-82°C | 約4,200 RPM | **38 dBA（静かな図書館レベル）** | 42°C |
 | LLM推論継続（14Bモデル） | 72-76°C | 約3,800 RPM | **35 dBA** | 40°C |
 
-**所感**：ミニPCとしては優秀な冷却性能。ピーク時でも82°Cに留まり、スロットリングは発生しませんでした。ファン音は「サー」という高周波寄りの風切り音で、低周波の唸りはありません。デスク上設置なら昼間は気にならず、夜間静かな部屋では微かに聞こえるレベルです。寝室設置は避けたほうが無難ですが、リビング・書斎なら許容範囲内です。
+**所感**：ミニPCとしては優秀な[冷却性能](https://hb.afl.rakuten.co.jp/ichiba/55af97ce.8d3c8cf1.55af97cf.fc8eb34f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...)。ピーク時でも82°Cに留まり、スロットリングは発生しませんでした。ファン音は「サー」という高周波寄りの風切り音で、低周波の唸りはありません。デスク上設置なら昼間は気にならず、夜間静かな部屋では微かに聞こえるレベルです。寝室設置は避けたほうが無難ですが、リビング・書斎なら許容範囲内です。
 
 ### 電力効率
 
@@ -227,7 +227,7 @@ A. 可能です。BIOS で「Power On After Power Failure」を有効にし、Wi
 
 16GBメモリという制約はありますが、8B-14Bクラスなら実用的な速度で動き、開発・検証・学習のサイクルを自宅で完結できる。クラウドGPUの請求書を見てため息をつくより、まずはこの小さなアルミの箱をデスクに置き、ローカルLLMの「手触り」を知るところから始めてみてはいかがでしょうか。
 
-**あなたのローカルAI開発の第一歩、何のモデルから動かしてみますか？**
+**あなたのローカル[AI開発](https://hb.afl.rakuten.co.jp/ichiba/55af97ce.8d3c8cf1.55af97cf.fc8eb34f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext&ut=eyJwYW...)の第一歩、何のモデルから動かしてみますか？**
 
 ---
 

@@ -1,5 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { isSemanticAffiliateKeyword } = require('./lib/affiliate-linking.cjs');
 
 const root = process.cwd();
 const postsDir = path.join(root, 'content/posts');
@@ -7,7 +11,6 @@ const files = fs.readdirSync(postsDir).filter((file) => file.endsWith('.mdx'));
 const failures = [];
 const deadTargets = [
   'directplus/omnibook-7-aero-13-bg',
-  'panasonic-store/np-tml1',
   'directplus/omen16-ap-rai724',
   'item.rakuten.co.jp/xprice/',
   'item.rakuten.co.jp/ck-direct/',
@@ -46,6 +49,27 @@ for (const file of files) {
       failures.push(`${file}: malformed Rakuten affiliate URL`);
     }
   }
+  const body = text.replace(/^---[\s\S]*?---\s*/m, '');
+  const contextualAnchors = [];
+  const ctaLabel = /楽天|購入|価格|在庫|商品ページ|販売ページ|公式|ストア|ショップ|見る|確認|こちら|チェック|リンク|今すぐ|詳細/;
+  for (const line of body.split(/\r?\n/)) {
+    if (!line.trim() || /^(?:\s*#{1,6}\s|\s*>|\s*[-+*]\s+|\s*\||\s*<|\s*!\[)/.test(line)) continue;
+    for (const match of line.matchAll(/\[([^\]]+)\]\((https:\/\/hb\.afl\.rakuten\.co\.jp\/[^)]+)\)/g)) {
+      if (!ctaLabel.test(match[1])) contextualAnchors.push(match[1]);
+    }
+  }
+  const uniqueContextualAnchors = new Set(contextualAnchors);
+  const semanticContextualAnchors = new Set(contextualAnchors.filter(isSemanticAffiliateKeyword));
+  if (text.includes('hb.afl.rakuten.co.jp') && (contextualAnchors.length < 5 || contextualAnchors.length > 8)) {
+    failures.push(`${file}: expected 5-8 contextual affiliate keyword links, found ${contextualAnchors.length}`);
+  }
+  if (text.includes('hb.afl.rakuten.co.jp') && uniqueContextualAnchors.size < 5) {
+    failures.push(`${file}: expected at least 5 distinct contextual affiliate keywords, found ${uniqueContextualAnchors.size}`);
+  }
+  if (text.includes('hb.afl.rakuten.co.jp') && semanticContextualAnchors.size < 3) {
+    failures.push(`${file}: expected at least 3 category, feature, or use-case affiliate keywords, found ${semanticContextualAnchors.size}`);
+  }
+
   for (const match of text.matchAll(/<a\b[^>]*href=["'][^"']*hb\.afl\.rakuten\.co\.jp[^"']*["'][^>]*>/gi)) {
     const rawAnchor = match[0];
     if (!/rel=["'][^"']*sponsored[^"']*nofollow[^"']*noopener[^"']*["']/i.test(rawAnchor)) {

@@ -8,7 +8,7 @@ image: "https://thumbnail.image.rakuten.co.jp/@0_mall/directplus/cabinet/note/om
 ---
 
 ![HP OmniBook 7 Aero 13-bg](https://thumbnail.image.rakuten.co.jp/@0_mall/directplus/cabinet/note/omnibook-7-aero/ob7aero-ai732-w-p1.jpg)
-「NPU搭載のCopilot+ PCが気になるけれど、実際のところローカルLLMをどの程度動かせるのか」——そんな疑問を持つ方も多いのではないでしょうか。2024年後半から市場に投入され始めたCopilot+ PC認定機種の中でも、HP OmniBook 7 Aero 13-bgは「13.3インチ・約990g」という圧倒的な携帯性と、AMD Ryzen AI 300シリーズが持つNPU 50 TOPSという性能を両立させた注目の一台です。
+「NPU搭載のCopilot+ PCが気になるけれど、実際のところ[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)をどの程度動かせるのか」——そんな疑問を持つ方も多いのではないでしょうか。2024年後半から市場に投入され始めたCopilot+ PC認定機種の中でも、HP OmniBook 7 Aero 13-bgは「13.3インチ・約990g」という圧倒的な携帯性と、AMD Ryzen AI 300シリーズが持つNPU 50 TOPSという性能を両立させた注目の一台です。
 
 本記事では、このマシンを「調査レビュー」の観点から整理し、日本の住環境や利用シーンに照らし合わせて「誰に向いていて、誰には向かないか」を明確にします。実機検証ではなく、公開スペック・メーカー公表値・第三者ベンチマーク・ユーザーレビューを横断的に精査したうえでの考察であることを前置きしておきます。
 
@@ -20,7 +20,7 @@ image: "https://thumbnail.image.rakuten.co.jp/@0_mall/directplus/cabinet/note/om
 
 HP OmniBook 7 Aero 13-bgは、マイクロソフトが定義する「Copilot+ PC」要件（NPU 40 TOPS以上、メモリ16GB以上、ストレージ256GB以上）をクリアしたAMDプラットフォーム機種の一台です。搭載されるのはRyzen AI 7 350またはRyzen AI 9 365で、いずれも「Zen 5」CPUコアと「XDNA 2」NPUコアを統合したモバイル向けAPUです。NPU単体で最大50 TOPS（INT8）を謳い、CPU＋GPU＋NPU合わせて最大80 TOPSに達するとされています。
 
-ディスプレイは13.3インチWUXGA（1920×1200）IPS非光沢で、sRGB 100%カバー、400ニット輝度。メモリはLPDDR5X-7500がオンボードで16GBまたは32GB、ストレージはPCIe Gen4 NVMe SSDの512GB〜2TB。ポート構成はUSB4 Type-C×2（PD充電・DisplayPort 1.4対応）、USB-A 3.2 Gen1×1、HDMI 2.1×1、3.5mmコンボジャックと、13インチクラスとしては必要十分です。バッテリーは43Whで、動画再生最大約22時間（メーカー公表値）を謳います。
+ディスプレイは13.3インチWUXGA（1920×1200）IPS非光沢で、sRGB 100%カバー、400ニット輝度。メモリはLPDDR5X-7500がオンボードで16GBまたは32GB、ストレージはPCIe Gen4 NVMe SSDの512GB〜2TB。ポート構成はUSB4 Type-C×2（PD充電・DisplayPort 1.4対応）、USB-A 3.2 Gen1×1、HDMI 2.1×1、3.5mmコンボジャックと、13インチクラスとしては必要十分です。[バッテリー](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)は43Whで、動画再生最大約22時間（メーカー公表値）を謳います。
 
 ## 日本の「持ち運び前提」環境との相性
 
@@ -57,7 +57,7 @@ NPU 50 TOPSという数値は、Intel Core UltraシリーズのNPU 11〜13 TOPS�
 
 **この製品を選ぶ理由**は、「1kg切りの軽量さ」「USB-AとHDMIを残した実用的なポート構成」「AMDプラットフォームゆえにx86ネイティブでドライバ・互換性の不安が少ない」「NPU 50 TOPSを最小筐体で実現している希少性」の4点に集約されます。特に「出張先のホテルで外部モニターにHDMI直結」「USB-Aのドングルや有線マウスをそのまま使いたい」という日本のビジネス現場では、ポートの有無が地味に効きます。
 
-**見送る理由**としては、「メモリ32GB以上が必要（ローカルLLMで32B級モデルを動かしたい等）」「OLEDや高リフレッシュレートにこだわる」「ファンレス動作を重視する」「NPU特化のQualcommスタック（SNPE, QNN）で既にワークロードを最適化済み」といったケースが挙げられます。メモリ増設不可・ストレージ単スロットという拡張性の制約も、長期運用を見据えるなら要検討項目です。
+**見送る理由**としては、「メモリ32GB以上が必要（ローカルLLMで32B級モデルを動かしたい等）」「OLEDや高リフレッシュレートにこだわる」「ファンレス動作を重視する」「NPU特化のQualcommスタック（SNPE, QNN）で既にワークロードを最適化済み」といったケースが挙げられます。メモリ増設不可・ストレージ単スロットという[拡張性](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)の制約も、長期運用を見据えるなら要検討項目です。
 
 ## 日本語環境での「使い勝ち」に関する現実的な視点
 
@@ -87,7 +87,7 @@ Copilot+ PC認定機種は今後も各社から投入されますが、「13イ�
 
 2. **キーボードストローク**：1.3mmストロークの薄型キーボードは、打鍵感が「カチカチ」とした浅めのフィーリングです。長文執筆が主目的なら、外付けキーボード（HHKBやREALFORCE等）の併用を前提にしたほうが幸せになれます。
 
-3. **Webカメラの画質**：5MP IRカメラ（Windows Hello対応）はスペック上悪くありませんが、実勢画質は「明るい室内なら十分、薄暗いカフェではノイズが乗る」という一般的なノートPCの範囲内です。重要な商談では外部Webカメラ（Logitech Brio 500等）を用意するのが無難です。
+3. **Webカメラの画質**：5MP IRカメラ（Windows Hello対応）はスペック上悪くありませんが、実勢画質は「明るい室内なら十分、薄暗いカフェではノイズが乗る」という一般的な[ノートPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)の範囲内です。重要な商談では外部Webカメラ（Logitech Brio 500等）を用意するのが無難です。
 
 4. **ドライバ・ファームウェア更新の頻度**：HPは比較的マメにBIOS/ドライバを更新してくれますが、NPU関連のランタイム（Ryzen AI Software、Windows MLバックエンド）はMicrosoft/AMD側のアップデート依存です。Windows UpdateとHP Support Assistantの両方をこまめに確認する運用が推奨されます。
 
@@ -121,6 +121,6 @@ Copilot+ PC認定機種は今後も各社から投入されますが、「13イ�
 
 NPU 50 TOPSという「未来への余白」を、1kgを切る筐体に詰め込んだHP OmniBook 7 Aero 13-bg。それが今のあなたのワークスタイルにフィットするかどうか、この記事が判断材料の一つになれば幸いです。実際に触れてみて「これならいける」と感じた瞬間が、導入のベストタイミングかもしれません。
 
-ローカルAIが「特別な環境」から「日常の道具」へシフトしつつある今、あなたのカバンの中にある一台が、どこまでその変化に寄り添えるか。次にPCを新調するとき、その問いを持って選んでみてはいかがでしょうか。
+[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdirectplus%2Fomnibook-713-bg-rai732%2F&link_type=hybrid_url)が「特別な環境」から「日常の道具」へシフトしつつある今、あなたのカバンの中にある一台が、どこまでその変化に寄り添えるか。次にPCを新調するとき、その問いを持って選んでみてはいかがでしょうか。
 
 [以前の記事：NPU搭載ノートPCでローカルLLMを動かす実験](https://smart-kurashi.jp/posts/2026-07-26_geekom-a8-mini-pc-ryzen-ai-local-llm-affiliate-review) も参考にしてみてください。また、[AI PCの選び方ガイド](https://smart-kurashi.jp/posts/2026-07-21_geekom-a8-mini-pc-ryzen-ai-local-llm-review) で他の選択肢と比較検討するのもおすすめです。
