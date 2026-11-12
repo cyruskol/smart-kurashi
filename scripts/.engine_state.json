@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
   "last_run_time": "2026-11-12T02:50:56.059177Z",
   "current_target_interval": 146,
   "last_topic": "ai-tech"
+=======
+  "last_run_time": "2026-11-12T06:00:00.030Z",
+  "current_target_interval": 201,
+  "last_topic": "smart-home"
+>>>>>>> 29794d9 (fix: content cleanup batch 12)
 }
