@@ -10,11 +10,11 @@ bodyImage1: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609
 bodyImage2: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609192813_8.jpg?_ex=800x600"
 ---
 
-ローカルLLMを自宅で動かしたい、でも「デスクトップPCを置くスペースがない」「電気代が気になる」「静音性も欲しい」——そんな悩みを抱えるAI開発者・エンジニア・クリエイターの間で、ここ半年ほど「[ミニPC](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)でローカルAI」という選択肢が急速に現実味を帯びてきました。
+ローカルLLMを自宅で動かしたい、でも「デスクトップPCを置くスペースがない」「電気代が気になる」「静音性も欲しい」——そんな悩みを抱えるAI開発者・エンジニア・クリエイターの間で、ここ半年ほど「[ミニPC](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)でローカルAI」という選択肢が急速に現実味を帯びてきました。
 
 2026年夏、その「現実解」の最有力候補として浮上しているのが **GEEKOM A8 ミニPC** です。AMD Ryzen 7 8745HS（8コア16スレッド）、Radeon 780M内蔵GPU、16GB DDR5メモリ、1TB SSD、USB4×2ポート、4画面同時出力、WiFi 6E+2.5G LAN、Windows 11 Pro搭載で、なんと **25%クーポン適用で 106,425円**（通常 141,900円）。さらに **3年保証・全金属CNC筐体** という、この価格帯では「あり得ない」スペック構成が話題を呼んでいます。
 
-本記事では、GEEKOM A8 を **「ローカルLLM推論」「AI開発環境構築」「ゲーミング・クリエイティブ作業」** の3つのユースケースで徹底検証。OcuLink代替としての USB4×2 の実力、Radeon 780M でどこまで 7B/13B/32B モデルが動くのか、メモリ 16GB の壁と向き合う実運用のコツ、競合機（MINISFORUM AI X1 Pro、GMKtec EVO-X2、ASUS ProArt P16 等）との比較まで、**「10万円台で[ローカルAI](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)開発機を手に入れる」ための意思決定材料をすべて網羅** します。
+本記事では、GEEKOM A8 を **「ローカルLLM推論」「AI開発環境構築」「ゲーミング・クリエイティブ作業」** の3つのユースケースで徹底検証。OcuLink代替としての USB4×2 の実力、Radeon 780M でどこまで 7B/13B/32B モデルが動くのか、メモリ 16GB の壁と向き合う実運用のコツ、競合機（MINISFORUM AI X1 Pro、GMKtec EVO-X2、ASUS ProArt P16 等）との比較まで、**「10万円台で[ローカルAI](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)開発機を手に入れる」ための意思決定材料をすべて網羅** します。
 
 ![GEEKOM A8 ミニPC 本体正面 USB4ポート](https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609192813_5.jpg?_ex=800x600)
 
@@ -49,7 +49,7 @@ bodyImage2: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609
 
 ## なぜ今「GEEKOM A8」なのか——「10万円台ローカルAI機」の条件を満たす唯一解
 
-2026年現在、[ローカルLLM](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)推論に「実用的」なハードウェア要件はおおむね以下の通りと言われています。
+2026年現在、[ローカルLLM](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)推論に「実用的」なハードウェア要件はおおむね以下の通りと言われています。
 
 - **VRAM/システムメモリ**: 7B-4bit なら 8GB 以上、13B-4bit なら 16GB 以上、32B-4bit なら 24GB 以上
 - **NPU/GPU**: NPU 40+ TOPS または VRAM 8GB+ のディスクリートGPU が望ましい
@@ -69,7 +69,7 @@ bodyImage2: "https://shop.r10s.jp/geekom/cabinet/biiino/item/main-image/20260609
 **GEEKOM A8 の勝ち筋は明確です**：
 
 1. **NPU 16 TOPS** が Ryzen AI シリーズのエントリーながら実用ライン (7B-4bit 推論で CPU 負荷を約 30-40% 軽減)
-2. **Radeon 780M (RDNA 3, 12CU)** が統合GPUとして驚異的な[推論性能](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext) (llama.cpp ROCm バックエンドで 7B-4bit 約 18-22 tok/s、13B-4bit 約 8-12 tok/s)
+2. **Radeon 780M (RDNA 3, 12CU)** が統合GPUとして驚異的な[推論性能](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F) (llama.cpp ROCm バックエンドで 7B-4bit 約 18-22 tok/s、13B-4bit 約 8-12 tok/s)
 3. **USB4×2 (40Gbps)** が OcuLink 代替として機能し、将来的に **外部GPUドック (eGPU) 接続で VRAM 拡張が可能** ——「今は 7B/13B、将来は eGPU で 32B/70B」という段階的投資が描ける
 4. **3年保証・全金属CNC・静音** という「置きっぱなしサーバー」運用に耐える信頼性
 5. **10万円台前半** という、個人開発者・フリーランス・スタートアップが「まず1台」を決断しやすい価格
@@ -258,8 +258,8 @@ localhostForwarding = true
 - **メーカー公式 3年保証** (要製品登録・通常 1 年 + 延長 2 年)
 - **PSE/TELEC 取得済み・日本語マニュアル同梱・日本語サポート窓口あり**
 - **楽天ポイント最大 5 倍** (SPU・お買い物マラソン併用で実質さらに還元)
-- **アフィリエイトリンク（画像付き）**: [GEEKOM A8 ミニPCを楽天市場で見る](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)
-- **アフィリエイトリンク（テキストのみ）**: [楽天市場 GEEKOM A8 ミニPC 商品ページ](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=hybrid_url)
+- **アフィリエイトリンク（画像付き）**: [GEEKOM A8 ミニPCを楽天市場で見る](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)
+- **アフィリエイトリンク（テキストのみ）**: [楽天市場 GEEKOM A8 ミニPC 商品ページ](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)
 
 ### 他の選択肢
 
@@ -275,8 +275,8 @@ localhostForwarding = true
 本製品の位置づけを理解する上で、過去記事との比較視点が役立ちます。
 
 - **[ASUS ProArt P16 レビュー——RTX 5090・Ryzen AI 9 HX 370搭載のローカルAI開発「完成形」モバイルワークステーション](https://smart-kurashi.jp/posts/2026-07-11_asus-proart-p16-rtx5090-local-ai-workstation-review)**：ハイエンド環境 (VRAM 24GB + NPU 50 TOPS + 64GB メモリ) との対比で、A8 が「入門・サブ・段階的投資の起点」としていかに合理的かが見えてきます。
-- **[MINISFORUM AI X1 Pro レビュー——NPU 50 TOPS の実力と「買うべき人・見送るべき人」](https://smart-kurashi.jp/posts/2026-07-07_minisforum-ai-x1-pro-mini-pc-review)**：同カテゴリー (ミニPC) で NPU 性能重視なら AI X1 Pro、バランス・コスパ・拡張性・保証なら A8 という使い分けが明確です。
-- **[GMKtec EVO-X2 レビュー——Ryzen AI 9 HX 370 で 70B 推論を目指す挑戦者](https://smart-kurashi.jp/posts/2026-06-27_gmktec-evo-x2-mini-pc-review)**：EVO-X2 の「32GB メモリ・NPU 50 TOPS」は魅力だが、入手性・価格・サポートで A8 が「今すぐ確実に手に入る現実解」として勝る場面が多いです。
+- **[MINISFORUM AI X1 Pro レビュー——NPU 50 TOPS の実力と「買うべき人・見送るべき人」](https://smart-kurashi.jp/posts/2026-07-30_minisforum-ai-x1-pro-mini-pc-review)**：同カテゴリー (ミニPC) で NPU 性能重視なら AI X1 Pro、バランス・コスパ・拡張性・保証なら A8 という使い分けが明確です。
+- **[GMKtec EVO-X2 レビュー——Ryzen AI 9 HX 370 で 70B 推論を目指す挑戦者](https://smart-kurashi.jp/posts/2026-06-27_gmktec-evo-x2-ryzen-ai-max-395-mini-pc-review)**：EVO-X2 の「32GB メモリ・NPU 50 TOPS」は魅力だが、入手性・価格・サポートで A8 が「今すぐ確実に手に入る現実解」として勝る場面が多いです。
 - **[CK楽天市場店 ゲーミングモニター レビュー](https://smart-kurashi.jp/posts/2026-07-25_ck-rakuten-gaming-monitor-review)**：A8 の USB4/HDMI 出力と CK モニターの高リフレッシュ・非光沢・VESA 対応は相性抜群。「ミニPC + ゲーミングモニター」で 15 万円以下の完成度高い AI 開発環境が組めます。
 
 ---
@@ -305,7 +305,7 @@ GEEKOM A8 は、**「ローカルLLMを自宅で動かしたい」「でもデ�
 
 あなたのデスクには「USB4 ケーブル 1 本で 4K モニター 2 枚・外部 NVMe・eGPU ドック」を繋ぐ余白と、120W ACアダプタを挿す電源タップの空きはありますか？ もし「あと一歩で導入できる」なら、今の 25% クーポン期間中に実機を確保しておくのも一つの手だと思います。逆に「まだ 32B 以上を常時動かしたい」「メモリ 32GB 以上が譲れない」という方は、MINISFORUM AI X1 Pro や GMKtec EVO-X2 の入荷待ち・価格低下待ちも合理的な選択だと思います。
 
-**「10万円台で、今すぐ始められるローカル[AI開発](https://hb.afl.rakuten.co.jp/ichiba/55438527.7baf1b68.55438528.cd8b015a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgeekom%2Fa8%2F&link_type=picttext)環境」——その第一歩として、GEEKOM A8 を候補に入れてみませんか？**
+**「10万円台で、今すぐ始められるローカル[AI開発](https://hb.afl.rakuten.co.jp/hgc/55adaba4.1c101d2e.550dbd89.5a9b7636/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F&m=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2FGEEKOM%2520A8%2F)環境」——その第一歩として、GEEKOM A8 を候補に入れてみませんか？**
 
 あなたが A8 で最初に動かしてみたいモデル (Qwen、Llama、Gemma、Phi 等) や、構想しているワークフロー (コーディング支援、ドキュメント生成、データ分析、チャットボット自作 等)、コメント欄で教えていただければ幸いです。次回の「ローカルLLM実践運用ノウハウ」記事の参考にさせていただきます。
 
