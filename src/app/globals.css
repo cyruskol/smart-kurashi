@@ -288,9 +288,34 @@ img { max-width: 100%; height: auto; }
   background: #F8FAFC;
 }
 
+/* ===== Sticky Buy Bar ===== */
+.sk-sticky-buybar { display: none; }
+
 /* ===== MOBILE RESPONSIVE (max-width: 768px) ===== */
 @media (max-width: 768px) {
   html { font-size: 15px; }
+
+  .sk-sticky-buybar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.97);
+    border-top: 1px solid #E7E5E4;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+  }
+  .sk-sticky-buybar a {
+    flex: 1;
+    min-height: 52px;
+    font-size: 15px;
+  }
+  body:has(.sk-sticky-buybar) {
+    padding-bottom: 84px;
+  }
 
   /* Hero: reduce min-height, prevent button overflow */
   section[style*="minHeight: 58vh"] {

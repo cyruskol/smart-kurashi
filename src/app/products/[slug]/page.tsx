@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllProducts, getProductBySlug } from '@/lib/products';
+import { getAllProducts, getProductBySlug, getRetailerLink, retailerOrder } from '@/lib/products';
+import StickyBuyBar from '@/components/StickyBuyBar';
 
 interface PageProps { params: Promise<{ slug: string }>; }
 
@@ -103,6 +104,26 @@ export default async function ProductPage({ params }: PageProps) {
           <h2>価格・在庫を確認する</h2>
           <p>価格・在庫は販売サイトで確認してください。</p>
         </section>
+
+        {/* Sticky Buy Bar - mobile only */}
+        {(() => {
+          const retailerLinks = ['amazon', 'rakuten', 'yahoo'] as const;
+          const links = retailerLinks
+            .map((retailerKey) => getRetailerLink(slug, retailerKey, 'sticky-bar'))
+            .filter(Boolean) as Array<ReturnType<typeof getRetailerLink>>;
+          if (links.length > 0) {
+            return (
+              <StickyBuyBar
+                links={links.map((link) => ({
+                  label: link.label,
+                  href: link.href,
+                  retailer: link.retailer,
+                }))}
+              />
+            );
+          }
+          return null;
+        })()}
       </article>
     </main>
   );

@@ -6,7 +6,7 @@ export type HandsOnStatus = 'used' | 'not-used' | 'unknown';
 export type RetailerKey = 'amazon' | 'rakuten' | 'yahoo' | 'official';
 export type TrackingStatus = 'configured' | 'not-configured' | 'not-needed' | 'unknown';
 
-export type RetailerContext = 'review_top' | 'review_middle' | 'review_bottom' | 'product_card' | 'comparison_table' | 'homepage_card' | 'product_page' | 'dashboard';
+export type RetailerContext = 'review_top' | 'review_middle' | 'review_bottom' | 'product_card' | 'comparison_table' | 'homepage_card' | 'product_page' | 'dashboard' | 'sticky-bar';
 
 export interface RetailerLink {
   enabled: boolean;

@@ -12,6 +12,7 @@ import TableOfContents from '@/components/TableOfContents';
 import AuthorProfile from '@/components/AuthorProfile';
 import ReviewTemplate from '@/components/review/ReviewTemplate';
 import PRBanner from '@/components/PRBanner';
+import StickyBuyBar from '@/components/StickyBuyBar';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -258,6 +259,19 @@ export default async function PostPage({ params }: PageProps) {
               bio={defaultAuthor.bio}
               expertise={defaultAuthor.expertise}
             />
+
+            {/* Sticky Buy Bar - mobile only */}
+            {(() => {
+              const rakutenMatch = post.content.match(/https:\/\/hb\.afl\.rakuten\.co\.jp\/[^\s)"']+/);
+              if (rakutenMatch) {
+                return (
+                  <StickyBuyBar
+                    links={[{ label: '楽天で見る', href: rakutenMatch[0], retailer: 'rakuten' }]}
+                  />
+                );
+              }
+              return null;
+            })()}
           </article>
 
           <aside>
