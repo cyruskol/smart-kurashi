@@ -69,7 +69,7 @@ export default function RetailerCTAButtons({
               currentUrl: pathname,
             });
           }}
-          className={link.retailer === 'amazon' ? 'product-button product-button-primary' : 'product-button'}
+          className={`product-button ${link.retailer === 'amazon' ? 'product-button-primary' : ''} product-button--${link.retailer}`}
         >
           {showLabels ? link.label : getRetailerLabel(link.retailer)}
         </Link>
