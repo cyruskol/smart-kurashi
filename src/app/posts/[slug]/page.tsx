@@ -111,7 +111,7 @@ export default async function PostPage({ params }: PageProps) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updatedAt || post.date,
     author: {
       '@type': 'Organization',
       name: defaultAuthor.name,
@@ -130,11 +130,37 @@ export default async function PostPage({ params }: PageProps) {
     },
   };
 
+  // FAQPage JSON-LD when post.faq exists and is non-empty
+  const jsonLdFaq = post.faq && post.faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer,
+          },
+        })),
+      }
+    : null;
+
   const product = getProductByReviewUrl(`/posts/${slug}`);
   const isReviewPost = Boolean(product);
 
   return (
     <main style={{ background: '#F8FAFC', padding: '32px 0' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdArticle) }}
+      />
+      {jsonLdFaq && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+        />
+      )}
       <div className="max-w-container mx-auto px-md">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '40px' }}>
           <article
