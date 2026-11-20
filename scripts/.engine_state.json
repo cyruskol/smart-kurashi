@@ -3,6 +3,6 @@
   "slot_a_time": "15:09",
   "slot_b_time": "09:00",
   "slot_a_done": false,
-  "slot_b_done": false,
+  "slot_b_done": true,
   "last_run_time": "2026-11-20T05:30:00+00:00"
 }
