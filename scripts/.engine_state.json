@@ -1,5 +1,7 @@
 {
-  "last_run_time": "2026-11-16T23:00:00.068Z",
-  "current_target_interval": 125,
-  "last_topic": "smart-home"
+  "plan_date": "2026-11-20",
+  "slot_a_time": "09:48",
+  "slot_b_time": "13:44",
+  "slot_a_done": false,
+  "slot_b_done": false
 }
