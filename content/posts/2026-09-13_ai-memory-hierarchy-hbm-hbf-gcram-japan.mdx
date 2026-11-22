@@ -1,13 +1,21 @@
 ---
-title: "AIの値段はGPUだけで決まらない——HBM不足とHBF・GCRAMが示す「記憶の配置」"
-date: "2026-09-13"
-category: "ai-tech"
-slug: "ai-memory-hierarchy-hbm-hbf-gcram-japan"
-excerpt: "HBM不足、NANDを積むHBF、SRAMとGCRAMを組み合わせる研究をつなぎ、AI導入をモデル名ではなく記憶容量・応答時間・電力・切替経路で判断する方法を整理します。"
-tags: ["生成AI", "AIインフラ", "HBM", "HBF", "半導体", "推論", "日本企業"]
-heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
-heroAlt: "AI処理を支える半導体基板とメモリーのイメージ"
+title: AIの値段はGPUだけで決まらない——HBM不足とHBF・GCRAMが示す「記憶の配置」
+date: '2026-09-13'
+category: ai-tech
+slug: ai-memory-hierarchy-hbm-hbf-gcram-japan
+excerpt: HBM不足、NANDを積むHBF、SRAMとGCRAMを組み合わせる研究をつなぎ、AI導入をモデル名ではなく記憶容量・応答時間・電力・切替経路で判断する方法を整理します。
+tags:
+- 生成AI
+- AIインフラ
+- HBM
+- HBF
+- 半導体
+- 推論
+- 日本企業
+heroImage: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80
+heroAlt: AI処理を支える半導体基板とメモリーのイメージ
 ---
+
 
 生成AIの導入費を考えるとき、私たちはモデルの利用料やGPUの台数から話を始めがちです。しかし、長い資料を読み、多くの利用者と会話し、複数のAIエージェントが同時に動くほど、費用と応答時間を左右する場所は演算器の外へ広がります。モデルの重みや会話の途中状態を、どこへ置き、どれだけ速く運び、いつ消すかという「記憶の配置」です。
 

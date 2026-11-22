@@ -1,13 +1,21 @@
 ---
-title: "AIエージェントは自動化率で選ばない——本番運用を決める「完了一件」の設計"
-date: "2026-09-14"
-category: "ai-tech"
-slug: "ai-agent-production-operation-completion-cost-japan"
-excerpt: "NTTドコモソリューションズの障害対応、日立の製造AI、GitHubのループ設計、生成AIの従量課金をつなぎ、AIエージェントを試行から本番へ移す判断基準を整理します。"
-tags: ["生成AI", "AIエージェント", "本番運用", "FinOps", "業務設計", "AIガバナンス", "日本企業"]
-heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80"
-heroAlt: "AIエージェントの本番運用と業務成果を確認するチームのイメージ"
+title: AIエージェントは自動化率で選ばない——本番運用を決める「完了一件」の設計
+date: '2026-09-14'
+category: ai-tech
+slug: ai-agent-production-operation-completion-cost-japan
+excerpt: NTTドコモソリューションズの障害対応、日立の製造AI、GitHubのループ設計、生成AIの従量課金をつなぎ、AIエージェントを試行から本番へ移す判断基準を整理します。
+tags:
+- 生成AI
+- AIエージェント
+- 本番運用
+- FinOps
+- 業務設計
+- AIガバナンス
+- 日本企業
+heroImage: https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80
+heroAlt: AIエージェントの本番運用と業務成果を確認するチームのイメージ
 ---
+
 
 AIエージェントの導入報告では、「業務の何％を任せたか」「何体のエージェントを動かしたか」「人の作業時間を何時間減らしたか」が目立ちます。いずれも変化を伝えやすい数字ですが、本番運用の成否を単独では説明できません。自動化された処理が増えても、完了前に人がやり直し、障害時に止められず、従量課金だけが積み上がれば、業務は軽くならないからです。
 

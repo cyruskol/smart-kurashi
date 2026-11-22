@@ -1,12 +1,13 @@
 ---
-title: "AIの次のボトルネックはGPUではなく「メモリ配置」——推論46GW時代に日本企業が見直すべき設計"
-date: "2026-08-28"
-category: "ai-tech"
-slug: "ai-inference-memory-hierarchy-kioxia-cxl-japan-enterprise"
-excerpt: "AI推論の電力需要が2035年に46GWへ拡大し、その半分以上をコード生成が占めるとの予測が出ました。一方、キオクシアはDRAMとSSDの間を埋めるCXL対応メモリ拡張を提示しています。GPUの台数ではなく、データをどこへ置き、いつ動かすかでAI基盤を考える方法を日本企業向けに整理します。"
-heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80"
-heroAlt: "AI推論を支える半導体とメモリ階層のイメージ"
+title: AIの次のボトルネックはGPUではなく「メモリ配置」——推論46GW時代に日本企業が見直すべき設計
+date: '2026-08-28'
+category: ai-tech
+slug: ai-inference-memory-hierarchy-kioxia-cxl-japan-enterprise
+excerpt: AI推論の電力需要が2035年に46GWへ拡大し、その半分以上をコード生成が占めるとの予測が出ました。一方、キオクシアはDRAMとSSDの間を埋めるCXL対応メモリ拡張を提示しています。GPUの台数ではなく、データをどこへ置き、いつ動かすかでAI基盤を考える方法を日本企業向けに整理します。
+heroImage: https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80
+heroAlt: AI推論を支える半導体とメモリ階層のイメージ
 ---
+
 
 AI基盤の議論では、つい「GPUを何台確保できるか」が主役になります。しかし、GPUが計算を始めるには、モデルの重み、入力文、過去の会話、検索結果、生成途中の情報を、必要な時に必要な場所へ届けなければなりません。高価な計算装置を増やしても、データを待つ時間が長ければ、設備も電力も十分に生かせません。
 
