@@ -1,10 +1,8 @@
 {
-  "plan_date": "2026-11-24",
-  "slot_a_time": "12:07",
-  "slot_b_time": "16:47",
-  "slot_a_done": true,
+  "plan_date": "2026-11-28",
+  "slot_a_time": "10:17",
+  "slot_b_time": "09:22",
+  "slot_a_done": false,
   "slot_b_done": false,
-  "last_run_time": "2026-11-24T03:35:00.000000Z",
-  "current_target_interval": 154,
-  "last_topic": "ai-tech"
+  "last_run_time": "2026-11-28T02:04:25.970959Z"
 }
